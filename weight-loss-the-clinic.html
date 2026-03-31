@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruDoc — Concept 1: The Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #F7F4EF;
+    --warm-white: #FDFCFA;
+    --teal: #1B6B6B;
+    --teal-light: #2A8A8A;
+    --teal-pale: #EAF4F4;
+    --charcoal: #1C2B2B;
+    --mid: #4A5E5E;
+    --light: #8A9E9E;
+    --accent: #C8A96E;
+    --border: #E0DDD8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,252,250,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--teal);
+    letter-spacing: -0.3px;
+  }
+  .logo span { color: var(--accent); }
+
+  nav .nav-cta {
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  nav .nav-cta:hover { background: var(--teal-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--ivory);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 80px 80px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(27,107,107,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal-pale);
+    border: 1px solid rgba(27,107,107,0.2);
+    color: var(--teal);
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero-badge::before {
+    content: '●';
+    font-size: 8px;
+    color: var(--teal);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 4vw, 58px);
+    line-height: 1.12;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--mid);
+    margin: 20px 0 36px;
+    max-width: 440px;
+  }
+
+  .hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .hero-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--mid);
+  }
+
+  .feature-dot {
+    width: 24px; height: 24px;
+    background: var(--teal-pale);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--teal);
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 18px 32px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-primary:hover {
+    background: var(--teal-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(27,107,107,0.3);
+  }
+
+  .btn-primary .arrow { transition: transform 0.2s; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .trust-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--light);
+  }
+
+  .trust-avatars {
+    display: flex;
+  }
+  .trust-avatars span {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: var(--teal-pale);
+    margin-left: -6px;
+    font-size: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--teal);
+    font-weight: 600;
+  }
+  .trust-avatars span:first-child { margin-left: 0; }
+
+  /* HERO RIGHT */
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-image-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(27,107,107,0.12), 0 4px 16px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .hero-img-placeholder {
+    width: 100%;
+    height: 380px;
+    background: linear-gradient(145deg, #D4ECF0 0%, #A8D8DC 50%, #7CC4CA 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-img-placeholder::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(27,107,107,0.15), transparent);
+  }
+
+  .doctors-silhouette {
+    font-size: 100px;
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-overlay {
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    background: var(--charcoal);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stat-overlay .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .stat-overlay .stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: white;
+    font-weight: 700;
+  }
+
+  .stat-overlay .stat-unit {
+    font-size: 12px;
+    color: var(--accent);
+  }
+
+  .floating-card {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    border: 1px solid var(--border);
+  }
+
+  .floating-card.top-left {
+    top: -20px;
+    left: -30px;
+  }
+
+  .floating-card.bottom-right {
+    bottom: 70px;
+    right: -30px;
+  }
+
+  .fc-label { font-size: 10px; color: var(--light); text-transform: uppercase; letter-spacing: 0.5px; }
+  .fc-value { font-size: 18px; font-weight: 700; color: var(--charcoal); font-family: 'Playfair Display', serif; }
+  .fc-sub { font-size: 11px; color: var(--teal); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--charcoal);
+    padding: 36px 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .stat-item {
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    padding: 10px;
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+  }
+  .stat-number span { color: var(--accent); }
+
+  .stat-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  /* WHY SECTION */
+  .why-section {
+    padding: 100px 80px;
+    background: var(--warm-white);
+  }
+
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 1.2;
+    color: var(--charcoal);
+    max-width: 500px;
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--mid);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .benefit-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--teal);
+    transition: height 0.3s;
+    border-radius: 0 0 2px 0;
+  }
+
+  .benefit-card:hover {
+    box-shadow: 0 12px 40px rgba(27,107,107,0.1);
+    transform: translateY(-2px);
+    border-color: rgba(27,107,107,0.2);
+  }
+
+  .benefit-card:hover::before { height: 100%; }
+
+  .benefit-icon {
+    width: 48px; height: 48px;
+    background: var(--teal-pale);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .benefit-card h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+
+  .benefit-card p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  /* DOCTORS */
+  .doctors-section {
+    background: var(--ivory);
+    padding: 100px 80px;
+  }
+
+  .doctors-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+  }
+
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .doctor-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .doctor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(27,107,107,0.12);
+  }
+
+  .doctor-img {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(160deg, var(--teal-pale) 0%, #C5E8E8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    position: relative;
+  }
+
+  .doctor-badge {
+    position: absolute;
+    top: 12px; right: 12px;
+    background: var(--teal);
+    color: white;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .doctor-info {
+    padding: 18px 20px;
+  }
+
+  .doctor-info h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .doctor-cred {
+    font-size: 12px;
+    color: var(--teal);
+    margin: 4px 0;
+    font-weight: 500;
+  }
+
+  .doctor-exp {
+    font-size: 12px;
+    color: var(--light);
+  }
+
+  /* CALCULATOR */
+  .calc-section {
+    padding: 100px 80px;
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .calc-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .calc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+
+  .calc-sub { font-size: 13px; color: var(--light); margin-bottom: 32px; }
+
+  .slider-group { margin-bottom: 28px; }
+
+  .slider-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .slider-label span:first-child {
+    font-size: 14px;
+    color: var(--mid);
+    font-weight: 500;
+  }
+
+  .slider-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  input[type=range] {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    background: var(--border);
+    border-radius: 2px;
+    outline: none;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; height: 20px;
+    background: var(--teal);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(27,107,107,0.3);
+  }
+
+  .calc-result {
+    background: var(--teal-pale);
+    border: 1px solid rgba(27,107,107,0.15);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .result-label { font-size: 12px; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .result-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--teal);
+    margin: 4px 0;
+  }
+  .result-sub { font-size: 13px; color: var(--mid); }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--ivory);
+    padding: 100px 80px;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+
+  .review-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+  }
+
+  .review-card::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: var(--teal-pale);
+    position: absolute;
+    top: 10px; right: 20px;
+    line-height: 1;
+  }
+
+  .stars { color: #F0A500; font-size: 13px; margin-bottom: 14px; }
+
+  .review-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mid);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .reviewer-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--teal-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    color: var(--teal);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .reviewer-name { font-size: 14px; font-weight: 600; color: var(--charcoal); }
+  .reviewer-result { font-size: 12px; color: var(--teal); font-weight: 500; }
+
+  /* HOW IT WORKS */
+  .how-section {
+    padding: 100px 80px;
+    background: var(--charcoal);
+  }
+
+  .how-section .section-label { color: var(--accent); }
+  .how-section .section-title { color: white; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .step {
+    padding: 36px 28px;
+    background: rgba(255,255,255,0.03);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+  }
+
+  .step:last-child { border-right: none; }
+  .step:hover { background: rgba(255,255,255,0.07); }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.1);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .step p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.65;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 100px 80px;
+    background: var(--teal);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .cta-section h2 em { font-style: italic; color: rgba(255,255,255,0.7); }
+
+  .cta-section p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--teal);
+    border: none;
+    padding: 18px 40px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+  }
+
+  .urgency {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .urgency strong { color: var(--accent); }
+
+  /* FAQ */
+  .faq-section {
+    padding: 100px 80px;
+    background: var(--ivory);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-section .section-title { text-align: center; }
+  .faq-section .section-label { text-align: center; }
+
+  .faq-list { margin-top: 50px; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+    gap: 20px;
+  }
+
+  .faq-q .toggle {
+    width: 28px; height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    color: var(--teal);
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .faq-item.open .toggle {
+    background: var(--teal);
+    color: white;
+    border-color: var(--teal);
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 200px;
+    padding-top: 14px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .logo { color: white; }
+  footer .logo span { color: var(--accent); }
+
+  footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* STICKY CTA mobile */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    display: none;
+    z-index: 99;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  }
+
+  .sticky-cta button {
+    width: 100%;
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; }
+    .hero-visual { display: none; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 40px 20px; }
+    .why-section, .doctors-section, .calc-section, .testimonials, .how-section, .cta-section { padding: 70px 20px; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .doctors-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .calc-section { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .faq-section { padding: 70px 20px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 30px 20px; }
+    .sticky-cta { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Tru<span>Doc</span></div>
+  <button class="nav-cta">Book Free Consultation →</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">DHA & DOH Licensed Physicians</div>
+    <h1>Doctor-led weight loss,<br><em>designed for real results</em></h1>
+    <p class="hero-sub">A personalized, clinically guided program that supports you from first consultation to lasting transformation — and every step beyond.</p>
+
+    <div class="hero-features">
+      <div class="hero-feature">
+        <div class="feature-dot">✓</div>
+        <span>Certified doctor-led care — experienced physicians in weight management</span>
+      </div>
+      <div class="hero-feature">
+        <div class="feature-dot">✓</div>
+        <span>Built around you — treatment plans matched to your body & goals</span>
+      </div>
+      <div class="hero-feature">
+        <div class="feature-dot">✓</div>
+        <span>Clinically proven — evidence-based GLP-1 medications & protocols</span>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <button class="btn-primary">
+        Book Your Free Doctor Consultation <span class="arrow">→</span>
+      </button>
+      <div class="trust-line">
+        <div class="trust-avatars">
+          <span>A</span><span>M</span><span>S</span><span>R</span>
+        </div>
+        <span>Trusted by 12,000+ patients across the UAE</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="floating-card top-left">
+      <div class="fc-label">Avg. weight loss</div>
+      <div class="fc-value">18.2<span style="font-size:14px;color:var(--light)">kg</span></div>
+      <div class="fc-sub">in 6 months</div>
+    </div>
+
+    <div class="hero-image-card">
+      <div class="hero-img-placeholder">
+        <div class="doctors-silhouette">👨‍⚕️👩‍⚕️</div>
+      </div>
+      <div class="stat-overlay">
+        <div>
+          <div class="stat-label">Potential loss</div>
+          <div class="stat-val">Lose upto <span class="stat-unit">20% Bodyweight</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="floating-card bottom-right">
+      <div class="fc-label">Patient rating</div>
+      <div class="fc-value">4.8 ⭐</div>
+      <div class="fc-sub">12k+ reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">12<span>k+</span></div>
+    <div class="stat-desc">Patients treated</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">4.8<span>★</span></div>
+    <div class="stat-desc">Average rating</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">20<span>%</span></div>
+    <div class="stat-desc">Max body weight loss</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">24<span>/7</span></div>
+    <div class="stat-desc">Medical support</div>
+  </div>
+</section>
+
+<!-- WHY SECTION -->
+<section class="why-section">
+  <div class="section-label">Why TruDoc</div>
+  <h2 class="section-title">Why choose TruDoc's weight loss program?</h2>
+  <p class="section-sub">Personalized, clinically proven treatments guided by licensed doctors — not apps, not guesswork.</p>
+
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon">📉</div>
+      <h3>Lose up to 20% of your bodyweight</h3>
+      <p>Clinically proven results for eligible patients, with visible progress in just weeks.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">💉</div>
+      <h3>Simple weekly GLP-1 dose</h3>
+      <p>No daily medication. Trusted, safe GLP-1 medications prescribed and monitored by your doctor.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🩸</div>
+      <h3>Improves blood sugar & metabolism</h3>
+      <p>Supports better glucose control and long-term metabolic health improvement.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🥗</div>
+      <h3>Controls appetite naturally</h3>
+      <p>Helps you feel fuller longer and stay in control of your eating habits effortlessly.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🛡️</div>
+      <h3>DHA & DOH licensed doctors</h3>
+      <p>Care that meets UAE's highest regulatory standards — not just online consultations.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">📞</div>
+      <h3>24/7 medical support</h3>
+      <p>Access qualified doctors anytime you need assistance, day or night.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section class="doctors-section">
+  <div class="doctors-header">
+    <div>
+      <div class="section-label">Our Team</div>
+      <h2 class="section-title">Backed by the UAE's leading weight loss doctors</h2>
+    </div>
+    <button class="btn-primary" style="font-size:14px; padding:14px 24px;">Meet All Doctors →</button>
+  </div>
+
+  <div class="doctors-grid">
+    <div class="doctor-card">
+      <div class="doctor-img">
+        👨‍⚕️
+        <div class="doctor-badge">DHA Licensed</div>
+      </div>
+      <div class="doctor-info">
+        <h4>Dr. Mehryar Andacheh</h4>
+        <div class="doctor-cred">GP Certified, DHA Licensed</div>
+        <div class="doctor-exp">18+ years in guided weight loss</div>
+      </div>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-img">
+        👩‍⚕️
+        <div class="doctor-badge">DHA Licensed</div>
+      </div>
+      <div class="doctor-info">
+        <h4>Danya Taha</h4>
+        <div class="doctor-cred">Nutritionist, DHA Licensed</div>
+        <div class="doctor-exp">4+ years in nutrition & dietetics</div>
+      </div>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-img">
+        👩‍⚕️
+        <div class="doctor-badge">DHA Licensed</div>
+      </div>
+      <div class="doctor-info">
+        <h4>Dr. Rana Ahmed</h4>
+        <div class="doctor-cred">DHA Licensed</div>
+        <div class="doctor-exp">18+ years in guided weight loss</div>
+      </div>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-img">
+        👩‍⚕️
+        <div class="doctor-badge">DHA Licensed</div>
+      </div>
+      <div class="doctor-info">
+        <h4>Dr. Azza Elhadi</h4>
+        <div class="doctor-cred">DHA Licensed</div>
+        <div class="doctor-exp">7+ years in guided weight loss</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-section">
+  <div>
+    <div class="section-label">Your Potential</div>
+    <h2 class="section-title">See how much you could lose</h2>
+    <p class="section-sub">Our GLP-1 program has helped thousands of patients achieve results that diet and exercise alone couldn't deliver. See your potential in 6 months.</p>
+    <button class="btn-primary" style="margin-top: 32px;">Get My Personalized Plan →</button>
+  </div>
+  <div class="calc-card">
+    <div class="calc-title">Weight Loss Estimator</div>
+    <div class="calc-sub">Adjust your current weight to see your potential results</div>
+
+    <div class="slider-group">
+      <div class="slider-label">
+        <span>Current weight</span>
+        <span class="slider-val" id="weightVal">80 kg</span>
+      </div>
+      <input type="range" min="50" max="200" value="80" id="weightSlider">
+    </div>
+
+    <div class="slider-group">
+      <div class="slider-label">
+        <span>Target timeframe</span>
+        <span class="slider-val" id="monthVal">6 months</span>
+      </div>
+      <input type="range" min="3" max="12" value="6" id="monthSlider">
+    </div>
+
+    <div class="calc-result">
+      <div class="result-label">You could lose</div>
+      <div class="result-value" id="resultVal">16 kg</div>
+      <div class="result-sub">Based on clinical outcomes for eligible patients</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-label">Real Results</div>
+  <h2 class="section-title">Real people. Real results.</h2>
+  <p class="section-sub">Real experiences from people guided by TruDoc doctors.</p>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">Since starting this program, I've not only shed those extra pounds but also feel more energetic. It's been a game-changer for my health!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">LH</div>
+        <div>
+          <div class="reviewer-name">Layla Habibi</div>
+          <div class="reviewer-result">Lost 14kg in 5 months</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">Dr. Rana was incredibly supportive throughout. I finally feel in control of my appetite and my relationship with food has completely changed.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">AM</div>
+        <div>
+          <div class="reviewer-name">Ahmed Mansour</div>
+          <div class="reviewer-result">Lost 19kg in 6 months</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">I was skeptical at first but the doctors here are genuinely invested in your progress. The weekly check-ins made all the difference.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">SR</div>
+        <div>
+          <div class="reviewer-name">Sara Rahman</div>
+          <div class="reviewer-result">Lost 11kg in 4 months</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-label">The Process</div>
+  <h2 class="section-title" style="color:white;">How your weight loss journey works</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Book your consultation</h3>
+      <p>Choose a time slot and share your details to get started — completely free.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Connect with a TruDoc doctor</h3>
+      <p>Speak with a licensed weight loss doctor who understands your needs.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Discuss your health & set goals</h3>
+      <p>Your doctor reviews your history, lifestyle, and targets to create a plan.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Get your treatment plan</h3>
+      <p>Receive a clinically-backed plan with continuous monitoring and support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <h2>Take your first step towards<br><em>lasting change</em></h2>
+  <p>Our licensed doctors guide you every step of your weight loss journey</p>
+  <button class="btn-white">Start Your Free Consultation →</button>
+  <div class="urgency">⚡ <strong>Limited slots available this week</strong> — book yours today</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" style="max-width:100%;">
+  <div style="max-width:700px; margin:0 auto;">
+    <div class="section-label" style="text-align:center;">FAQ</div>
+    <h2 class="section-title" style="text-align:center; max-width:100%;">Common questions</h2>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>What are these weight loss treatments based on?</span>
+          <span class="toggle">+</span>
+        </div>
+        <div class="faq-a">Our treatments are based on modern, science-backed medical approaches used globally to support metabolism, appetite control, and sustainable weight management. We use clinically proven GLP-1 medications prescribed by licensed physicians.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Is this service available across all Emirates?</span>
+          <span class="toggle">+</span>
+        </div>
+        <div class="faq-a">Yes, TruDoc serves patients across all Emirates in the UAE. Our doctors are licensed by both Dubai DHA and Abu Dhabi DOH, allowing us to provide care throughout the country.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Why should I choose TruDoc for weight loss?</span>
+          <span class="toggle">+</span>
+        </div>
+        <div class="faq-a">TruDoc combines certified medical expertise with personalized care. Our doctors specialize in evidence-based weight management and our approach is clinically proven, not a generic diet plan.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>How quickly will I see results?</span>
+          <span class="toggle">+</span>
+        </div>
+        <div class="faq-a">Most patients begin seeing visible progress within the first few weeks. Clinical outcomes show eligible patients can lose up to 20% of their body weight over 6 months with our program.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Tru<span>Doc</span></div>
+  <p>© 2025 TruDoc. DHA & DOH Licensed. All rights reserved.</p>
+  <p>Always With You</p>
+</footer>
+
+<!-- STICKY CTA (mobile) -->
+<div class="sticky-cta">
+  <button>Book Free Consultation →</button>
+</div>
+
+<script>
+  // Calculator
+  const ws = document.getElementById('weightSlider');
+  const ms = document.getElementById('monthSlider');
+  const wv = document.getElementById('weightVal');
+  const mv = document.getElementById('monthVal');
+  const rv = document.getElementById('resultVal');
+
+  function updateCalc() {
+    const w = +ws.value;
+    const m = +ms.value;
+    const rate = m <= 6 ? 0.20 : 0.20;
+    const loss = Math.round(w * rate * (m / 6));
+    wv.textContent = w + ' kg';
+    mv.textContent = m + ' months';
+    rv.textContent = Math.min(loss, Math.round(w * 0.2)) + ' kg';
+  }
+
+  ws.addEventListener('input', updateCalc);
+  ms.addEventListener('input', updateCalc);
+  updateCalc();
+
+  // Animate on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.benefit-card, .doctor-card, .review-card, .step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

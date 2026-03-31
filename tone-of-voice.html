@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruDoc — Master Tone of Voice Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:     #07192E;
+    --navy-mid: #0D2540;
+    --navy-lt:  #112D4E;
+    --blue:     #1462A8;
+    --blue-lt:  #1E88E5;
+    --teal:     #00C6C6;
+    --teal-dim: #00A3A3;
+    --cream:    #F5F2EC;
+    --warm-wht: #FAFAF7;
+    --slate:    #8FA8C4;
+    --muted:    #A9BCCF;
+    --red-soft: #E05252;
+    --green-soft:#2BB57A;
+    --gold:     #C9A84C;
+    --rule:     rgba(0,198,198,.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--warm-wht);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ─────────────────────── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: .45;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── STICKY NAV ────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(7,25,46,.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+  .nav-brand span { color: var(--teal); }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .75rem;
+    font-weight: 400;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ── UTILITY ───────────────────────────────────── */
+  .z1 { position: relative; z-index: 1; }
+
+  /* ── HERO ──────────────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 6vw;
+    gap: 4rem;
+    overflow: hidden;
+  }
+
+  /* Radial glow */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 70vw;
+    height: 70vw;
+    background: radial-gradient(ellipse at center,
+      rgba(0,198,198,.09) 0%,
+      rgba(20,98,168,.07) 35%,
+      transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Grid lines */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,198,198,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,198,198,.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .hero-left { z-index: 1; padding-top: 80px; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp .8s .2s forwards;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--teal);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -.02em;
+    margin-bottom: 1.4rem;
+    opacity: 0;
+    animation: fadeUp .8s .35s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--slate);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp .8s .5s forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2.5rem;
+    opacity: 0;
+    animation: fadeUp .8s .65s forwards;
+  }
+  .hero-meta-item { }
+  .hero-meta-item .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--warm-wht);
+    line-height: 1;
+  }
+  .hero-meta-item .val span { color: var(--teal); }
+  .hero-meta-item .lbl {
+    font-size: .7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: .25rem;
+  }
+
+  /* Right column – abstract mark */
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    opacity: 0;
+    animation: fadeIn 1.2s .4s forwards;
+  }
+  .pulse-rings {
+    position: relative;
+    width: 320px; height: 320px;
+  }
+  .pulse-ring {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    border-radius: 50%;
+    border: 1px solid var(--teal);
+    animation: pulseRing 3s ease-out infinite;
+  }
+  .pulse-ring:nth-child(1) { width: 320px; height: 320px; animation-delay: 0s; opacity: .12; }
+  .pulse-ring:nth-child(2) { width: 240px; height: 240px; animation-delay: .6s; opacity: .2; }
+  .pulse-ring:nth-child(3) { width: 160px; height: 160px; animation-delay: 1.2s; opacity: .35; }
+  .pulse-core {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--teal) 0%, var(--blue) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 60px rgba(0,198,198,.3);
+  }
+  .pulse-core svg { width: 36px; height: 36px; }
+
+  /* ECG line */
+  .ecg-line {
+    position: absolute;
+    bottom: 15%;
+    left: -20%;
+    right: -20%;
+  }
+  .ecg-line svg {
+    width: 100%;
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation: drawLine 2.5s .8s ease forwards;
+  }
+
+  /* ── SECTION BASE ──────────────────────────────── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 7rem 6vw;
+  }
+  section + section {
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin-bottom: 1.4rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--teal);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-bottom: .8rem;
+  }
+  .section-title em { font-style: italic; color: var(--teal); }
+
+  .section-intro {
+    font-size: 1rem;
+    color: var(--slate);
+    max-width: 580px;
+    line-height: 1.8;
+    margin-bottom: 4rem;
+  }
+
+  /* ── PERSONA SECTION ───────────────────────────── */
+  .persona-section {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+  }
+
+  .persona-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .persona-quote-block {
+    position: relative;
+    padding: 3rem 3rem 3rem 4rem;
+    background: rgba(0,198,198,.04);
+    border-left: 3px solid var(--teal);
+  }
+  .persona-quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    line-height: .7;
+    color: var(--teal);
+    opacity: .25;
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    user-select: none;
+  }
+  .persona-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--warm-wht);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .persona-attribution {
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .persona-attributes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .attr-card {
+    padding: 1.4rem 1.6rem;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 4px;
+    transition: border-color .25s, background .25s;
+  }
+  .attr-card:hover {
+    background: rgba(0,198,198,.05);
+    border-color: rgba(0,198,198,.25);
+  }
+  .attr-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: .5rem;
+  }
+  .attr-value {
+    font-size: .95rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .attr-value strong {
+    color: var(--warm-wht);
+    font-weight: 500;
+  }
+
+  /* ── VOICE PILLARS ─────────────────────────────── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .pillar-card {
+    background: var(--navy);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background .3s;
+  }
+  .pillar-card:hover { background: var(--navy-mid); }
+
+  .pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(0,198,198,.1);
+    margin-bottom: 1rem;
+    transition: color .3s;
+  }
+  .pillar-card:hover .pillar-num { color: rgba(0,198,198,.2); }
+
+  .pillar-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: .9rem;
+    color: var(--warm-wht);
+  }
+  .pillar-name em { font-style: italic; color: var(--teal); }
+
+  .pillar-desc {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.8rem;
+  }
+
+  .do-dont {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+  }
+  .do-item, .dont-item {
+    display: flex;
+    gap: .6rem;
+    align-items: flex-start;
+    font-size: .82rem;
+    line-height: 1.5;
+  }
+  .do-item { color: #7CCFA8; }
+  .dont-item { color: #C97C7C; }
+  .do-item .tag, .dont-item .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    padding: .15em .5em;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: .1em;
+  }
+  .do-item .tag { background: rgba(43,181,122,.15); color: var(--green-soft); }
+  .dont-item .tag { background: rgba(224,82,82,.12); color: var(--red-soft); }
+
+  .pillar-example {
+    margin-top: 1.8rem;
+    padding: 1.2rem;
+    background: rgba(0,198,198,.05);
+    border-left: 2px solid var(--teal);
+    font-size: .82rem;
+    color: var(--slate);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .pillar-example strong { color: var(--teal); font-style: normal; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; display: block; margin-bottom: .4rem; }
+
+  /* ── VOICE MATRIX ──────────────────────────────── */
+  .matrix-section {
+    background: var(--cream);
+    color: var(--navy);
+  }
+  .matrix-section .section-label { color: var(--blue); }
+  .matrix-section .section-label::before { background: var(--blue); }
+  .matrix-section .section-title { color: var(--navy); }
+  .matrix-section .section-title em { color: var(--blue); }
+  .matrix-section .section-intro { color: #5A7A9A; }
+
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .matrix-table thead tr {
+    border-bottom: 2px solid var(--navy);
+  }
+  .matrix-table th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 400;
+  }
+  .matrix-table td {
+    padding: 1.4rem 1.5rem;
+    border-bottom: 1px solid rgba(7,25,46,.1);
+    vertical-align: top;
+    font-size: .9rem;
+    line-height: 1.6;
+  }
+  .matrix-table tr:last-child td { border-bottom: none; }
+  .matrix-table tr:hover td { background: rgba(7,25,46,.03); }
+
+  .tag-we-are {
+    display: inline-block;
+    padding: .3em .9em;
+    background: var(--navy);
+    color: var(--warm-wht);
+    font-family: 'Playfair Display', serif;
+    font-size: .9rem;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+  .tag-not {
+    display: inline-block;
+    padding: .3em .9em;
+    background: transparent;
+    color: var(--red-soft);
+    border: 1px solid rgba(224,82,82,.35);
+    font-family: 'DM Mono', monospace;
+    font-size: .78rem;
+    border-radius: 2px;
+  }
+  .matrix-note {
+    color: #4A6A8A;
+    font-size: .88rem;
+    line-height: 1.7;
+  }
+
+  /* ── TONAL CONTEXTS ────────────────────────────── */
+  .contexts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .context-card {
+    position: relative;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    transition: border-color .3s;
+  }
+  .context-card:hover { border-color: rgba(0,198,198,.35); }
+
+  .context-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .context-card.ivr::before { background: var(--teal); }
+  .context-card.b2b::before { background: var(--blue-lt); }
+  .context-card.social::before { background: var(--green-soft); }
+
+  .context-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    font-size: 1.2rem;
+  }
+  .context-card.ivr .context-icon { background: rgba(0,198,198,.12); }
+  .context-card.b2b .context-icon { background: rgba(30,136,229,.12); }
+  .context-card.social .context-icon { background: rgba(43,181,122,.12); }
+
+  .context-channel {
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+  }
+  .context-card.ivr .context-channel { color: var(--teal); }
+  .context-card.b2b .context-channel { color: var(--blue-lt); }
+  .context-card.social .context-channel { color: var(--green-soft); }
+
+  .context-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: .8rem;
+  }
+  .context-desc {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .context-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1.4rem;
+  }
+  .ctag {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .1em;
+    padding: .25em .7em;
+    border-radius: 2px;
+    color: var(--muted);
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  /* ── PERSONA IDENTITY SECTION ──────────────────── */
+  .identity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .identity-block {
+    padding: 2.5rem;
+    position: relative;
+  }
+  .identity-block::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--teal), transparent);
+  }
+
+  .identity-num {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .2em;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+  .identity-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .identity-detail {
+    margin-bottom: 1.2rem;
+  }
+  .identity-detail-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: .4rem;
+    opacity: .7;
+  }
+  .identity-detail-text {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .identity-detail-text strong {
+    color: var(--warm-wht);
+    font-weight: 500;
+  }
+
+  /* Accent languages */
+  .lang-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: .6rem;
+  }
+  .lang-pill {
+    padding: .3em .9em;
+    background: rgba(0,198,198,.08);
+    border: 1px solid rgba(0,198,198,.2);
+    color: var(--teal);
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    border-radius: 2px;
+  }
+
+  /* ── BEHAVIORS ─────────────────────────────────── */
+  .behaviors-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 3.5rem;
+  }
+
+  .behavior-cell {
+    background: var(--navy);
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .behavior-cell::before {
+    content: attr(data-num);
+    position: absolute;
+    bottom: -1rem;
+    right: 1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    font-weight: 900;
+    color: rgba(255,255,255,.03);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .beh-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    display: block;
+    filter: grayscale(0);
+  }
+  .beh-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: .8rem;
+    color: var(--warm-wht);
+  }
+  .beh-desc {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.75;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── FOOTER ────────────────────────────────────── */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 6vw;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .footer-brand span { color: var(--teal); }
+  .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .14em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes pulseRing {
+    0%   { transform: scale(1); opacity: inherit; }
+    50%  { transform: scale(1.06); opacity: 0; }
+    100% { transform: scale(1); opacity: inherit; }
+  }
+  @keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Scroll-triggered reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered children */
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s; }
+  .stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:.15s; }
+  .stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.25s; }
+  .stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.35s; }
+
+  /* ── DIVIDER ───────────────────────────────────── */
+  .h-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--rule);
+    margin: 1.5rem 0;
+  }
+
+  /* ── CALLOUT BAND ──────────────────────────────── */
+  .callout-band {
+    background: var(--teal);
+    color: var(--navy);
+    padding: 2.8rem 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .callout-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    max-width: 680px;
+    line-height: 1.4;
+  }
+  .callout-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: .7rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    background: rgba(7,25,46,.15);
+    padding: .5em 1.2em;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Tru<span>Doc</span></div>
+  <ul class="nav-links">
+    <li><a href="#persona">Persona</a></li>
+    <li><a href="#pillars">Voice Pillars</a></li>
+    <li><a href="#matrix">We Are / Not</a></li>
+    <li><a href="#tone">Tone</a></li>
+    <li><a href="#identity">Identity</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">Master Brand Document · 2025</div>
+    <h1 class="hero-title">Tone of<br><em>Voice</em><br>Guidelines</h1>
+    <p class="hero-sub">TruDoc is the GCC's virtual-first healthcare pioneer. We are the calmest, smartest person in the room when someone's health is on the line.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="val">4<span> pillars</span></div>
+        <div class="lbl">Voice Framework</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="val">3<span> channels</span></div>
+        <div class="lbl">Tonal Contexts</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="val">1<span> persona</span></div>
+        <div class="lbl">Brand Archetype</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual z1">
+    <div class="pulse-rings">
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
+      <div class="pulse-core">
+        <!-- Heart + pulse icon -->
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 18h5l3-8 5 16 4-12 3 6 2-2h10" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="ecg-line">
+      <svg viewBox="0 0 700 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 30 H160 L175 30 L185 10 L200 52 L215 10 L228 52 L240 30 H700" stroke="rgba(0,198,198,0.35)" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- CORE PERSONA -->
+<section id="persona" class="persona-section">
+  <div class="z1">
+    <div class="section-label reveal">01 — Core Persona</div>
+    <h2 class="section-title reveal">Who <em>We Are</em></h2>
+    <p class="section-intro reveal">If TruDoc were a person, we would be the highly experienced, no-nonsense Chief Medical Officer who also happens to have exceptional bedside manner.</p>
+
+    <div class="persona-grid reveal">
+      <div>
+        <div class="persona-quote-block">
+          <div class="persona-quote-mark">"</div>
+          <p class="persona-quote">We don't deal in fluff, we don't up-sell, and we don't panic. We are the calmest, smartest person in the room when someone's health is on the line.</p>
+          <div class="persona-attribution">TruDoc Core Principle</div>
+        </div>
+
+        <div style="margin-top:2.5rem;">
+          <div class="section-label" style="margin-bottom:1.2rem;">The Archetype</div>
+          <p style="font-size:.95rem; color:var(--muted); line-height:1.8;">She is the most experienced medical professional in the hospital, but she has left the traditional, chaotic ward behind to fix the system from the outside. She is the person you want walking into the room when you or your child is sick — because the moment she speaks, <strong style="color:var(--warm-wht); font-weight:500;">the panic leaves the room.</strong></p>
+        </div>
+      </div>
+
+      <div class="persona-attributes stagger">
+        <div class="attr-card">
+          <div class="attr-label">Archetype Title</div>
+          <div class="attr-value"><strong>The Modern Clinical Director</strong></div>
+        </div>
+        <div class="attr-card">
+          <div class="attr-label">Appearance</div>
+          <div class="attr-value"><strong>Polished, sharp, modern.</strong> Business casual or clinical — a crisp white coat, premium scrubs. Never intimidating.</div>
+        </div>
+        <div class="attr-card">
+          <div class="attr-label">Body Language</div>
+          <div class="attr-value"><strong>Unhurried and grounded.</strong> Steady, compassionate eye contact. Never fidgets or looks at the clock. Posture projects absolute competence.</div>
+        </div>
+        <div class="attr-card">
+          <div class="attr-label">Experience</div>
+          <div class="attr-value"><strong>Late 30s–early 50s.</strong> Visibly carries 15+ years of hard clinical experience — not just credentials, but presence.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR PILLARS -->
+<section id="pillars">
+  <div class="z1">
+    <div class="section-label reveal">02 — Voice Framework</div>
+    <h2 class="section-title reveal">The Four <em>Pillars</em></h2>
+    <p class="section-intro reveal">Our voice is constant: the ultimate medical authority — evidence-based, trustworthy, completely transparent. These pillars define every word we write and say.</p>
+
+    <div class="pillars-grid stagger">
+
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <div class="pillar-name">Authoritative,<br><em>Yet Empathetic</em></div>
+        <p class="pillar-desc">We deal with people's health and their lives. The voice must immediately establish the patient is in safe, highly capable hands — without sounding cold or clinical.</p>
+        <div class="do-dont">
+          <div class="do-item"><span class="tag">DO</span> Use calm, reassuring language. Acknowledge the patient's situation.</div>
+          <div class="dont-item"><span class="tag">DON'T</span> Sound robotic, dismissive, or use generic call-center scripts.</div>
+        </div>
+        <div class="pillar-example">
+          <strong>In practice</strong>
+          "We will have a doctor call you back within 30 minutes." — not "Your call is important to us, please hold."
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <div class="pillar-name">Transparent<br><em>&amp; Direct</em></div>
+        <p class="pillar-desc">Our biggest differentiator is that we practice evidence-based medicine and tell patients the truth about what they need. We do not hide behind complex jargon.</p>
+        <div class="do-dont">
+          <div class="do-item"><span class="tag">DO</span> Get straight to the point. Be brutally honest about wait times, costs, and medical realities.</div>
+          <div class="dont-item"><span class="tag">DON'T</span> Use corporate healthcare buzzwords or obscure facts to sound softer.</div>
+        </div>
+        <div class="pillar-example">
+          <strong>In practice</strong>
+          "Based on NHS guidelines, this requires an at-home lab test." — not "We suggest exploring comprehensive diagnostic modalities."
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <div class="pillar-name">Accessible<br><em>&amp; Inclusive</em></div>
+        <p class="pillar-desc">We serve millions of diverse patients across the UAE and beyond. Our language must be universally understood, whether English is their first language or their third.</p>
+        <div class="do-dont">
+          <div class="do-item"><span class="tag">DO</span> Speak in plain, conversational English (or MSA Arabic / polished Hindi). Short sentences.</div>
+          <div class="dont-item"><span class="tag">DON'T</span> Use heavy medical jargon unless absolutely necessary — and if we do, explain it immediately.</div>
+        </div>
+        <div class="pillar-example">
+          <strong>In practice</strong>
+          "High blood pressure" — not "Hypertension" when speaking directly to patients.
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <div class="pillar-name">Proactive<br><em>&amp; Forward-Moving</em></div>
+        <p class="pillar-desc">As a hospital-at-home innovator, we don't just treat the immediate symptom — we guide the entire patient journey. Every interaction has a clear next step.</p>
+        <div class="do-dont">
+          <div class="do-item"><span class="tag">DO</span> Always provide a clear next step or call-to-action. Give the patient a path forward.</div>
+          <div class="dont-item"><span class="tag">DON'T</span> Leave the patient hanging with a dead-end statement or ambiguous outcome.</div>
+        </div>
+        <div class="pillar-example">
+          <strong>In practice</strong>
+          "If this is a medical emergency, please hang up and dial 998 immediately." — not "We cannot handle emergencies right now."
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WE ARE / NOT MATRIX -->
+<section id="matrix" class="matrix-section">
+  <div class="z1">
+    <div class="section-label reveal">03 — Brand Matrix</div>
+    <h2 class="section-title reveal">We <em>Are</em> / We Are Not</h2>
+    <p class="section-intro reveal">Four tension pairs that define TruDoc's precise positioning — not what we avoid, but the exact balance we hold at all times.</p>
+
+    <table class="matrix-table reveal">
+      <thead>
+        <tr>
+          <th>We Are…</th>
+          <th>But We Are Not…</th>
+          <th>How This Applies to TruDoc Copy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag-we-are">Clinical Experts</span></td>
+          <td><span class="tag-not">Cold or Intimidating</span></td>
+          <td class="matrix-note">We back our advice with data, but deliver it with bedside manner. Authority through calmness, never through distance.</td>
+        </tr>
+        <tr>
+          <td><span class="tag-we-are">Honest</span></td>
+          <td><span class="tag-not">Blunt to the Point of Rude</span></td>
+          <td class="matrix-note">We tell the patient the reality of their health, but we cushion it with empathy and a clear treatment plan. Truth + care, always together.</td>
+        </tr>
+        <tr>
+          <td><span class="tag-we-are">Innovative</span></td>
+          <td><span class="tag-not">Gimmicky</span></td>
+          <td class="matrix-note">We are a tech-enabled healthcare platform, but we focus on <em>care</em> — not just the app features. Technology in service of people, not spectacle.</td>
+        </tr>
+        <tr>
+          <td><span class="tag-we-are">Simple</span></td>
+          <td><span class="tag-not">Dumbed Down</span></td>
+          <td class="matrix-note">We explain complex biological or insurance concepts so anyone can understand them — without ever losing accuracy. Plain language is not lazy language.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TONAL CONTEXTS -->
+<section id="tone">
+  <div class="z1">
+    <div class="section-label reveal">04 — Tonal Contexts</div>
+    <h2 class="section-title reveal">Voice is Constant.<br><em>Tone Adapts.</em></h2>
+    <p class="section-intro reveal">Our voice never changes. How we express it shifts to match the emotional context of each channel and audience.</p>
+
+    <div class="contexts-grid stagger">
+
+      <div class="context-card ivr">
+        <div class="context-icon">📞</div>
+        <div class="context-channel">IVR / Telehealth App</div>
+        <div class="context-title">Calm &amp; Instructional</div>
+        <p class="context-desc">Patients calling the IVR are anxious. They need structure and reassurance. The tone drops in pace, increases in warmth, and always closes with a concrete next step.</p>
+        <div class="context-tags">
+          <span class="ctag">Reassuring</span>
+          <span class="ctag">Slow-paced</span>
+          <span class="ctag">Instructional</span>
+          <span class="ctag">Action-driven</span>
+        </div>
+      </div>
+
+      <div class="context-card b2b">
+        <div class="context-icon">📊</div>
+        <div class="context-channel">B2B Pitches · Insurance / Capital</div>
+        <div class="context-title">Sharp &amp; Visionary</div>
+        <p class="context-desc">Speaking to Pulsar Capital or insurance partners? Tone pivots to data-driven and executive. Focus on cost-reduction, scale metrics, and the systemic opportunity — not patient stories.</p>
+        <div class="context-tags">
+          <span class="ctag">Data-driven</span>
+          <span class="ctag">Visionary</span>
+          <span class="ctag">Cost-focused</span>
+          <span class="ctag">Scalability</span>
+        </div>
+      </div>
+
+      <div class="context-card social">
+        <div class="context-icon">🌐</div>
+        <div class="context-channel">Social Media</div>
+        <div class="context-title">Accessible &amp; Proactive</div>
+        <p class="context-desc">Social is where we build trust before someone ever needs us. The tone is educational, warm, and focused on preventative health — creating a community around wellness, not illness.</p>
+        <div class="context-tags">
+          <span class="ctag">Educational</span>
+          <span class="ctag">Preventative</span>
+          <span class="ctag">Conversational</span>
+          <span class="ctag">Proactive</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CALLOUT BAND -->
+<div class="callout-band reveal">
+  <div class="callout-text">"The moment she speaks, the panic leaves the room." — The TruDoc Standard for every touchpoint.</div>
+  <div class="callout-tag">The Modern Clinical Director</div>
+</div>
+
+<!-- PERSONA IDENTITY -->
+<section id="identity">
+  <div class="z1">
+    <div class="section-label reveal">05 — Persona Identity System</div>
+    <h2 class="section-title reveal">How We <em>Look, Sound</em><br>&amp; Act</h2>
+    <p class="section-intro reveal">When casting for video ads, hiring voiceover artists, or training patient-facing staff — screen for this exact persona in every dimension.</p>
+
+    <div class="identity-grid stagger">
+
+      <div class="identity-block">
+        <div class="identity-num">01 — VISUAL</div>
+        <div class="identity-title">How We Look</div>
+
+        <div class="identity-detail">
+          <div class="identity-detail-label">Appearance</div>
+          <div class="identity-detail-text"><strong>Polished, sharp, and modern.</strong> Business casual or clinical wear — a crisp white coat or premium scrubs. Confident but never imposing.</div>
+        </div>
+        <div class="identity-detail">
+          <div class="identity-detail-label">Body Language</div>
+          <div class="identity-detail-text"><strong>Unhurried and grounded.</strong> Steady, compassionate eye contact. No fidgeting. No clock-watching. Every gesture projects competence.</div>
+        </div>
+        <div class="identity-detail">
+          <div class="identity-detail-label">Age &amp; Experience</div>
+          <div class="identity-detail-text"><strong>Late 30s to early 50s.</strong> Visibly carries 15+ years of hard clinical experience — not just on paper, but in her presence.</div>
+        </div>
+      </div>
+
+      <div class="identity-block">
+        <div class="identity-num">02 — SONIC</div>
+        <div class="identity-title">How We Sound</div>
+
+        <div class="identity-detail">
+          <div class="identity-detail-label">Vocal Quality</div>
+          <div class="identity-detail-text"><strong>Female. Mid-to-low pitch.</strong> This subliminally signals authority and safety. Warm, steady, and resonant — never shrill or hesitant.</div>
+        </div>
+        <div class="identity-detail">
+          <div class="identity-detail-label">Pacing</div>
+          <div class="identity-detail-text"><strong>Measured and deliberate.</strong> Slow enough for an anxious person to absorb the information — but never condescending or patronising.</div>
+        </div>
+        <div class="identity-detail">
+          <div class="identity-detail-label">Accents — GCC-Tailored</div>
+          <div class="lang-pills">
+            <span class="lang-pill">EN — Global Neutral / Soft British</span>
+            <span class="lang-pill">AR — Flawless MSA · Gulf Warmth</span>
+            <span class="lang-pill">HI-UR — Urban Corporate Hindi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="identity-block">
+        <div class="identity-num">03 — BEHAVIOURAL</div>
+        <div class="identity-title">How We Act</div>
+
+        <div class="identity-detail">
+          <div class="identity-detail-label">The Truth-Teller</div>
+          <div class="identity-detail-text">She doesn't sugarcoat the diagnosis, but always delivers it with a <strong>clear, immediate action plan.</strong> She tells you what you need — not what costs the most.</div>
+        </div>
+        <div class="identity-detail">
+          <div class="identity-detail-label">The De-Escalator</div>
+          <div class="identity-detail-text">When a patient is panicking, <strong>her energy drops rather than spikes.</strong> She absorbs the stress and returns calm, structured guidance.</div>
+        </div>
+        <div class="identity-detail">
+          <div class="identity-detail-label">The Guide</div>
+          <div class="identity-detail-text">She never leaves a patient wondering "What happens next?" <strong>Every interaction ends with a clear, proactive next step.</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BEHAVIOURS DEEP-DIVE -->
+<section style="padding-top:0; padding-bottom:7rem;">
+  <div class="z1">
+    <div class="behaviors-row stagger">
+      <div class="behavior-cell" data-num="I">
+        <span class="beh-icon">⚖️</span>
+        <div class="beh-title">The Truth-Teller</div>
+        <p class="beh-desc">Diagnosis is delivered with honesty — but never without a path forward. She tells you the reality of your health clearly, then immediately hands you the next three steps. No ambiguity. No softening the facts into meaninglessness.</p>
+      </div>
+      <div class="behavior-cell" data-num="II">
+        <span class="beh-icon">🧘</span>
+        <div class="beh-title">The De-Escalator</div>
+        <p class="beh-desc">When a situation is critical, her energy inversely drops. She doesn't match panic with panic — she absorbs it. Her steadiness becomes contagious. The anxious caller, the worried parent, the confused patient — all leave the interaction more grounded than when they arrived.</p>
+      </div>
+      <div class="behavior-cell" data-num="III">
+        <span class="beh-icon">🧭</span>
+        <div class="beh-title">The Guide</div>
+        <p class="beh-desc">She never creates dead ends. Every conversation, every IVR prompt, every social post closes with a direction. "Here's what happens next. Here's what you do now. Here's who calls you back." Clarity is the most empathetic thing she can offer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Tru<span>Doc</span> Healthcare</div>
+  <div class="footer-note">Master Tone of Voice · Internal Brand Document · GCC Region · 2025</div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
