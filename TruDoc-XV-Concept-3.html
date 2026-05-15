@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruDoc XV — Full Asset Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#07192E;--sapp:#0A2444;--gold:#C9A84C;--champ:#E8D5A3;--teal:#00BA9D;--ivory:#F5F0E8;--gf:rgba(201,168,76,0.15);--gs:rgba(201,168,76,0.3);--gm:rgba(201,168,76,0.5);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{background:#0D0D0D;color:#fff;font-family:'Jost',sans-serif;}
+body{max-width:1200px;margin:0 auto;padding:40px 24px 80px;}
+.nav{display:flex;flex-wrap:wrap;gap:8px;padding:20px 0 40px;border-bottom:0.5px solid rgba(201,168,76,0.2);margin-bottom:60px;}
+.nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,168,76,0.6);text-decoration:none;padding:5px 12px;border:0.5px solid rgba(201,168,76,0.25);border-radius:3px;transition:all .2s;}
+.nav a:hover{color:var(--gold);border-color:var(--gold);}
+.mh{text-align:center;padding:60px 0;}
+.mh-eye{font-size:10px;letter-spacing:.3em;color:rgba(201,168,76,.5);text-transform:uppercase;margin-bottom:14px;}
+.mh-title{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px;}
+.mh-sub{font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:28px;}
+.mh-rule{width:80px;height:.5px;background:var(--gold);margin:0 auto;opacity:.4;}
+.sec{margin-bottom:80px;}
+.sec-hd{display:flex;align-items:center;gap:16px;margin-bottom:32px;}
+.sec-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:rgba(201,168,76,.18);line-height:1;}
+.sec-eye{font-size:9px;letter-spacing:.22em;color:rgba(201,168,76,.5);text-transform:uppercase;margin-bottom:4px;}
+.sec-ttl{font-size:18px;font-weight:500;color:#fff;letter-spacing:.04em;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+/* CONCEPT */
+.cb{background:var(--navy);border:.5px solid var(--gs);border-radius:4px;padding:48px;}
+.pal{display:flex;gap:8px;margin-bottom:36px;}
+.sw{flex:1;height:52px;border-radius:4px;display:flex;align-items:flex-end;padding:5px 7px;}
+.swl{font-size:8px;font-weight:500;line-height:1.4;}
+.mtg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:36px;}
+.mt{background:rgba(255,255,255,.03);border:.5px solid rgba(201,168,76,.2);border-radius:8px;padding:18px;text-align:center;}
+.mt-n{font-size:11px;font-weight:500;color:var(--gold);margin:10px 0 4px;}
+.mt-d{font-size:10px;color:rgba(255,255,255,.35);line-height:1.55;}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px;}
+.tb2{background:rgba(255,255,255,.03);border:.5px solid rgba(255,255,255,.08);border-radius:8px;padding:18px;}
+.tlbl{font-size:8px;letter-spacing:.18em;color:rgba(201,168,76,.4);text-transform:uppercase;margin-bottom:8px;}
+.dlv-g{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.dlv{background:rgba(201,168,76,.06);border:.5px solid rgba(201,168,76,.2);border-radius:5px;padding:9px;text-align:center;}
+.dlv-n{font-size:10px;color:var(--gold);font-weight:500;}
+.dlv-s{font-size:8px;color:rgba(255,255,255,.25);margin-top:2px;}
+/* STD */
+.std-w{display:flex;justify-content:center;}
+.std{width:380px;background:var(--navy);border:.5px solid var(--gold);border-radius:2px;position:relative;}
+.std-r{height:2px;background:var(--gold);}
+.std-i{padding:44px 40px 40px;text-align:center;}
+.co{position:absolute;width:18px;height:18px;opacity:.4;}
+.ctl{top:10px;left:10px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
+.ctr{top:10px;right:10px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);}
+.cbl{bottom:10px;left:10px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);}
+.cbr{bottom:10px;right:10px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
+.eye{font-size:9px;letter-spacing:.28em;color:rgba(201,168,76,.55);text-transform:uppercase;margin-bottom:26px;}
+.brnd{font-size:11px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+.xvbig{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;color:#fff;letter-spacing:.06em;line-height:1;}
+.xvsub{font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-bottom:26px;}
+.divl{display:flex;align-items:center;gap:12px;margin-bottom:26px;}
+.dl{flex:1;height:.5px;background:rgba(201,168,76,.3);}
+.diam{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
+.datbig{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--gold);letter-spacing:.12em;}
+.dtime{font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-top:4px;}
+.dvnu{font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.22);text-transform:uppercase;margin:10px 0 22px;}
+.dtag{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(255,255,255,.42);letter-spacing:.04em;line-height:1.7;margin-bottom:26px;}
+.drsvp{font-size:8px;letter-spacing:.18em;color:rgba(201,168,76,.4);text-transform:uppercase;padding-top:18px;border-top:.5px solid rgba(201,168,76,.14);}
+/* INVITE */
+.inv-lay{display:grid;grid-template-columns:1fr 1.4fr;}
+.inv-l{background:var(--navy);padding:40px 28px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;}
+.inv-r{padding:40px 32px;background:var(--ivory);}
+.inv-eye{font-size:9px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+.inv-ttl{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--navy);line-height:1.2;margin-bottom:6px;}
+.inv-ital{font-size:11px;color:#888;margin-bottom:22px;font-style:italic;}
+.inv-det{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;}
+.inv-row{display:flex;gap:10px;align-items:baseline;}
+.inv-k{font-size:8px;letter-spacing:.18em;color:rgba(201,168,76,.7);text-transform:uppercase;min-width:48px;}
+.inv-v{font-size:12px;color:var(--navy);}
+.inv-body{font-size:11px;color:#555;line-height:1.8;margin-bottom:18px;}
+.inv-rsvp{font-size:9px;letter-spacing:.14em;color:rgba(201,168,76,.8);text-transform:uppercase;padding-top:14px;border-top:.5px solid rgba(201,168,76,.3);}
+.inv-foot{font-size:8px;color:#999;margin-top:5px;}
+/* BACKDROP */
+.bd{background:var(--navy);border:.5px solid var(--gs);border-radius:4px;overflow:hidden;aspect-ratio:16/5.5;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:18px;}
+.bd-c{position:relative;z-index:2;text-align:center;}
+.bd-br{font-size:11px;letter-spacing:.3em;color:rgba(201,168,76,.5);text-transform:uppercase;margin-bottom:6px;}
+.bd-xv{font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:300;color:#fff;letter-spacing:.1em;line-height:1;}
+.bd-ru{width:70px;height:.5px;background:var(--gold);margin:10px auto;opacity:.4;}
+.bd-tg{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(255,255,255,.38);letter-spacing:.06em;}
+.bd-dt{font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.22);text-transform:uppercase;margin-top:9px;}
+/* LED */
+.lb{background:var(--navy);border:.5px solid var(--gs);border-radius:8px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:14px;}
+.lbw{background:var(--navy);border:.5px solid var(--gs);border-radius:8px;aspect-ratio:2/1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:14px;}
+.lb-n{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--gold);line-height:1;}
+.lb-s{font-size:8px;letter-spacing:.18em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-top:4px;}
+/* BADGE */
+.bdg{background:var(--ivory);border:1px solid var(--gold);border-radius:4px;width:160px;margin:0 auto;overflow:hidden;}
+.bdg-st{height:8px;background:var(--navy);}
+.bdg-in{padding:14px 11px;text-align:center;}
+.bdg-nm{font-size:13px;font-weight:500;color:var(--navy);margin:9px 0 3px;}
+.bdg-ti{font-size:9px;color:#888;letter-spacing:.05em;margin-bottom:9px;}
+.bdg-or{font-size:8px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;}
+.bdg-ft{background:var(--navy);padding:5px;text-align:center;}
+.bdg-ev{font-size:8px;letter-spacing:.1em;color:rgba(201,168,76,.6);text-transform:uppercase;}
+/* PROGRAMME */
+.pc{background:var(--navy);border:.5px solid var(--gs);border-radius:4px;padding:30px 22px;text-align:center;aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
+.pc-sp{position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--gold);opacity:.8;}
+.pc-e{font-size:8px;letter-spacing:.22em;color:rgba(201,168,76,.5);text-transform:uppercase;}
+.pc-x{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:300;color:var(--gold);line-height:1;}
+.pc-t{font-size:10px;color:rgba(255,255,255,.38);letter-spacing:.1em;margin-top:3px;}
+.pc-d{font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.22);text-transform:uppercase;}
+.ps{background:var(--ivory);border:.5px solid rgba(201,168,76,.3);border-radius:4px;padding:22px;aspect-ratio:3/4;}
+.ps-h{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:11px;border-bottom:.5px solid rgba(201,168,76,.3);}
+.ps-ht{font-size:11px;font-weight:500;color:var(--navy);letter-spacing:.07em;}
+.ps-it{display:flex;gap:9px;margin-bottom:9px;}
+.ps-tm{font-size:9px;color:var(--gold);font-weight:500;min-width:36px;}
+.ps-ev{font-size:10px;color:var(--navy);line-height:1.4;}
+.ps-sb{font-size:8px;color:#888;}
+.ps-ft{margin-top:14px;padding-top:9px;border-top:.5px solid rgba(201,168,76,.2);text-align:center;font-size:8px;color:rgba(201,168,76,.55);letter-spacing:.11em;}
+/* TROPHY */
+.trb{background:#111;border:.5px solid var(--gs);border-radius:8px;padding:32px;text-align:center;}
+.tr-n{font-size:13px;font-weight:500;color:#fff;margin-top:14px;margin-bottom:4px;}
+.tr-s{font-size:10px;color:rgba(255,255,255,.32);line-height:1.6;}
+/* GIFTBOX */
+.gb{background:var(--navy);border:.5px solid var(--gs);border-radius:8px;overflow:hidden;}
+.gb-lid{background:var(--sapp);padding:20px;text-align:center;position:relative;height:100px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--gold);}
+.gb-lt{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--gold);letter-spacing:.14em;position:relative;z-index:2;}
+.gb-bd{padding:18px;}
+.gb-it{font-size:10px;color:rgba(255,255,255,.4);padding:6px 0;border-bottom:.5px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px;}
+.gb-dot{width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;opacity:.6;}
+.gb-sp{padding:11px 18px;background:rgba(201,168,76,.05);border-top:.5px solid rgba(201,168,76,.14);font-size:9px;color:rgba(255,255,255,.28);line-height:1.6;text-align:center;}
+/* LETTER */
+.let{background:var(--ivory);border:.5px solid rgba(201,168,76,.4);border-radius:4px;padding:38px;}
+.let-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;padding-bottom:14px;border-bottom:1.5px solid var(--gold);}
+.let-br{font-size:16px;font-weight:500;color:var(--navy);letter-spacing:.1em;}
+.let-bs{font-size:8px;color:#888;letter-spacing:.12em;text-transform:uppercase;margin-top:2px;}
+.let-rt{text-align:right;font-size:9px;color:#888;line-height:1.6;}
+.let-sal{font-size:12px;color:var(--navy);font-weight:500;margin-bottom:12px;}
+.let-bd{font-size:11px;color:#444;line-height:1.85;margin-bottom:14px;}
+.let-cl{font-size:11px;color:var(--navy);}
+.let-sg{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--navy);margin-top:18px;}
+.let-ti{font-size:9px;letter-spacing:.1em;color:#888;text-transform:uppercase;margin-top:2px;}
+.let-ft{margin-top:22px;padding-top:14px;border-top:.5px solid rgba(201,168,76,.3);display:flex;justify-content:space-between;font-size:8px;color:#aaa;}
+/* SIGNAGE */
+.sgn-t{background:var(--navy);border:.5px solid var(--gs);border-radius:6px;padding:18px 14px;text-align:center;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;}
+.sgn-w{background:var(--navy);border:.5px solid var(--gs);border-radius:6px;padding:13px 18px;display:flex;align-items:center;gap:14px;margin-bottom:9px;}
+.sg-ar{font-size:20px;color:var(--gold);}
+.sg-mn{font-size:12px;font-weight:500;color:#fff;letter-spacing:.05em;}
+.sg-sb{font-size:8px;color:rgba(255,255,255,.32);margin-top:2px;}
+.tbc{background:var(--ivory);border:1px solid var(--gold);border-radius:4px;padding:14px 11px;text-align:center;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;}
+/* SOCIAL */
+.so-s{background:var(--navy);border:.5px solid var(--gs);border-radius:8px;aspect-ratio:9/16;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:14px;}
+.so-q{background:var(--navy);border:.5px solid var(--gs);border-radius:8px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:12px;}
+.so-w{background:var(--navy);border:.5px solid var(--gs);border-radius:8px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:14px;}
+.so-lbl{position:absolute;bottom:7px;right:9px;font-size:7px;letter-spacing:.1em;color:rgba(201,168,76,.3);text-transform:uppercase;}
+.so-xv{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:var(--gold);line-height:1;}
+.so-sb{font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.11em;margin-top:4px;}
+.so-dt{font-size:9px;color:rgba(255,255,255,.48);margin-top:5px;}
+/* RAFFLE */
+.rfl{background:var(--navy);border:1px solid var(--gold);border-radius:8px;padding:22px;position:relative;}
+.rfl-tr{position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);border-radius:8px 8px 0 0;}
+.rf-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.rf-nm{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--gold);}
+.rf-dv{height:.5px;background:rgba(201,168,76,.3);margin-bottom:12px;}
+.rf-mn{font-size:14px;color:#fff;font-weight:500;margin-bottom:3px;}
+.rf-sb{font-size:9px;color:rgba(255,255,255,.38);}
+.rf-bt{display:flex;justify-content:space-between;margin-top:14px;padding-top:11px;border-top:.5px solid rgba(201,168,76,.2);}
+.rf-f{font-size:8px;color:rgba(255,255,255,.28);}
+/* ROS */
+.ros{background:#111;border:.5px solid rgba(201,168,76,.22);border-radius:8px;overflow:hidden;}
+.ros-hd{background:var(--navy);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;}
+.ros-tt{font-size:13px;font-weight:500;color:var(--gold);letter-spacing:.07em;}
+.ros-mt{font-size:9px;color:rgba(255,255,255,.32);}
+.rt{width:100%;border-collapse:collapse;}
+.rt th{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.28);font-weight:500;padding:7px 13px;border-bottom:.5px solid rgba(255,255,255,.07);text-align:left;background:rgba(255,255,255,.02);}
+.rt td{font-size:11px;color:rgba(255,255,255,.78);padding:9px 13px;border-bottom:.5px solid rgba(255,255,255,.06);vertical-align:top;}
+.rt tr:last-child td{border-bottom:none;}
+.rt tr:hover td{background:rgba(201,168,76,.03);}
+.rt-tm{color:var(--gold);font-weight:500;white-space:nowrap;}
+.rt-sb{font-size:9px;color:rgba(255,255,255,.32);margin-top:2px;}
+.rt-ow{font-size:9px;color:rgba(255,255,255,.32);}
+.ct{font-size:9px;background:rgba(0,186,157,.11);color:var(--teal);padding:3px 7px;border-radius:3px;display:inline-block;border:.5px solid rgba(0,186,157,.28);}
+.cg{font-size:9px;background:rgba(201,168,76,.1);color:var(--gold);padding:3px 7px;border-radius:3px;display:inline-block;border:.5px solid rgba(201,168,76,.28);}
+/* SPEC BOX */
+.spbx{background:#1a1a1a;border:.5px solid rgba(255,255,255,.07);border-radius:8px;padding:18px;}
+.sp-t{font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:11px;}
+.sp-r{display:flex;justify-content:space-between;padding:6px 0;border-bottom:.5px solid rgba(255,255,255,.06);}
+.sp-r:last-child{border-bottom:none;}
+.sp-k{font-size:11px;color:rgba(255,255,255,.38);}
+.sp-v{font-size:11px;color:#fff;font-weight:500;}
+.sl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.45);margin-bottom:13px;}
+.df{text-align:center;padding:40px 0 0;border-top:.5px solid rgba(201,168,76,.14);margin-top:60px;font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.18);text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#concept">01 Concept</a>
+  <a href="#std">02 Save the Date</a>
+  <a href="#invite">03 Invitation</a>
+  <a href="#backdrop">04 Backdrop + LED</a>
+  <a href="#badge">05 Badge</a>
+  <a href="#prog">06 Programme</a>
+  <a href="#trophy">07 Trophy</a>
+  <a href="#gift">08 Gift Box</a>
+  <a href="#letter">09 Chairman Letter</a>
+  <a href="#signage">10 Signage</a>
+  <a href="#social">11 Social Kit</a>
+  <a href="#raffle">12 Raffle Card</a>
+  <a href="#ros">13 Run of Show</a>
+</nav>
+
+<div class="mh">
+  <div class="mh-eye">TruDoc Healthcare · Marcom · Full Asset Suite</div>
+  <div class="mh-title">TruDoc XV</div>
+  <div class="mh-sub">The Golden Lattice · 16 June 2026 · Dubai, UAE</div>
+  <div class="mh-rule"></div>
+</div>
+
+<!-- 01 CONCEPT -->
+<section class="sec" id="concept">
+  <div class="sec-hd"><div class="sec-num">01</div><div><div class="sec-eye">Creative Foundation</div><div class="sec-ttl">Concept Board</div></div></div>
+  <div class="cb">
+    <div style="text-align:center;margin-bottom:44px;">
+      <div style="font-size:10px;letter-spacing:.28em;color:rgba(201,168,76,.45);text-transform:uppercase;margin-bottom:14px;">Creative Concept · TruDoc</div>
+      <svg width="80" height="80" viewBox="0 0 80 80" style="display:block;margin:0 auto 16px;"><g transform="translate(40,40)"><circle cx="0" cy="0" r="37" fill="none" stroke="#C9A84C" stroke-width=".3" opacity=".18"/><circle cx="0" cy="0" r="28" fill="none" stroke="#C9A84C" stroke-width=".3" opacity=".28"/><line x1="0" y1="-36" x2="0" y2="36" stroke="#C9A84C" stroke-width=".3" opacity=".15"/><line x1="-36" y1="0" x2="36" y2="0" stroke="#C9A84C" stroke-width=".3" opacity=".15"/><line x1="-26" y1="-26" x2="26" y2="26" stroke="#C9A84C" stroke-width=".3" opacity=".15"/><line x1="26" y1="-26" x2="-26" y2="26" stroke="#C9A84C" stroke-width=".3" opacity=".15"/><line x1="-14" y1="-33" x2="14" y2="33" stroke="#C9A84C" stroke-width=".3" opacity=".15"/><line x1="14" y1="-33" x2="-14" y2="33" stroke="#C9A84C" stroke-width=".3" opacity=".15"/><line x1="-33" y1="-14" x2="33" y2="14" stroke="#C9A84C" stroke-width=".3" opacity=".15"/><line x1="33" y1="-14" x2="-33" y2="14" stroke="#C9A84C" stroke-width=".3" opacity=".15"/><polygon points="0,-32 7.5,-10.5 30,-10.5 13,3 19,26 0,13 -19,26 -13,3 -30,-10.5 -7.5,-10.5" fill="none" stroke="#C9A84C" stroke-width="1"/><polygon points="0,-20 4.7,-6.5 18.8,-6.5 8.2,2 11.8,16.2 0,8.2 -11.8,16.2 -8.2,2 -18.8,-6.5 -4.7,-6.5" fill="none" stroke="#C9A84C" stroke-width=".5" opacity=".5"/><circle cx="0" cy="0" r="5" fill="none" stroke="#00BA9D" stroke-width="1.2"/><circle cx="0" cy="0" r="2" fill="#C9A84C"/></g></svg>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:#C9A84C;line-height:1;">XV</div>
+      <div style="width:60px;height:.5px;background:#C9A84C;margin:14px auto;opacity:.4;"></div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(255,255,255,.38);">The Golden Lattice — Clinical precision meets human connectivity</div>
+    </div>
+    <div class="sl">Colour System</div>
+    <div class="pal">
+      <div class="sw" style="background:#07192E;border:.5px solid rgba(255,255,255,.1);"><span class="swl" style="color:rgba(255,255,255,.4);">Deep Navy<br>#07192E</span></div>
+      <div class="sw" style="background:#0A2444;"><span class="swl" style="color:rgba(255,255,255,.4);">Sapphire<br>#0A2444</span></div>
+      <div class="sw" style="background:#C9A84C;"><span class="swl" style="color:#412402;">Burned Gold<br>#C9A84C</span></div>
+      <div class="sw" style="background:#E8D5A3;"><span class="swl" style="color:#412402;">Champagne<br>#E8D5A3</span></div>
+      <div class="sw" style="background:#00BA9D;"><span class="swl" style="color:#04342C;">TruTeal<br>#00BA9D</span></div>
+      <div class="sw" style="background:#F5F0E8;border:.5px solid rgba(0,0,0,.1);"><span class="swl" style="color:#888;">Ivory<br>#F5F0E8</span></div>
+    </div>
+    <div class="sl">Design Motifs</div>
+    <div class="mtg">
+      <div class="mt"><svg width="52" height="52" viewBox="0 0 52 52"><g transform="translate(26,26)"><polygon points="0,-21 4.9,-6.8 20,-6.8 8.8,2.2 13,18 0,9 -13,18 -8.8,2.2 -20,-6.8 -4.9,-6.8" fill="none" stroke="#C9A84C" stroke-width=".7"/><polygon points="0,-13 3.1,-4.2 12.4,-4.2 5.5,1.4 8,11.2 0,5.6 -8,11.2 -5.5,1.4 -12.4,-4.2 -3.1,-4.2" fill="none" stroke="#C9A84C" stroke-width=".4" opacity=".5"/><circle cx="0" cy="0" r="4" fill="none" stroke="#00BA9D" stroke-width=".8"/><circle cx="0" cy="0" r="1.5" fill="#C9A84C"/></g></svg><div class="mt-n">15-Point Rosette</div><div class="mt-d">Primary mark. XV geometry as Islamic sacred pattern. Hero of all materials.</div></div>
+      <div class="mt"><svg width="52" height="52" viewBox="0 0 52 52"><rect x="7" y="7" width="38" height="38" fill="none" stroke="#C9A84C" stroke-width=".5" opacity=".4"/><rect x="14" y="13" width="24" height="8" fill="none" stroke="#C9A84C" stroke-width=".5" opacity=".7"/><rect x="14" y="25" width="16" height="8" fill="none" stroke="#C9A84C" stroke-width=".5" opacity=".7"/><rect x="32" y="25" width="6" height="8" fill="none" stroke="#00BA9D" stroke-width=".5" opacity=".8"/><rect x="14" y="37" width="10" height="4" fill="none" stroke="#C9A84C" stroke-width=".4" opacity=".5"/></svg><div class="mt-n">Square Kufic Grid</div><div class="mt-d">"Hayat" — Arabic for Life. Architectural typographic motif across all print.</div></div>
+      <div class="mt"><svg width="52" height="52" viewBox="0 0 52 52"><g transform="translate(26,26)"><line x1="-22" y1="0" x2="22" y2="0" stroke="#C9A84C" stroke-width=".3" opacity=".3"/><line x1="0" y1="-22" x2="0" y2="22" stroke="#C9A84C" stroke-width=".3" opacity=".3"/><line x1="-16" y1="-16" x2="16" y2="16" stroke="#C9A84C" stroke-width=".3" opacity=".3"/><line x1="16" y1="-16" x2="-16" y2="16" stroke="#C9A84C" stroke-width=".3" opacity=".3"/><circle cx="0" cy="0" r="20" fill="none" stroke="#C9A84C" stroke-width=".4" opacity=".45"/><circle cx="0" cy="0" r="13" fill="none" stroke="#C9A84C" stroke-width=".4" opacity=".32"/><circle cx="0" cy="0" r="4.5" fill="none" stroke="#00BA9D" stroke-width=".7" opacity=".8"/></g></svg><div class="mt-n">Lattice Grid</div><div class="mt-d">Fine-line structural background. Applied across all print and digital surfaces.</div></div>
+    </div>
+    <div class="sl">Typography System</div>
+    <div class="tg">
+      <div class="tb2"><div class="tlbl">Display · Headlines</div><div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:#C9A84C;letter-spacing:.08em;line-height:1;">TruDoc XV</div><div style="font-size:9px;color:rgba(255,255,255,.24);margin-top:7px;">Cormorant Garamond · Light 300 · Gold</div></div>
+      <div class="tb2"><div class="tlbl">Body · Communications</div><div style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.75;">Fifteen years. Two million lives.<br>One evening that changes everything.</div><div style="font-size:9px;color:rgba(255,255,255,.24);margin-top:7px;">Jost · Regular 400 · Ivory</div></div>
+    </div>
+    <div class="sl">Full Deliverable Suite</div>
+    <div class="dlv-g">
+      <div class="dlv"><div class="dlv-n">Save the Date</div><div class="dlv-s">Digital · Print</div></div>
+      <div class="dlv"><div class="dlv-n">Invitation</div><div class="dlv-s">VIP · Physical</div></div>
+      <div class="dlv"><div class="dlv-n">Stage Backdrop</div><div class="dlv-s">LED · Static</div></div>
+      <div class="dlv"><div class="dlv-n">Podium Brand</div><div class="dlv-s">Digital skin</div></div>
+      <div class="dlv"><div class="dlv-n">LED Loop</div><div class="dlv-s">Motion badge</div></div>
+      <div class="dlv"><div class="dlv-n">Badge · Lanyard</div><div class="dlv-s">Guest ID</div></div>
+      <div class="dlv"><div class="dlv-n">Programme Book</div><div class="dlv-s">A5 · 12pp</div></div>
+      <div class="dlv"><div class="dlv-n">Trophy</div><div class="dlv-s">Award design</div></div>
+      <div class="dlv"><div class="dlv-n">Gift Box</div><div class="dlv-s">Giveaway pkg</div></div>
+      <div class="dlv"><div class="dlv-n">Chairman Letter</div><div class="dlv-s">Letterhead</div></div>
+      <div class="dlv"><div class="dlv-n">Signage</div><div class="dlv-s">Wayfinding</div></div>
+      <div class="dlv"><div class="dlv-n">Social Kit</div><div class="dlv-s">9:16 · 1:1 · 16:9</div></div>
+      <div class="dlv"><div class="dlv-n">Raffle Card</div><div class="dlv-s">Print</div></div>
+      <div class="dlv"><div class="dlv-n">Table Cards</div><div class="dlv-s">Seating</div></div>
+      <div class="dlv"><div class="dlv-n">Speaker Slides</div><div class="dlv-s">PPT template</div></div>
+      <div class="dlv"><div class="dlv-n">Run of Show</div><div class="dlv-s">Master doc</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 STD -->
+<section class="sec" id="std">
+  <div class="sec-hd"><div class="sec-num">02</div><div><div class="sec-eye">First Touch · Client-Facing</div><div class="sec-ttl">Save the Date</div></div></div>
+  <div class="std-w">
+    <div class="std">
+      <div class="co ctl"></div><div class="co ctr"></div><div class="co cbl"></div><div class="co cbr"></div>
+      <div class="std-r"></div>
+      <div class="std-i">
+        <div class="eye">You are cordially invited</div>
+        <svg width="84" height="84" viewBox="0 0 84 84" style="display:block;margin:0 auto 18px;"><g transform="translate(42,42)"><circle cx="0" cy="0" r="39" fill="none" stroke="#C9A84C" stroke-width=".3" opacity=".14"/><circle cx="0" cy="0" r="30" fill="none" stroke="#C9A84C" stroke-width=".3" opacity=".22"/><line x1="0" y1="-38" x2="0" y2="38" stroke="#C9A84C" stroke-width=".3" opacity=".14"/><line x1="-38" y1="0" x2="38" y2="0" stroke="#C9A84C" stroke-width=".3" opacity=".14"/><line x1="-27" y1="-27" x2="27" y2="27" stroke="#C9A84C" stroke-width=".3" opacity=".14"/><line x1="27" y1="-27" x2="-27" y2="27" stroke="#C9A84C" stroke-width=".3" opacity=".14"/><line x1="-14" y1="-35" x2="14" y2="35" stroke="#C9A84C" stroke-width=".3" opacity=".14"/><line x1="14" y1="-35" x2="-14" y2="35" stroke="#C9A84C" stroke-width=".3" opacity=".14"/><polygon points="0,-33 7.8,-11 31,-11 13.5,3 20,27.5 0,13.5 -20,27.5 -13.5,3 -31,-11 -7.8,-11" fill="none" stroke="#C9A84C" stroke-width=".9"/><polygon points="0,-21 4.9,-7 19.5,-7 8.5,2 12.5,17.3 0,8.5 -12.5,17.3 -8.5,2 -19.5,-7 -4.9,-7" fill="none" stroke="#C9A84C" stroke-width=".5" opacity=".5"/><circle cx="0" cy="0" r="5.5" fill="none" stroke="#00BA9D" stroke-width="1.1"/><circle cx="0" cy="0" r="2" fill="#C9A84C"/></g></svg>
+        <div class="brnd">TruDoc</div>
+        <div class="xvbig">XV</div>
+        <div class="xvsub">A Legacy Gala · Est. 2011</div>
+        <div class="divl"><div class="dl"></div><div class="diam"></div><div class="dl"></div></div>
+        <div class="datbig">16 June 2026</div>
+        <div class="dtime">Doors open · 7:00 PM · Dubai, UAE</div>
+        <div class="dvnu">Venue to be announced</div>
+        <div class="dtag">Fifteen years. Two million lives.<br>One evening that changes everything.</div>
+        <div class="drsvp">Formal invitation to follow · Kindly save this date</div>
+      </div>
+      <div class="std-r"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 INVITE -->
+<section class="sec" id="invite">
+  <div class="sec-hd"><div class="sec-num">03</div><div><div class="sec-eye">VIP Guest Communication</div><div class="sec-ttl">Formal Invitation</div></div></div>
+  <div style="border:.5px solid rgba(201,168,76,.4);border-radius:2px;overflow:hidden;">
+    <div class="inv-lay">
+      <div class="inv-l">
+        <div style="font-size:10px;letter-spacing:.24em;color:rgba(201,168,76,.5);text-transform:uppercase;">TruDoc</div>
+        <div style="text-align:center;">
+          <svg width="56" height="56" viewBox="0 0 56 56"><g transform="translate(28,28)"><polygon points="0,-22 5.2,-7.2 21,-7.2 9.2,2 13.5,18.5 0,9.4 -13.5,18.5 -9.2,2 -21,-7.2 -5.2,-7.2" fill="none" stroke="#C9A84C" stroke-width=".8"/><polygon points="0,-14 3.3,-4.5 13.2,-4.5 5.8,1.3 8.5,11.7 0,5.9 -8.5,11.7 -5.8,1.3 -13.2,-4.5 -3.3,-4.5" fill="none" stroke="#C9A84C" stroke-width=".4" opacity=".5"/><circle cx="0" cy="0" r="4" fill="none" stroke="#00BA9D" stroke-width=".9"/><circle cx="0" cy="0" r="1.5" fill="#C9A84C"/></g></svg>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:300;color:#C9A84C;line-height:1;margin-top:10px;">XV</div>
+          <div style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-top:5px;">Est. 2011 · Dubai</div>
+        </div>
+        <div style="font-size:8px;letter-spacing:.14em;color:rgba(201,168,76,.38);text-align:center;text-transform:uppercase;">XVI · VI · MMXXVI</div>
+      </div>
+      <div class="inv-r">
+        <div class="inv-eye">Request the honour of your presence</div>
+        <div class="inv-ttl">TruDoc XV<br>A Legacy Gala</div>
+        <div class="inv-ital">Celebrating fifteen years of healthcare innovation and two million lives on Tudor</div>
+        <div class="inv-det">
+          <div class="inv-row"><span class="inv-k">Date</span><span class="inv-v">Tuesday, 16 June 2026</span></div>
+          <div class="inv-row"><span class="inv-k">Time</span><span class="inv-v">7:00 PM — Doors open 6:45 PM</span></div>
+          <div class="inv-row"><span class="inv-k">Venue</span><span class="inv-v">To be confirmed, Dubai, UAE</span></div>
+          <div class="inv-row"><span class="inv-k">Dress</span><span class="inv-v">Black tie</span></div>
+        </div>
+        <div class="inv-body">We invite you to join us for an evening that marks not just fifteen years of TruDoc, but the declaration of a new chapter — One TruDoc, a unified virtual-first healthcare ecosystem that will define the region's future of care.</div>
+        <div class="inv-rsvp">Kindly confirm attendance by 5 June 2026</div>
+        <div class="inv-foot">events@trudochealth.com · +971 XX XXX XXXX</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 BACKDROP + LED -->
+<section class="sec" id="backdrop">
+  <div class="sec-hd"><div class="sec-num">04</div><div><div class="sec-eye">Environmental Branding</div><div class="sec-ttl">Stage Backdrop · LED Loop Badges</div></div></div>
+  <div class="bd">
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="lat" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0L0 48M0 0L48 48M24 0L24 48M0 24L48 24" stroke="#C9A84C" stroke-width=".22" fill="none" opacity=".18"/></pattern></defs>
+      <rect width="1200" height="420" fill="url(#lat)"/>
+      <circle cx="600" cy="210" r="280" fill="none" stroke="#C9A84C" stroke-width=".4" opacity=".1"/>
+      <circle cx="600" cy="210" r="200" fill="none" stroke="#C9A84C" stroke-width=".4" opacity=".16"/>
+      <circle cx="600" cy="210" r="140" fill="none" stroke="#C9A84C" stroke-width=".3" opacity=".1"/>
+      <g transform="translate(600,210)" opacity=".52">
+        <polygon points="0,-140 32.4,-45.6 130,-45.6 55.5,17.4 83.5,111.4 0,56 -83.5,111.4 -55.5,17.4 -130,-45.6 -32.4,-45.6" fill="none" stroke="#C9A84C" stroke-width="1.2"/>
+        <polygon points="0,-88 20.3,-28.6 81.5,-28.6 34.8,10.9 52.3,69.8 0,35 -52.3,69.8 -34.8,10.9 -81.5,-28.6 -20.3,-28.6" fill="none" stroke="#C9A84C" stroke-width=".5" opacity=".52"/>
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#00BA9D" stroke-width="1.2" opacity=".82"/>
+        <circle cx="0" cy="0" r="4" fill="#C9A84C" opacity=".9"/>
+      </g>
+      <line x1="0" y1="406" x2="1200" y2="406" stroke="#C9A84C" stroke-width="1.5" opacity=".48"/>
+      <line x1="0" y1="14" x2="1200" y2="14" stroke="#C9A84C" stroke-width="1.5" opacity=".48"/>
+    </svg>
+    <div class="bd-c">
+      <div class="bd-br">TruDoc</div>
+      <div class="bd-xv">XV</div>
+      <div class="bd-ru"></div>
+      <div class="bd-tg">Fifteen years · Two million lives</div>
+      <div class="bd-dt">16 June 2026 · Dubai, UAE</div>
+    </div>
+  </div>
+  <div class="g3">
+    <div class="lb">
+      <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.18;" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g transform="translate(100,100)"><circle cx="0" cy="0" r="90" fill="none" stroke="#C9A84C" stroke-width=".5"/><circle cx="0" cy="0" r="65" fill="none" stroke="#C9A84C" stroke-width=".4"/><polygon points="0,-80 18.5,-26.5 76,-26.5 32.4,8 48.9,64.7 0,32.5 -48.9,64.7 -32.4,8 -76,-26.5 -18.5,-26.5" fill="none" stroke="#C9A84C" stroke-width=".6"/></g></svg>
+      <div class="lb-n">XV</div><div class="lb-s">TruDoc · Est. 2011</div>
+    </div>
+    <div class="lb">
+      <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.16;" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><g transform="translate(100,100)"><line x1="-90" y1="0" x2="90" y2="0" stroke="#C9A84C" stroke-width=".4"/><line x1="0" y1="-90" x2="0" y2="90" stroke="#C9A84C" stroke-width=".4"/><line x1="-64" y1="-64" x2="64" y2="64" stroke="#C9A84C" stroke-width=".4"/><line x1="64" y1="-64" x2="-64" y2="64" stroke="#C9A84C" stroke-width=".4"/><circle cx="0" cy="0" r="88" fill="none" stroke="#C9A84C" stroke-width=".4"/></g></svg>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#fff;line-height:1;">2,000,000</div>
+      <div class="lb-s">Lives on Tudor</div>
+    </div>
+    <div class="lbw">
+      <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.14;" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><defs><pattern id="lgr" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0L0 24M0 0L24 24" stroke="#C9A84C" stroke-width=".3" fill="none"/></pattern></defs><rect width="400" height="200" fill="url(#lgr)"/><line x1="0" y1="188" x2="400" y2="188" stroke="#C9A84C" stroke-width=".8" opacity=".5"/></svg>
+      <div style="font-size:9px;letter-spacing:.18em;color:rgba(201,168,76,.52);text-transform:uppercase;margin-bottom:5px;">TruDoc · XV Gala</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#fff;letter-spacing:.08em;">16 June 2026 · Dubai, UAE</div>
+      <div style="font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.28);margin-top:5px;text-transform:uppercase;">7:00 PM · Black Tie</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 BADGE -->
+<section class="sec" id="badge">
+  <div class="sec-hd"><div class="sec-num">05</div><div><div class="sec-eye">Guest Identity</div><div class="sec-ttl">Badge · Lanyard</div></div></div>
+  <div class="g2">
+    <div style="display:flex;flex-direction:column;align-items:center;background:#1a1a1a;border-radius:12px;padding:30px;gap:10px;">
+      <div style="width:3px;height:28px;background:#888;border-radius:2px;"></div>
+      <div style="width:48px;height:4px;background:#C9A84C;border-radius:2px;"></div>
+      <div style="height:10px;"></div>
+      <div class="bdg">
+        <div class="bdg-st"></div>
+        <div class="bdg-in">
+          <svg width="30" height="30" viewBox="0 0 30 30"><g transform="translate(15,15)"><polygon points="0,-12 2.8,-3.9 11.4,-3.9 5.1,1.6 7.4,9.7 0,5 -7.4,9.7 -5.1,1.6 -11.4,-3.9 -2.8,-3.9" fill="none" stroke="#C9A84C" stroke-width=".7"/><circle cx="0" cy="0" r="2.8" fill="none" stroke="#00BA9D" stroke-width=".6"/></g></svg>
+          <div class="bdg-nm">Guest Name</div>
+          <div class="bdg-ti">Title · Organisation</div>
+          <div class="bdg-or">TruDoc XV · 2026</div>
+        </div>
+        <div class="bdg-ft"><div class="bdg-ev">TruDoc XV · 16 June 2026</div></div>
+      </div>
+    </div>
+    <div class="spbx" style="align-self:start;">
+      <div class="sp-t">Badge + Lanyard Specs</div>
+      <div class="sp-r"><span class="sp-k">Badge size</span><span class="sp-v">90 × 130mm</span></div>
+      <div class="sp-r"><span class="sp-k">Stock</span><span class="sp-v">350gsm soft-touch laminate</span></div>
+      <div class="sp-r"><span class="sp-k">Badge front</span><span class="sp-v">Ivory · Navy stripe · Gold rosette</span></div>
+      <div class="sp-r"><span class="sp-k">Lanyard</span><span class="sp-v">Deep navy webbing</span></div>
+      <div class="sp-r"><span class="sp-k">Clasp</span><span class="sp-v">Gold metal, safety break</span></div>
+      <div class="sp-r"><span class="sp-k">Holder</span><span class="sp-v">Clear hard case, portrait</span></div>
+      <div class="sp-r"><span class="sp-k">Categories</span><span class="sp-v">VIP · Speaker · Media · Staff</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 PROGRAMME -->
+<section class="sec" id="prog">
+  <div class="sec-hd"><div class="sec-num">06</div><div><div class="sec-eye">Print Collateral · A5</div><div class="sec-ttl">Programme Booklet</div></div></div>
+  <div class="g2">
+    <div class="pc">
+      <div class="pc-sp"></div>
+      <svg width="40" height="40" viewBox="0 0 40 40"><g transform="translate(20,20)"><polygon points="0,-16 3.7,-5.2 15.2,-5.2 6.7,2 9.6,14 0,7.1 -9.6,14 -6.7,2 -15.2,-5.2 -3.7,-5.2" fill="none" stroke="#C9A84C" stroke-width=".7"/><circle cx="0" cy="0" r="3.5" fill="none" stroke="#00BA9D" stroke-width=".6"/><circle cx="0" cy="0" r="1.2" fill="#C9A84C"/></g></svg>
+      <div><div class="pc-e">TruDoc</div><div class="pc-x">XV</div><div class="pc-t">A Legacy Gala</div></div>
+      <div class="pc-d">16 June 2026 · Dubai</div>
+    </div>
+    <div class="ps">
+      <div class="ps-h"><svg width="14" height="14" viewBox="0 0 14 14"><g transform="translate(7,7)"><polygon points="0,-5.5 1.3,-1.8 5.2,-1.8 2.2,0.7 3.3,4.5 0,2.3 -3.3,4.5 -2.2,0.7 -5.2,-1.8 -1.3,-1.8" fill="none" stroke="#C9A84C" stroke-width=".5"/></g></svg><div class="ps-ht">Evening Programme</div></div>
+      <div class="ps-it"><div class="ps-tm">19:00</div><div><div class="ps-ev">Guest arrival · Welcome reception</div><div class="ps-sb">Lobby · Champagne service</div></div></div>
+      <div class="ps-it"><div class="ps-tm">19:30</div><div><div class="ps-ev">Doors open · Gala seating</div></div></div>
+      <div class="ps-it"><div class="ps-tm">19:45</div><div><div class="ps-ev">Welcome address</div><div class="ps-sb">Executive Chairman</div></div></div>
+      <div class="ps-it"><div class="ps-tm">20:00</div><div><div class="ps-ev">TruDoc XV Anniversary Film</div><div class="ps-sb">15 years · 2 million lives</div></div></div>
+      <div class="ps-it"><div class="ps-tm">20:05</div><div><div class="ps-ev">CEO Keynote · Series B declaration</div><div class="ps-sb">$15M · One TruDoc ecosystem</div></div></div>
+      <div class="ps-it"><div class="ps-tm">20:30</div><div><div class="ps-ev">Speaker programme</div></div></div>
+      <div class="ps-it"><div class="ps-tm">21:00</div><div><div class="ps-ev">Gala dinner service</div></div></div>
+      <div class="ps-it"><div class="ps-tm">21:30</div><div><div class="ps-ev">Award presentations</div></div></div>
+      <div class="ps-it"><div class="ps-tm">22:00</div><div><div class="ps-ev">Entertainment · Raffle draw</div></div></div>
+      <div class="ps-it"><div class="ps-tm">22:30</div><div><div class="ps-ev">Farewell · Gift distribution</div></div></div>
+      <div class="ps-ft">TruDoc XV · 16 June 2026 · Dubai, UAE</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 TROPHY -->
+<section class="sec" id="trophy">
+  <div class="sec-hd"><div class="sec-num">07</div><div><div class="sec-eye">Award Design</div><div class="sec-ttl">Trophy</div></div></div>
+  <div class="g2">
+    <div class="trb">
+      <svg width="120" height="158" viewBox="0 0 120 158">
+        <rect x="28" y="134" width="64" height="10" fill="#C9A84C" opacity=".85" rx="1"/>
+        <rect x="40" y="94" width="40" height="40" fill="#C9A84C" opacity=".58"/>
+        <rect x="34" y="128" width="52" height="6" fill="#C9A84C" opacity=".72" rx="1"/>
+        <g transform="translate(60,56)">
+          <polygon points="0,-50 11.6,-16.4 47,-16.4 20.2,5.7 30.2,39.4 0,20.1 -30.2,39.4 -20.2,5.7 -47,-16.4 -11.6,-16.4" fill="rgba(201,168,76,.1)"/>
+          <polygon points="0,-50 11.6,-16.4 47,-16.4 20.2,5.7 30.2,39.4 0,20.1 -30.2,39.4 -20.2,5.7 -47,-16.4 -11.6,-16.4" fill="none" stroke="#C9A84C" stroke-width="1.4"/>
+          <polygon points="0,-32 7.4,-10.5 30.2,-10.5 13,3.6 19.4,25.5 0,13 -19.4,25.5 -13,3.6 -30.2,-10.5 -7.4,-10.5" fill="none" stroke="#C9A84C" stroke-width=".5" opacity=".52"/>
+          <circle cx="0" cy="0" r="8.5" fill="none" stroke="#00BA9D" stroke-width="1.4"/>
+          <circle cx="0" cy="0" r="2.8" fill="#C9A84C"/>
+        </g>
+        <text x="60" y="152" text-anchor="middle" font-size="7" fill="#C9A84C" letter-spacing="3" font-family="Jost,sans-serif" font-weight="500">TRUDOC XV</text>
+      </svg>
+      <div class="tr-n">TruDoc XV Award</div>
+      <div class="tr-s">Crystal optical glass base · Gold-plated XV rosette<br>Laser-etched recipient name + title<br>H: 28cm · Base 10×10cm · ~1.2kg</div>
+    </div>
+    <div class="spbx" style="align-self:start;">
+      <div class="sp-t">Trophy Specifications</div>
+      <div class="sp-r"><span class="sp-k">Base material</span><span class="sp-v">Optical crystal glass</span></div>
+      <div class="sp-r"><span class="sp-k">Rosette</span><span class="sp-v">24k gold-plated zinc alloy</span></div>
+      <div class="sp-r"><span class="sp-k">Engraving</span><span class="sp-v">Laser-etched, back panel</span></div>
+      <div class="sp-r"><span class="sp-k">Height</span><span class="sp-v">28 cm</span></div>
+      <div class="sp-r"><span class="sp-k">Base</span><span class="sp-v">10 × 10 cm</span></div>
+      <div class="sp-r"><span class="sp-k">Weight</span><span class="sp-v">Approx. 1.2 kg</span></div>
+      <div class="sp-r"><span class="sp-k">Packaging</span><span class="sp-v">Navy velvet presentation box</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 GIFT BOX -->
+<section class="sec" id="gift">
+  <div class="sec-hd"><div class="sec-num">08</div><div><div class="sec-eye">Guest Giveaway</div><div class="sec-ttl">Gift Box Packaging</div></div></div>
+  <div class="g2">
+    <div class="gb">
+      <div class="gb-lid">
+        <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.18;" viewBox="0 0 400 100" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="0" x2="400" y2="100" stroke="#C9A84C" stroke-width=".5" fill="none"/><line x1="400" y1="0" x2="0" y2="100" stroke="#C9A84C" stroke-width=".5" fill="none"/><line x1="200" y1="0" x2="200" y2="100" stroke="#C9A84C" stroke-width=".4" fill="none"/><line x1="0" y1="50" x2="400" y2="50" stroke="#C9A84C" stroke-width=".4" fill="none"/><rect x="1" y="1" width="398" height="98" fill="none" stroke="#C9A84C" stroke-width=".5"/></svg>
+        <div><div class="gb-lt">TruDoc XV</div><div style="width:36px;height:.5px;background:#C9A84C;margin:5px auto;opacity:.45;"></div><div style="font-size:8px;letter-spacing:.17em;color:rgba(201,168,76,.42);text-transform:uppercase;position:relative;z-index:2;">2011 — 2026</div></div>
+      </div>
+      <div class="gb-bd">
+        <div class="gb-it"><div class="gb-dot"></div><span>Signature TruDoc XV fragrance · custom blend</span></div>
+        <div class="gb-it"><div class="gb-dot"></div><span>Handcrafted XV keepsake · gold-plated rosette</span></div>
+        <div class="gb-it"><div class="gb-dot"></div><span>Programme booklet · A5 soft-cover</span></div>
+        <div class="gb-it"><div class="gb-dot"></div><span>Personalised handwritten note from Chairman</span></div>
+        <div class="gb-it"><div class="gb-dot"></div><span>TruDoc XV commemorative card set</span></div>
+      </div>
+      <div class="gb-sp">Rigid navy board · Gold ribbon tie · Foil-stamped lid · Ivory tissue lining</div>
+    </div>
+    <div class="spbx" style="align-self:start;">
+      <div class="sp-t">Gift Box Specifications</div>
+      <div class="sp-r"><span class="sp-k">Box material</span><span class="sp-v">2mm rigid board, navy wrap</span></div>
+      <div class="sp-r"><span class="sp-k">Lid finish</span><span class="sp-v">Gold foil stamp, XV rosette</span></div>
+      <div class="sp-r"><span class="sp-k">Ribbon</span><span class="sp-v">Gold satin, pull-tie</span></div>
+      <div class="sp-r"><span class="sp-k">Interior</span><span class="sp-v">Ivory tissue + custom insert tray</span></div>
+      <div class="sp-r"><span class="sp-k">Size</span><span class="sp-v">25 × 20 × 12 cm</span></div>
+      <div class="sp-r"><span class="sp-k">Belly band</span><span class="sp-v">Gold foil print, guest name</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 LETTER -->
+<section class="sec" id="letter">
+  <div class="sec-hd"><div class="sec-num">09</div><div><div class="sec-eye">Executive Communication</div><div class="sec-ttl">Letter from the Chairman</div></div></div>
+  <div class="let">
+    <div class="let-hd">
+      <div><div class="let-br">TruDoc</div><div class="let-bs">Healthcare · Est. 2011 · Dubai, UAE</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><svg width="26" height="26" viewBox="0 0 26 26"><g transform="translate(13,13)"><polygon points="0,-10 2.3,-3.2 9.5,-3.2 4.2,1.2 6.1,8.2 0,4.2 -6.1,8.2 -4.2,1.2 -9.5,-3.2 -2.3,-3.2" fill="none" stroke="#C9A84C" stroke-width=".7"/><circle cx="0" cy="0" r="2.4" fill="none" stroke="#00BA9D" stroke-width=".6"/></g></svg><div class="let-rt">16 June 2026<br>Private &amp; confidential</div></div>
+    </div>
+    <div class="let-sal">Dear [Guest Name],</div>
+    <div class="let-bd">Fifteen years ago, TruDoc began with a single conviction: that quality healthcare should reach every person, wherever they are. Tonight, as we gather to mark this milestone, that conviction has touched two million lives across the region.<br><br>This evening is not a celebration of a company. It is a recognition of every doctor who answered a call at midnight, every patient who received a diagnosis from their home, and every partner who believed in a vision before it had a name.<br><br>We are proud to declare — on this night — the next chapter of TruDoc: a $15 million Series B milestone, and the launch of One TruDoc — a unified, virtual-first healthcare ecosystem that will redefine care across the Gulf for the next fifteen years and beyond.<br><br>Your presence this evening means a great deal to us. Thank you for being part of the story.</div>
+    <div class="let-cl">With gratitude and pride,</div>
+    <div class="let-sg">[Executive Chairman]</div>
+    <div class="let-ti">Executive Chairman · TruDoc Healthcare</div>
+    <div class="let-ft"><span>TruDoc Healthcare LLC · Dubai, UAE</span><span>www.trudocgroup.com</span><span>+971 XX XXX XXXX</span></div>
+  </div>
+</section>
+
+<!-- 10 SIGNAGE -->
+<section class="sec" id="signage">
+  <div class="sec-hd"><div class="sec-num">10</div><div><div class="sec-eye">Environmental Wayfinding</div><div class="sec-ttl">Signage System</div></div></div>
+  <div class="g2">
+    <div style="display:flex;flex-direction:column;gap:9px;">
+      <div class="sgn-w"><span class="sg-ar">→</span><div><div class="sg-mn">Main Hall</div><div class="sg-sb">Gala dinner · Main stage</div></div></div>
+      <div class="sgn-w"><span class="sg-ar">↑</span><div><div class="sg-mn">Reception</div><div class="sg-sb">Welcome drinks · Level 1</div></div></div>
+      <div class="sgn-w"><span class="sg-ar">→</span><div><div class="sg-mn">Photo Wall</div><div class="sg-sb">Media · Step &amp; repeat</div></div></div>
+      <div class="sgn-w"><span class="sg-ar">↓</span><div><div class="sg-mn">Cloakroom</div><div class="sg-sb">Ground floor</div></div></div>
+      <div class="sgn-w"><span class="sg-ar">←</span><div><div class="sg-mn">Restrooms</div><div class="sg-sb">East wing, all levels</div></div></div>
+    </div>
+    <div class="g2" style="align-content:start;gap:10px;">
+      <div class="sgn-t">
+        <svg width="28" height="28" viewBox="0 0 28 28"><g transform="translate(14,14)"><polygon points="0,-11 2.5,-3.6 10.5,-3.6 4.6,1.4 6.7,9 0,4.6 -6.7,9 -4.6,1.4 -10.5,-3.6 -2.5,-3.6" fill="none" stroke="#C9A84C" stroke-width=".7"/><circle cx="0" cy="0" r="2.5" fill="none" stroke="#00BA9D" stroke-width=".6"/></g></svg>
+        <div><div class="sg-mn" style="font-size:14px;">Welcome</div><div class="sg-sb" style="margin-top:3px;">TruDoc XV Gala</div></div>
+        <div style="font-size:8px;color:rgba(201,168,76,.42);letter-spacing:.14em;">16 JUNE 2026</div>
+      </div>
+      <div class="tbc">
+        <svg width="22" height="22" viewBox="0 0 22 22"><g transform="translate(11,11)"><polygon points="0,-8.5 2,-2.8 8.1,-2.8 3.5,0.6 5.2,6.2 0,3.2 -5.2,6.2 -3.5,0.6 -8.1,-2.8 -2,-2.8" fill="none" stroke="#C9A84C" stroke-width=".6"/></g></svg>
+        <div><div style="font-size:12px;font-weight:500;color:#07192E;">Guest Name</div><div style="font-size:9px;color:#888;margin-top:2px;">Title</div></div>
+        <div style="font-size:9px;letter-spacing:.14em;color:#C9A84C;text-transform:uppercase;">Table 01</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 SOCIAL -->
+<section class="sec" id="social">
+  <div class="sec-hd"><div class="sec-num">11</div><div><div class="sec-eye">Digital Communications</div><div class="sec-ttl">Social Media Kit · 9:16 · 1:1 · 16:9</div></div></div>
+  <div class="g3">
+    <div class="so-s">
+      <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.11;" viewBox="0 0 120 213" preserveAspectRatio="xMidYMid slice"><defs><pattern id="ss" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 0L0 12M0 0L12 12" stroke="#C9A84C" stroke-width=".3" fill="none"/></pattern></defs><rect width="120" height="213" fill="url(#ss)"/><circle cx="60" cy="106" r="78" fill="none" stroke="#C9A84C" stroke-width=".4" opacity=".4"/></svg>
+      <svg width="34" height="34" viewBox="0 0 34 34" style="margin-bottom:9px;"><g transform="translate(17,17)"><polygon points="0,-13.5 3.1,-4.4 12.8,-4.4 5.6,1.8 8,10.9 0,5.5 -8,10.9 -5.6,1.8 -12.8,-4.4 -3.1,-4.4" fill="none" stroke="#C9A84C" stroke-width=".7"/><circle cx="0" cy="0" r="3" fill="none" stroke="#00BA9D" stroke-width=".6"/></g></svg>
+      <div class="so-xv">XV</div><div class="so-sb">TruDoc</div><div class="so-dt">16 June 2026</div>
+      <div style="margin-top:10px;font-size:9px;color:rgba(255,255,255,.28);font-style:italic;line-height:1.55;">Fifteen years.<br>Two million lives.</div>
+      <div class="so-lbl">Story · 9:16</div>
+    </div>
+    <div class="so-q">
+      <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.11;" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><defs><pattern id="sq2" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 0L0 12M0 0L12 12" stroke="#C9A84C" stroke-width=".3" fill="none"/></pattern></defs><rect width="200" height="200" fill="url(#sq2)"/><circle cx="100" cy="100" r="84" fill="none" stroke="#C9A84C" stroke-width=".4" opacity=".38"/></svg>
+      <div class="so-xv" style="font-size:26px;">TruDoc XV</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:4px;">2,000,000 lives</div>
+      <div class="so-dt">16 June 2026</div>
+      <div class="so-lbl">Square · 1:1</div>
+    </div>
+    <div class="so-w">
+      <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.11;" viewBox="0 0 356 200" preserveAspectRatio="xMidYMid slice"><defs><pattern id="sw2" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 0L0 12M0 0L12 12" stroke="#C9A84C" stroke-width=".3" fill="none"/></pattern></defs><rect width="356" height="200" fill="url(#sw2)"/></svg>
+      <div style="font-size:8px;letter-spacing:.18em;color:rgba(201,168,76,.52);text-transform:uppercase;margin-bottom:5px;">Save the date</div>
+      <div class="so-xv" style="font-size:18px;">TruDoc XV · 16 June 2026</div>
+      <div class="so-sb" style="margin-top:4px;">Legacy Gala · Dubai, UAE</div>
+      <div class="so-lbl">Banner · 16:9</div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 RAFFLE -->
+<section class="sec" id="raffle">
+  <div class="sec-hd"><div class="sec-num">12</div><div><div class="sec-eye">Event Experience</div><div class="sec-ttl">Raffle Card</div></div></div>
+  <div class="g2">
+    <div class="rfl">
+      <div class="rfl-tr"></div>
+      <div class="rf-hd">
+        <div class="rf-nm">#0001</div>
+        <svg width="26" height="26" viewBox="0 0 26 26"><g transform="translate(13,13)"><polygon points="0,-10 2.3,-3.2 9.5,-3.2 4.2,1.2 6.1,8.2 0,4.2 -6.1,8.2 -4.2,1.2 -9.5,-3.2 -2.3,-3.2" fill="none" stroke="#C9A84C" stroke-width=".7"/></g></svg>
+      </div>
+      <div class="rf-dv"></div>
+      <div class="rf-mn">TruDoc XV · Grand Raffle</div>
+      <div class="rf-sb">Keep this card for the draw · 16 June 2026</div>
+      <div class="rf-bt"><div class="rf-f">Guest name: _____________________</div><div class="rf-f">Table: ______</div></div>
+    </div>
+    <div class="spbx" style="align-self:start;">
+      <div class="sp-t">Raffle Card Specs</div>
+      <div class="sp-r"><span class="sp-k">Size</span><span class="sp-v">A6 · 105 × 148mm</span></div>
+      <div class="sp-r"><span class="sp-k">Stock</span><span class="sp-v">300gsm soft-touch matte</span></div>
+      <div class="sp-r"><span class="sp-k">Colour</span><span class="sp-v">Deep navy, gold top rule</span></div>
+      <div class="sp-r"><span class="sp-k">Numbering</span><span class="sp-v">Sequential, gold foil ink</span></div>
+      <div class="sp-r"><span class="sp-k">Perforation</span><span class="sp-v">Stub copy for host record</span></div>
+      <div class="sp-r"><span class="sp-k">Quantity</span><span class="sp-v">TBC per final guest count</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 RUN OF SHOW -->
+<section class="sec" id="ros">
+  <div class="sec-hd"><div class="sec-num">13</div><div><div class="sec-eye">Master Event Document</div><div class="sec-ttl">Run of Show</div></div></div>
+  <div class="ros">
+    <div class="ros-hd"><div class="ros-tt">TruDoc XV · Run of Show</div><div class="ros-mt">16 June 2026 · Confidential — Internal Use Only</div></div>
+    <table class="rt">
+      <thead><tr><th style="width:68px;">Time</th><th>Segment</th><th style="width:130px;">Owner</th><th style="width:148px;">AV / Cue</th></tr></thead>
+      <tbody>
+        <tr><td><span class="rt-tm">18:30</span></td><td>Venue tech check complete<div class="rt-sb">All teams standby · Final walkthrough</div></td><td><div class="rt-ow">AV · Marcom · Venue</div></td><td><span class="ct">LED standby loop</span></td></tr>
+        <tr><td><span class="rt-tm">19:00</span></td><td>Doors open · Guest arrival<div class="rt-sb">Registration desk · Welcome champagne service</div></td><td><div class="rt-ow">Elsa · Events</div></td><td><span class="ct">Ambient welcome loop</span></td></tr>
+        <tr><td><span class="rt-tm">19:30</span></td><td>Guests to main hall<div class="rt-sb">MC takes position · Seating commences</div></td><td><div class="rt-ow">MC · Ushers</div></td><td><span class="ct">LED dinner view</span></td></tr>
+        <tr><td><span class="rt-tm">19:45</span></td><td>Welcome address — Executive Chairman<div class="rt-sb">5 min · Sets tone for the evening</div></td><td><div class="rt-ow">Vish</div></td><td><span class="cg">Podium lit · Mic 1</span></td></tr>
+        <tr><td><span class="rt-tm">20:00</span></td><td>TruDoc XV Anniversary Film<div class="rt-sb">3 min retrospective · 15 years · 2 million lives</div></td><td><div class="rt-ow">Marcom · AV</div></td><td><span class="ct">Full blackout + play</span></td></tr>
+        <tr><td><span class="rt-tm">20:05</span></td><td>CEO Keynote · Series B &amp; Ecosystem Declaration<div class="rt-sb">$15M Series B · One TruDoc launch · Labs / Home Health / Pharmacy / AI</div></td><td><div class="rt-ow">Asad · Marcom</div></td><td><span class="cg">Reveal animation cue</span></td></tr>
+        <tr><td><span class="rt-tm">20:30</span></td><td>Speaker programme<div class="rt-sb">TBC — number, names, order per Elsa</div></td><td><div class="rt-ow">MC · Speakers</div></td><td><span class="ct">Speaker intro slides</span></td></tr>
+        <tr><td><span class="rt-tm">21:00</span></td><td>Gala dinner service<div class="rt-sb">Seated dinner · Background music</div></td><td><div class="rt-ow">Venue team</div></td><td><span class="ct">LED dinner loop</span></td></tr>
+        <tr><td><span class="rt-tm">21:30</span></td><td>Award presentations<div class="rt-sb">Trophy handover · Photography · VIP recognition</div></td><td><div class="rt-ow">Elsa · Marcom</div></td><td><span class="cg">Award reveal graphic</span></td></tr>
+        <tr><td><span class="rt-tm">22:00</span></td><td>Entertainment · Grand Raffle draw<div class="rt-sb">TBC per Elsa · MC-led raffle sequence</div></td><td><div class="rt-ow">MC · Events</div></td><td><span class="ct">Raffle screen loop</span></td></tr>
+        <tr><td><span class="rt-tm">22:30</span></td><td>Close · Farewell · Gift distribution<div class="rt-sb">Chairman closing remarks · Guest exit · Media wrap</div></td><td><div class="rt-ow">All teams</div></td><td><span class="ct">Closing XV loop</span></td></tr>
+        <tr><td><span class="rt-tm">23:00</span></td><td>Venue clear · Team debrief<div class="rt-sb">Equipment out · Post-event social content live</div></td><td><div class="rt-ow">Venue · Marcom</div></td><td><span class="ct">Social go-live</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="df">TruDoc XV · The Golden Lattice · Full Asset Suite · Marcom · Confidential</div>
+</body>
+</html>
