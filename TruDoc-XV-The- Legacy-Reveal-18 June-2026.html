@@ -1,0 +1,2883 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TruDoc XV — The Legacy Reveal · 16 June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1628;
+    --navy-2:#0F1D33;
+    --navy-3:#152540;
+    --gold:#F0C040;
+    --gold-2:#D4A535;
+    --gold-soft:#E8C97A;
+    --teal:#00BA9D;
+    --teal-soft:#1FD4B5;
+    --ivory:#F5EFE3;
+    --ivory-2:#E8DFC9;
+    --paper:#1A2640;
+    --line:rgba(240,192,64,0.22);
+    --line-strong:rgba(240,192,64,0.45);
+    --hairline:rgba(245,239,227,0.12);
+    --serif:'Playfair Display', 'Cormorant Garamond', serif;
+    --serif-2:'Cormorant Garamond', 'Playfair Display', serif;
+    --sans:'Inter', system-ui, sans-serif;
+    --arabic:'Noto Naskh Arabic', 'Reem Kufi', serif;
+    --kufi:'Reem Kufi', 'Noto Naskh Arabic', serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy);
+    color:var(--ivory);
+    font-family:var(--sans);
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  /* Paper / grain overlay across entire site */
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1000;
+    background-image:
+      radial-gradient(circle at 50% 50%, rgba(240,192,64,0.015) 0%, transparent 70%),
+      url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='3'/><feColorMatrix values='0 0 0 0 0.94 0 0 0 0 0.87 0 0 0 0 0.74 0 0 0 0.045 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode:overlay;
+    opacity:0.55;
+  }
+
+  /* ---------- NAV ---------- */
+  nav.masthead{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:500;
+    background:linear-gradient(180deg, rgba(10,22,40,0.96) 0%, rgba(10,22,40,0.85) 70%, rgba(10,22,40,0) 100%);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    padding:18px 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--hairline);
+  }
+  .mast-brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .mast-mark{
+    width:34px;height:34px;
+    border:1.2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:700;
+    color:var(--gold);
+    font-size:15px;
+    letter-spacing:0.5px;
+  }
+  .mast-text{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:15px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ivory);
+  }
+  .mast-text em{
+    font-style:italic;
+    color:var(--gold);
+    font-weight:400;
+  }
+  .mast-nav{
+    display:flex;
+    gap:36px;
+    align-items:center;
+  }
+  .mast-nav a{
+    font-family:var(--sans);
+    font-size:10.5px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    opacity:0.7;
+    text-decoration:none;
+    font-weight:400;
+    transition:all 0.4s ease;
+    position:relative;
+    padding-bottom:4px;
+  }
+  .mast-nav a:hover{opacity:1;color:var(--gold);}
+  .mast-nav a::after{
+    content:'';
+    position:absolute;
+    bottom:0;left:50%;
+    width:0;height:1px;
+    background:var(--gold);
+    transition:all 0.4s ease;
+    transform:translateX(-50%);
+  }
+  .mast-nav a:hover::after{width:100%;}
+  .mast-rsvp{
+    border:1px solid var(--gold);
+    padding:10px 22px;
+    color:var(--gold)!important;
+    opacity:1!important;
+    letter-spacing:0.32em!important;
+  }
+  .mast-rsvp:hover{
+    background:var(--gold);
+    color:var(--navy)!important;
+  }
+  .mast-rsvp::after{display:none;}
+
+  @media(max-width:900px){
+    nav.masthead{padding:14px 20px;}
+    .mast-nav{display:none;}
+  }
+
+  /* ---------- HERO / OVERTURE ---------- */
+  section.overture{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:140px 40px 80px;
+    background:
+      radial-gradient(ellipse at center top, rgba(240,192,64,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at center bottom, rgba(0,186,157,0.05) 0%, transparent 60%),
+      var(--navy);
+    overflow:hidden;
+    text-align:center;
+  }
+  .constellation{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+  }
+  .star{
+    position:absolute;
+    background:var(--gold-soft);
+    border-radius:50%;
+    opacity:0;
+    animation:twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0;transform:scale(0.5);}
+    50%{opacity:0.7;transform:scale(1);}
+  }
+
+  .overture-meta{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    margin-bottom:40px;
+    animation:fadeUp 1.4s ease-out both;
+  }
+  .overture-eyebrow{
+    font-family:var(--sans);
+    font-size:10px;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  .overture-eyebrow::before,
+  .overture-eyebrow::after{
+    content:'';
+    width:42px;
+    height:1px;
+    background:var(--gold);
+    opacity:0.6;
+  }
+  .overture-arabic{
+    font-family:var(--arabic);
+    font-size:22px;
+    color:var(--gold-soft);
+    direction:rtl;
+    font-weight:500;
+    letter-spacing:0;
+    margin-top:6px;
+  }
+
+  /* The monumental XV wordmark */
+  .wordmark{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    animation:fadeUp 1.6s ease-out 0.2s both;
+  }
+  .wordmark-top{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    color:var(--ivory);
+    font-size:clamp(28px, 5vw, 54px);
+    letter-spacing:0.04em;
+    margin-bottom:-12px;
+  }
+  .wordmark-roman{
+    font-family:var(--serif);
+    font-weight:900;
+    color:var(--gold);
+    font-size:clamp(180px, 28vw, 380px);
+    line-height:0.85;
+    letter-spacing:-0.04em;
+    position:relative;
+    text-shadow:
+      0 0 60px rgba(240,192,64,0.15),
+      0 0 120px rgba(240,192,64,0.08);
+  }
+  .wordmark-roman::before{
+    content:'';
+    position:absolute;
+    top:50%;left:-80px;
+    width:60px;height:1px;
+    background:var(--gold);
+    opacity:0.5;
+  }
+  .wordmark-roman::after{
+    content:'';
+    position:absolute;
+    top:50%;right:-80px;
+    width:60px;height:1px;
+    background:var(--gold);
+    opacity:0.5;
+  }
+  .wordmark-sub{
+    font-family:var(--sans);
+    font-size:clamp(11px, 1vw, 13px);
+    letter-spacing:0.6em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    font-weight:300;
+    margin-top:8px;
+  }
+  .wordmark-arabic{
+    font-family:var(--kufi);
+    font-size:clamp(28px, 3.5vw, 44px);
+    color:var(--gold);
+    font-weight:600;
+    margin-top:22px;
+    letter-spacing:0;
+    direction:rtl;
+  }
+
+  /* The Tagline */
+  .overture-tagline{
+    position:relative;
+    z-index:2;
+    margin-top:50px;
+    max-width:720px;
+    animation:fadeUp 1.8s ease-out 0.4s both;
+  }
+  .overture-tagline h2{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(22px, 2.4vw, 32px);
+    color:var(--ivory);
+    line-height:1.4;
+    letter-spacing:0.005em;
+  }
+  .overture-tagline h2 span{
+    color:var(--gold);
+    font-weight:500;
+  }
+
+  /* Date Bar */
+  .date-bar{
+    position:relative;
+    z-index:2;
+    margin-top:60px;
+    display:flex;
+    align-items:center;
+    gap:50px;
+    padding:24px 50px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    animation:fadeUp 2s ease-out 0.6s both;
+  }
+  .date-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .date-label{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.36em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .date-value{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:18px;
+    color:var(--ivory);
+    letter-spacing:0.04em;
+  }
+  .date-divider{
+    width:1px;
+    height:36px;
+    background:var(--line-strong);
+  }
+
+  @media(max-width:700px){
+    .date-bar{flex-direction:column;gap:18px;padding:24px 30px;}
+    .date-divider{width:36px;height:1px;}
+    .wordmark-roman::before,.wordmark-roman::after{display:none;}
+  }
+
+  /* Scroll cue */
+  .scroll-cue{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    opacity:0.5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    animation:fadeIn 2s ease-out 1.5s both;
+  }
+  .scroll-cue::after{
+    content:'';
+    width:1px;
+    height:38px;
+    background:var(--gold);
+    animation:scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine{
+    0%{transform:scaleY(0);transform-origin:top;}
+    50%{transform:scaleY(1);transform-origin:top;}
+    51%{transform-origin:bottom;}
+    100%{transform:scaleY(0);transform-origin:bottom;}
+  }
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:0.5;}
+  }
+
+  /* Decorative geometric corner ornaments */
+  .corner-orn{
+    position:absolute;
+    width:140px;height:140px;
+    z-index:1;
+    pointer-events:none;
+    opacity:0.45;
+  }
+  .corner-orn.tl{top:90px;left:40px;}
+  .corner-orn.tr{top:90px;right:40px;transform:scaleX(-1);}
+  .corner-orn.bl{bottom:40px;left:40px;transform:scaleY(-1);}
+  .corner-orn.br{bottom:40px;right:40px;transform:scale(-1,-1);}
+
+  @media(max-width:700px){
+    .corner-orn{width:80px;height:80px;}
+    .corner-orn.tl,.corner-orn.tr{top:80px;}
+  }
+
+  /* ============================================================
+     CHAPTER HEADERS — recurring institutional spec
+     ============================================================ */
+  .chapter-marker{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    margin-bottom:60px;
+  }
+  .chapter-num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    color:var(--gold);
+    font-size:14px;
+    letter-spacing:0.32em;
+  }
+  .chapter-num::before,.chapter-num::after{
+    content:'·';
+    margin:0 14px;
+    color:var(--gold);
+    opacity:0.6;
+  }
+  .chapter-title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(36px, 4.5vw, 56px);
+    color:var(--ivory);
+    text-align:center;
+    line-height:1.1;
+    letter-spacing:-0.005em;
+  }
+  .chapter-title em{
+    font-style:italic;
+    color:var(--gold);
+    font-weight:400;
+  }
+  .chapter-arabic{
+    font-family:var(--kufi);
+    font-size:24px;
+    color:var(--gold-soft);
+    direction:rtl;
+    font-weight:500;
+    margin-top:4px;
+  }
+  .chapter-rule{
+    width:60px;
+    height:1px;
+    background:var(--gold);
+    margin-top:8px;
+  }
+
+  /* ============================================================
+     SECTION: THE FOUNDER'S OATH (mission)
+     ============================================================ */
+  section.oath{
+    position:relative;
+    padding:140px 40px;
+    background:var(--navy);
+    border-top:1px solid var(--hairline);
+  }
+  .oath-inner{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:80px;
+    align-items:center;
+  }
+  .oath-statement{
+    text-align:center;
+    max-width:780px;
+    margin:0 auto;
+  }
+  .oath-quote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(26px, 3vw, 38px);
+    line-height:1.45;
+    color:var(--ivory);
+    letter-spacing:0.005em;
+    margin-bottom:40px;
+    position:relative;
+  }
+  .oath-quote::before{
+    content:'"';
+    position:absolute;
+    top:-50px;left:50%;
+    transform:translateX(-50%);
+    font-family:var(--serif);
+    font-size:120px;
+    color:var(--gold);
+    opacity:0.4;
+    line-height:1;
+  }
+  .oath-quote span{color:var(--gold);font-style:normal;font-weight:500;}
+  .oath-attribution{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:0.4em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .oath-arabic{
+    margin-top:50px;
+    font-family:var(--arabic);
+    font-size:22px;
+    line-height:1.9;
+    color:var(--ivory-2);
+    direction:rtl;
+    text-align:center;
+    max-width:680px;
+    margin-left:auto;margin-right:auto;
+  }
+
+  /* ============================================================
+     SECTION: TWO MILLION CONSTELLATION
+     ============================================================ */
+  section.constellation-sec{
+    position:relative;
+    padding:140px 40px;
+    background:linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 50%, var(--navy) 100%);
+    overflow:hidden;
+    border-top:1px solid var(--hairline);
+  }
+  .const-canvas{
+    position:relative;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .const-big{
+    text-align:center;
+    margin:80px 0;
+    position:relative;
+  }
+  .const-number{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(100px, 18vw, 240px);
+    color:var(--gold);
+    line-height:0.9;
+    letter-spacing:-0.04em;
+    background:linear-gradient(180deg, var(--gold) 0%, var(--gold-2) 40%, var(--gold-soft) 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    position:relative;
+    text-shadow:0 0 80px rgba(240,192,64,0.1);
+    display:inline-block;
+  }
+  .const-label{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(20px, 2.4vw, 30px);
+    color:var(--ivory);
+    margin-top:20px;
+    letter-spacing:0.02em;
+  }
+  .const-label span{color:var(--gold);font-style:normal;}
+  .const-arabic{
+    font-family:var(--kufi);
+    font-size:20px;
+    color:var(--gold-soft);
+    margin-top:14px;
+    direction:rtl;
+    font-weight:500;
+  }
+
+  .const-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0;
+    margin-top:100px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .const-stat{
+    padding:50px 30px;
+    text-align:center;
+    border-right:1px solid var(--line);
+    position:relative;
+  }
+  .const-stat:last-child{border-right:none;}
+  .const-stat-num{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:48px;
+    color:var(--gold);
+    line-height:1;
+    letter-spacing:-0.02em;
+    margin-bottom:12px;
+  }
+  .const-stat-label{
+    font-family:var(--sans);
+    font-size:10px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    opacity:0.7;
+    margin-bottom:8px;
+  }
+  .const-stat-ar{
+    font-family:var(--arabic);
+    font-size:13px;
+    color:var(--gold-soft);
+    direction:rtl;
+  }
+  @media(max-width:800px){
+    .const-grid{grid-template-columns:repeat(2, 1fr);}
+    .const-stat:nth-child(2){border-right:none;}
+    .const-stat:nth-child(1),.const-stat:nth-child(2){border-bottom:1px solid var(--line);}
+  }
+
+  /* ============================================================
+     SECTION: PROGRAMME (the event itself)
+     ============================================================ */
+  section.programme{
+    position:relative;
+    padding:140px 40px;
+    background:var(--navy);
+    border-top:1px solid var(--hairline);
+  }
+  .prog-inner{
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .prog-table{
+    margin-top:40px;
+    border-top:1px solid var(--line-strong);
+  }
+  .prog-row{
+    display:grid;
+    grid-template-columns:140px 1fr 1fr 80px;
+    gap:30px;
+    padding:36px 20px;
+    border-bottom:1px solid var(--hairline);
+    align-items:start;
+    transition:all 0.4s ease;
+    cursor:default;
+  }
+  .prog-row:hover{
+    background:rgba(240,192,64,0.025);
+  }
+  .prog-time{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:22px;
+    color:var(--gold);
+    letter-spacing:0.02em;
+  }
+  .prog-time-meridiem{
+    font-family:var(--sans);
+    font-size:10px;
+    letter-spacing:0.3em;
+    color:var(--ivory);
+    opacity:0.5;
+    margin-top:4px;
+    display:block;
+  }
+  .prog-title-en{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:20px;
+    color:var(--ivory);
+    line-height:1.3;
+    letter-spacing:0.005em;
+  }
+  .prog-title-en em{
+    font-style:italic;
+    color:var(--gold);
+    font-weight:400;
+    display:block;
+    font-size:13px;
+    letter-spacing:0.04em;
+    margin-top:6px;
+  }
+  .prog-title-ar{
+    font-family:var(--kufi);
+    font-size:20px;
+    color:var(--ivory);
+    direction:rtl;
+    text-align:right;
+    font-weight:500;
+    line-height:1.4;
+  }
+  .prog-title-ar small{
+    display:block;
+    font-family:var(--arabic);
+    font-size:13px;
+    color:var(--gold-soft);
+    margin-top:6px;
+    font-weight:400;
+  }
+  .prog-num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:13px;
+    color:var(--gold);
+    opacity:0.7;
+    text-align:right;
+    letter-spacing:0.1em;
+  }
+  @media(max-width:900px){
+    .prog-row{grid-template-columns:1fr;gap:14px;padding:30px 0;}
+    .prog-num{display:none;}
+    .prog-title-ar{text-align:right;}
+  }
+
+  /* ============================================================
+     SECTION: THE CORNERSTONE AWARDS
+     ============================================================ */
+  section.cornerstone{
+    position:relative;
+    padding:140px 40px;
+    background:linear-gradient(180deg, var(--navy) 0%, #060F1C 100%);
+    border-top:1px solid var(--hairline);
+    overflow:hidden;
+  }
+  .corner-inner{
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .award-stage{
+    margin-top:40px;
+    position:relative;
+    padding:80px 40px;
+    border:1px solid var(--line);
+    background:
+      radial-gradient(ellipse at center, rgba(240,192,64,0.05) 0%, transparent 70%),
+      var(--navy-2);
+  }
+  .award-stage::before,
+  .award-stage::after{
+    content:'';
+    position:absolute;
+    width:24px;height:24px;
+    border:1px solid var(--gold);
+  }
+  .award-stage::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .award-stage::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+
+  .award-display{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:80px;
+    align-items:center;
+  }
+  .award-svg-wrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .award-body{
+    text-align:left;
+  }
+  .award-eyebrow{
+    font-family:var(--sans);
+    font-size:10px;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+    margin-bottom:18px;
+  }
+  .award-name{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:48px;
+    color:var(--ivory);
+    line-height:1.1;
+    margin-bottom:10px;
+    letter-spacing:-0.005em;
+  }
+  .award-name em{font-style:italic;color:var(--gold);font-weight:400;}
+  .award-name-ar{
+    font-family:var(--kufi);
+    font-size:30px;
+    color:var(--gold-soft);
+    direction:rtl;
+    margin-bottom:30px;
+    font-weight:500;
+  }
+  .award-desc{
+    font-family:var(--serif-2);
+    font-style:italic;
+    font-size:18px;
+    line-height:1.7;
+    color:var(--ivory-2);
+    margin-bottom:30px;
+    max-width:480px;
+  }
+  .award-spec{
+    border-top:1px solid var(--hairline);
+    padding-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    max-width:480px;
+  }
+  .award-spec-item{
+    font-family:var(--sans);
+  }
+  .award-spec-label{
+    font-size:9px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+    opacity:0.8;
+    margin-bottom:6px;
+  }
+  .award-spec-value{
+    font-family:var(--serif);
+    font-size:14px;
+    color:var(--ivory);
+    font-weight:400;
+  }
+  @media(max-width:900px){
+    .award-display{grid-template-columns:1fr;gap:40px;}
+    .award-stage{padding:50px 24px;}
+    .award-name{font-size:34px;}
+  }
+
+  /* Categories */
+  .award-cats{
+    margin-top:80px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .award-cat{
+    padding:36px 30px;
+    background:var(--navy);
+    text-align:center;
+  }
+  .award-cat-num{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--gold);
+    font-size:13px;
+    margin-bottom:14px;
+    letter-spacing:0.2em;
+  }
+  .award-cat-name{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:18px;
+    color:var(--ivory);
+    line-height:1.3;
+    margin-bottom:6px;
+  }
+  .award-cat-ar{
+    font-family:var(--kufi);
+    font-size:14px;
+    color:var(--gold-soft);
+    direction:rtl;
+    font-weight:500;
+  }
+  @media(max-width:800px){
+    .award-cats{grid-template-columns:1fr;}
+  }
+
+  /* ============================================================
+     SECTION: FOUNDER'S OATH FILM
+     ============================================================ */
+  section.film{
+    position:relative;
+    padding:140px 40px;
+    background:var(--navy);
+    border-top:1px solid var(--hairline);
+  }
+  .film-inner{
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .film-frame{
+    position:relative;
+    aspect-ratio:21/9;
+    background:#000;
+    border:1px solid var(--line-strong);
+    overflow:hidden;
+    margin-top:40px;
+    cursor:pointer;
+    transition:all 0.6s ease;
+  }
+  .film-frame:hover{border-color:var(--gold);}
+  .film-bg{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(240,192,64,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(0,186,157,0.1) 0%, transparent 40%),
+      linear-gradient(135deg, #0A1628 0%, #050A18 100%);
+  }
+  .film-stars{position:absolute;inset:0;}
+  .film-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:60px;
+  }
+  .film-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+  }
+  .film-meta{
+    font-family:var(--sans);
+    font-size:10px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  .film-runtime{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ivory);
+    opacity:0.6;
+    font-size:14px;
+  }
+  .film-play{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    align-self:center;
+    margin:auto;
+  }
+  .film-play-btn{
+    width:90px;height:90px;
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(10,22,40,0.3);
+    transition:all 0.4s ease;
+  }
+  .film-frame:hover .film-play-btn{
+    background:var(--gold);
+    transform:scale(1.05);
+  }
+  .film-play-btn svg{
+    width:32px;height:32px;
+    fill:var(--gold);
+    margin-left:5px;
+    transition:fill 0.4s ease;
+  }
+  .film-frame:hover .film-play-btn svg{fill:var(--navy);}
+  .film-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+  }
+  .film-title-block{}
+  .film-title{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    color:var(--ivory);
+    font-size:32px;
+    line-height:1.1;
+    letter-spacing:0.005em;
+  }
+  .film-title-ar{
+    font-family:var(--kufi);
+    color:var(--gold);
+    font-size:22px;
+    margin-top:8px;
+    direction:rtl;
+    font-weight:500;
+  }
+  .film-credit{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    opacity:0.5;
+    text-align:right;
+  }
+  @media(max-width:800px){
+    .film-overlay{padding:30px;}
+    .film-title{font-size:20px;}
+    .film-bottom{flex-direction:column;gap:14px;align-items:flex-start;}
+  }
+
+  /* Film chapter index */
+  .film-chapters{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .film-chap{
+    padding:36px 30px;
+    border-right:1px solid var(--line);
+  }
+  .film-chap:last-child{border-right:none;}
+  .film-chap-num{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:0.2em;
+    margin-bottom:12px;
+  }
+  .film-chap-time{
+    font-family:var(--serif);
+    color:var(--ivory);
+    font-size:14px;
+    opacity:0.6;
+    margin-bottom:8px;
+    letter-spacing:0.1em;
+  }
+  .film-chap-title{
+    font-family:var(--serif);
+    font-weight:500;
+    color:var(--ivory);
+    font-size:20px;
+    line-height:1.2;
+    margin-bottom:6px;
+  }
+  .film-chap-ar{
+    font-family:var(--arabic);
+    color:var(--gold-soft);
+    font-size:14px;
+    direction:rtl;
+    margin-top:6px;
+  }
+  @media(max-width:800px){
+    .film-chapters{grid-template-columns:1fr;}
+    .film-chap{border-right:none;border-bottom:1px solid var(--line);}
+    .film-chap:last-child{border-bottom:none;}
+  }
+
+  /* ============================================================
+     SECTION: SAVE THE DATE (the Mashrabiya unbox)
+     ============================================================ */
+  section.savedate{
+    position:relative;
+    padding:140px 40px;
+    background:linear-gradient(180deg, #060F1C 0%, var(--navy) 100%);
+    border-top:1px solid var(--hairline);
+    overflow:hidden;
+  }
+  .savedate-inner{
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .savedate-display{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+  }
+  .savedate-card{
+    position:relative;
+    aspect-ratio:3/4;
+    background:linear-gradient(160deg, #0F1D33 0%, #0A1628 100%);
+    border:1px solid var(--line-strong);
+    padding:50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+    transition:all 0.6s cubic-bezier(0.4,0,0.2,1);
+  }
+  .savedate-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--gold);
+    box-shadow:0 30px 80px rgba(0,0,0,0.4), 0 0 60px rgba(240,192,64,0.08);
+  }
+  .savedate-mashrabiya{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0.18;
+  }
+  .savedate-top{
+    position:relative;
+    z-index:2;
+    text-align:center;
+  }
+  .savedate-mark{
+    width:60px;height:60px;
+    margin:0 auto 24px;
+    border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--gold);
+    font-size:24px;
+    font-weight:700;
+  }
+  .savedate-eyebrow{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:14px;
+  }
+  .savedate-host{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:18px;
+    color:var(--ivory);
+    line-height:1.4;
+  }
+  .savedate-middle{
+    position:relative;
+    z-index:2;
+    text-align:center;
+  }
+  .savedate-mid-line{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ivory-2);
+    font-size:16px;
+    margin-bottom:16px;
+  }
+  .savedate-headline{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:42px;
+    color:var(--gold);
+    line-height:1;
+    letter-spacing:-0.01em;
+    margin-bottom:6px;
+  }
+  .savedate-headline-sub{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ivory);
+    font-size:20px;
+    margin-bottom:20px;
+  }
+  .savedate-ar{
+    font-family:var(--kufi);
+    color:var(--gold-soft);
+    font-size:22px;
+    direction:rtl;
+    font-weight:500;
+  }
+  .savedate-bottom{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+  .savedate-date{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:18px;
+    color:var(--ivory);
+    letter-spacing:0.04em;
+  }
+  .savedate-loc{
+    font-family:var(--sans);
+    font-size:10px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-top:8px;
+  }
+
+  .savedate-copy h3{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:32px;
+    color:var(--ivory);
+    line-height:1.3;
+    margin-bottom:24px;
+  }
+  .savedate-copy h3 em{
+    color:var(--gold);
+    font-style:normal;
+    font-weight:500;
+  }
+  .savedate-copy p{
+    font-family:var(--serif-2);
+    font-style:italic;
+    font-size:17px;
+    line-height:1.8;
+    color:var(--ivory-2);
+    margin-bottom:20px;
+  }
+  .savedate-meta{
+    margin-top:30px;
+    padding-top:24px;
+    border-top:1px solid var(--hairline);
+  }
+  .savedate-meta-item{
+    display:grid;
+    grid-template-columns:160px 1fr;
+    gap:20px;
+    padding:14px 0;
+    align-items:center;
+  }
+  .savedate-meta-label{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  .savedate-meta-value{
+    font-family:var(--serif);
+    font-size:15px;
+    color:var(--ivory);
+  }
+  @media(max-width:900px){
+    .savedate-display{grid-template-columns:1fr;gap:50px;}
+    .savedate-card{max-width:380px;margin:0 auto;}
+    .savedate-headline{font-size:34px;}
+  }
+
+  /* ============================================================
+     SECTION: WORDMARK SYSTEM
+     ============================================================ */
+  section.wordmark-sys{
+    position:relative;
+    padding:140px 40px;
+    background:var(--navy);
+    border-top:1px solid var(--hairline);
+  }
+  .wm-inner{
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .wm-spec{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--line);
+  }
+  .wm-cell{
+    padding:60px 40px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    position:relative;
+    min-height:340px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    background:var(--navy-2);
+  }
+  .wm-cell:nth-child(2n){border-right:none;}
+  .wm-cell:nth-child(n+3){border-bottom:none;}
+  .wm-cell-label{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .wm-cell-display{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px 0;
+  }
+  .wm-cell-spec{
+    font-family:var(--sans);
+    font-size:11px;
+    color:var(--ivory);
+    opacity:0.6;
+    letter-spacing:0.1em;
+    border-top:1px solid var(--hairline);
+    padding-top:14px;
+    display:flex;
+    justify-content:space-between;
+  }
+  @media(max-width:800px){
+    .wm-spec{grid-template-columns:1fr;}
+    .wm-cell{border-right:none;border-bottom:1px solid var(--line);}
+    .wm-cell:nth-child(2n){border-right:none;}
+    .wm-cell:last-child{border-bottom:none;}
+  }
+
+  /* WM 1: Primary Lockup */
+  .wm-primary{
+    display:flex;
+    align-items:center;
+    gap:30px;
+  }
+  .wm-primary-num{
+    font-family:var(--serif);
+    font-weight:900;
+    color:var(--gold);
+    font-size:90px;
+    line-height:1;
+    letter-spacing:-0.04em;
+  }
+  .wm-primary-divider{
+    width:1px;
+    height:90px;
+    background:var(--gold);
+    opacity:0.4;
+  }
+  .wm-primary-text{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .wm-primary-trudoc{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:24px;
+    color:var(--ivory);
+    line-height:1;
+    letter-spacing:0.02em;
+  }
+  .wm-primary-tag{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.36em;
+    color:var(--gold);
+    text-transform:uppercase;
+  }
+  .wm-primary-ar{
+    font-family:var(--kufi);
+    color:var(--gold-soft);
+    font-size:18px;
+    margin-top:4px;
+    direction:rtl;
+    font-weight:500;
+  }
+
+  /* WM 2: Stacked / Monumental */
+  .wm-stacked{
+    text-align:center;
+  }
+  .wm-stacked-top{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ivory);
+    font-size:13px;
+    letter-spacing:0.04em;
+    margin-bottom:-4px;
+  }
+  .wm-stacked-xv{
+    font-family:var(--serif);
+    font-weight:900;
+    color:var(--gold);
+    font-size:110px;
+    line-height:0.85;
+    letter-spacing:-0.04em;
+  }
+  .wm-stacked-bot{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.5em;
+    color:var(--ivory);
+    text-transform:uppercase;
+    margin-top:6px;
+  }
+
+  /* WM 3: Bilingual */
+  .wm-bilingual{
+    display:flex;
+    align-items:center;
+    gap:40px;
+  }
+  .wm-bi-en{
+    text-align:right;
+  }
+  .wm-bi-en-num{
+    font-family:var(--serif);
+    font-weight:900;
+    color:var(--gold);
+    font-size:64px;
+    line-height:1;
+    letter-spacing:-0.03em;
+  }
+  .wm-bi-en-txt{
+    font-family:var(--sans);
+    font-size:10px;
+    letter-spacing:0.3em;
+    color:var(--ivory);
+    text-transform:uppercase;
+    margin-top:4px;
+  }
+  .wm-bi-bar{
+    width:1px;height:80px;
+    background:var(--gold);
+    opacity:0.4;
+  }
+  .wm-bi-ar{
+    text-align:left;
+  }
+  .wm-bi-ar-num{
+    font-family:var(--kufi);
+    color:var(--gold);
+    font-size:54px;
+    line-height:1;
+    font-weight:700;
+  }
+  .wm-bi-ar-txt{
+    font-family:var(--arabic);
+    color:var(--ivory);
+    font-size:13px;
+    margin-top:4px;
+    direction:rtl;
+  }
+
+  /* WM 4: Seal */
+  .wm-seal{
+    width:200px;height:200px;
+    border:2px solid var(--gold);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .wm-seal::before{
+    content:'';
+    position:absolute;
+    inset:8px;
+    border:1px solid var(--gold);
+    opacity:0.4;
+    border-radius:50%;
+  }
+  .wm-seal-inner{
+    text-align:center;
+    z-index:2;
+  }
+  .wm-seal-xv{
+    font-family:var(--serif);
+    font-weight:900;
+    color:var(--gold);
+    font-size:56px;
+    line-height:1;
+  }
+  .wm-seal-est{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ivory);
+    font-size:11px;
+    margin-top:2px;
+    letter-spacing:0.18em;
+  }
+
+  /* ============================================================
+     SECTION: VENUE
+     ============================================================ */
+  section.venue{
+    position:relative;
+    padding:140px 40px;
+    background:linear-gradient(180deg, var(--navy) 0%, #060F1C 100%);
+    border-top:1px solid var(--hairline);
+  }
+  .venue-inner{
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .venue-card{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:0;
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .venue-visual{
+    position:relative;
+    min-height:480px;
+    background:linear-gradient(135deg, #152540 0%, #0A1628 100%);
+    overflow:hidden;
+    border-right:1px solid var(--line);
+  }
+  .venue-svg{position:absolute;inset:0;}
+  .venue-visual-content{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:40px;
+    z-index:2;
+  }
+  .venue-tag{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+  .venue-name{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ivory);
+    font-size:28px;
+    line-height:1.2;
+  }
+  .venue-body{
+    padding:50px 40px;
+    background:var(--navy-2);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .venue-body h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:30px;
+    color:var(--ivory);
+    line-height:1.2;
+    margin-bottom:8px;
+    letter-spacing:-0.005em;
+  }
+  .venue-body h3 em{color:var(--gold);font-style:italic;font-weight:400;}
+  .venue-ar{
+    font-family:var(--kufi);
+    color:var(--gold-soft);
+    font-size:20px;
+    direction:rtl;
+    margin-bottom:24px;
+    font-weight:500;
+  }
+  .venue-meta-row{
+    display:flex;
+    justify-content:space-between;
+    padding:14px 0;
+    border-top:1px solid var(--hairline);
+    align-items:center;
+  }
+  .venue-meta-row:last-child{border-bottom:1px solid var(--hairline);}
+  .venue-meta-row .lbl{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  .venue-meta-row .val{
+    font-family:var(--serif);
+    font-size:14px;
+    color:var(--ivory);
+  }
+  @media(max-width:900px){
+    .venue-card{grid-template-columns:1fr;}
+    .venue-visual{min-height:280px;border-right:none;border-bottom:1px solid var(--line);}
+  }
+
+  /* ============================================================
+     SECTION: RSVP / ATTENDANCE
+     ============================================================ */
+  section.rsvp{
+    position:relative;
+    padding:140px 40px;
+    background:var(--navy);
+    border-top:1px solid var(--hairline);
+  }
+  .rsvp-inner{
+    max-width:780px;
+    margin:0 auto;
+  }
+  .rsvp-form{
+    margin-top:40px;
+    background:var(--navy-2);
+    border:1px solid var(--line);
+    padding:60px 50px;
+    position:relative;
+  }
+  .rsvp-form::before,.rsvp-form::after{
+    content:'';
+    position:absolute;
+    width:24px;height:24px;
+    border:1px solid var(--gold);
+  }
+  .rsvp-form::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .rsvp-form::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+
+  .rsvp-intro{
+    text-align:center;
+    margin-bottom:40px;
+  }
+  .rsvp-intro p{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:18px;
+    color:var(--ivory);
+    line-height:1.6;
+  }
+  .rsvp-intro p em{color:var(--gold);font-style:normal;}
+
+  .rsvp-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .rsvp-field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .rsvp-field.full{grid-column:1/-1;}
+  .rsvp-field label{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .rsvp-field input,
+  .rsvp-field select,
+  .rsvp-field textarea{
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--hairline);
+    padding:10px 0;
+    color:var(--ivory);
+    font-family:var(--serif);
+    font-size:16px;
+    transition:all 0.4s ease;
+    outline:none;
+    border-radius:0;
+  }
+  .rsvp-field input:focus,
+  .rsvp-field select:focus,
+  .rsvp-field textarea:focus{
+    border-bottom-color:var(--gold);
+  }
+  .rsvp-field select{
+    -webkit-appearance:none;
+    appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M6 8L0 0h12z' fill='%23F0C040'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 0 center;
+    background-size:10px;
+    padding-right:24px;
+    cursor:pointer;
+  }
+  .rsvp-field select option{
+    background:var(--navy-2);
+    color:var(--ivory);
+  }
+  .rsvp-field textarea{
+    resize:vertical;
+    min-height:60px;
+    font-family:var(--serif-2);
+    font-style:italic;
+  }
+
+  .rsvp-actions{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .rsvp-note{
+    font-family:var(--serif-2);
+    font-style:italic;
+    color:var(--ivory);
+    opacity:0.6;
+    font-size:13px;
+    max-width:340px;
+  }
+  .rsvp-submit{
+    background:var(--gold);
+    color:var(--navy);
+    border:none;
+    padding:18px 40px;
+    font-family:var(--sans);
+    font-size:10px;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    font-weight:600;
+    cursor:pointer;
+    transition:all 0.4s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .rsvp-submit:hover{
+    background:transparent;
+    color:var(--gold);
+    box-shadow:inset 0 0 0 1px var(--gold);
+  }
+  @media(max-width:700px){
+    .rsvp-grid{grid-template-columns:1fr;}
+    .rsvp-form{padding:40px 24px;}
+  }
+
+  /* ============================================================
+     SECTION: COLOPHON / FOOTER
+     ============================================================ */
+  footer.colophon{
+    position:relative;
+    padding:80px 40px 40px;
+    background:#060F1C;
+    border-top:1px solid var(--line);
+  }
+  .colo-inner{
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .colo-top{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:60px;
+    padding-bottom:50px;
+    border-bottom:1px solid var(--hairline);
+  }
+  .colo-brand h4{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    color:var(--ivory);
+    font-size:22px;
+    line-height:1.3;
+    margin-bottom:16px;
+  }
+  .colo-brand h4 em{color:var(--gold);font-style:normal;}
+  .colo-brand p{
+    font-family:var(--serif-2);
+    font-style:italic;
+    color:var(--ivory-2);
+    font-size:14px;
+    line-height:1.7;
+    opacity:0.7;
+  }
+  .colo-col h5{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+    font-weight:500;
+  }
+  .colo-col ul{list-style:none;}
+  .colo-col ul li{
+    font-family:var(--serif);
+    font-size:14px;
+    color:var(--ivory);
+    margin-bottom:10px;
+    opacity:0.7;
+  }
+  .colo-col ul li.ar{
+    font-family:var(--arabic);
+    color:var(--gold-soft);
+    direction:rtl;
+    font-size:13px;
+  }
+  .colo-bottom{
+    padding-top:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .colo-mark{
+    font-family:var(--serif);
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:0.04em;
+    font-style:italic;
+  }
+  .colo-meta{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    opacity:0.5;
+  }
+  @media(max-width:900px){
+    .colo-top{grid-template-columns:1fr;gap:40px;}
+  }
+
+  /* ============================================================
+     UTIL: section spacers and decorative rules
+     ============================================================ */
+  .rule-orn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:40px auto;
+    gap:18px;
+  }
+  .rule-orn::before,.rule-orn::after{
+    content:'';
+    width:100px;
+    height:1px;
+    background:var(--gold);
+    opacity:0.4;
+  }
+  .rule-orn span{
+    color:var(--gold);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:18px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SVG DEFS — reusable ornaments
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute;">
+  <defs>
+    <!-- 15-pointed rosette -->
+    <symbol id="rosette15" viewBox="-50 -50 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="0.4">
+        <circle r="48"/>
+        <circle r="38"/>
+        <circle r="28"/>
+        <!-- 15 spokes -->
+        <g id="spokes15"></g>
+      </g>
+    </symbol>
+
+    <!-- Corner ornament -->
+    <symbol id="cornerOrn" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="0.6">
+        <path d="M0,0 L60,0"/>
+        <path d="M0,0 L0,60"/>
+        <path d="M0,0 L40,40"/>
+        <circle cx="20" cy="20" r="3"/>
+        <path d="M20,20 L70,5 M20,20 L5,70"/>
+        <path d="M0,80 L20,80 L20,100"/>
+        <path d="M80,0 L80,20 L100,20"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============================================================
+     MASTHEAD
+     ============================================================ -->
+<nav class="masthead">
+  <div class="mast-brand">
+    <div class="mast-mark">XV</div>
+    <div class="mast-text">TruDoc <em>·</em> The Legacy Reveal</div>
+  </div>
+  <div class="mast-nav">
+    <a href="#oath">Oath</a>
+    <a href="#millions">2,000,000</a>
+    <a href="#programme">Programme</a>
+    <a href="#cornerstone">Awards</a>
+    <a href="#film">The Film</a>
+    <a href="#savedate">Save the Date</a>
+    <a href="#rsvp" class="mast-rsvp">Confirm Attendance</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     OVERTURE
+     ============================================================ -->
+<section class="overture" id="top">
+  <!-- Decorative corners -->
+  <svg class="corner-orn tl" viewBox="0 0 140 140" style="color:var(--gold);">
+    <g fill="none" stroke="currentColor" stroke-width="0.5">
+      <path d="M0,0 L70,0 M0,0 L0,70"/>
+      <path d="M0,0 L50,50"/>
+      <circle cx="25" cy="25" r="4"/>
+      <path d="M0,90 L25,90 L25,140"/>
+      <path d="M90,0 L90,25 L140,25"/>
+      <path d="M40,12 L55,12 M12,40 L12,55"/>
+    </g>
+  </svg>
+  <svg class="corner-orn tr" viewBox="0 0 140 140" style="color:var(--gold);">
+    <g fill="none" stroke="currentColor" stroke-width="0.5">
+      <path d="M0,0 L70,0 M0,0 L0,70"/>
+      <path d="M0,0 L50,50"/>
+      <circle cx="25" cy="25" r="4"/>
+      <path d="M0,90 L25,90 L25,140"/>
+      <path d="M90,0 L90,25 L140,25"/>
+      <path d="M40,12 L55,12 M12,40 L12,55"/>
+    </g>
+  </svg>
+  <svg class="corner-orn bl" viewBox="0 0 140 140" style="color:var(--gold);">
+    <g fill="none" stroke="currentColor" stroke-width="0.5">
+      <path d="M0,0 L70,0 M0,0 L0,70"/>
+      <path d="M0,0 L50,50"/>
+      <circle cx="25" cy="25" r="4"/>
+      <path d="M0,90 L25,90 L25,140"/>
+      <path d="M90,0 L90,25 L140,25"/>
+    </g>
+  </svg>
+  <svg class="corner-orn br" viewBox="0 0 140 140" style="color:var(--gold);">
+    <g fill="none" stroke="currentColor" stroke-width="0.5">
+      <path d="M0,0 L70,0 M0,0 L0,70"/>
+      <path d="M0,0 L50,50"/>
+      <circle cx="25" cy="25" r="4"/>
+      <path d="M0,90 L25,90 L25,140"/>
+      <path d="M90,0 L90,25 L140,25"/>
+    </g>
+  </svg>
+
+  <!-- Constellation backdrop -->
+  <div class="constellation" id="constellationField"></div>
+
+  <div class="overture-meta">
+    <div class="overture-eyebrow">The Legacy Reveal · A Founding Charter</div>
+    <div class="overture-arabic">الكشف عن الإرث · ميثاق التأسيس</div>
+  </div>
+
+  <div class="wordmark">
+    <div class="wordmark-top">Fifteen Years of</div>
+    <div class="wordmark-roman">XV</div>
+    <div class="wordmark-sub">TruDoc Healthcare · Est. 2011</div>
+    <div class="wordmark-arabic">خمسة عشر عامًا — وما زلنا نحضر</div>
+  </div>
+
+  <div class="overture-tagline">
+    <h2>An evening to mark fifteen years of showing up — and the <span>two million reasons</span> we kept the appointment.</h2>
+  </div>
+
+  <div class="date-bar">
+    <div class="date-item">
+      <div class="date-label">Date</div>
+      <div class="date-value">16 June 2026</div>
+    </div>
+    <div class="date-divider"></div>
+    <div class="date-item">
+      <div class="date-label">Venue</div>
+      <div class="date-value">Dubai · UAE</div>
+    </div>
+    <div class="date-divider"></div>
+    <div class="date-item">
+      <div class="date-label">Attire</div>
+      <div class="date-value">Black Tie</div>
+    </div>
+    <div class="date-divider"></div>
+    <div class="date-item">
+      <div class="date-label">By Invitation</div>
+      <div class="date-value">Strictly Private</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Begin · ابدأ</div>
+</section>
+
+
+<!-- ============================================================
+     CHAPTER I — THE FOUNDER'S OATH
+     ============================================================ -->
+<section class="oath" id="oath">
+  <div class="oath-inner">
+    <div class="chapter-marker">
+      <div class="chapter-num">Chapter I</div>
+      <h2 class="chapter-title">The <em>Founder's</em> Oath</h2>
+      <div class="chapter-arabic">عهد المؤسسين</div>
+      <div class="chapter-rule"></div>
+    </div>
+
+    <div class="oath-statement">
+      <p class="oath-quote">
+        We did not build a service. We accepted a <span>responsibility</span>. To answer when called. To be present when distance, hour, or hesitation would have kept others away. To treat care not as a transaction — but as <span>a covenant kept, two million times over</span>.
+      </p>
+      <div class="oath-attribution">— The Founding Charter · 2011</div>
+
+      <div class="oath-arabic">
+        لم نُؤسس خدمة — بل قبلنا مسؤولية. أن نُجيب حين يُنادى علينا. أن نكون حاضرين حين تحول المسافة أو الساعة أو التردد دون ذلك. أن نُعامل الرعاية لا كمعاملة — بل كعهدٍ نحفظه، مليونَي مرة.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CHAPTER II — TWO MILLION
+     ============================================================ -->
+<section class="constellation-sec" id="millions">
+  <div class="const-canvas">
+    <div class="chapter-marker">
+      <div class="chapter-num">Chapter II</div>
+      <h2 class="chapter-title">The <em>Constellation</em></h2>
+      <div class="chapter-arabic">المجرّة · مليونا حياة</div>
+      <div class="chapter-rule"></div>
+    </div>
+
+    <div class="const-big">
+      <div class="const-number">2,000,000</div>
+      <div class="const-label">lives <span>touched</span>, charts kept, calls answered, decisions made beside someone.</div>
+      <div class="const-arabic">مليونا حياةٍ مَسَسناها</div>
+    </div>
+
+    <div class="const-grid">
+      <div class="const-stat">
+        <div class="const-stat-num">15</div>
+        <div class="const-stat-label">Years of Service</div>
+        <div class="const-stat-ar">عامًا من الخدمة</div>
+      </div>
+      <div class="const-stat">
+        <div class="const-stat-num">24/7</div>
+        <div class="const-stat-label">Uninterrupted</div>
+        <div class="const-stat-ar">دون انقطاع</div>
+      </div>
+      <div class="const-stat">
+        <div class="const-stat-num">07</div>
+        <div class="const-stat-label">Markets Served</div>
+        <div class="const-stat-ar">أسواق نخدمها</div>
+      </div>
+      <div class="const-stat">
+        <div class="const-stat-num">$15M</div>
+        <div class="const-stat-label">Pre-Series B</div>
+        <div class="const-stat-ar">جولة تمويل</div>
+      </div>
+    </div>
+
+    <div class="rule-orn"><span>※</span></div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CHAPTER III — THE PROGRAMME
+     ============================================================ -->
+<section class="programme" id="programme">
+  <div class="prog-inner">
+    <div class="chapter-marker">
+      <div class="chapter-num">Chapter III</div>
+      <h2 class="chapter-title">Order of the <em>Evening</em></h2>
+      <div class="chapter-arabic">برنامج الأمسية</div>
+      <div class="chapter-rule"></div>
+    </div>
+
+    <div class="prog-table">
+      <div class="prog-row">
+        <div class="prog-time">06:30<span class="prog-time-meridiem">PM</span></div>
+        <div class="prog-title-en">Reception &amp; The Cabinet of Memory<em>Arrival, mezze, and the curated archive of fifteen years</em></div>
+        <div class="prog-title-ar">حفل الاستقبال وخزانة الذاكرة<small>الوصول والمأكولات وأرشيف خمسة عشر عامًا</small></div>
+        <div class="prog-num">i.</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-time">07:15<span class="prog-time-meridiem">PM</span></div>
+        <div class="prog-title-en">The Procession to the Hall<em>Doors open · seating by invitation only</em></div>
+        <div class="prog-title-ar">الانتقال إلى القاعة<small>افتتاح الأبواب · الجلوس بالدعوة فقط</small></div>
+        <div class="prog-num">ii.</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-time">07:30<span class="prog-time-meridiem">PM</span></div>
+        <div class="prog-title-en">The Founder's Oath — A Film<em>A three-minute cinematic reel · world premiere</em></div>
+        <div class="prog-title-ar">عهد المؤسسين — فيلم<small>عرض سينمائي قصير · العرض الأول</small></div>
+        <div class="prog-num">iii.</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-time">07:40<span class="prog-time-meridiem">PM</span></div>
+        <div class="prog-title-en">Address: From Startup to Institution<em>Remarks by the Executive Chairman</em></div>
+        <div class="prog-title-ar">كلمة: من بدايةٍ إلى مؤسسة<small>كلمة رئيس مجلس الإدارة التنفيذي</small></div>
+        <div class="prog-num">iv.</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-time">08:00<span class="prog-time-meridiem">PM</span></div>
+        <div class="prog-title-en">The Cornerstone Awards<em>Six honours · etched stone and gold</em></div>
+        <div class="prog-title-ar">جوائز حجر الأساس<small>ست جوائز · حجرٌ منقوش وذهب</small></div>
+        <div class="prog-num">v.</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-time">08:45<span class="prog-time-meridiem">PM</span></div>
+        <div class="prog-title-en">Dinner Service · A Tasting of Region<em>A bilingual menu reflecting the markets we serve</em></div>
+        <div class="prog-title-ar">العشاء · مذاقات من المنطقة<small>قائمة ثنائية اللغة من أسواقنا</small></div>
+        <div class="prog-num">vi.</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-time">09:45<span class="prog-time-meridiem">PM</span></div>
+        <div class="prog-title-en">Chapter Two — Looking Forward<em>The Pre-Series B vision · beyond hospital walls</em></div>
+        <div class="prog-title-ar">الفصل الثاني — نظرة إلى الأمام<small>رؤية ما قبل السلسلة (ب) · بعد جدران المستشفى</small></div>
+        <div class="prog-num">vii.</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-time">10:15<span class="prog-time-meridiem">PM</span></div>
+        <div class="prog-title-en">The Reveal &amp; The Toast<em>Unveiling of the Cornerstone monument</em></div>
+        <div class="prog-title-ar">الكشف والنخب<small>إزاحة الستار عن نُصب حجر الأساس</small></div>
+        <div class="prog-num">viii.</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-time">11:00<span class="prog-time-meridiem">PM</span></div>
+        <div class="prog-title-en">Late Salon · Coffee, Oud &amp; Conversation<em>Until the small hours</em></div>
+        <div class="prog-title-ar">صالون الليل · قهوة وعود وحديث<small>حتى ساعات الفجر الأولى</small></div>
+        <div class="prog-num">ix.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CHAPTER IV — THE FILM
+     ============================================================ -->
+<section class="film" id="film">
+  <div class="film-inner">
+    <div class="chapter-marker">
+      <div class="chapter-num">Chapter IV</div>
+      <h2 class="chapter-title">A Reel of <em>Why We Showed Up</em></h2>
+      <div class="chapter-arabic">فيلمٌ عن سبب حضورنا</div>
+      <div class="chapter-rule"></div>
+    </div>
+
+    <div class="film-frame">
+      <div class="film-bg"></div>
+      <div class="film-stars" id="filmStars"></div>
+      <!-- Decorative rosette in center -->
+      <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.18;">
+        <g transform="translate(400,200)" fill="none" stroke="#F0C040" stroke-width="0.5">
+          <circle r="170"/>
+          <circle r="140"/>
+          <circle r="110"/>
+          <circle r="80"/>
+          <g id="filmSpokes"></g>
+        </g>
+      </svg>
+      <div class="film-overlay">
+        <div class="film-top">
+          <div class="film-meta">A Cinematic Reel · 03:00</div>
+          <div class="film-runtime">Premiere — 16 June 2026</div>
+        </div>
+        <div class="film-play">
+          <div class="film-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="film-bottom">
+          <div class="film-title-block">
+            <div class="film-title">The Founder's Oath</div>
+            <div class="film-title-ar">عهد المؤسسين</div>
+          </div>
+          <div class="film-credit">A Film by TruDoc<br>15 Years · 2,000,000 Lives</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="film-chapters">
+      <div class="film-chap">
+        <div class="film-chap-num">Reel I</div>
+        <div class="film-chap-time">00:00 — 01:00</div>
+        <div class="film-chap-title">The Quiet Beginning</div>
+        <div class="film-chap-ar">البداية الهادئة · 2011</div>
+      </div>
+      <div class="film-chap">
+        <div class="film-chap-num">Reel II</div>
+        <div class="film-chap-time">01:00 — 02:00</div>
+        <div class="film-chap-title">The Calls We Took</div>
+        <div class="film-chap-ar">المكالمات التي أجبناها</div>
+      </div>
+      <div class="film-chap">
+        <div class="film-chap-num">Reel III</div>
+        <div class="film-chap-time">02:00 — 03:00</div>
+        <div class="film-chap-title">Chapter Two Begins</div>
+        <div class="film-chap-ar">الفصل الثاني يبدأ الآن</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CHAPTER V — THE CORNERSTONE AWARDS
+     ============================================================ -->
+<section class="cornerstone" id="cornerstone">
+  <div class="corner-inner">
+    <div class="chapter-marker">
+      <div class="chapter-num">Chapter V</div>
+      <h2 class="chapter-title">The <em>Cornerstone</em> Awards</h2>
+      <div class="chapter-arabic">جوائز حجر الأساس</div>
+      <div class="chapter-rule"></div>
+    </div>
+
+    <div class="award-stage">
+      <div class="award-display">
+        <div class="award-svg-wrap">
+          <!-- The Cornerstone Award SVG -->
+          <svg viewBox="0 0 320 420" width="280" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3a4a5e"/>
+                <stop offset="50%" stop-color="#1f2a3d"/>
+                <stop offset="100%" stop-color="#0d1525"/>
+              </linearGradient>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F0C040"/>
+                <stop offset="50%" stop-color="#D4A535"/>
+                <stop offset="100%" stop-color="#9E7A22"/>
+              </linearGradient>
+              <linearGradient id="stoneHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+              <filter id="awardShadow">
+                <feGaussianBlur stdDeviation="6"/>
+                <feOffset dy="8"/>
+                <feComponentTransfer><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
+                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- Shadow -->
+            <ellipse cx="160" cy="395" rx="100" ry="8" fill="rgba(0,0,0,0.4)"/>
+
+            <!-- Base / plinth -->
+            <polygon points="60,395 260,395 250,385 70,385" fill="#0d1525" stroke="#F0C040" stroke-width="0.5"/>
+            <rect x="70" y="370" width="180" height="15" fill="url(#stoneGrad)" stroke="#F0C040" stroke-width="0.5"/>
+
+            <!-- The Stone block -->
+            <polygon points="80,370 240,370 230,80 90,80" fill="url(#stoneGrad)" stroke="#F0C040" stroke-width="0.6"/>
+            <!-- Highlight -->
+            <polygon points="80,370 240,370 230,80 90,80" fill="url(#stoneHighlight)"/>
+
+            <!-- Stone texture lines (subtle) -->
+            <g stroke="rgba(240,192,64,0.08)" stroke-width="0.5" fill="none">
+              <line x1="90" y1="130" x2="230" y2="130"/>
+              <line x1="89" y1="200" x2="231" y2="200"/>
+              <line x1="88" y1="270" x2="232" y2="270"/>
+              <line x1="87" y1="340" x2="233" y2="340"/>
+            </g>
+
+            <!-- Top bevel -->
+            <polygon points="90,80 230,80 220,70 100,70" fill="#2a3a52" stroke="#F0C040" stroke-width="0.5"/>
+            <polygon points="100,70 220,70 215,62 105,62" fill="#1a2438" stroke="#F0C040" stroke-width="0.5"/>
+
+            <!-- Gold inlay XV -->
+            <g transform="translate(160, 180)">
+              <text text-anchor="middle" font-family="Playfair Display, serif" font-weight="900" font-size="80" fill="url(#goldGrad)" letter-spacing="-4">XV</text>
+              <!-- Etched lines around XV -->
+              <line x1="-50" y1="20" x2="-30" y2="20" stroke="#F0C040" stroke-width="0.6" opacity="0.6"/>
+              <line x1="30" y1="20" x2="50" y2="20" stroke="#F0C040" stroke-width="0.6" opacity="0.6"/>
+            </g>
+
+            <!-- TruDoc engraved -->
+            <text x="160" y="240" text-anchor="middle" font-family="Playfair Display, serif" font-style="italic" font-size="14" fill="#F0C040" opacity="0.85" letter-spacing="3">TruDoc</text>
+
+            <!-- Year -->
+            <text x="160" y="265" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#E8C97A" opacity="0.7" letter-spacing="4">EST · MMXI</text>
+
+            <!-- Rosette inlay below -->
+            <g transform="translate(160, 310)" fill="none" stroke="#F0C040" stroke-width="0.6" opacity="0.7">
+              <circle r="22"/>
+              <circle r="15"/>
+              <!-- 15-point star -->
+              <g id="awardRosette"></g>
+            </g>
+
+            <!-- Etched border ornaments -->
+            <g stroke="#F0C040" stroke-width="0.5" fill="none" opacity="0.6">
+              <path d="M95,90 L105,90 L105,100"/>
+              <path d="M225,90 L215,90 L215,100"/>
+              <path d="M95,360 L105,360 L105,350"/>
+              <path d="M225,360 L215,360 L215,350"/>
+            </g>
+          </svg>
+        </div>
+        <div class="award-body">
+          <div class="award-eyebrow">The Honour · جائزة الشرف</div>
+          <h3 class="award-name">The <em>Cornerstone</em></h3>
+          <div class="award-name-ar">حجر الأساس</div>
+          <p class="award-desc">
+            Hand-cut from a single block of regional limestone, inlaid with twenty-four-carat gold leaf, and engraved with the recipient's name in the bilingual script of our founding charter. Each weighs four kilograms — by design. Not a trophy, but a fragment of a building's foundation.
+          </p>
+          <div class="award-spec">
+            <div class="award-spec-item">
+              <div class="award-spec-label">Material</div>
+              <div class="award-spec-value">Etched limestone &amp; gold</div>
+            </div>
+            <div class="award-spec-item">
+              <div class="award-spec-label">Weight</div>
+              <div class="award-spec-value">4.0 kg · permanent</div>
+            </div>
+            <div class="award-spec-item">
+              <div class="award-spec-label">Edition</div>
+              <div class="award-spec-value">Six · numbered I–VI</div>
+            </div>
+            <div class="award-spec-item">
+              <div class="award-spec-label">Inscription</div>
+              <div class="award-spec-value">Bilingual · hand-engraved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="award-cats">
+      <div class="award-cat">
+        <div class="award-cat-num">I.</div>
+        <div class="award-cat-name">The Pioneer<br><em style="font-style:italic;color:var(--ivory-2);font-size:13px;opacity:0.7;">For the original mission</em></div>
+        <div class="award-cat-ar">جائزة الرائد</div>
+      </div>
+      <div class="award-cat">
+        <div class="award-cat-num">II.</div>
+        <div class="award-cat-name">The Keeper<br><em style="font-style:italic;color:var(--ivory-2);font-size:13px;opacity:0.7;">For tenure beyond a decade</em></div>
+        <div class="award-cat-ar">جائزة الحارس</div>
+      </div>
+      <div class="award-cat">
+        <div class="award-cat-num">III.</div>
+        <div class="award-cat-name">The Healer<br><em style="font-style:italic;color:var(--ivory-2);font-size:13px;opacity:0.7;">For clinical excellence</em></div>
+        <div class="award-cat-ar">جائزة المُداوي</div>
+      </div>
+      <div class="award-cat">
+        <div class="award-cat-num">IV.</div>
+        <div class="award-cat-name">The Architect<br><em style="font-style:italic;color:var(--ivory-2);font-size:13px;opacity:0.7;">For building what wasn't there</em></div>
+        <div class="award-cat-ar">جائزة المهندس</div>
+      </div>
+      <div class="award-cat">
+        <div class="award-cat-num">V.</div>
+        <div class="award-cat-name">The Partner<br><em style="font-style:italic;color:var(--ivory-2);font-size:13px;opacity:0.7;">For institutional alliance</em></div>
+        <div class="award-cat-ar">جائزة الشريك</div>
+      </div>
+      <div class="award-cat">
+        <div class="award-cat-num">VI.</div>
+        <div class="award-cat-name">The Chapter<br><em style="font-style:italic;color:var(--ivory-2);font-size:13px;opacity:0.7;">For what comes next</em></div>
+        <div class="award-cat-ar">جائزة الفصل القادم</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CHAPTER VI — SAVE THE DATE
+     ============================================================ -->
+<section class="savedate" id="savedate">
+  <div class="savedate-inner">
+    <div class="chapter-marker">
+      <div class="chapter-num">Chapter VI</div>
+      <h2 class="chapter-title">The <em>Couture</em> Save the Date</h2>
+      <div class="chapter-arabic">حفظ التاريخ · بطاقة مزخرفة</div>
+      <div class="chapter-rule"></div>
+    </div>
+
+    <div class="savedate-display">
+      <!-- The card -->
+      <div class="savedate-card">
+        <!-- Mashrabiya pattern -->
+        <svg class="savedate-mashrabiya" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="mashrPattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+              <g fill="none" stroke="#F0C040" stroke-width="0.5">
+                <!-- 15-pointed motif simplified -->
+                <circle cx="30" cy="30" r="18"/>
+                <circle cx="30" cy="30" r="10"/>
+                <path d="M30,12 L30,48 M12,30 L48,30 M17,17 L43,43 M43,17 L17,43"/>
+                <path d="M30,12 L34,30 L30,48 L26,30 Z"/>
+                <path d="M12,30 L30,34 L48,30 L30,26 Z"/>
+                <circle cx="30" cy="30" r="3" fill="#F0C040"/>
+                <circle cx="0" cy="0" r="3" fill="#F0C040"/>
+                <circle cx="60" cy="0" r="3" fill="#F0C040"/>
+                <circle cx="0" cy="60" r="3" fill="#F0C040"/>
+                <circle cx="60" cy="60" r="3" fill="#F0C040"/>
+              </g>
+            </pattern>
+          </defs>
+          <rect width="300" height="400" fill="url(#mashrPattern)"/>
+        </svg>
+
+        <div class="savedate-top">
+          <div class="savedate-mark">XV</div>
+          <div class="savedate-eyebrow">Save the Date</div>
+          <div class="savedate-host">The Board of TruDoc Healthcare<br>request the honour of your presence</div>
+        </div>
+
+        <div class="savedate-middle">
+          <div class="savedate-mid-line">at the celebration of</div>
+          <div class="savedate-headline">15 &amp; Forever</div>
+          <div class="savedate-headline-sub">The Legacy Reveal</div>
+          <div class="savedate-ar">خمسةَ عشرَ عامًا · وإلى الأبد</div>
+        </div>
+
+        <div class="savedate-bottom">
+          <div class="savedate-date">Tuesday · 16 June 2026 · Six-Thirty in the Evening</div>
+          <div class="savedate-loc">Dubai · United Arab Emirates</div>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="savedate-copy">
+        <h3>A physical <em>unboxing</em>, not a notification.</h3>
+        <p>
+          The Save the Date arrives in a laser-cut Mashrabiya sleeve — a gesture before a gathering. The recipient is required to physically lift, slide, and reveal the card within. The unboxing is the first chapter of the evening; the invitation is not received until it is uncovered.
+        </p>
+        <p>
+          Six hundred sleeves are being produced. Each is hand-finished, individually numbered, and addressed in the recipient's own preferred script.
+        </p>
+
+        <div class="savedate-meta">
+          <div class="savedate-meta-item">
+            <div class="savedate-meta-label">Material</div>
+            <div class="savedate-meta-value">Laser-cut card stock, 600 gsm</div>
+          </div>
+          <div class="savedate-meta-item">
+            <div class="savedate-meta-label">Finish</div>
+            <div class="savedate-meta-value">Foil-stamped in burnished gold</div>
+          </div>
+          <div class="savedate-meta-item">
+            <div class="savedate-meta-label">Dispatch</div>
+            <div class="savedate-meta-value">18 June 2026 — hand-delivered</div>
+          </div>
+          <div class="savedate-meta-item">
+            <div class="savedate-meta-label">Edition</div>
+            <div class="savedate-meta-value">Strictly limited · numbered</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CHAPTER VII — WORDMARK SYSTEM
+     ============================================================ -->
+<section class="wordmark-sys" id="wordmark">
+  <div class="wm-inner">
+    <div class="chapter-marker">
+      <div class="chapter-num">Chapter VII</div>
+      <h2 class="chapter-title">The <em>Wordmark</em> System</h2>
+      <div class="chapter-arabic">نظام الشعار · ثنائي اللغة</div>
+      <div class="chapter-rule"></div>
+    </div>
+
+    <p style="text-align:center;max-width:680px;margin:0 auto;font-family:var(--serif-2);font-style:italic;font-size:17px;line-height:1.7;color:var(--ivory-2);">
+      Four lockups, each engineered to read at three metres tall on a stage backdrop, and at twenty millimetres on a Cornerstone plaque. Arabic and English exist in perfect bilingual symmetry — neither is a translation of the other.
+    </p>
+
+    <div class="wm-spec">
+      <!-- Cell 1: Primary Lockup -->
+      <div class="wm-cell">
+        <div class="wm-cell-label">Lockup I · Primary Horizontal</div>
+        <div class="wm-cell-display">
+          <div class="wm-primary">
+            <div class="wm-primary-num">XV</div>
+            <div class="wm-primary-divider"></div>
+            <div class="wm-primary-text">
+              <div class="wm-primary-trudoc">TruDoc</div>
+              <div class="wm-primary-tag">15 &amp; Forever</div>
+              <div class="wm-primary-ar">خمسةَ عشرَ عامًا</div>
+            </div>
+          </div>
+        </div>
+        <div class="wm-cell-spec">
+          <span>Use · masthead, press kit, signage</span>
+          <span>Min. height 32px</span>
+        </div>
+      </div>
+
+      <!-- Cell 2: Monumental -->
+      <div class="wm-cell">
+        <div class="wm-cell-label">Lockup II · Monumental Stacked</div>
+        <div class="wm-cell-display">
+          <div class="wm-stacked">
+            <div class="wm-stacked-top">Fifteen Years of</div>
+            <div class="wm-stacked-xv">XV</div>
+            <div class="wm-stacked-bot">Showing Up</div>
+          </div>
+        </div>
+        <div class="wm-cell-spec">
+          <span>Use · stage backdrop, hero key art</span>
+          <span>Min. height 3m</span>
+        </div>
+      </div>
+
+      <!-- Cell 3: Bilingual -->
+      <div class="wm-cell">
+        <div class="wm-cell-label">Lockup III · Bilingual Mirror</div>
+        <div class="wm-cell-display">
+          <div class="wm-bilingual">
+            <div class="wm-bi-en">
+              <div class="wm-bi-en-num">XV</div>
+              <div class="wm-bi-en-txt">Years</div>
+            </div>
+            <div class="wm-bi-bar"></div>
+            <div class="wm-bi-ar">
+              <div class="wm-bi-ar-num">١٥</div>
+              <div class="wm-bi-ar-txt">عامًا</div>
+            </div>
+          </div>
+        </div>
+        <div class="wm-cell-spec">
+          <span>Use · bilingual print, invitation</span>
+          <span>Equal symmetry · no hierarchy</span>
+        </div>
+      </div>
+
+      <!-- Cell 4: Seal -->
+      <div class="wm-cell">
+        <div class="wm-cell-label">Lockup IV · Institutional Seal</div>
+        <div class="wm-cell-display">
+          <div class="wm-seal">
+            <div class="wm-seal-inner">
+              <div class="wm-seal-xv">XV</div>
+              <div class="wm-seal-est">EST · MMXI</div>
+            </div>
+          </div>
+        </div>
+        <div class="wm-cell-spec">
+          <span>Use · Cornerstone awards, certificates</span>
+          <span>Embossing only · no flat usage</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colour palette -->
+    <div style="margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);">
+      <div style="padding:50px 30px;background:#0A1628;text-align:center;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.42em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;">Institutional Trust</div>
+        <div style="width:80px;height:80px;background:#0A1628;border:1px solid var(--gold);margin:0 auto 14px;"></div>
+        <div style="font-family:var(--serif);color:var(--ivory);font-size:18px;font-weight:500;">Deep Navy</div>
+        <div style="font-family:var(--sans);font-size:11px;color:var(--ivory);opacity:0.6;margin-top:4px;letter-spacing:0.2em;">#0A1628</div>
+      </div>
+      <div style="padding:50px 30px;background:var(--navy-2);text-align:center;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.42em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;">Legacy &amp; Earned</div>
+        <div style="width:80px;height:80px;background:#F0C040;margin:0 auto 14px;"></div>
+        <div style="font-family:var(--serif);color:var(--ivory);font-size:18px;font-weight:500;">Burnished Gold</div>
+        <div style="font-family:var(--sans);font-size:11px;color:var(--ivory);opacity:0.6;margin-top:4px;letter-spacing:0.2em;">#F0C040</div>
+      </div>
+      <div style="padding:50px 30px;background:var(--navy-2);text-align:center;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.42em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;">Vitality &amp; Future</div>
+        <div style="width:80px;height:80px;background:#00BA9D;margin:0 auto 14px;"></div>
+        <div style="font-family:var(--serif);color:var(--ivory);font-size:18px;font-weight:500;">TruDoc Teal</div>
+        <div style="font-family:var(--sans);font-size:11px;color:var(--ivory);opacity:0.6;margin-top:4px;letter-spacing:0.2em;">#00BA9D</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CHAPTER VIII — VENUE
+     ============================================================ -->
+<section class="venue" id="venue">
+  <div class="venue-inner">
+    <div class="chapter-marker">
+      <div class="chapter-num">Chapter VIII</div>
+      <h2 class="chapter-title">The <em>Gathering</em> Place</h2>
+      <div class="chapter-arabic">مكان اللقاء</div>
+      <div class="chapter-rule"></div>
+    </div>
+
+    <div class="venue-card">
+      <div class="venue-visual">
+        <!-- Stylised architectural rendering -->
+        <svg class="venue-svg" viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="venueSky" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1a2640"/>
+              <stop offset="50%" stop-color="#0F1D33"/>
+              <stop offset="100%" stop-color="#0A1628"/>
+            </linearGradient>
+            <linearGradient id="venueGold" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#F0C040" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#9E7A22" stop-opacity="0.5"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="480" fill="url(#venueSky)"/>
+
+          <!-- Stars -->
+          <g fill="#F0C040">
+            <circle cx="80" cy="40" r="0.6" opacity="0.8"/>
+            <circle cx="180" cy="70" r="0.4" opacity="0.6"/>
+            <circle cx="320" cy="30" r="0.7" opacity="0.9"/>
+            <circle cx="450" cy="80" r="0.5" opacity="0.7"/>
+            <circle cx="520" cy="50" r="0.4" opacity="0.6"/>
+            <circle cx="240" cy="100" r="0.5" opacity="0.7"/>
+          </g>
+
+          <!-- Architectural facade — abstract Mashrabiya tower -->
+          <g transform="translate(150,120)">
+            <!-- Main structure -->
+            <rect x="0" y="0" width="300" height="280" fill="#0d1525" stroke="#F0C040" stroke-width="0.6" opacity="0.95"/>
+
+            <!-- Mashrabiya screen pattern -->
+            <g stroke="#F0C040" stroke-width="0.4" fill="none" opacity="0.5">
+              <!-- Repeating geometric grid -->
+              <g>
+                <pattern id="venueScreen" x="20" y="20" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <circle cx="20" cy="20" r="14" stroke="#F0C040" stroke-width="0.4" fill="none" opacity="0.5"/>
+                  <circle cx="20" cy="20" r="8" stroke="#F0C040" stroke-width="0.4" fill="none" opacity="0.5"/>
+                  <path d="M20,6 L20,34 M6,20 L34,20 M10,10 L30,30 M30,10 L10,30" stroke="#F0C040" stroke-width="0.3" opacity="0.4"/>
+                  <circle cx="20" cy="20" r="2" fill="#F0C040" opacity="0.6"/>
+                </pattern>
+                <rect x="20" y="20" width="260" height="200" fill="url(#venueScreen)"/>
+              </g>
+            </g>
+
+            <!-- Bottom plinth -->
+            <rect x="-20" y="260" width="340" height="20" fill="#0a1224" stroke="#F0C040" stroke-width="0.5"/>
+            <rect x="-30" y="278" width="360" height="6" fill="#060f1c"/>
+
+            <!-- Top crown -->
+            <polygon points="0,0 300,0 290,-15 10,-15" fill="#0a1224" stroke="#F0C040" stroke-width="0.5"/>
+            <polygon points="40,-15 260,-15 240,-30 60,-30" fill="#0d1525" stroke="#F0C040" stroke-width="0.5"/>
+
+            <!-- Central illuminated arch -->
+            <path d="M120,180 Q120,140 150,140 Q180,140 180,180 L180,260 L120,260 Z" fill="url(#venueGold)" opacity="0.4" stroke="#F0C040" stroke-width="0.6"/>
+            <path d="M130,180 Q130,150 150,150 Q170,150 170,180 L170,260 L130,260 Z" fill="#F0C040" opacity="0.15"/>
+          </g>
+
+          <!-- Foreground line -->
+          <line x1="0" y1="420" x2="600" y2="420" stroke="#F0C040" stroke-width="0.4" opacity="0.4"/>
+          <line x1="0" y1="425" x2="600" y2="425" stroke="#F0C040" stroke-width="0.2" opacity="0.2"/>
+        </svg>
+        <div class="venue-visual-content">
+          <div class="venue-tag">The Gathering · 16.VI.MMXXVI</div>
+          <div class="venue-name">A private hall in the heart of Dubai</div>
+        </div>
+      </div>
+      <div class="venue-body">
+        <h3>Where institutions are <em>marked</em>.</h3>
+        <div class="venue-ar">حيث تُحدَّد المؤسسات</div>
+        <div class="venue-meta-row"><div class="lbl">Address</div><div class="val">To be revealed upon RSVP</div></div>
+        <div class="venue-meta-row"><div class="lbl">Capacity</div><div class="val">600 · Strictly private</div></div>
+        <div class="venue-meta-row"><div class="lbl">Doors</div><div class="val">06:30 PM · Gulf Standard Time</div></div>
+        <div class="venue-meta-row"><div class="lbl">Conclusion</div><div class="val">Until the small hours</div></div>
+        <div class="venue-meta-row"><div class="lbl">Parking</div><div class="val">Valet · arranged for honoured guests</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CHAPTER IX — RSVP
+     ============================================================ -->
+<section class="rsvp" id="rsvp">
+  <div class="rsvp-inner">
+    <div class="chapter-marker">
+      <div class="chapter-num">Chapter IX</div>
+      <h2 class="chapter-title">Confirm Your <em>Attendance</em></h2>
+      <div class="chapter-arabic">تأكيد الحضور</div>
+      <div class="chapter-rule"></div>
+    </div>
+
+    <div class="rsvp-form">
+      <div class="rsvp-intro">
+        <p>By invitation only. Your presence is requested by the Board <em>·</em> kindly respond no later than <em>1 June 2026</em>.</p>
+      </div>
+
+      <div class="rsvp-grid">
+        <div class="rsvp-field">
+          <label>Full Name · الاسم الكامل</label>
+          <input type="text" placeholder="" />
+        </div>
+        <div class="rsvp-field">
+          <label>Title &amp; Organisation</label>
+          <input type="text" placeholder="" />
+        </div>
+        <div class="rsvp-field">
+          <label>Email · البريد</label>
+          <input type="email" placeholder="" />
+        </div>
+        <div class="rsvp-field">
+          <label>Mobile · الهاتف</label>
+          <input type="tel" placeholder="" />
+        </div>
+        <div class="rsvp-field">
+          <label>Attendance</label>
+          <select>
+            <option>Accept with pleasure · سأحضر</option>
+            <option>Regret · unable to attend</option>
+            <option>Awaiting confirmation</option>
+          </select>
+        </div>
+        <div class="rsvp-field">
+          <label>Guest of Honour · مرافق</label>
+          <select>
+            <option>No guest</option>
+            <option>One companion</option>
+            <option>One companion · separate seating</option>
+          </select>
+        </div>
+        <div class="rsvp-field full">
+          <label>Dietary &amp; Accessibility Notes</label>
+          <textarea placeholder="If any · so we may prepare accordingly."></textarea>
+        </div>
+        <div class="rsvp-field full">
+          <label>Preferred Language of Correspondence</label>
+          <select>
+            <option>English · الإنجليزية</option>
+            <option>Arabic · العربية</option>
+            <option>Bilingual</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="rsvp-actions">
+        <div class="rsvp-note">Your name will be hand-inscribed onto the seating card and the keepsake programme. Substitutions are not permitted after the deadline.</div>
+        <button class="rsvp-submit" onclick="submitRsvp()">Confirm · أكّد</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COLOPHON
+     ============================================================ -->
+<footer class="colophon">
+  <div class="colo-inner">
+    <div class="colo-top">
+      <div class="colo-brand">
+        <h4>The <em>Legacy Reveal</em> · 16 June 2026</h4>
+        <p>An evening to mark fifteen years of pioneering virtual-first care across the GCC — and to lay the cornerstone for chapter two. By TruDoc Healthcare, est. 2011.</p>
+      </div>
+      <div class="colo-col">
+        <h5>The Event</h5>
+        <ul>
+          <li><a href="#oath" style="color:inherit;text-decoration:none;">The Founder's Oath</a></li>
+          <li><a href="#programme" style="color:inherit;text-decoration:none;">Programme</a></li>
+          <li><a href="#cornerstone" style="color:inherit;text-decoration:none;">The Awards</a></li>
+          <li><a href="#film" style="color:inherit;text-decoration:none;">The Film</a></li>
+        </ul>
+      </div>
+      <div class="colo-col">
+        <h5>الفعالية</h5>
+        <ul>
+          <li class="ar">عهد المؤسسين</li>
+          <li class="ar">برنامج الأمسية</li>
+          <li class="ar">جوائز حجر الأساس</li>
+          <li class="ar">الفيلم</li>
+        </ul>
+      </div>
+      <div class="colo-col">
+        <h5>Office of the Reveal</h5>
+        <ul>
+          <li style="font-size:13px;">reveal@trudochealth.com</li>
+          <li style="font-size:13px;">+971 · by appointment</li>
+          <li style="font-size:13px;">Marcom · TruDoc</li>
+        </ul>
+      </div>
+    </div>
+    <div class="colo-bottom">
+      <div class="colo-mark">XV · TruDoc · Est. MMXI</div>
+      <div class="colo-meta">© 2026 TruDoc Healthcare · The Legacy Reveal</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ---------- Generate constellation background ----------
+  (function(){
+    const field = document.getElementById('constellationField');
+    if(!field) return;
+    const count = 80;
+    for(let i=0;i<count;i++){
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random() * 2 + 0.6;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.animationDelay = (Math.random() * 4) + 's';
+      s.style.animationDuration = (3 + Math.random() * 3) + 's';
+      field.appendChild(s);
+    }
+  })();
+
+  // ---------- Film frame stars ----------
+  (function(){
+    const film = document.getElementById('filmStars');
+    if(!film) return;
+    for(let i=0;i<40;i++){
+      const s = document.createElement('div');
+      s.style.position='absolute';
+      s.style.background='#F0C040';
+      s.style.borderRadius='50%';
+      const size = Math.random() * 1.8 + 0.5;
+      s.style.width=size+'px';
+      s.style.height=size+'px';
+      s.style.left=Math.random()*100+'%';
+      s.style.top=Math.random()*100+'%';
+      s.style.opacity=Math.random()*0.6+0.2;
+      film.appendChild(s);
+    }
+  })();
+
+  // ---------- 15-pointed star generator for film rosette ----------
+  (function(){
+    const target = document.getElementById('filmSpokes');
+    if(!target) return;
+    const ns = 'http://www.w3.org/2000/svg';
+    for(let i=0;i<15;i++){
+      const angle = (i/15) * Math.PI * 2;
+      const x1 = Math.cos(angle) * 80;
+      const y1 = Math.sin(angle) * 80;
+      const x2 = Math.cos(angle) * 170;
+      const y2 = Math.sin(angle) * 170;
+      const line = document.createElementNS(ns,'line');
+      line.setAttribute('x1',x1);
+      line.setAttribute('y1',y1);
+      line.setAttribute('x2',x2);
+      line.setAttribute('y2',y2);
+      line.setAttribute('stroke','#F0C040');
+      line.setAttribute('stroke-width','0.4');
+      target.appendChild(line);
+    }
+  })();
+
+  // ---------- 15-point award rosette ----------
+  (function(){
+    const target = document.getElementById('awardRosette');
+    if(!target) return;
+    const ns = 'http://www.w3.org/2000/svg';
+    const pts = [];
+    for(let i=0;i<15;i++){
+      const a = (i/15) * Math.PI * 2 - Math.PI/2;
+      pts.push((Math.cos(a)*15).toFixed(2)+','+(Math.sin(a)*15).toFixed(2));
+    }
+    // connect each to point 7 ahead to form star
+    for(let i=0;i<15;i++){
+      const start = pts[i];
+      const end = pts[(i+7)%15];
+      const line = document.createElementNS(ns,'line');
+      const [x1,y1] = start.split(',');
+      const [x2,y2] = end.split(',');
+      line.setAttribute('x1',x1);
+      line.setAttribute('y1',y1);
+      line.setAttribute('x2',x2);
+      line.setAttribute('y2',y2);
+      line.setAttribute('stroke','#F0C040');
+      line.setAttribute('stroke-width','0.5');
+      line.setAttribute('opacity','0.75');
+      target.appendChild(line);
+    }
+  })();
+
+  // ---------- RSVP feedback ----------
+  function submitRsvp(){
+    const btn = document.querySelector('.rsvp-submit');
+    btn.textContent = 'Confirmed · شكرًا لك';
+    btn.style.background = 'transparent';
+    btn.style.color = 'var(--gold)';
+    btn.style.boxShadow = 'inset 0 0 0 1px var(--gold)';
+    setTimeout(()=>{
+      btn.textContent = 'Confirm · أكّد';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.boxShadow = '';
+    }, 3500);
+  }
+
+  // ---------- Smooth scroll for nav anchors ----------
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if(id.length>1){
+        const el = document.querySelector(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
