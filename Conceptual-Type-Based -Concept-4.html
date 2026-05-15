@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruDoc XV — Save the Date — 10 Concepts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600;1,700&family=Figtree:wght@200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1828;
+      --navy-deep: #060F1C;
+      --cream: #F4EFE3;
+      --cream-warm: #EDE4D0;
+      --gold: #C8A248;
+      --gold-deep: #8C6A1F;
+      --teal: #00BA9D;
+      --teal-deep: #006A5A;
+      --emerald: #0A2A24;
+      --ink: #0A0A0F;
+      --paper-line: rgba(200, 162, 72, 0.18);
+      --hair: rgba(244, 239, 227, 0.14);
+      --serif-display: 'DM Serif Display', 'Playfair Display', Georgia, serif;
+      --serif-text: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Figtree', 'Inter', sans-serif;
+      --mono: 'Courier New', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #1A1F2E;
+      color: var(--cream);
+      font-family: var(--sans);
+      padding: 60px 40px 100px;
+      min-height: 100vh;
+    }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+      max-width: 1400px;
+      margin: 0 auto 60px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--hair);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .page-header .left .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .page-header .left h1 {
+      font-family: var(--serif-display);
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+    .page-header .left h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .page-header .right {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: rgba(244, 239, 227, 0.45);
+      line-height: 1.9;
+      text-transform: uppercase;
+    }
+
+    /* ===== CARDS GRID ===== */
+    .cards {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
+      gap: 40px;
+    }
+
+    /* Common card frame */
+    .card {
+      aspect-ratio: 5 / 7;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+      border-radius: 2px;
+      transition: transform 0.4s cubic-bezier(.2,.7,.3,1.2), box-shadow 0.4s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 50px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(200, 162, 72, 0.2);
+    }
+
+    /* Concept label that sits ABOVE each card */
+    .concept-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-left: 4px;
+    }
+    .concept-label .num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--teal);
+    }
+    .concept-label .name {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      color: rgba(244, 239, 227, 0.55);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .concept-label .dash {
+      flex: 1;
+      height: 1px;
+      background: var(--hair);
+    }
+
+    /* ============================================
+       CARD 01 - EDITORIAL SPREAD
+    ============================================ */
+    .c01 {
+      background: var(--cream);
+      color: var(--navy);
+      padding: 50px 44px;
+      display: flex;
+      flex-direction: column;
+    }
+    .c01 .top-bar {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+      border-bottom: 0.5px solid var(--gold);
+      padding-bottom: 10px;
+      margin-bottom: 38px;
+    }
+    .c01 .lede {
+      font-family: var(--serif-text);
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(11,24,40,0.7);
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      max-width: 70%;
+    }
+    .c01 .headline {
+      font-family: var(--serif-display);
+      font-size: 58px;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .c01 .headline .em-italic {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+    .c01 .reasons {
+      font-family: var(--serif-display);
+      font-size: 84px;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      color: var(--navy);
+      margin-bottom: auto;
+      margin-top: 4px;
+    }
+    .c01 .reasons span {
+      display: inline-block;
+      border-bottom: 4px solid var(--gold);
+      padding-bottom: 2px;
+    }
+    .c01 .save-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 0.5px solid var(--navy);
+      padding-top: 22px;
+      margin-top: 30px;
+    }
+    .c01 .save-block .label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+    .c01 .save-block .date {
+      font-family: var(--serif-display);
+      font-size: 28px;
+      line-height: 1;
+      color: var(--navy);
+      text-align: right;
+    }
+    .c01 .save-block .date small {
+      display: block;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--gold-deep);
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       CARD 02 - EMBOSSED LETTERPRESS
+    ============================================ */
+    .c02 {
+      background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.04) 0%, transparent 50%), linear-gradient(135deg, #0E1F32 0%, #0B1828 50%, #060F1C 100%);
+      color: var(--cream);
+      padding: 50px 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    .c02::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(200,162,72,0.08) 1px, transparent 1px);
+      background-size: 4px 4px;
+      pointer-events: none;
+    }
+    .c02 .frame-corner {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+    .c02 .frame-corner.tl { top: 24px; left: 24px; border-width: 1px 0 0 1px; }
+    .c02 .frame-corner.tr { top: 24px; right: 24px; border-width: 1px 1px 0 0; }
+    .c02 .frame-corner.bl { bottom: 24px; left: 24px; border-width: 0 0 1px 1px; }
+    .c02 .frame-corner.br { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
+    .c02 .xv {
+      font-family: var(--serif-display);
+      font-size: 180px;
+      line-height: 1;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.5), 0 2px 8px rgba(200,162,72,0.15);
+      font-style: italic;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .c02 .xv::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 0.5px;
+      background: var(--gold);
+      margin: 18px auto 28px;
+    }
+    .c02 .tagline {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.3;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+      max-width: 80%;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .c02 .tagline em { color: var(--gold); font-weight: 500; }
+    .c02 .save {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      color: rgba(244,239,227,0.6);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .c02 .date {
+      font-family: var(--serif-display);
+      font-size: 32px;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+      position: relative;
+      z-index: 1;
+    }
+    .c02 .place {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================
+       CARD 03 - TRIPTYCH VERTICAL
+    ============================================ */
+    .c03 {
+      background: var(--navy);
+      color: var(--cream);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 0;
+    }
+    .c03 .head {
+      padding: 36px 36px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--hair);
+    }
+    .c03 .head .crest {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--teal);
+      text-transform: uppercase;
+    }
+    .c03 .head .roman {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-size: 24px;
+      color: var(--gold);
+    }
+    .c03 .triptych {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: stretch;
+    }
+    .c03 .triptych .col {
+      padding: 60px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .c03 .triptych .col:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 20%; bottom: 20%;
+      width: 0.5px;
+      background: var(--hair);
+    }
+    .c03 .triptych .col .article {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 18px;
+    }
+    .c03 .triptych .col .word {
+      font-family: var(--serif-display);
+      font-size: 56px;
+      line-height: 1;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .c03 .triptych .col .word em { font-style: italic; font-weight: 400; }
+    .c03 .triptych .col .gloss {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: rgba(244,239,227,0.4);
+      text-transform: uppercase;
+      max-width: 12ch;
+      line-height: 1.7;
+    }
+    .c03 .foot {
+      padding: 24px 36px;
+      border-top: 1px solid var(--hair);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .c03 .foot .save-the {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      color: rgba(244,239,227,0.45);
+      text-transform: uppercase;
+    }
+    .c03 .foot .date {
+      font-family: var(--serif-display);
+      font-size: 24px;
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* ============================================
+       CARD 04 - ECG / STILL BEATING
+    ============================================ */
+    .c04 {
+      background: linear-gradient(180deg, var(--ink) 0%, #050B14 100%);
+      color: var(--cream);
+      padding: 50px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .c04 .marker {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--teal);
+      text-transform: uppercase;
+      border-left: 2px solid var(--teal);
+      padding-left: 12px;
+    }
+    .c04 .number-block { margin-top: 30px; }
+    .c04 .fifteen {
+      font-family: var(--serif-display);
+      font-size: 280px;
+      line-height: 0.85;
+      color: var(--cream);
+      letter-spacing: -0.04em;
+      font-style: italic;
+    }
+    .c04 .yrs {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.5em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-top: -10px;
+    }
+    .c04 .ecg-row { margin: 40px 0; }
+    .c04 .ecg-row svg { display: block; width: 100%; height: 90px; }
+    .c04 .still-beating {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 36px;
+      color: var(--cream);
+      letter-spacing: 0.01em;
+      margin-bottom: 26px;
+    }
+    .c04 .still-beating em { color: var(--teal); font-weight: 500; }
+    .c04 .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 30px;
+      padding-top: 22px;
+      border-top: 0.5px solid var(--hair);
+    }
+    .c04 .bottom-grid .label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      color: rgba(244,239,227,0.5);
+      text-transform: uppercase;
+      line-height: 2;
+    }
+    .c04 .bottom-grid .date {
+      font-family: var(--serif-display);
+      font-size: 26px;
+      color: var(--cream);
+      text-align: right;
+      line-height: 1.1;
+    }
+    .c04 .bottom-grid .date small {
+      display: block;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--teal);
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       CARD 05 - ONE TO TWO MILLION
+    ============================================ */
+    .c05 {
+      background: radial-gradient(ellipse at 80% 30%, rgba(0,186,157,0.06) 0%, transparent 60%), var(--navy);
+      color: var(--cream);
+      padding: 50px 44px;
+      display: flex;
+      flex-direction: column;
+    }
+    .c05 .top {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .c05 .journey {
+      flex: 1;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 24px;
+    }
+    .c05 .journey .anchor {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .c05 .journey .anchor .small-num {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-size: 84px;
+      line-height: 1;
+      color: var(--cream);
+    }
+    .c05 .journey .anchor .small-num + .lbl {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: rgba(244,239,227,0.5);
+      text-transform: uppercase;
+    }
+    .c05 .journey .line-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 30px 0;
+    }
+    .c05 .journey .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--cream) 0%, var(--teal) 100%);
+      position: relative;
+    }
+    .c05 .journey .line::before, .c05 .journey .line::after {
+      content: '';
+      position: absolute;
+      top: -3.5px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .c05 .journey .line::before { left: 0; background: var(--cream); }
+    .c05 .journey .line::after { right: 0; background: var(--teal); }
+    .c05 .journey .line-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--navy);
+      padding: 0 14px;
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(244,239,227,0.6);
+      letter-spacing: 0.06em;
+    }
+    .c05 .journey .big-anchor { text-align: right; }
+    .c05 .journey .big-anchor .big-num {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-size: 84px;
+      line-height: 1;
+      color: var(--teal);
+      letter-spacing: -0.02em;
+    }
+    .c05 .journey .big-anchor .lbl {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+    .c05 .tagline {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 24px;
+      color: var(--cream);
+      margin: 36px 0 22px;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+    .c05 .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid var(--hair);
+      padding-top: 20px;
+    }
+    .c05 .footer .save {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: rgba(244,239,227,0.55);
+      text-transform: uppercase;
+    }
+    .c05 .footer .date {
+      font-family: var(--serif-display);
+      font-size: 22px;
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* ============================================
+       CARD 06 - AWARD CERTIFICATE
+    ============================================ */
+    .c06 {
+      background: var(--cream-warm);
+      color: var(--navy);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .c06::before {
+      content: '';
+      position: absolute;
+      inset: 22px;
+      border: 1px solid var(--gold);
+      pointer-events: none;
+    }
+    .c06::after {
+      content: '';
+      position: absolute;
+      inset: 28px;
+      border: 0.5px solid var(--gold);
+      pointer-events: none;
+    }
+    .c06 .inner {
+      padding: 60px 50px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .c06 .crest {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+      border-top: 0.5px solid var(--gold);
+      border-bottom: 0.5px solid var(--gold);
+      padding: 8px 18px;
+      margin-bottom: 36px;
+    }
+    .c06 .seal {
+      width: 90px;
+      height: 90px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+    .c06 .seal::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border: 0.5px solid var(--gold);
+      border-radius: 50%;
+    }
+    .c06 .seal .xv {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-size: 36px;
+      color: var(--gold-deep);
+      letter-spacing: 0.02em;
+    }
+    .c06 .preamble {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--gold-deep);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .c06 .headline {
+      font-family: var(--serif-display);
+      font-size: 46px;
+      line-height: 1.05;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      max-width: 14ch;
+      margin-bottom: 14px;
+    }
+    .c06 .headline em { font-style: italic; color: var(--gold-deep); }
+    .c06 .underscript {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-size: 16px;
+      color: rgba(11,24,40,0.65);
+      letter-spacing: 0.04em;
+      margin-bottom: 36px;
+    }
+    .c06 .conferred { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+    .c06 .conferred .label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+    }
+    .c06 .conferred .date {
+      font-family: var(--serif-display);
+      font-size: 28px;
+      color: var(--navy);
+      font-style: italic;
+    }
+    .c06 .conferred .loc {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--navy);
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    /* ============================================
+       CARD 07 - BOOK / NEXT CHAPTER
+    ============================================ */
+    .c07 {
+      background: linear-gradient(90deg, transparent 0%, transparent 49.5%, rgba(200,162,72,0.18) 49.7%, rgba(200,162,72,0.18) 50.3%, transparent 50.5%, transparent 100%), var(--cream);
+      color: var(--navy);
+      padding: 50px 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      position: relative;
+    }
+    .c07 .page { display: flex; flex-direction: column; justify-content: space-between; }
+    .c07 .page.left { padding-right: 22px; }
+    .c07 .page.right { padding-left: 22px; }
+    .c07 .folio {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+    }
+    .c07 .page.left .folio { text-align: left; }
+    .c07 .page.right .folio { text-align: right; }
+    .c07 .body {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(11,24,40,0.6);
+      letter-spacing: 0.02em;
+    }
+    .c07 .body p { margin-bottom: 10px; }
+    .c07 .body .drop {
+      font-family: var(--serif-display);
+      font-size: 56px;
+      line-height: 0.9;
+      color: var(--gold-deep);
+      float: left;
+      margin: 4px 12px 0 0;
+      font-style: normal;
+    }
+    .c07 .chapter {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      border-bottom: 0.5px solid var(--gold);
+      padding-bottom: 10px;
+    }
+    .c07 .headline {
+      font-family: var(--serif-display);
+      font-size: 48px;
+      line-height: 1;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .c07 .headline em { font-style: italic; color: var(--gold-deep); }
+    .c07 .invite {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(11,24,40,0.7);
+      line-height: 1.6;
+      margin-bottom: auto;
+    }
+    .c07 .stamp { margin-top: 30px; padding-top: 20px; border-top: 0.5px solid var(--gold); }
+    .c07 .stamp .save-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .c07 .stamp .date {
+      font-family: var(--serif-display);
+      font-size: 26px;
+      color: var(--navy);
+      font-style: italic;
+    }
+
+    /* ============================================
+       CARD 08 - VERTICAL ASCENT
+    ============================================ */
+    .c08 {
+      background: linear-gradient(180deg, #060F1C 0%, #0B1828 50%, #142841 100%);
+      color: var(--cream);
+      padding: 50px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .c08::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 0.5px;
+      background: linear-gradient(180deg, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
+      opacity: 0.3;
+    }
+    .c08 .summit { text-align: center; position: relative; z-index: 1; }
+    .c08 .summit .crest {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .c08 .summit .marker {
+      display: inline-block;
+      width: 10px; height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin: 8px 0 18px;
+      box-shadow: 0 0 0 4px rgba(200,162,72,0.15);
+    }
+    .c08 .ascent {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      margin: 30px 0;
+    }
+    .c08 .ascent .at-the {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-size: 22px;
+      color: rgba(244,239,227,0.6);
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+    }
+    .c08 .ascent .top-word {
+      font-family: var(--serif-display);
+      font-size: 140px;
+      line-height: 0.85;
+      color: var(--gold);
+      letter-spacing: -0.04em;
+      font-style: italic;
+    }
+    .c08 .ascent .years {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-top: 24px;
+    }
+    .c08 .ascent .fifteen {
+      font-family: var(--serif-display);
+      font-size: 52px;
+      color: var(--cream);
+      margin-top: 4px;
+      letter-spacing: -0.02em;
+    }
+    .c08 .base {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      border-top: 0.5px solid rgba(200,162,72,0.3);
+      padding-top: 20px;
+    }
+    .c08 .base .save {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      color: rgba(244,239,227,0.5);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .c08 .base .date {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-size: 26px;
+      color: var(--gold);
+    }
+
+    /* ============================================
+       CARD 09 - SCALE CONTRAST
+    ============================================ */
+    .c09 {
+      background: var(--emerald);
+      color: var(--cream);
+      padding: 50px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .c09 .top-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--teal);
+      text-transform: uppercase;
+    }
+    .c09 .center { position: relative; padding: 30px 0; }
+    .c09 .two-million {
+      font-family: var(--serif-display);
+      font-size: 130px;
+      line-height: 0.9;
+      color: var(--teal);
+      letter-spacing: -0.04em;
+      font-style: italic;
+      margin-bottom: 2px;
+    }
+    .c09 .lives-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+    .c09 .divider { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+    .c09 .divider .line { flex: 1; height: 0.5px; background: rgba(244,239,227,0.25); }
+    .c09 .divider .word {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-size: 16px;
+      color: rgba(244,239,227,0.55);
+      letter-spacing: 0.1em;
+    }
+    .c09 .one-tru { display: flex; align-items: baseline; gap: 30px; }
+    .c09 .one-tru .num-one {
+      font-family: var(--serif-display);
+      font-size: 200px;
+      line-height: 0.9;
+      color: var(--cream);
+      font-style: italic;
+      letter-spacing: -0.04em;
+    }
+    .c09 .one-tru .label-stack { display: flex; flex-direction: column; gap: 6px; }
+    .c09 .one-tru .label-stack .tru {
+      font-family: var(--serif-display);
+      font-size: 42px;
+      color: var(--cream);
+      font-style: italic;
+      line-height: 1;
+    }
+    .c09 .one-tru .label-stack .gloss {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--teal);
+      text-transform: uppercase;
+    }
+    .c09 .bottom {
+      border-top: 0.5px solid rgba(244,239,227,0.15);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .c09 .bottom .save {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: rgba(244,239,227,0.55);
+      text-transform: uppercase;
+    }
+    .c09 .bottom .date {
+      font-family: var(--serif-display);
+      font-size: 24px;
+      color: var(--teal);
+      font-style: italic;
+    }
+
+    /* ============================================
+       CARD 10 - CONSTELLATION
+    ============================================ */
+    .c10 {
+      background: radial-gradient(ellipse at 70% 30%, rgba(200,162,72,0.05) 0%, transparent 60%), radial-gradient(ellipse at 30% 70%, rgba(0,186,157,0.05) 0%, transparent 60%), #050B14;
+      color: var(--cream);
+      padding: 50px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .c10 .stars { position: absolute; inset: 0; pointer-events: none; }
+    .c10 .stars .dot {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: var(--cream);
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+    .c10 .stars .dot.bright {
+      width: 4px; height: 4px;
+      background: var(--gold);
+      opacity: 1;
+      box-shadow: 0 0 12px var(--gold), 0 0 24px rgba(200,162,72,0.5);
+    }
+    .c10 .top {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+    .c10 .center { text-align: center; position: relative; z-index: 1; margin: 40px 0; }
+    .c10 .center .where {
+      font-family: var(--serif-text);
+      font-style: italic;
+      font-size: 24px;
+      color: var(--cream);
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+      opacity: 0.7;
+    }
+    .c10 .center .every-life {
+      font-family: var(--serif-display);
+      font-size: 72px;
+      line-height: 1;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .c10 .center .every-life em { font-style: italic; color: var(--gold); }
+    .c10 .center .matters {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-size: 84px;
+      line-height: 1;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+    }
+    .c10 .center .matters::after { content: '.'; color: var(--teal); }
+    .c10 .center .sub {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      color: rgba(244,239,227,0.5);
+      text-transform: uppercase;
+      margin-top: 24px;
+    }
+    .c10 .bottom {
+      border-top: 0.5px solid rgba(244,239,227,0.12);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .c10 .bottom .save {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: rgba(244,239,227,0.5);
+      text-transform: uppercase;
+    }
+    .c10 .bottom .date {
+      font-family: var(--serif-display);
+      font-size: 24px;
+      color: var(--cream);
+      font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      body { padding: 40px 20px 60px; }
+      .cards { grid-template-columns: 1fr; gap: 30px; }
+      .card { aspect-ratio: 5 / 7; }
+      .c01 .headline, .c01 .reasons { font-size: 44px; }
+      .c01 .reasons { font-size: 60px; }
+      .c02 .xv { font-size: 130px; }
+      .c04 .fifteen { font-size: 200px; }
+      .c08 .ascent .top-word { font-size: 100px; }
+      .c09 .two-million { font-size: 90px; }
+      .c09 .one-tru .num-one { font-size: 140px; }
+      .c10 .center .every-life, .c10 .center .matters { font-size: 56px; }
+      .c07 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div class="left">
+      <div class="eyebrow">TRUDOC HEALTHCARE XV SAVE THE DATE</div>
+      <h1>Ten concepts <em>for the invitation.</em></h1>
+    </div>
+    <div class="right">
+      18 JUNE 2026<br>
+      DUBAI UAE<br>
+      XV ANNIVERSARY GALA
+    </div>
+  </header>
+  <div class="cards">
+    
+    <div>
+      <div class="concept-label">
+        <span class="num">01</span> 
+        <span class="name">Editorial Spread</span>
+        <span class="dash"></span>
+      </div>
+      <div class="card c01">
+        <div class="top-bar">
+          <span>TRUDOC XV</span>
+          <span>2011 2026</span>
+        </div>
+        <div class="lede">Fifteen years of presence. Two million stories. One invitation to mark them all.</div>
+        <div class="headline">15 Years <em class="em-italic">of Life.</em></div>
+        <div class="reasons">2,000,000<br><span>Reasons.</span></div>
+        <div class="save-block">
+          <div class="label">Save the Date</div>
+          <div class="date">18 06 2026<small>Dubai</small></div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="concept-label">     
+        <span class="num">02</span>
+        <span class="name">Embossed Letterpress</span>
+        <span class="dash"></span>
+      </div>
+      <div class="card c02">
+        <span class="frame-corner tl"></span>
+        <span class="frame-corner tr"></span>
+        <span class="frame-corner bl"></span>
+        <span class="frame-corner br"></span>
+        <div class="xv">XV</div>
+        <div class="tagline">Fifteen Years.<br><em>Written in Lives.</em></div>
+        <div class="save">Save the Date</div>   
+        <div class="date">18 June 2026</div>
+        <div class="place">Dubai UAE</div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="concept-label">
+        <span class="num">03</span>
+        <span class="name">Triptych</span>
+        <span class="dash"></span>
+      </div>
+      <div class="card c03">
+        <div class="head">
+          <div class="crest">TruDoc XV</div> 
+          <div class="roman">xv</div>
+        </div>
+        <div class="triptych">
+          <div class="col">
+            <div class="article">A</div>
+            <div class="word"><em>Milestone</em></div>
+            <div class="gloss">Fifteen Years</div>
+          </div>
+          <div class="col">          
+            <div class="article">A</div>
+            <div class="word"><em>Movement</em></div>
+            <div class="gloss">Two Million Lives</div>
+          </div>
+          <div class="col">
+            <div class="article">A</div>
+            <div class="word"><em>Moment</em></div>
+            <div class="gloss">One Evening</div>
+          </div>       
+        </div>
+        <div class="foot">
+          <div class="save-the">Save the Date Dubai</div>
+          <div class="date">18 June 2026</div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="concept-label">
+        <span class="num">04</span>
+        <span class="name">Still Beating</span>
+        <span class="dash"></span>
+      </div>    
+      <div class="card c04">
+        <div class="marker">REC TRUDOC.XV LIVE</div>
+        <div class="number-block">
+          <div class="fifteen">15</div>
+          <div class="yrs">YEARS</div>
+        </div>
+        <div class="ecg-row">
+          <svg viewBox="0 0 600 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <polyline points="0,45 100,45 110,40 130,55 145,15 160,75 175,40 195,48 220,45 280,45 290,42 305,48 320,40 340,55 350,18 365,72 380,40 400,48 420,45 600,45" fill="none" stroke="#00BA9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          </svg>
+        </div>
+        <div class="still-beating">Still <em>beating.</em><br>Stronger than ever.</div>
+        <div class="bottom-grid">
+          <div class="label">SAVE THE DATE<br>DUBAI UAE</div>
+          <div class="date">18.06.2026<small>XV Anniversary</small></div>
+        </div>
+      </div>
+    </div>
+    
+    <div>   
+      <div class="concept-label">
+        <span class="num">05</span>
+        <span class="name">One to Two Million</span>
+        <span class="dash"></span>
+      </div>
+      <div class="card c05">
+        <div class="top">2011 2026 TruDoc.XV</div>
+        <div class="journey">
+          <div class="anchor">
+            <span class="small-num">1</span>
+            <span class="lbl">First call 2011</span>
+          </div>
+          <div class="line-container">
+            <div class="line">
+              <span class="line-label">fifteen years</span>
+            </div>
+          </div>
+          <div class="big-anchor">
+            <div class="lbl">Two Million 2026</div>      
+            <div class="big-num">2,000,000</div>
+          </div>
+        </div>
+        <div class="tagline">From one call to two million.</div>
+        <div class="footer">
+          <div class="save">Save the Date Dubai</div>
+          <div class="date">18 06 2026</div>
+        </div>
+      </div>
+    </div>
+    
+    <div> 
+      <div class="concept-label">
+        <span class="num">06</span>
+        <span class="name">Award / Certificate</span>
+        <span class="dash"></span>
+      </div>
+      <div class="card c06">
+        <div class="inner">
+          <div class="crest">TruDoc Healthcare MMXI MMXXVI</div>
+          <div>
+            <div class="seal"><div class="xv">XV</div></div>          
+            <div class="preamble">An Invitation</div>
+            <div class="headline">Fifteen Years <em>of Earned Excellence.</em></div>
+            <div class="underscript">Two million lives. One quiet evening to honour them.</div>
+          </div>
+          <div class="conferred">
+            <div class="label">To be held on</div>
+            <div class="date">18 June 2026</div>
+            <div class="loc">Dubai United Arab Emirates</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="concept-label">
+        <span class="num">07</span>
+        <span class="name">Next Chapter</span>
+        <span class="dash"></span>
+      </div>
+      <div class="card c07">
+        <div class="page left">
+          <div class="folio">XIV 2025</div>
+          <div class="body">
+            <p><span class="drop">F</span>ifteen years of presence. Two million lives. Every call answered, every promise kept, every hour earned through quiet, persistent work.</p>
+            <p>This was the prologue.</p>
+          </div>
+          <div class="folio"> prologue </div>
+        </div>
+        <div class="page right">
+          <div class="folio">XV 2026</div>
+          <div>          
+            <div class="chapter">Chapter XV Opens 18 June</div>
+            <div class="headline">The next chapter <em>starts here.</em></div>
+            <div class="invite">A private gathering for those who built it, lived it, and will write the chapters yet to come.</div>
+          </div>
+          <div class="stamp">
+            <div class="save-label">Save the Date Dubai</div>           
+            <div class="date">18 June 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="concept-label">
+        <span class="num">08</span>
+        <span class="name">Ascent</span>
+        <span class="dash"></span>
+      </div>
+      <div class="card c08">
+        <div class="summit">         
+          <div class="crest">Summit MMXXVI</div>
+          <span class="marker"></span>
+        </div>
+        <div class="ascent">
+          <div class="at-the">at the</div>
+          <div class="top-word">Top.</div>
+          <div class="years">FIFTEEN YEARS</div>
+          <div class="fifteen">XV</div>
+        </div>
+        <div class="base">
+          <div class="save">Save the Date 18 June 2026</div>
+          <div class="date">Dubai UAE</div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="concept-label">
+        <span class="num">09</span>
+        <span class="name">Scale Contrast</span>
+        <span class="dash"></span>
+      </div>
+      <div class="card c09">
+        <div class="top-row">        
+          <span>TruDoc XV</span>
+          <span>Anniversary 2026</span>
+        </div>
+        <div class="center">
+          <div class="two-million">2,000,000</div>
+          <div class="lives-label">LIVES</div>
+          <div class="divider">
+            <div class="line"></div>
+            <div class="word">one</div>
+            <div class="line"></div>   
+          </div>
+          <div class="one-tru">
+            <div class="num-one">1</div>
+            <div class="label-stack">
+              <div class="tru">TruDoc.</div>
+              <div class="gloss">Fifteen years</div>
+            </div>
+          </div>
+        </div>    
+        <div class="bottom">
+          <div class="save">Save the Date Dubai</div>
+          <div class="date">18 06 2026</div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="concept-label">
+        <span class="num">10</span>
+        <span class="name">Constellation</span>
+        <span class="dash"></span>
+      </div>     
+      <div class="card c10">
+        <div class="stars">
+          <span class="dot" style="top:8%; left:12%;"></span>
+          <span class="dot" style="top:14%; left:78%;"></span>
+          <span class="dot" style="top:22%; left:42%;"></span>
+          <span class="dot" style="top:18%; left:88%;"></span>
+          <span class="dot" style="top:36%; left:6%;"></span>
+          <span class="dot" style="top:30%; left:65%;"></span>
+          <span class="dot" style="top:44%; left:90%;"></span>
+          <span class="dot" style="top:52%; left:18%;"></span>
+          <span class="dot bright" style="top:55%; left:50%;"></span>
+          <span class="dot" style="top:58%; left:82%;"></span>
+          <span class="dot" style="top:66%; left:30%;"></span>
+          <span class="dot" style="top:72%; left:70%;"></span>
+          <span class="dot" style="top:78%; left:12%;"></span>
+          <span class="dot" style="top:82%; left:88%;"></span>
+          <span class="dot" style="top:88%; left:48%;"></span>
+          <span class="dot" style="top:24%; left:24%;"></span>
+          <span class="dot" style="top:40%; left:55%;"></span>
+          <span class="dot" style="top:48%; left:35%;"></span>
+        </div>
+        <div class="top">Two Million Points of Light XV</div>
+        <div class="center">
+          <div class="where">Where</div>
+          <div class="every-life">every <em>life</em></div>
+          <div class="matters">matters</div>
+          <div class="sub"> and one of them is yours </div>
+        </div>
+        <div class="bottom">     
+          <div class="save">Save the Date Dubai</div>
+          <div class="date">18.06.2026</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>
