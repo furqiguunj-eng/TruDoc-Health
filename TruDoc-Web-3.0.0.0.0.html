@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TruDoc Grid | Sovereign Clinical Infrastructure</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: {
+              base: '#030712',
+              card: '#0B1120',
+              surface: '#111928',
+              border: '#1E293B',
+              borderLight: '#334155'
+            },
+            neon: {
+              cyan: '#00F2FE',
+              cyanDark: '#0284C7',
+              ice: '#38BDF8',
+              emerald: '#10B981',
+              slate: '#94A3B8'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #030712;
+      color: #F8FAFC;
+    }
+    .dark-grid {
+      background-size: 44px 44px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+    }
+    .matrix-card {
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(30, 41, 59, 0.9);
+    }
+    .matrix-card:hover {
+      border-color: rgba(0, 242, 254, 0.35);
+    }
+  </style>
+</head>
+<body class="selection:bg-neon-cyan selection:text-obsidian-base antialiased dark-grid">
+
+  <!-- ==================== TECH STATUS BAR (TOP TICKER) ==================== -->
+  <div class="w-full bg-black text-neon-slate text-[11px] font-mono py-2 px-6 border-b border-obsidian-border hidden md:block">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-2 text-neon-emerald">
+          <span class="w-2 h-2 rounded-full bg-neon-emerald animate-pulse"></span>
+          NETWORK UPTIME: 100% REGIONAL FACULTY ACTIVE
+        </span>
+        <span class="text-obsidian-borderLight">|</span>
+        <span>LATENCY: <strong class="text-neon-cyan">REAL-TIME</strong></span>
+        <span class="text-obsidian-borderLight">|</span>
+        <span>TRIAGE SPEED: <strong class="text-neon-cyan">&lt; 40 SECONDS</strong></span>
+      </div>
+      <div class="flex items-center gap-4 text-neon-slate">
+        <span>DATA RESIDENCY: REGIONAL SOVEREIGN CLOUD</span>
+        <span class="text-white">DHA / MOH VALIDATED</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <header class="sticky top-0 z-40 bg-obsidian-base/90 backdrop-blur-md border-b border-obsidian-border">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-neon-cyanDark to-neon-cyan flex items-center justify-center text-obsidian-base font-mono font-bold text-lg shadow-lg shadow-neon-cyan/20 group-hover:scale-105 transition-transform">
+          T
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-xl tracking-tight text-white">TRUDOC</span>
+            <span class="text-[10px] font-mono bg-obsidian-surface px-1.5 py-0.5 rounded border border-obsidian-border text-neon-cyan font-bold">GRID</span>
+          </div>
+          <span class="text-[10px] font-mono text-neon-slate tracking-wider uppercase">Integrated Health Network</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-neon-slate">
+        <a href="#gateways" class="hover:text-neon-cyan transition-colors">Enterprise Gateways</a>
+        <a href="#matrix" class="hover:text-neon-cyan transition-colors">Core Infrastructure</a>
+        <a href="#consumer" class="hover:text-neon-cyan transition-colors">Care & Fulfillment</a>
+        <a href="#governance" class="hover:text-neon-cyan transition-colors">Governance & Scale</a>
+      </nav>
+
+      <!-- Action CTAs -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button onclick="openModal('appModal')" class="px-4 py-2.5 text-xs font-mono font-semibold text-white bg-obsidian-surface hover:bg-obsidian-border border border-obsidian-border rounded-xl flex items-center gap-2 transition-all">
+          <i data-lucide="smartphone" class="w-4 h-4 text-neon-cyan"></i>
+          DOWNLOAD APP
+        </button>
+        <button onclick="openModal('b2bModal')" class="px-5 py-2.5 text-xs font-mono font-bold text-obsidian-base bg-neon-cyan hover:bg-white rounded-xl shadow-lg shadow-neon-cyan/20 transition-all flex items-center gap-2 hover:translate-y-[-1px]">
+          <span>INTEGRATE ENTERPRISE</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Button -->
+      <button class="lg:hidden p-2 text-white" onclick="toggleMobileMenu()">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobileMenu" class="hidden lg:hidden px-6 py-6 bg-obsidian-card border-b border-obsidian-border space-y-4">
+      <a href="#gateways" onclick="toggleMobileMenu()" class="block font-medium text-white">Enterprise Gateways</a>
+      <a href="#matrix" onclick="toggleMobileMenu()" class="block font-medium text-white">Core Infrastructure</a>
+      <a href="#consumer" onclick="toggleMobileMenu()" class="block font-medium text-white">Care & Fulfillment</a>
+      <a href="#governance" onclick="toggleMobileMenu()" class="block font-medium text-white">Governance & Scale</a>
+      <div class="pt-4 flex flex-col gap-2">
+        <button onclick="openModal('b2bModal'); toggleMobileMenu()" class="w-full py-3 text-xs font-mono font-bold text-obsidian-base bg-neon-cyan rounded-xl">INTEGRATE ENTERPRISE</button>
+        <button onclick="openModal('appModal'); toggleMobileMenu()" class="w-full py-3 text-xs font-mono font-semibold text-white bg-obsidian-surface rounded-xl border border-obsidian-border">DOWNLOAD APP</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 01. HERO // MASTER INTERACTION ==================== -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Master Thesis -->
+        <div class="lg:col-span-7 space-y-8">
+          
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-obsidian-card border border-obsidian-border text-neon-cyan font-mono text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-neon-cyan"></span>
+            CONTINUOUS PRIMARY SURVEILLANCE & TRIAGE
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
+            Instant Clinical Access. <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-ice">Unified Hybrid Delivery.</span>
+          </h1>
+
+          <p class="text-lg text-neon-slate max-w-xl font-normal leading-relaxed">
+            Eliminating fragmented delivery systems and claims inflation. A single integrated infrastructure pairing immediate board-certified doctor triage with an on-ground physical care and dispensing grid across the GCC and Africa.
+          </p>
+
+          <!-- Dual Main Controls -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <button onclick="openModal('b2bModal')" class="px-8 py-4 text-xs font-mono font-bold tracking-wider text-obsidian-base bg-neon-cyan hover:bg-white rounded-xl shadow-xl shadow-neon-cyan/20 transition-all flex items-center justify-center gap-3">
+              <span>CONNECT ENTERPRISE PORTAL</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+
+            <button onclick="openModal('appModal')" class="px-6 py-4 text-xs font-mono font-semibold text-white bg-obsidian-card hover:bg-obsidian-surface border border-obsidian-border rounded-xl transition-all flex items-center justify-center gap-3 shadow-sm">
+              <i data-lucide="qr-code" class="w-4 h-4 text-neon-cyan"></i>
+              <span>LAUNCH DIGITAL CLINIC</span>
+            </button>
+          </div>
+
+          <!-- Proof Metrics Strip -->
+          <div class="pt-6 border-t border-obsidian-border grid grid-cols-3 gap-4 font-mono">
+            <div>
+              <div class="text-2xl font-bold text-neon-cyan">&lt; 40s</div>
+              <div class="text-[11px] text-neon-slate uppercase mt-0.5">Doctor Live On-Call</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-white">100%</div>
+              <div class="text-[11px] text-neon-slate uppercase mt-0.5">Employed Faculty</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-neon-ice">15+ Yrs</div>
+              <div class="text-[11px] text-neon-slate uppercase mt-0.5">Operational Track</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Real-time Health Command Telemetry Card -->
+        <div class="lg:col-span-5">
+          <div class="matrix-card p-6 sm:p-8 rounded-3xl shadow-2xl relative overflow-hidden">
+            <div class="flex items-center justify-between border-b border-obsidian-border pb-4 mb-6">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-neon-cyan animate-ping"></span>
+                <span class="text-xs font-mono font-bold text-white">HEALTH TELEMETRY NODE</span>
+              </div>
+              <span class="text-[11px] font-mono text-neon-slate">HUB: REGIONAL-01</span>
+            </div>
+
+            <!-- Simulated Patient Ingest -->
+            <div class="space-y-4">
+              
+              <div class="p-4 rounded-2xl bg-obsidian-surface/60 border border-obsidian-border flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-neon-cyanDark/20 text-neon-cyan flex items-center justify-center font-bold">
+                    <i data-lucide="activity" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Emergency ER De-escalation</div>
+                    <div class="text-[11px] font-mono text-neon-slate">Virtual First Line</div>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono font-bold border border-emerald-500/20">RESOLVED 0m 28s</span>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-obsidian-surface/60 border border-obsidian-border flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-neon-cyanDark/20 text-neon-cyan flex items-center justify-center font-bold">
+                    <i data-lucide="radio" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Cellular IoT Telemetry</div>
+                    <div class="text-[11px] font-mono text-neon-slate">Continuous Bio-Stream</div>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 text-neon-cyan text-[10px] font-mono font-bold border border-cyan-500/20">DOCTOR ACTIVE</span>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-obsidian-surface/60 border border-obsidian-border flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-neon-cyanDark/20 text-neon-cyan flex items-center justify-center font-bold">
+                    <i data-lucide="truck" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Cold-Chain Rx Fulfillment</div>
+                    <div class="text-[11px] font-mono text-neon-slate">Pre-Auth Verified</div>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full bg-obsidian-card text-neon-slate text-[10px] font-mono font-bold border border-obsidian-border">DISPATCH 45 MIN</span>
+              </div>
+
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-obsidian-border flex items-center justify-between text-[11px] font-mono text-neon-slate">
+              <span>PROTOCOL RIGOR: 99.4%</span>
+              <span class="text-neon-cyan font-bold">MOH ACCREDITED</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 02. ENTERPRISE GATEWAYS ==================== -->
+  <section id="gateways" class="py-24 bg-obsidian-card border-y border-obsidian-border">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <span class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-widest">[ SECTOR HUBS ]</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Enterprise Deployment Vectors</h2>
+        </div>
+        <p class="text-neon-slate max-w-md text-sm leading-relaxed">
+          Targeted solutions built to contain loss ratios, protect talent productivity, and broaden sovereign reach.
+        </p>
+      </div>
+
+      <!-- Sector Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Payer Card -->
+        <div class="matrix-card p-6 rounded-2xl border border-obsidian-border transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-obsidian-surface text-neon-cyan flex items-center justify-center mb-6 font-bold group-hover:bg-neon-cyan group-hover:text-obsidian-base transition-colors">
+              <i data-lucide="shield-alert" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] font-mono font-bold uppercase text-neon-cyan tracking-wider">UNDERWRITING</span>
+            <h3 class="text-lg font-bold text-white mt-1">Payers & Insurers</h3>
+            <p class="text-xs text-neon-slate mt-3 leading-relaxed">
+              Arrest preventable hospital claims through rigorous virtual triage. Automated formulary routing curbs pharmaceutical over-dispensation at source.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-obsidian-border">
+            <span class="text-xs font-mono font-bold text-neon-cyan">-28% Acute Expense</span>
+          </div>
+        </div>
+
+        <!-- Corporate Card -->
+        <div class="matrix-card p-6 rounded-2xl border border-obsidian-border transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-obsidian-surface text-neon-cyan flex items-center justify-center mb-6 font-bold group-hover:bg-neon-cyan group-hover:text-obsidian-base transition-colors">
+              <i data-lucide="building" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] font-mono font-bold uppercase text-neon-cyan tracking-wider">ORGANIZATIONS</span>
+            <h3 class="text-lg font-bold text-white mt-1">Corporates & Employers</h3>
+            <p class="text-xs text-neon-slate mt-3 leading-relaxed">
+              Eliminate waiting room absenteeism. Empower teams with immediate round-the-clock doctor consultations, mobile diagnostic camps, and workforce health trends.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-obsidian-border">
+            <span class="text-xs font-mono font-bold text-neon-cyan">Zero Lost Time</span>
+          </div>
+        </div>
+
+        <!-- Sovereign Card -->
+        <div class="matrix-card p-6 rounded-2xl border border-obsidian-border transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-obsidian-surface text-neon-cyan flex items-center justify-center mb-6 font-bold group-hover:bg-neon-cyan group-hover:text-obsidian-base transition-colors">
+              <i data-lucide="landmark" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] font-mono font-bold uppercase text-neon-cyan tracking-wider">PUBLIC SCALE</span>
+            <h3 class="text-lg font-bold text-white mt-1">Governments & MOH</h3>
+            <p class="text-xs text-neon-slate mt-3 leading-relaxed">
+              Deploy universal health coverage into remote regions without heavy physical capital expenditure, anchored in certified sovereign data infrastructure.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-obsidian-border">
+            <span class="text-xs font-mono font-bold text-neon-cyan">Sovereign Data Storage</span>
+          </div>
+        </div>
+
+        <!-- Providers Card -->
+        <div class="matrix-card p-6 rounded-2xl border border-obsidian-border transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-obsidian-surface text-neon-cyan flex items-center justify-center mb-6 font-bold group-hover:bg-neon-cyan group-hover:text-obsidian-base transition-colors">
+              <i data-lucide="git-merge" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] font-mono font-bold uppercase text-neon-cyan tracking-wider">HOSPITAL SYSTEMS</span>
+            <h3 class="text-lg font-bold text-white mt-1">Providers & TPAs</h3>
+            <p class="text-xs text-neon-slate mt-3 leading-relaxed">
+              Targeted pathways for specialized tertiary interventions. Post-discharge step-down virtual monitoring to prevent costly 30-day hospital readmissions.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-obsidian-border">
+            <span class="text-xs font-mono font-bold text-neon-cyan">Post-Discharge Care</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 03. ARCHITECTURAL MOAT MATRIX ==================== -->
+  <section id="matrix" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-widest">[ CLINICAL MOAT ]</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">End-to-End Delivery Architecture</h2>
+        <p class="text-neon-slate mt-3 text-sm">Every touchpoint operates under synchronized medical governance.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Layer 01 -->
+        <div class="p-8 rounded-3xl matrix-card border border-obsidian-border flex items-start gap-6">
+          <div class="w-12 h-12 rounded-2xl bg-obsidian-surface border border-obsidian-border flex items-center justify-center text-neon-cyan flex-shrink-0 font-mono font-bold text-sm">
+            01
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Super App // Front Door Access</h3>
+            <p class="text-sm text-neon-slate mt-2 leading-relaxed">
+              Instant teleconsultations in under 40 seconds, unified medical records repository, live biometric tracker syncing, and one-touch prescription dispatch.
+            </p>
+            <div class="mt-4 flex gap-2 font-mono text-[11px] text-neon-cyan font-semibold">
+              <span>• Cross-Platform</span>
+              <span>• Encrypted EMR</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer 02 -->
+        <div class="p-8 rounded-3xl matrix-card border border-obsidian-border flex items-start gap-6">
+          <div class="w-12 h-12 rounded-2xl bg-obsidian-surface border border-obsidian-border flex items-center justify-center text-neon-cyan flex-shrink-0 font-mono font-bold text-sm">
+            02
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Hybrid Grid // Smart Clinics & Pharmacies</h3>
+            <p class="text-sm text-neon-slate mt-2 leading-relaxed">
+              A synchronized network of physical walk-in clinics, automated pharmacy dispensing units, and on-ground diagnostic testing centers executing physical care.
+            </p>
+            <div class="mt-4 flex gap-2 font-mono text-[11px] text-neon-cyan font-semibold">
+              <span>• Regional GCC Reach</span>
+              <span>• Temperature-Controlled Supply</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer 03 -->
+        <div class="p-8 rounded-3xl matrix-card border border-obsidian-border flex items-start gap-6">
+          <div class="w-12 h-12 rounded-2xl bg-obsidian-surface border border-obsidian-border flex items-center justify-center text-neon-cyan flex-shrink-0 font-mono font-bold text-sm">
+            03
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Hospital-at-Home // Continuous RPM</h3>
+            <p class="text-sm text-neon-slate mt-2 leading-relaxed">
+              Hospital-grade chronic monitoring in the patient's home. Real-time cellular streams from BP cuffs, glucose sensors, and pulse oximeters backed by visiting nurse teams.
+            </p>
+            <div class="mt-4 flex gap-2 font-mono text-[11px] text-neon-cyan font-semibold">
+              <span>• -40% Readmissions</span>
+              <span>• Live Vitals Pipeline</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer 04 -->
+        <div class="p-8 rounded-3xl matrix-card border border-obsidian-border flex items-start gap-6">
+          <div class="w-12 h-12 rounded-2xl bg-obsidian-surface border border-obsidian-border flex items-center justify-center text-neon-cyan flex-shrink-0 font-mono font-bold text-sm">
+            04
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Clinical AI & 100% In-House Doctors</h3>
+            <p class="text-sm text-neon-slate mt-2 leading-relaxed">
+              Zero unverified gig-economy freelancers. All medical professionals are salaried, audited, and augmented by algorithmic clinical guidelines.
+            </p>
+            <div class="mt-4 flex gap-2 font-mono text-[11px] text-neon-cyan font-semibold">
+              <span>• DHA / MOH Licensed</span>
+              <span>• 99.4% Protocol Adherence</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 04. PATIENT DIRECT UTILITY ==================== -->
+  <section id="consumer" class="py-24 bg-obsidian-card text-white relative overflow-hidden border-t border-obsidian-border">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs font-mono font-bold text-neon-cyan tracking-widest uppercase">[ DIRECT ACCESS ]</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Express Fulfillment. On-Ground Network.</h2>
+          <p class="text-neon-slate text-sm leading-relaxed">
+            Upload valid prescriptions for 90-minute cold-chain delivery, or pinpoint the nearest operational TruDoc Smart Clinic across our footprint.
+          </p>
+
+          <div class="flex items-center gap-4 font-mono text-xs text-neon-cyan">
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Active In UAE</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Saudi Arabia</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4"></i> Pan-Africa</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+          
+          <!-- Tool 1: Location Finder -->
+          <div class="matrix-card p-6 rounded-2xl border border-obsidian-border flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-obsidian-surface text-neon-cyan flex items-center justify-center mb-4">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-bold text-base text-white">Facility Directory</h4>
+              <p class="text-xs text-neon-slate mt-1">Locate active Smart Clinics, pharmacy hubs, and lab partners.</p>
+              
+              <div class="mt-4">
+                <input type="text" placeholder="Enter neighborhood or city..." class="w-full bg-obsidian-base border border-obsidian-border rounded-xl px-3 py-2.5 text-xs text-white placeholder-neon-slate focus:outline-none focus:border-neon-cyan font-mono" />
+              </div>
+            </div>
+            <button class="mt-6 w-full py-2.5 bg-obsidian-surface hover:bg-obsidian-border border border-obsidian-border rounded-xl text-xs font-mono font-bold text-white transition-colors">
+              SEARCH DIRECTORY &rarr;
+            </button>
+          </div>
+
+          <!-- Tool 2: Rx Upload -->
+          <div class="matrix-card p-6 rounded-2xl border border-obsidian-border flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-neon-cyan/20 text-neon-cyan flex items-center justify-center mb-4">
+                <i data-lucide="upload" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-bold text-base text-white">Digital Prescription Refill</h4>
+              <p class="text-xs text-neon-slate mt-1">Upload digital or paper prescriptions for rapid fulfillment.</p>
+              
+              <div class="mt-4 border-2 border-dashed border-obsidian-border rounded-xl p-4 text-center cursor-pointer hover:border-neon-cyan transition-colors bg-obsidian-base">
+                <span class="text-xs font-mono text-neon-cyan">Select Image / PDF</span>
+              </div>
+            </div>
+            <button class="mt-6 w-full py-2.5 bg-neon-cyan text-obsidian-base rounded-xl text-xs font-mono font-bold transition-all hover:bg-white">
+              DISPATCH ORDER &rarr;
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 05. GOVERNANCE & SCALE ==================== -->
+  <section id="governance" class="py-24 bg-obsidian-base border-t border-obsidian-border">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="grid lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-5 space-y-4">
+          <span class="text-xs font-mono font-bold text-neon-cyan tracking-widest uppercase">[ INSTITUTIONAL HERITAGE ]</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">15+ Years of Clinical Authority</h2>
+          <p class="text-neon-slate text-sm leading-relaxed">
+            Operating long before telehealth became commonplace. Today, powered by Series B growth funding, TruDoc provides regional enterprises and sovereigns with resilient, audited healthcare delivery.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 grid sm:grid-cols-3 gap-6 font-mono">
+          <div class="p-6 bg-obsidian-card rounded-2xl border border-obsidian-border">
+            <div class="text-3xl font-extrabold text-neon-cyan">100%</div>
+            <div class="text-xs text-white font-bold mt-2">Salaried Clinicians</div>
+            <div class="text-[11px] text-neon-slate mt-1">Zero marketplace models.</div>
+          </div>
+          <div class="p-6 bg-obsidian-card rounded-2xl border border-obsidian-border">
+            <div class="text-3xl font-extrabold text-white">Series B</div>
+            <div class="text-xs text-white font-bold mt-2">Expansion Funding</div>
+            <div class="text-[11px] text-neon-slate mt-1">Accelerated regional footprint.</div>
+          </div>
+          <div class="p-6 bg-obsidian-card rounded-2xl border border-obsidian-border">
+            <div class="text-3xl font-extrabold text-neon-ice">Sovereign</div>
+            <div class="text-xs text-white font-bold mt-2">Health Data Security</div>
+            <div class="text-[11px] text-neon-slate mt-1">Strict regulatory residency.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-black border-t border-obsidian-border py-12 text-xs font-mono text-neon-slate">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2 text-white font-bold">
+        <div class="w-6 h-6 rounded bg-neon-cyan text-obsidian-base flex items-center justify-center text-xs">T</div>
+        <span>TRUDOC HEALTHCARE ECOSYSTEM // 2026</span>
+      </div>
+      <div class="flex flex-wrap gap-6 text-neon-slate">
+        <a href="#gateways" class="hover:text-neon-cyan">Gateways</a>
+        <a href="#matrix" class="hover:text-neon-cyan">Infrastructure</a>
+        <a href="#consumer" class="hover:text-neon-cyan">Network</a>
+        <a href="#" class="hover:text-neon-cyan">Regulatory Status</a>
+        <a href="#" class="hover:text-neon-cyan">Security Framework</a>
+      </div>
+      <div>SECURED // DHA / MOH ACCREDITED</div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+  
+  <!-- B2B Deployment Modal -->
+  <div id="b2bModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-obsidian-card w-full max-w-lg rounded-3xl border border-obsidian-border p-8 relative shadow-2xl">
+      <button onclick="closeModal('b2bModal')" class="absolute top-6 right-6 text-neon-slate hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <span class="text-xs font-mono font-bold text-neon-cyan tracking-wider uppercase">ENTERPRISE INTEGRATION</span>
+      <h3 class="text-2xl font-bold text-white mt-1">Deploy TruDoc Enterprise</h3>
+      <p class="text-xs text-neon-slate mt-1">Route your request to our enterprise solutions desk.</p>
+
+      <form onsubmit="handleForm(event)" class="mt-6 space-y-4">
+        <div>
+          <label class="block text-xs font-mono font-semibold text-neon-slate mb-1">ORGANIZATION TYPE</label>
+          <select class="w-full bg-obsidian-surface border border-obsidian-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neon-cyan font-sans">
+            <option>Payer / Insurance Provider</option>
+            <option>Corporate Enterprise</option>
+            <option>Ministry of Health / Sovereign Agency</option>
+            <option>Healthcare Provider / TPA</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-mono font-semibold text-neon-slate mb-1">NAME</label>
+            <input type="text" required placeholder="Executive Name" class="w-full bg-obsidian-surface border border-obsidian-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neon-cyan" />
+          </div>
+          <div>
+            <label class="block text-xs font-mono font-semibold text-neon-slate mb-1">WORK EMAIL</label>
+            <input type="email" required placeholder="name@company.com" class="w-full bg-obsidian-surface border border-obsidian-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neon-cyan" />
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 text-xs font-mono font-bold tracking-wider text-obsidian-base bg-neon-cyan hover:bg-white rounded-xl shadow-lg shadow-neon-cyan/25 transition-all mt-4">
+          SUBMIT INTEGRATION REQUEST &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- App Download QR Modal -->
+  <div id="appModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-obsidian-card w-full max-w-md rounded-3xl border border-obsidian-border p-8 relative shadow-2xl text-center">
+      <button onclick="closeModal('appModal')" class="absolute top-6 right-6 text-neon-slate hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <span class="text-xs font-mono font-bold text-neon-cyan tracking-wider uppercase">DIGITAL CLINIC</span>
+      <h3 class="text-2xl font-bold text-white mt-1">TruDoc Super App</h3>
+      <p class="text-xs text-neon-slate mt-1 max-w-xs mx-auto">Scan with your phone to access immediate 24/7 doctor triage.</p>
+
+      <div class="my-6 p-4 bg-obsidian-surface rounded-2xl w-44 h-44 mx-auto flex flex-col items-center justify-center border border-obsidian-border">
+        <i data-lucide="qr-code" class="w-24 h-24 text-neon-cyan"></i>
+        <span class="text-[10px] font-mono text-neon-slate mt-1">SCAN WITH CAMERA</span>
+      </div>
+
+      <div class="flex items-center justify-center gap-3 font-mono text-xs">
+        <span class="px-3 py-1.5 rounded-lg bg-obsidian-surface border border-obsidian-border text-white font-semibold"> iOS App</span>
+        <span class="px-3 py-1.5 rounded-lg bg-obsidian-surface border border-obsidian-border text-white font-semibold">▶ Android</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    lucide.createIcons();
+
+    function toggleMobileMenu() {
+      const el = document.getElementById('mobileMenu');
+      el.classList.toggle('hidden');
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function handleForm(e) {
+      e.preventDefault();
+      alert('Integration brief dispatched. TruDoc Enterprise Director will reach out within 24 hours.');
+      closeModal('b2bModal');
+    }
+  </script>
+</body>
+</html>
