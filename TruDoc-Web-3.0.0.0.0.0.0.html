@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruDoc Global | Unified Healthcare Ecosystem</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --blue:#1952A2;
+  --teal:#0794CE;
+  --green:#00BA9D;
+  --navy:#0B1829;
+  --white:#FFFFFF;
+  --off:#F4F7FB;
+  --text:#111827;
+  --muted:#6B7280;
+  --border:rgba(25,82,162,0.09);
+  --partner:#0794CE;
+}
+body{font-family:'Figtree',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* ══════════════════════════════════════
+   GLOBAL ECOSYSTEM BAR
+══════════════════════════════════════ */
+.cobrand-bar{
+  height:44px;
+  background:var(--navy);
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:0 56px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.cb-partner{
+  display:flex;align-items:center;gap:10px;
+}
+.cb-partner-badge{
+  background:var(--green);
+  color:var(--navy);
+  font-size:11px;font-weight:800;
+  letter-spacing:1px;
+  padding:3px 10px;
+  border-radius:4px;
+  text-transform:uppercase;
+}
+.cb-partner-name{
+  font-size:12px;font-weight:600;
+  color:rgba(255,255,255,0.7);
+  letter-spacing:0.3px;
+}
+.cb-divider{
+  width:1px;height:16px;
+  background:rgba(255,255,255,0.15);
+  margin:0 14px;
+}
+.cb-program{
+  font-size:12px;color:rgba(255,255,255,0.45);
+  font-weight:400;
+}
+.cb-right{
+  display:flex;align-items:center;gap:8px;
+}
+.cb-label{
+  font-size:11px;color:rgba(255,255,255,0.35);
+  letter-spacing:0.5px;
+}
+.cb-trudoc-mini{
+  font-size:12px;font-weight:800;
+  color:rgba(255,255,255,0.8);
+  letter-spacing:-0.3px;
+}
+.cb-trudoc-mini span{color:var(--green);}
+
+/* ══════════════════════════════════════
+   MAIN NAVIGATION
+══════════════════════════════════════ */
+nav{
+  position:sticky;top:0;z-index:200;
+  height:68px;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:0 56px;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-text{font-size:19px;font-weight:800;color:var(--blue);letter-spacing:-0.5px;}
+.logo-text span{color:var(--green);}
+.nav-r{display:flex;align-items:center;gap:24px;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--blue);}
+
+.condition-tabs{
+  display:flex;
+  background:var(--off);
+  border-radius:100px;
+  padding:3px;
+  gap:2px;
+}
+.ctab{
+  font-size:12px;font-weight:600;
+  padding:7px 16px;border-radius:100px;
+  text-decoration:none;color:var(--muted);
+  transition:all .2s;
+  cursor:pointer;white-space:nowrap;
+}
+.ctab.active{
+  background:var(--blue);
+  color:white;
+  box-shadow:0 2px 8px rgba(25,82,162,0.25);
+}
+.nav-cta{
+  background:var(--green);color:var(--navy);
+  padding:9px 20px;border-radius:100px;
+  font-size:13px;font-weight:700;text-decoration:none;
+  white-space:nowrap;
+  transition:transform .2s;
+}
+.nav-cta:hover{transform:translateY(-1px);}
+
+/* ══════════════════════════════════════
+   HERO SECTION
+══════════════════════════════════════ */
+.hero{
+  position:relative;
+  min-height:92vh;
+  background:var(--navy);
+  overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.hero-photo{
+  position:absolute;right:0;top:0;bottom:0;width:58%;
+}
+.hero-photo img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  opacity:0.45;
+}
+.hero-photo::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to right,var(--navy) 0%,rgba(11,24,41,0.55) 55%,transparent 100%);
+  z-index:1;
+}
+.hero-photo::after{
+  content:"";position:absolute;
+  bottom:0;left:0;right:0;height:45%;
+  background:linear-gradient(to top,var(--navy) 0%,transparent 100%);
+  z-index:1;
+}
+.hero-bg-word{
+  position:absolute;top:50%;left:-20px;
+  transform:translateY(-50%);
+  font-size:clamp(100px,15vw,190px);
+  font-weight:900;letter-spacing:-6px;line-height:1;
+  color:rgba(255,255,255,0.025);
+  pointer-events:none;user-select:none;white-space:nowrap;
+}
+.hero-bar{
+  position:absolute;left:0;top:0;bottom:0;width:5px;
+  background:linear-gradient(to bottom,var(--teal),var(--green));
+}
+.hero-partner-stripe{
+  position:absolute;left:5px;top:0;bottom:0;width:3px;
+  background:var(--blue);
+  opacity:0.8;
+}
+.hero-copy{
+  position:relative;z-index:10;
+  padding:0 72px 80px;
+  max-width:680px;
+}
+.hero-cobrand-pill{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:100px;padding:6px 16px 6px 10px;
+  margin-bottom:28px;
+}
+.hcp-partner-dot{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;color:var(--navy);
+  letter-spacing:0;flex-shrink:0;
+}
+.hcp-text{
+  font-size:11px;font-weight:600;
+  color:rgba(255,255,255,0.6);
+  letter-spacing:0.5px;
+}
+.hcp-text strong{color:rgba(255,255,255,0.95);}
+.hero-tag{
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--green);margin-bottom:20px;
+}
+.hero-tag-line{width:24px;height:2px;background:var(--green);}
+.hero-h1{
+  font-size:clamp(40px,5vw,72px);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-2.5px;color:white;
+  margin-bottom:24px;
+}
+.hero-h1 .thin{
+  font-weight:300;font-style:italic;
+  color:rgba(255,255,255,0.45);
+  display:block;
+}
+.hero-h1 .highlight{color:var(--teal);}
+.hero-sub{
+  font-size:16px;line-height:1.7;
+  color:rgba(255,255,255,0.6);
+  max-width:480px;margin-bottom:34px;
+}
+
+.hero-condition-row{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:36px;flex-wrap:wrap;
+}
+.hcr-label{
+  font-size:11px;font-weight:700;
+  color:rgba(255,255,255,0.35);
+  letter-spacing:1.5px;text-transform:uppercase;
+  margin-right:4px;
+}
+.hcr-tab{
+  padding:8px 18px;border-radius:100px;
+  font-size:12px;font-weight:600;
+  cursor:pointer;text-decoration:none;
+  transition:all .2s;
+  border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.65);
+}
+.hcr-tab.active{
+  background:var(--teal);color:white;
+  border-color:var(--teal);
+}
+.hero-actions{display:flex;align-items:center;gap:16px;margin-bottom:48px;}
+.btn-pill-teal{
+  background:var(--teal);color:white;
+  padding:14px 30px;border-radius:100px;
+  font-size:13px;font-weight:700;text-decoration:none;
+  letter-spacing:0.3px;
+}
+.btn-pill-ghost{
+  border:1px solid rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.7);
+  padding:14px 30px;border-radius:100px;
+  font-size:13px;font-weight:600;text-decoration:none;
+}
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.chip{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:100px;
+  padding:9px 16px;
+  display:flex;align-items:center;gap:8px;
+}
+.chip-val{font-size:14px;font-weight:800;color:white;letter-spacing:-0.5px;}
+.chip-label{font-size:11px;color:rgba(255,255,255,0.4);font-weight:500;}
+.chip-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
+
+.hero-float{
+  position:absolute;top:110px;right:52px;z-index:20;
+  background:rgba(255,255,255,0.07);
+  backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:18px;padding:20px 24px;
+  min-width:220px;
+  animation:float 4s ease-in-out infinite;
+}
+.hf-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;}
+.hf-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.hf-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite;flex-shrink:0;}
+.hf-val{font-size:22px;font-weight:800;color:white;letter-spacing:-0.5px;}
+.hf-sub{font-size:11px;color:rgba(255,255,255,0.45);}
+
+/* ══════════════════════════════════════
+   TRUST STRIP
+══════════════════════════════════════ */
+.trust-strip{
+  background:white;
+  padding:22px 72px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;
+  justify-content:space-between;gap:32px;
+}
+.ts-left{
+  display:flex;align-items:center;gap:16px;
+}
+.ts-logo-box{
+  background:var(--off);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:8px 18px;
+  display:flex;align-items:center;gap:8px;
+}
+.ts-partner-text{
+  font-size:13px;font-weight:800;
+  color:var(--blue);
+  letter-spacing:0.5px;
+}
+.ts-x{font-size:13px;color:var(--muted);font-weight:300;}
+.ts-trudoc-text{
+  font-size:13px;font-weight:800;
+  color:var(--navy);
+}
+.ts-trudoc-text span{color:var(--green);}
+.ts-desc{
+  font-size:13px;color:var(--muted);
+  max-width:520px;line-height:1.5;
+}
+.ts-verified{
+  display:flex;align-items:center;gap:8px;
+  flex-shrink:0;
+}
+.ts-v-icon{font-size:18px;}
+.ts-v-text{font-size:12px;font-weight:700;color:var(--text);}
+
+/* ══════════════════════════════════════
+   THE PLATFORM & FULL-STACK MOAT
+══════════════════════════════════════ */
+.wyg-section{
+  padding:100px 56px;
+  background:var(--off);
+}
+.wyg-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:64px;
+}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px;}
+.sec-title{font-size:clamp(28px,3.5vw,46px);font-weight:800;letter-spacing:-2px;color:var(--text);line-height:1.08;}
+.sec-title em{font-style:italic;font-weight:300;color:var(--blue);}
+.wyg-sub{font-size:15px;color:var(--muted);max-width:380px;line-height:1.6;padding-bottom:8px;}
+
+.wyg-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:16px;
+}
+.wyg-tall{grid-row:1/3;}
+.wyg-card{
+  border-radius:20px;overflow:hidden;
+  position:relative;background:var(--navy);cursor:pointer;
+}
+.wyg-card img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .5s;
+}
+.wyg-tall img{min-height:520px;}
+.wyg-short img{height:248px;}
+.wyg-card:hover img{transform:scale(1.04);}
+.wyg-card::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,24,41,0.92) 0%,rgba(11,24,41,0.2) 60%,transparent 100%);
+}
+.wyg-info{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  padding:24px 26px 28px;
+}
+.wyg-tag{
+  display:inline-block;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:100px;padding:3px 11px;
+  font-size:10px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.8);margin-bottom:8px;
+}
+.wyg-name{font-size:clamp(16px,2vw,22px);font-weight:800;color:white;letter-spacing:-0.5px;margin-bottom:5px;}
+.wyg-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.5;}
+.wyg-arrow{
+  position:absolute;top:20px;right:20px;z-index:3;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  color:white;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,transform .2s;
+}
+.wyg-card:hover .wyg-arrow{background:var(--teal);transform:rotate(45deg);}
+
+.wyg-benefits{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:14px;margin-top:16px;
+}
+.benefit-card{
+  background:white;border-radius:14px;
+  padding:24px 20px;
+  border:1px solid var(--border);
+  transition:border-color .2s,box-shadow .2s;
+}
+.benefit-card:hover{border-color:var(--teal);box-shadow:0 6px 24px rgba(7,148,206,0.1);}
+.bc-icon{font-size:22px;margin-bottom:12px;}
+.bc-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-0.2px;}
+.bc-desc{font-size:13px;color:var(--muted);line-height:1.5;}
+
+/* ══════════════════════════════════════
+   HOW IT WORKS — 4-STEP CONTINUUM
+══════════════════════════════════════ */
+.how{
+  padding:100px 56px;
+  background:var(--navy);
+  position:relative;overflow:hidden;
+}
+.how::before{
+  content:"";position:absolute;
+  right:-100px;top:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(7,148,206,0.1) 0%,transparent 65%);
+}
+.how-header{
+  display:flex;align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:72px;
+}
+.how-sub{font-size:15px;color:rgba(255,255,255,0.45);max-width:340px;line-height:1.6;}
+.how-sec-title{font-size:clamp(26px,3.5vw,46px);font-weight:800;letter-spacing:-2px;color:white;line-height:1.08;}
+.how-sec-title em{font-style:italic;font-weight:300;color:rgba(255,255,255,0.4);}
+.timeline{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;position:relative;
+}
+.timeline::before{
+  content:"";position:absolute;
+  top:27px;left:28px;right:28px;height:2px;
+  background:linear-gradient(to right,var(--teal),var(--green));
+  opacity:0.25;
+}
+.tl-step{
+  padding:0 28px;position:relative;z-index:1;
+  border-right:1px solid rgba(255,255,255,0.06);
+}
+.tl-step:last-child{border-right:none;}
+.tl-num{
+  width:54px;height:54px;border-radius:14px;
+  background:var(--blue);color:white;
+  font-size:18px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;
+  box-shadow:0 0 0 8px rgba(25,82,162,0.2);
+}
+.tl-title{font-size:15px;font-weight:700;color:white;margin-bottom:10px;letter-spacing:-0.3px;}
+.tl-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6;}
+
+/* ══════════════════════════════════════
+   CLINICAL GOVERNANCE STRIP
+══════════════════════════════════════ */
+.doctor-strip{
+  position:relative;height:560px;overflow:hidden;
+}
+.doctor-strip img{
+  width:100%;height:100%;object-fit:cover;object-position:center 20%;
+}
+.doctor-strip::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(11,24,41,0.95) 38%,rgba(11,24,41,0.4) 70%,transparent 100%);
+}
+.ds-content{
+  position:absolute;top:50%;left:0;
+  transform:translateY(-50%);
+  z-index:2;padding:0 80px;max-width:600px;
+}
+.ds-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:18px;}
+.ds-title{font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;letter-spacing:-2px;line-height:1.1;margin-bottom:18px;}
+.ds-title em{font-style:italic;font-weight:300;color:rgba(255,255,255,0.45);}
+.ds-body{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:28px;max-width:440px;}
+.ds-checks{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;}
+.ds-check{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.75);font-weight:600;}
+.ds-chk{width:20px;height:20px;border-radius:5px;background:rgba(0,186,157,0.2);color:var(--green);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.btn-teal-pill{background:var(--teal);color:white;padding:13px 26px;border-radius:100px;font-size:13px;font-weight:700;text-decoration:none;display:inline-block;}
+
+.ds-badges{
+  position:absolute;right:72px;top:50%;
+  transform:translateY(-50%);z-index:3;
+  display:flex;flex-direction:column;gap:12px;
+}
+.ds-badge{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px;padding:14px 18px;
+  display:flex;align-items:center;gap:10px;
+  min-width:200px;
+}
+.db-icon{font-size:20px;}
+.db-label{font-size:12px;font-weight:700;color:white;}
+.db-sub{font-size:10px;color:rgba(255,255,255,0.4);margin-top:1px;}
+
+/* ══════════════════════════════════════
+   INSTITUTIONAL VALIDATION
+══════════════════════════════════════ */
+.testimonials{padding:100px 56px;background:var(--off);}
+.testi-layout{
+  display:grid;grid-template-columns:1fr 2fr;
+  gap:72px;align-items:start;margin-top:64px;
+}
+.testi-left h2{font-size:clamp(26px,3vw,42px);font-weight:800;letter-spacing:-2px;color:var(--text);line-height:1.1;margin-bottom:16px;}
+.testi-left h2 em{font-style:italic;font-weight:300;color:var(--blue);}
+.testi-left p{font-size:14px;color:var(--muted);line-height:1.65;}
+.rating-row{margin-top:28px;display:flex;align-items:center;gap:14px;}
+.big-rating{font-size:46px;font-weight:800;color:var(--blue);letter-spacing:-3px;line-height:1;}
+.stars{color:#0794CE;font-size:14px;letter-spacing:2px;margin-bottom:2px;}
+.rating-label{font-size:12px;color:var(--muted);}
+.testi-right{display:flex;flex-direction:column;gap:16px;}
+.tcard{background:white;border-radius:16px;padding:28px 32px;border:1px solid var(--border);}
+.tcard-big{padding:36px 40px;}
+.tquote{font-size:clamp(15px,1.4vw,18px);font-style:italic;color:var(--text);line-height:1.65;margin-bottom:20px;letter-spacing:-0.2px;}
+.tcard-big .tquote{font-size:clamp(17px,1.8vw,20px);}
+.tauthor{display:flex;align-items:center;gap:10px;}
+.tavatar{width:38px;height:38px;border-radius:50%;background:var(--blue);color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tname{font-size:13px;font-weight:700;color:var(--text);}
+.tloc{font-size:11px;color:var(--muted);margin-top:1px;}
+.tcards-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+/* ══════════════════════════════════════
+   ENTERPRISE CTA BANNER
+══════════════════════════════════════ */
+.cobrand-cta{
+  position:relative;
+  background:var(--navy);
+  padding:100px 80px;
+  overflow:hidden;
+  display:flex;align-items:center;
+  justify-content:space-between;gap:60px;
+}
+.cobrand-cta::before{
+  content:"";position:absolute;
+  right:-80px;top:-80px;
+  width:550px;height:550px;border-radius:50%;
+  background:radial-gradient(circle,rgba(7,148,206,0.15) 0%,transparent 65%);
+}
+.cobrand-cta::after{
+  content:"";position:absolute;
+  left:44%;top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.07),transparent);
+}
+.cta-left h2{font-size:clamp(28px,4vw,56px);font-weight:800;color:white;letter-spacing:-2.5px;line-height:1.05;margin-bottom:14px;}
+.cta-left h2 em{font-style:italic;font-weight:300;color:rgba(255,255,255,0.35);}
+.cta-left p{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.65;max-width:400px;}
+
+.cta-partner-note{
+  margin-top:20px;
+  display:flex;align-items:center;gap:10px;
+  font-size:12px;color:rgba(255,255,255,0.4);
+}
+.cta-partner-dot{
+  width:16px;height:16px;border-radius:4px;
+  background:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;font-weight:900;color:var(--navy);
+  flex-shrink:0;
+}
+.cta-right{
+  flex-shrink:0;min-width:300px;
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;gap:20px;
+}
+.cta-box-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.cta-btns{display:flex;flex-direction:column;gap:10px;}
+.cta-btn-main{background:var(--teal);color:white;padding:15px 32px;border-radius:100px;font-size:13px;font-weight:700;text-decoration:none;text-align:center;}
+.cta-btn-ghost{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);padding:15px 32px;border-radius:100px;font-size:13px;font-weight:600;text-decoration:none;text-align:center;}
+.cta-hotline{font-size:12px;color:rgba(255,255,255,0.3);text-align:center;}
+.cta-hotline strong{color:rgba(255,255,255,0.6);}
+
+/* ══════════════════════════════════════
+   FOOTER (HIERARCHY SITEMAP)
+══════════════════════════════════════ */
+footer{background:#060E1A;color:white;padding:64px 72px 40px;}
+.footer-cobrand-strip{
+  display:flex;align-items:center;gap:16px;
+  padding-bottom:40px;margin-bottom:40px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.fcs-label{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;text-transform:uppercase;margin-right:4px;}
+.fcs-partner{font-size:13px;font-weight:800;color:var(--teal);}
+.fcs-x{font-size:13px;color:rgba(255,255,255,0.2);}
+.fcs-trudoc{font-size:13px;font-weight:800;color:rgba(255,255,255,0.6);}
+.fcs-trudoc span{color:var(--green);}
+.fcs-sep{width:1px;height:14px;background:rgba(255,255,255,0.1);}
+.fcs-program{font-size:12px;color:rgba(255,255,255,0.35);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:48px;}
+.fbrand .logo-text{color:white;}
+.fbrand p{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;margin-top:14px;max-width:260px;}
+.fcol h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:18px;}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.fcol a{font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .2s;}
+.fcol a:hover{color:white;}
+.fbot{padding-top:28px;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:center;}
+.fbot p,.fbot span{font-size:11px;color:rgba(255,255,255,0.25);}
+.fbot-note{font-size:11px;color:rgba(255,255,255,0.2);text-align:center;max-width:600px;line-height:1.5;}
+</style>
+</head>
+<body>
+
+<!-- TOP SOVEREIGN BAR -->
+<div class="cobrand-bar">
+  <div class="cb-partner">
+    <div class="cb-partner-badge">TRUDOC OS</div>
+    <span class="cb-partner-name">Sovereign Healthcare Grid</span>
+    <div class="cb-divider"></div>
+    <span class="cb-program">GCC &amp; Pan-African Health Delivery</span>
+  </div>
+  <div class="cb-right">
+    <span class="cb-label">Clinical Command Center:</span>
+    <div class="cb-divider"></div>
+    <span class="cb-trudoc-mini">24/7/365 <span>Active</span></span>
+  </div>
+</div>
+
+<!-- MAIN NAVIGATION -->
+<nav>
+  <a href="#" class="logo">
+    <svg width="34" height="34" viewBox="0 0 40 40" fill="none"><path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4z" fill="#1952A2"/><circle cx="20" cy="20" r="5" fill="#00BA9D"/><path d="M20 14v6l4 2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <span class="logo-text">Tru<span>Doc</span></span>
+  </a>
+  <div class="nav-r">
+    <div class="condition-tabs">
+      <span class="ctab active">B2B Gateways</span>
+      <span class="ctab">The Platform</span>
+      <span class="ctab">Pharmacy &amp; Care</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#platform">Platform Moat</a></li>
+      <li><a href="#pharmacy">Pharmacy Grid</a></li>
+      <li><a href="#investors">About &amp; Series B</a></li>
+    </ul>
+    <a href="#partner-modal" class="nav-cta">Partner With Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bar"></div>
+  <div class="hero-partner-stripe"></div>
+  <div class="hero-bg-word">ECOSYSTEM</div>
+  <div class="hero-photo">
+    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1600&q=80" alt="TruDoc Clinical Network">
+  </div>
+  <div class="hero-float">
+    <div class="hf-label">Live Clinical Telemetry</div>
+    <div class="hf-row"><div class="hf-dot"></div><div class="hf-val">&lt; 40s</div></div>
+    <div class="hf-sub">doctor-to-patient connect</div>
+  </div>
+  <div class="hero-copy">
+    <div class="hero-cobrand-pill">
+      <div class="hcp-partner-dot">T</div>
+      <span class="hcp-text">TRUDOC GLOBAL // <strong>The Master Narrative</strong></span>
+    </div>
+    <div class="hero-tag"><div class="hero-tag-line"></div>Unified Care Infrastructure · GCC &amp; Africa</div>
+    <h1 class="hero-h1">
+      Virtual First.<br>
+      <span class="highlight">Hybrid Delivered.</span><br>
+      <span class="thin">Value Realized.</span>
+    </h1>
+    <p class="hero-sub">Transforming fragmented delivery into a continuous, data-driven healthcare continuum. Zero gatekeeping, 100% in-house doctors, and audited clinical governance.</p>
+    
+    <div class="hero-condition-row">
+      <span class="hcr-label">Solutions for</span>
+      <a href="#" class="hcr-tab active">Payers &amp; Insurers</a>
+      <a href="#" class="hcr-tab">Corporates &amp; Employers</a>
+      <a href="#" class="hcr-tab">Government &amp; MOH</a>
+      <a href="#" class="hcr-tab">Providers &amp; TPAs</a>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#partner-modal" class="btn-pill-teal">Deploy Enterprise Suite</a>
+      <a href="#app-hub" class="btn-pill-ghost">Get Super Health App</a>
+    </div>
+
+    <div class="hero-chips">
+      <div class="chip"><div class="chip-dot"></div><div class="chip-val">&lt; 40s</div><div class="chip-label">Physician Triage</div></div>
+      <div class="chip"><div class="chip-val">100%</div><div class="chip-label">In-House Faculty</div></div>
+      <div class="chip"><div class="chip-val">15+ Yrs</div><div class="chip-label">Operating Heritage</div></div>
+      <div class="chip"><div class="chip-val">DHA/MOH</div><div class="chip-label">Accredited Grid</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="ts-left">
+    <div class="ts-logo-box">
+      <span class="ts-partner-text">TRUDOC ECOSYSTEM</span>
+      <span class="ts-x">×</span>
+      <span class="ts-trudoc-text">15+ Years <span>Heritage</span></span>
+    </div>
+    <p class="ts-desc">Serving millions of lives with end-to-end clinical governance, sovereign in-country data residency, and fully integrated physical-virtual delivery corridors.</p>
+  </div>
+  <div class="ts-verified">
+    <span class="ts-v-icon">🛡️</span>
+    <span class="ts-v-text">DHA · MOH · DOH Licensed · Sovereign Cloud</span>
+  </div>
+</div>
+
+<!-- 03. THE PLATFORM (FULL-STACK MOAT & BENTO SHOWCASE) -->
+<section class="wyg-section" id="platform">
+  <div class="wyg-header">
+    <div>
+      <div class="sec-eyebrow">The Platform Architecture</div>
+      <div class="sec-title">Full-Stack Infrastructure<br><em>&amp; Proprietary Care Moat.</em></div>
+    </div>
+    <p class="wyg-sub">Not an aggregator. A vertically integrated healthcare grid pairing instant software with owned clinical operations.</p>
+  </div>
+  
+  <div class="wyg-grid">
+    <!-- Tall Card: Super App -->
+    <div class="wyg-card wyg-tall">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80" alt="Super Health App">
+      <div class="wyg-arrow">↗</div>
+      <div class="wyg-info">
+        <span class="wyg-tag">01 / DIGITAL FRONT DOOR</span>
+        <div class="wyg-name">TruDoc Super Health App</div>
+        <p class="wyg-desc">Under 40-second teleconsultations, biometric sync, unified EMR repository, and instant digital prescription fulfillment in one unified mobile terminal.</p>
+      </div>
+    </div>
+
+    <!-- Short Card 1: Physical Network -->
+    <div class="wyg-card wyg-short">
+      <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80" alt="Physical Network">
+      <div class="wyg-arrow">↗</div>
+      <div class="wyg-info">
+        <span class="wyg-tag">02 / HYBRID GRID</span>
+        <div class="wyg-name">Smart Clinics &amp; Pharmacies</div>
+        <p class="wyg-desc">Branded storefronts and automated dispensary units bridging digital triage with on-ground execution.</p>
+      </div>
+    </div>
+
+    <!-- Short Card 2: Hospital-at-Home -->
+    <div class="wyg-card wyg-short">
+      <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Hospital-at-Home">
+      <div class="wyg-arrow">↗</div>
+      <div class="wyg-info">
+        <span class="wyg-tag">03 / RPM &amp; HOME MONITORING</span>
+        <div class="wyg-name">Hospital-at-Home Protocols</div>
+        <p class="wyg-desc">Continuous chronic surveillance via cellular IoT devices and mobile nurse response units.</p>
+      </div>
+    </div>
+
+    <!-- Short Card 3: Clinical AI -->
+    <div class="wyg-card wyg-short">
+      <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800&q=80" alt="Clinical AI">
+      <div class="wyg-arrow">↗</div>
+      <div class="wyg-info">
+        <span class="wyg-tag">04 / GOVERNANCE ENGINE</span>
+        <div class="wyg-name">Clinical AI &amp; MOH Compliance</div>
+        <p class="wyg-desc">Algorithmic triage pathways, real-time error prevention, and 99.4% protocol adherence.</p>
+      </div>
+    </div>
+
+    <!-- Short Card 4: 100% In-House Faculty -->
+    <div class="wyg-card wyg-short">
+      <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80" alt="In-House Physicians">
+      <div class="wyg-arrow">↗</div>
+      <div class="wyg-info">
+        <span class="wyg-tag">05 / ZERO GIG-ECONOMY</span>
+        <div class="wyg-name">100% Salaried Medical Team</div>
+        <p class="wyg-desc">Dedicated, audited full-time doctors operating 24/7/365 within our medical command centers.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02. SOLUTIONS (B2B GATEWAYS) -->
+  <div class="wyg-benefits" id="solutions">
+    <div class="benefit-card">
+      <div class="bc-icon">🛡️</div>
+      <div class="bc-name">Payers &amp; Insurers</div>
+      <p class="bc-desc">Arrest claims leakage and eliminate unnecessary ER admissions with proactive primary virtual triage.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="bc-icon">🏢</div>
+      <div class="bc-name">Corporates &amp; Employers</div>
+      <p class="bc-desc">Zero lost workdays. Immediate doctor access on staff devices, executive health days, and HR risk analytics.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="bc-icon">🏛️</div>
+      <div class="bc-name">Government &amp; Public Health</div>
+      <p class="bc-desc">Asset-light population health coverage for remote areas, sovereign cloud data, and epidemiological monitoring.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="bc-icon">🏥</div>
+      <div class="bc-name">Providers &amp; TPAs</div>
+      <p class="bc-desc">Care continuity pipelines and post-discharge step-down RPM preventing 30-day hospital readmissions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS (THE CONTINUUM) -->
+<section class="how">
+  <div class="how-header">
+    <div>
+      <div class="sec-eyebrow" style="color:var(--green)">The Care Delivery Continuum</div>
+      <h2 class="how-sec-title">From Instant Triage<br><em>to Step-Down Resolution.</em></h2>
+    </div>
+    <p class="how-sub">How our integrated software and physical infrastructure coordinates care without clinical friction.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-num">01</div>
+      <div class="tl-title">Instant Digital Front Door</div>
+      <p class="tl-desc">Member initiates call via Super App and connects to an in-house doctor in under 40 seconds. Zero gatekeepers.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-num">02</div>
+      <div class="tl-title">Algorithmic Clinical Triage</div>
+      <p class="tl-desc">Physicians follow standardized, MOH-compliant clinical decision pathways with live EMR cross-referencing.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-num">03</div>
+      <div class="tl-title">Hybrid Action &amp; Rx Dispatch</div>
+      <p class="tl-desc">Automatic formulary pre-auth, cold-chain medication delivery in 90 mins, or referral to physical Smart Clinics.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-num">04</div>
+      <div class="tl-title">Continuous RPM &amp; Follow-up</div>
+      <p class="tl-desc">Ongoing cellular IoT biometric tracking and scheduled tele-follow-ups to ensure long-term health adherence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLINICAL GOVERNANCE STRIP -->
+<section class="doctor-strip">
+  <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1600&q=80" alt="TruDoc Doctors">
+  <div class="ds-content">
+    <div class="ds-eyebrow">Institutional Clinical Authority</div>
+    <h2 class="ds-title">Dedicated In-House Clinicians.<br><em>Zero Marketplace Freelancers.</em></h2>
+    <p class="ds-body">Unlike gig-economy platforms, 100% of TruDoc physicians are full-time, salaried medical faculty trained under strict clinical governance and accredited by regional authorities.</p>
+    
+    <div class="ds-checks">
+      <div class="ds-check"><span class="ds-chk">✓</span> DHA, MOH, &amp; DOH accredited practitioners</div>
+      <div class="ds-check"><span class="ds-chk">✓</span> 99.4% adherence to evidence-based clinical protocols</div>
+      <div class="ds-check"><span class="ds-chk">✓</span> Continuous peer-audit and clinical leadership oversight</div>
+    </div>
+
+    <a href="#solutions" class="btn-teal-pill">Explore Clinical Governance</a>
+  </div>
+
+  <div class="ds-badges">
+    <div class="ds-badge">
+      <span class="db-icon">🏥</span>
+      <div>
+        <div class="db-label">DHA / MOH Certified</div>
+        <div class="db-sub">Fully Licensed Command Center</div>
+      </div>
+    </div>
+    <div class="ds-badge">
+      <span class="db-icon">⏱️</span>
+      <div>
+        <div class="db-label">&lt; 40s Response Time</div>
+        <div class="db-sub">Live Doctor Connect 24/7/365</div>
+      </div>
+    </div>
+    <div class="ds-badge">
+      <span class="db-icon">🔒</span>
+      <div>
+        <div class="db-label">Sovereign Data Storage</div>
+        <div class="db-sub">Local UAE &amp; GCC Cloud Lock</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04. PHARMACY & CARE & TESTIMONIALS -->
+<section class="testimonials" id="pharmacy">
+  <div class="testi-layout">
+    <div class="testi-left">
+      <div class="sec-eyebrow">Direct Consumer &amp; Network Scale</div>
+      <h2>Pharmacy &amp; Care Grid<br><em>at Regional Scale.</em></h2>
+      <p>Instant access to physical Smart Clinics, localized diagnostic hubs, and rapid prescription fulfillment across the GCC corridor.</p>
+      
+      <div class="rating-row">
+        <div class="big-rating">15+</div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div class="rating-label">Years of clinical operating heritage</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-right">
+      <!-- Big Card: Pharmacy & Delivery -->
+      <div class="tcard tcard-big">
+        <div class="tquote">"Prescription refill and diagnostic routing integrated with our insurer network reduced claims turnaround from 4 days to real-time auto-authorization."</div>
+        <div class="tauthor">
+          <div class="tavatar">RX</div>
+          <div>
+            <div class="tname">Prescription Refill &amp; Cold-Chain Dispatch</div>
+            <div class="tloc">90-Minute Metro Delivery Corridor · UAE &amp; KSA</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small Cards Row -->
+      <div class="tcards-row">
+        <div class="tcard">
+          <div class="tquote" style="font-size:14px;">"Smart Clinic locator and seamless referral pathways eliminated our employee clinic commute times completely."</div>
+          <div class="tauthor">
+            <div class="tavatar" style="background:var(--teal)">SC</div>
+            <div>
+              <div class="tname">Interactive Footprint Grid</div>
+              <div class="tloc">Branded Storefront Network</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard">
+          <div class="tquote" style="font-size:14px;">"Step-down hospital-at-home monitoring cut 30-day readmissions across our high-risk patient pool by 40%."</div>
+          <div class="tauthor">
+            <div class="tavatar" style="background:var(--green);color:var(--navy)">HP</div>
+            <div>
+              <div class="tname">Hospital-at-Home RPM</div>
+              <div class="tloc">Continuous Cellular Telemetry</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06. PRIMARY CTAs & ENTERPRISE CONVERSION -->
+<section class="cobrand-cta" id="partner-modal">
+  <div class="cta-left">
+    <div class="sec-eyebrow" style="color:var(--green)">Enterprise &amp; Investor Deployment</div>
+    <h2>Transform Your Care Grid.<br><em>Partner With TruDoc.</em></h2>
+    <p>Deploy custom actuarial claims reduction models, workforce vitality portals, or sovereign population health infrastructure.</p>
+    
+    <div class="cta-partner-note">
+      <div class="cta-partner-dot">✓</div>
+      <span>Series B Scale-Up · Rapid Integration APIs · SLA-Backed Response</span>
+    </div>
+  </div>
+
+  <div class="cta-right">
+    <div class="cta-box-label">Select Your Entry Point</div>
+    <div class="cta-btns">
+      <a href="#partner-modal" class="cta-btn-main">Partner With Us (B2B Modal)</a>
+      <a href="#app-hub" class="cta-btn-ghost">Get The Super App (QR Code)</a>
+    </div>
+    <div class="cta-hotline">Enterprise Lead Desk: <strong>enterprise@trudoc.com</strong></div>
+  </div>
+</section>
+
+<!-- FOOTER (GLOBAL NAVIGATION & HIERARCHY MAP) -->
+<footer id="investors">
+  <div class="footer-cobrand-strip">
+    <span class="fcs-label">Ecosystem Master Grid:</span>
+    <span class="fcs-partner">TruDoc Global</span>
+    <span class="fcs-x">×</span>
+    <span class="fcs-trudoc">Sovereign <span>Operating System</span></span>
+    <div class="fcs-sep"></div>
+    <span class="fcs-program">15+ Years Clinical Operating Legacy</span>
+  </div>
+
+  <div class="footer-grid">
+    <div class="fbrand">
+      <a href="#" class="logo">
+        <span class="logo-text" style="color:white;">Tru<span style="color:var(--green);">Doc</span></span>
+      </a>
+      <p>The unified healthcare ecosystem delivering virtual-first triage, hybrid physical clinics, and continuous decentralized hospital-at-home monitoring across the GCC and Africa.</p>
+    </div>
+
+    <div class="fcol">
+      <h4>02. Solutions (B2B)</h4>
+      <ul>
+        <li><a href="#solutions">Payers &amp; Insurers</a></li>
+        <li><a href="#solutions">Corporates &amp; Employers</a></li>
+        <li><a href="#solutions">Government &amp; Public Health</a></li>
+        <li><a href="#solutions">Providers &amp; TPAs</a></li>
+      </ul>
+    </div>
+
+    <div class="fcol">
+      <h4>03. The Platform</h4>
+      <ul>
+        <li><a href="#platform">Super Health App</a></li>
+        <li><a href="#platform">Smart Clinics Network</a></li>
+        <li><a href="#platform">Hospital-at-Home &amp; RPM</a></li>
+        <li><a href="#platform">Clinical Excellence &amp; AI</a></li>
+      </ul>
+    </div>
+
+    <div class="fcol">
+      <h4>04. Pharmacy &amp; Care</h4>
+      <ul>
+        <li><a href="#pharmacy">Store &amp; Clinic Locator</a></li>
+        <li><a href="#pharmacy">Prescription Refill &amp; Delivery</a></li>
+        <li><a href="#app-hub">App Download Hub</a></li>
+        <li><a href="#pharmacy">Diagnostic Partners</a></li>
+      </ul>
+    </div>
+
+    <div class="fcol">
+      <h4>05. About &amp; Investors</h4>
+      <ul>
+        <li><a href="#investors">About TruDoc (15+ Yrs)</a></li>
+        <li><a href="#investors">Leadership &amp; Governance</a></li>
+        <li><a href="#investors">Investor Relations &amp; News</a></li>
+        <li><a href="#investors">Careers at TruDoc</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="fbot">
+    <p>&copy; 2026 TruDoc Healthcare. All rights reserved. Sovereign Cloud Infrastructure.</p>
+    <div class="fbot-note">DHA, MOH, &amp; DOH accredited 24/7/365 clinical command center. Data residency compliant with UAE and regional healthcare regulatory standards.</div>
+    <span>Version 2.0 Global OS</span>
+  </div>
+</footer>
+
+</body>
+</html>
