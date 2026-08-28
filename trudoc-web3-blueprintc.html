@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TRUDOC WEB 3.0 WEBSITE COPY DECK | Integrated Care Platform Messaging, Structure & Copywriting Specifications</title>
+  <title>TruDoc | Value-Based Integrated Care Platform</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Inter & Space Grotesk Google Fonts + Lucide Icons -->
+  <!-- Google Fonts & Lucide Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -53,544 +53,412 @@
   </style>
 </head>
 
-<body class="font-sans antialiased selection:bg-brand-500 selection:text-slate-950 pb-32">
+<body class="font-sans antialiased selection:bg-brand-500 selection:text-slate-950 pb-28">
 
-  <!-- ================= SECTION 2: GLOBAL HEADER & NAVIGATION SPECIFICATIONS ================= -->
+  <!-- ================= PERSISTENT GLOBAL NAVIGATION ================= -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-[#030712]/95 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       
-      <!-- Left Logo: TruDoc (High-Resolution Vector SVG - linking to Home) -->
+      <!-- Brand Logo -->
       <a href="#home" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-brand-500 text-slate-950 flex items-center justify-center font-black text-xl tracking-tighter">
+        <div class="w-10 h-10 rounded-xl bg-brand-500 text-slate-950 flex items-center justify-center font-black text-xl tracking-tighter shadow-lg">
           T
         </div>
         <div class="flex flex-col">
           <span class="text-xl font-bold tracking-tight text-white leading-none">Tru<span class="text-brand-400">Doc</span></span>
-          <span class="text-[9px] font-mono tracking-widest text-slate-400 uppercase mt-0.5">WEB 3.0</span>
+          <span class="text-[9px] font-mono tracking-widest text-slate-400 uppercase mt-0.5">Integrated Care Platform</span>
         </div>
       </a>
 
-      <!-- Global Navigation Menus with Dropdowns -->
-      <nav class="hidden xl:flex items-center gap-6 text-xs font-semibold tracking-wider text-slate-300 font-mono">
+      <!-- Global Navigation Menus -->
+      <nav class="hidden xl:flex items-center gap-7 text-xs font-semibold tracking-wider text-slate-300 font-mono uppercase">
         
-        <!-- Navigation Menu Item 1: SOLUTIONS [Dropdown] -->
+        <!-- SOLUTIONS Dropdown -->
         <div class="relative group">
           <a href="#solutions" class="flex items-center gap-1 hover:text-brand-400 py-2 transition-colors">
             SOLUTIONS <i data-lucide="chevron-down" class="w-3 h-3 text-slate-500"></i>
           </a>
           <div class="absolute left-0 top-full hidden group-hover:block w-72 bg-[#0b0f19] border border-white/10 rounded-xl shadow-2xl p-2 z-50">
-            <a href="#solutions-payers" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Payers & Insurers (/solutions/payers-insurers)</a>
-            <a href="#solutions-corporates" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Corporates & Employers (/solutions/corporates-employers)</a>
-            <a href="#solutions-government" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Government & Public Health (/solutions/government-public-health)</a>
-            <a href="#solutions-providers" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Providers & TPAs (/solutions/providers-tpas)</a>
+            <a href="#solutions-payers" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Payers & Insurers</a>
+            <a href="#solutions-corporates" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Corporates & Employers</a>
+            <a href="#solutions-government" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Government & Public Health</a>
+            <a href="#solutions-providers" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Providers & TPAs</a>
           </div>
         </div>
 
-        <!-- Navigation Menu Item 2: THE PLATFORM [Dropdown] -->
+        <!-- THE PLATFORM Dropdown -->
         <div class="relative group">
           <a href="#platform" class="flex items-center gap-1 hover:text-brand-400 py-2 transition-colors">
             THE PLATFORM <i data-lucide="chevron-down" class="w-3 h-3 text-slate-500"></i>
           </a>
           <div class="absolute left-0 top-full hidden group-hover:block w-72 bg-[#0b0f19] border border-white/10 rounded-xl shadow-2xl p-2 z-50">
-            <a href="#platform-app" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Super Health App (/platform/super-health-app)</a>
-            <a href="#platform-physical" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Physical Network (/platform/physical-network)</a>
-            <a href="#platform-rpm" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Hospital-at-Home & RPM (/platform/hospital-at-home)</a>
-            <a href="#platform-ai" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Clinical Excellence & AI (/platform/clinical-excellence-ai)</a>
+            <a href="#platform-app" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Super Health App</a>
+            <a href="#platform-physical" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Physical Network</a>
+            <a href="#platform-rpm" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Hospital-at-Home & RPM</a>
+            <a href="#platform-ai" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Clinical Excellence & AI</a>
           </div>
         </div>
 
-        <!-- Navigation Menu Item 3: PHARMACY & CARE [Standard Link] -->
-        <a href="#pharmacy-care" class="hover:text-brand-400 transition-colors py-2">PHARMACY & CARE (/pharmacy-care)</a>
+        <a href="#pharmacy-care" class="hover:text-brand-400 transition-colors py-2">PHARMACY & CARE</a>
 
-        <!-- Navigation Menu Item 4: ABOUT & INVESTORS [Dropdown] -->
+        <!-- ABOUT & GOVERNANCE Dropdown -->
         <div class="relative group">
           <a href="#about" class="flex items-center gap-1 hover:text-brand-400 py-2 transition-colors">
-            ABOUT & INVESTORS <i data-lucide="chevron-down" class="w-3 h-3 text-slate-500"></i>
+            ABOUT & PARTNERS <i data-lucide="chevron-down" class="w-3 h-3 text-slate-500"></i>
           </a>
           <div class="absolute right-0 top-full hidden group-hover:block w-72 bg-[#0b0f19] border border-white/10 rounded-xl shadow-2xl p-2 z-50">
-            <a href="#about-legacy" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- About TruDoc (/about)</a>
-            <a href="#about-leadership" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Leadership & Governance (/about/leadership-governance)</a>
-            <a href="#about-investors" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Investor Relations & Newsroom (/about/investors)</a>
-            <a href="#about-careers" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">- Careers (/about/careers)</a>
+            <a href="#about-legacy" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">About TruDoc</a>
+            <a href="#about-leadership" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Leadership & Governance</a>
+            <a href="#about-partners" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Enterprise Relations & News</a>
+            <a href="#about-careers" class="block px-3 py-2 text-xs text-slate-300 hover:text-brand-400 hover:bg-slate-900 rounded-lg">Careers</a>
           </div>
         </div>
 
       </nav>
 
-      <!-- Persistent CTAs -->
+      <!-- Action Buttons -->
       <div class="flex items-center gap-3">
         <a href="#app-download-hub" class="hidden sm:inline-flex px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-white/10 transition-all">
-          [Get the Super App]
+          Get the Super App
         </a>
         <a href="#solutions-payers" class="px-4 py-2 rounded-lg bg-brand-500 hover:bg-brand-400 text-slate-950 text-xs font-bold transition-all shadow-lg flex items-center gap-1.5">
-          <span>[Partner With Us]</span>
+          <span>Partner With Us</span>
           <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- ================= DOCUMENT HEADER SPECIFICATIONS ================= -->
-  <section class="pt-28 pb-6 bg-[#070b14] border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="mb-4">
-        <h1 class="text-xl font-bold text-white uppercase font-mono">TRUDOC WEB 3.0 WEBSITE COPY DECK</h1>
-        <p class="text-xs text-slate-400">Integrated Care Platform Messaging, Structure & Copywriting Specifications</p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono pt-4 border-t border-white/5">
-        <div><span class="text-slate-500 block">Document Status:</span> <span class="text-white font-semibold">Confidential / Enterprise Strategy Copy Deck</span></div>
-        <div><span class="text-slate-500 block">Version:</span> <span class="text-brand-400 font-semibold">v1.0 (Series B Alignment)</span></div>
-        <div><span class="text-slate-500 block">Published:</span> <span class="text-white font-semibold">August 2026</span></div>
-        <div><span class="text-slate-500 block">Audience:</span> <span class="text-slate-300">Web Developers, Content Editors, Series B Institutional Investors, SLT</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= TABLE OF CONTENTS TABLE ================= -->
-  <section class="py-10 max-w-7xl mx-auto px-6 border-b border-white/5">
-    <div class="mb-4">
-      <h3 class="text-xs font-mono font-bold text-white uppercase tracking-wider">Table of Contents</h3>
-      <p class="text-[11px] text-slate-500">Note: Word and Google Docs will automatically generate and refresh this table on open. Below is the conceptual outline of the web copy pages contained herein:[cite: 4]</p>
-    </div>
-    <div class="overflow-x-auto rounded-xl clean-border">
-      <table class="w-full text-left text-xs sm:text-sm border-collapse bg-[#0b0f19]">
-        <tbody class="divide-y divide-white/5 text-slate-300">
-          <tr><td class="py-2.5 px-5 font-medium text-white">Section 1: Master Brand Strategy & Messaging Architecture[cite: 4]</td><td class="py-2.5 px-5 text-right font-mono text-slate-400">Pages 3-4[cite: 4]</td></tr>
-          <tr><td class="py-2.5 px-5 font-medium text-white">Section 2: Site-Wide Common Copy Elements (Header, Footer, CTAs)[cite: 4]</td><td class="py-2.5 px-5 text-right font-mono text-slate-400">Page 5[cite: 4]</td></tr>
-          <tr><td class="py-2.5 px-5 font-medium text-white">Section 3: Page 01 — Home (Ecosystem Platform & Master Narrative)[cite: 4]</td><td class="py-2.5 px-5 text-right font-mono text-slate-400">Pages 6-8[cite: 4]</td></tr>
-          <tr><td class="py-2.5 px-5 font-medium text-white">Section 4: Solutions B2B Gateway (Payers, Corporates, Government, Providers)[cite: 4]</td><td class="py-2.5 px-5 text-right font-mono text-slate-400">Pages 9-13[cite: 4]</td></tr>
-          <tr><td class="py-2.5 px-5 font-medium text-white">Section 5: Platform & Infrastructure Moat (App, Clinics, Hospital-at-Home, AI)[cite: 4]</td><td class="py-2.5 px-5 text-right font-mono text-slate-400">Pages 14-17[cite: 4]</td></tr>
-          <tr><td class="py-2.5 px-5 font-medium text-white">Section 6: Pharmacy & Care Consumer Hub (Locator, Refills, Download)[cite: 4]</td><td class="py-2.5 px-5 text-right font-mono text-slate-400">Pages 18-20[cite: 4]</td></tr>
-          <tr><td class="py-2.5 px-5 font-medium text-white">Section 7: About & Investors Corporate Anchor (About, Leadership, Investors, Careers)[cite: 4]</td><td class="py-2.5 px-5 text-right font-mono text-slate-400">Pages 21-24[cite: 4]</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ================= SECTION 1: MASTER BRAND STRATEGY & MESSAGING ARCHITECTURE ================= -->
-  <section class="py-16 max-w-7xl mx-auto px-6 border-b border-white/5">
-    <div class="mb-10">
-      <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Section 1[cite: 4]</span>
-      <h2 class="text-3xl font-extrabold text-white mt-1 uppercase tracking-tight">Master Brand Strategy & Messaging Architecture[cite: 4]</h2>
-      <p class="text-slate-300 text-sm mt-3 leading-relaxed max-w-4xl">
-        TruDoc's Web 3.0 represents a crucial transition from an isolated telemedicine app into a comprehensive, multi-layered healthcare delivery ecosystem. This shift is designed to expand B2B corporate contracts, secure payers' trust, and ultimately support a high-growth valuation for the Series B investment round.[cite: 4]
-      </p>
-    </div>
-
-    <!-- Triple Pillar Narrative -->
-    <div class="mb-12">
-      <h3 class="text-sm font-mono font-bold text-white uppercase tracking-wider mb-4">THE TRIPLE PILLAR NARRATIVE FOR SERIES B ALIGNMENT[cite: 4]</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="clean-panel p-6 rounded-xl">
-          <div class="text-brand-400 font-mono text-xs font-bold mb-1">1.[cite: 4]</div>
-          <h4 class="text-base font-bold text-white mb-2">Valuation Multiple Elevation[cite: 4]</h4>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Shift the conversation away from standard pure-play telehealth (which trades at low multiples) to full-stack healthtech. Prove how integrating virtual, physical, and value-based elements commands higher valuations.[cite: 4]
-          </p>
-        </div>
-
-        <div class="clean-panel p-6 rounded-xl">
-          <div class="text-brand-accent font-mono text-xs font-bold mb-1">2.[cite: 4]</div>
-          <h4 class="text-base font-bold text-white mb-2">Institutional Defensive Moat[cite: 4]</h4>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Establish a physical 'grid defensibility'—showing that TruDoc's digital front door is backed by physical smart clinics and rebranded pharmacy networks across GCC and Africa.[cite: 4]
-          </p>
-        </div>
-
-        <div class="clean-panel p-6 rounded-xl">
-          <div class="text-emerald-400 font-mono text-xs font-bold mb-1">3.[cite: 4]</div>
-          <h4 class="text-base font-bold text-white mb-2">Enterprise B2B Monetization[cite: 4]</h4>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Demonstrate structured B2B2C pipelines that monetize corporate and payer contracts via predictable, recurring revenue modules.[cite: 4]
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Target Audience Routing Strategy Table -->
-    <div>
-      <h3 class="text-sm font-mono font-bold text-white uppercase tracking-wider mb-4">Target Audience Routing Strategy[cite: 4]</h3>
-      <div class="overflow-x-auto rounded-xl clean-border">
-        <table class="w-full text-left text-xs sm:text-sm border-collapse bg-[#0b0f19]">
-          <thead>
-            <tr class="border-b border-white/10 bg-slate-900/80 font-mono text-[11px] text-brand-400 uppercase tracking-wider">
-              <th class="py-3.5 px-5">Audience Segment[cite: 4]</th>
-              <th class="py-3.5 px-5">Primary Pain Point[cite: 4]</th>
-              <th class="py-3.5 px-5">Core Conversion Target[cite: 4]</th>
-              <th class="py-3.5 px-5">Routing Path[cite: 4]</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-white/5 text-slate-300">
-            <tr>
-              <td class="py-3.5 px-5 font-semibold text-white">Payers & Insurers[cite: 4]</td>
-              <td class="py-3.5 px-5 text-slate-400">Escalating claims expenses, ER overflow[cite: 4]</td>
-              <td class="py-3.5 px-5 text-brand-400 font-medium">Request Enterprise Demo[cite: 4]</td>
-              <td class="py-3.5 px-5 font-mono text-xs text-slate-400">Solutions > Payers & Insurers[cite: 4]</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-5 font-semibold text-white">Corporate Employers[cite: 4]</td>
-              <td class="py-3.5 px-5 text-slate-400">Workforce absenteeism, generic care[cite: 4]</td>
-              <td class="py-3.5 px-5 text-brand-accent font-medium">Schedule Commercial Briefing[cite: 4]</td>
-              <td class="py-3.5 px-5 font-mono text-xs text-slate-400">Solutions > Corporates & Employers[cite: 4]</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-5 font-semibold text-white">Direct Patients / Members[cite: 4]</td>
-              <td class="py-3.5 px-5 text-slate-400">Fragmented care, delayed consults[cite: 4]</td>
-              <td class="py-3.5 px-5 text-emerald-400 font-medium">App Store Download & Store Locator[cite: 4]</td>
-              <td class="py-3.5 px-5 font-mono text-xs text-slate-400">Pharmacy & Care Hub / Get App[cite: 4]</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-5 font-semibold text-white">Institutional Investors[cite: 4]</td>
-              <td class="py-3.5 px-5 text-slate-400">TAM defensibility, low-margin telemedicine[cite: 4]</td>
-              <td class="py-3.5 px-5 text-white font-medium">Download Investor One-Pager[cite: 4]</td>
-              <td class="py-3.5 px-5 font-mono text-xs text-slate-400">About & Investors > Relations[cite: 4]</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SECTION 3: PAGE 01 — HOMEPAGE COPY DECK ================= -->
-  <section id="home" class="py-20 hero-glow border-b border-white/5">
+  <!-- ================= HOMEPAGE HERO SECTION ================= -->
+  <section id="home" class="relative pt-36 pb-20 md:pt-44 md:pb-28 hero-glow border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6">
       
-      <div class="mb-4 text-center">
-        <span class="text-xs font-mono text-brand-400 font-bold uppercase tracking-widest">Section 3: Page 01 — Homepage Copy Deck[cite: 4]</span>
-        <div class="text-[11px] font-mono text-slate-500 mt-0.5">Page URL: /home | Primary Goal: Introduce the integrated ecosystem narrative and drive commercial leads.[cite: 4]</div>
+      <!-- Pill Badge -->
+      <div class="flex justify-center mb-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-brand-500/30 text-xs font-mono font-medium text-brand-400">
+          <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
+          VALUE-BASED HEALTHCARE DELIVERY ECOSYSTEM
+        </div>
       </div>
 
-      <!-- Section 1: Hero — The Platform Thesis -->
-      <div class="text-center max-w-4xl mx-auto mt-8 mb-12">
+      <!-- Main Headline & Sub-headline -->
+      <div class="text-center max-w-4xl mx-auto mb-10">
         <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
-          Redefining Healthcare Delivery Across Emerging Markets[cite: 4]
+          Redefining Healthcare Delivery Across Emerging Markets
         </h1>
         <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto mb-8">
-          Unifying virtual-first clinical care, physical pharmacy networks, and smart clinic grids into a single, value-based healthcare delivery ecosystem.[cite: 4]
+          Unifying virtual-first clinical care, physical pharmacy networks, and smart clinic grids into a single, value-based healthcare delivery ecosystem.[cite: 3]
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto mb-10">
-          <a href="#solutions-payers" class="w-full sm:w-auto px-6 py-3.5 rounded-lg bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all">
-            [Request Enterprise Demo][cite: 4]
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto mb-12">
+          <a href="#solutions-payers" class="w-full sm:w-auto px-6 py-3.5 rounded-lg bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-brand-500/20">
+            Request Enterprise Demo[cite: 3]
           </a>
           <a href="#platform-app" class="w-full sm:w-auto px-6 py-3.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs uppercase tracking-wider transition-all border border-slate-700">
-            [Explore the Super App][cite: 4]
+            Explore the Super App[cite: 3]
           </a>
         </div>
-
-        <div class="clean-panel rounded-xl p-4 text-left max-w-2xl mx-auto border-l-2 border-l-brand-400 text-xs text-slate-400">
-          <strong class="text-slate-200">Visual Asset Description:</strong> Interactive 3D structural rendering illustrating the interconnected cycle: Super App (Virtual door) -> Teleconsultation -> Physical Smart Clinic -> Localised Pharmacy Fulfillment & Last-Mile delivery.[cite: 4]
-        </div>
       </div>
 
-      <!-- Section 2: Scale, Traction & Credibility Banner -->
-      <div class="py-10">
-        <div class="text-xs font-mono font-bold text-slate-400 tracking-widest uppercase mb-4">
-          Section 2: Scale, Traction & Credibility Banner (A persistent horizontal ribbon placed below the fold, proving real-world scale instantly to corporate and institutional visitors):[cite: 4]
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          
-          <div class="clean-panel p-5 rounded-xl">
-            <div class="text-lg font-bold text-white mb-1">Millions of Covered Lives[cite: 4]</div>
-            <p class="text-xs text-slate-400">B2B enterprise members scaled across international markets[cite: 4]</p>
-          </div>
-
-          <div class="clean-panel p-5 rounded-xl">
-            <div class="text-lg font-bold text-white mb-1">24/7 Physician Access[cite: 4]</div>
-            <p class="text-xs text-slate-400">On-demand multilingual medical support instantly in the palm of your hand[cite: 4]</p>
-          </div>
-
-          <div class="clean-panel p-5 rounded-xl">
-            <div class="text-lg font-bold text-white mb-1">Multi-Country Footprint[cite: 4]</div>
-            <p class="text-xs text-slate-400">Active care delivery across the GCC, Middle East, and expanding African markets[cite: 4]</p>
-          </div>
-
-          <div class="clean-panel p-5 rounded-xl">
-            <div class="text-lg font-bold text-white mb-1">Regional Pharmacy Grid[cite: 4]</div>
-            <p class="text-xs text-slate-400">Rebranded pharmacies and localized smart clinics providing physical care proximity[cite: 4]</p>
-          </div>
-
-          <div class="clean-panel p-5 rounded-xl">
-            <div class="text-lg font-bold text-brand-400 mb-1">90%+ Payer Claim Resolution[cite: 4]</div>
-            <p class="text-xs text-slate-400">Verified clinical resolution at triage, preventing unnecessary secondary claims[cite: 4]</p>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Section 3: The 3-Pillar Operational Moat -->
-      <div class="py-12">
-        <h3 class="text-xl font-bold text-white mb-2">Section 3: The 3-Pillar Operational Moat[cite: 4]</h3>
-        <p class="text-xs text-slate-400 mb-6">This section demonstrates the comprehensive integration that builds our competitive business defensibility:[cite: 4]</p>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
-            <div>
-              <span class="text-xs font-mono font-bold text-brand-400 uppercase">Pillar 01[cite: 4]</span>
-              <h4 class="text-lg font-bold text-white mt-1 mb-2">Virtual-First Care[cite: 4]</h4>
-              <p class="text-xs text-slate-300 mb-4">The digital entry point. We triage, consult, and coordinate patient journeys instantly through the Super Health App.[cite: 4]</p>
-              <div class="text-xs text-slate-400 space-y-2 mb-4">
-                <div><strong class="text-slate-200">&bull; Features:</strong> 24/7 Tele-triage, Virtual Consults, Integrated EHR, instant digital prescription generation.[cite: 4]</div>
-                <div><strong class="text-slate-200">&bull; Value:</strong> Reduces claim volume before patients consume expensive in-person assets.[cite: 4]</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
-            <div>
-              <span class="text-xs font-mono font-bold text-brand-accent uppercase">Pillar 02[cite: 4]</span>
-              <h4 class="text-lg font-bold text-white mt-1 mb-2">Physical Network[cite: 4]</h4>
-              <p class="text-xs text-slate-300 mb-4">The localized infrastructure. Branded, high-tech physical touchpoints providing essential diagnostic and fulfillment support.[cite: 4]</p>
-              <div class="text-xs text-slate-400 space-y-2 mb-4">
-                <div><strong class="text-slate-200">&bull; Features:</strong> Branded Smart Clinics, Rebranded Pharmacy Outlets, Last-Mile Medicine Delivery.[cite: 4]</div>
-                <div><strong class="text-slate-200">&bull; Value:</strong> Establishes strong local brand authority and validates real-world patient safety.[cite: 4]</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
-            <div>
-              <span class="text-xs font-mono font-bold text-emerald-400 uppercase">Pillar 03[cite: 4]</span>
-              <h4 class="text-lg font-bold text-white mt-1 mb-2">Value-Based Payer Gateway[cite: 4]</h4>
-              <p class="text-xs text-slate-300 mb-4">The economic alignment engine. We actively lower overall system cost-to-serve through proactive intervention.[cite: 4]</p>
-              <div class="text-xs text-slate-400 space-y-2 mb-4">
-                <div><strong class="text-slate-200">&bull; Features:</strong> Remote Patient Monitoring (RPM), Hospital-at-Home programs, Chronic Disease Management.[cite: 4]</div>
-                <div><strong class="text-slate-200">&bull; Value:</strong> Eliminates up to 60% of avoidable Emergency Room visits, optimizing payer risk portfolios.[cite: 4]</div>
-              </div>
-            </div>
+      <!-- Hero Visual Composition -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10">
+        <div class="relative rounded-2xl overflow-hidden clean-panel h-72 group">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop" alt="Tele-triage Doctor" class="w-full h-full object-cover brightness-75 group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6">
+            <span class="text-xs font-mono text-brand-400 font-semibold tracking-wider uppercase">Virtual Front Door[cite: 3]</span>
+            <p class="text-sm font-semibold text-white mt-1">24/7 tele-triage Super App connecting patients to board-certified clinicians in under 60 seconds.[cite: 3]</p>
           </div>
         </div>
-      </div>
 
-      <!-- Section 4: Commercial Audience Gateways -->
-      <div class="py-10">
-        <h3 class="text-xl font-bold text-white mb-6">Section 4: Commercial Audience Gateways[cite: 4]</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
-            <div>
-              <h4 class="text-base font-bold text-white mb-2">&bull; For Payers & Insurers:[cite: 4]</h4>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                Eliminate leakage. Implement high-accuracy clinical tele-triage to resolve up to 90% of member queries virtually and divert up to 60% of unnecessary ER visits.[cite: 4]
-              </p>
-            </div>
-            <a href="#solutions-payers" class="text-xs font-bold text-brand-400 hover:text-brand-300 font-mono flex items-center gap-1">
-              -&gt; [Optimise Your Claims][cite: 4]
-            </a>
+        <div class="relative rounded-2xl overflow-hidden clean-panel h-72 group">
+          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop" alt="Smart Clinic Interior" class="w-full h-full object-cover brightness-75 group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6">
+            <span class="text-xs font-mono text-brand-accent font-semibold tracking-wider uppercase">Defensible Physical Grid[cite: 3]</span>
+            <p class="text-sm font-semibold text-white mt-1">High-tech Smart Clinics and integrated community pharmacies providing seamless in-person diagnostics.[cite: 3]</p>
           </div>
-
-          <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
-            <div>
-              <h4 class="text-base font-bold text-white mb-2">&bull; For Corporate Workforces:[cite: 4]</h4>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                Boost productivity. Provide 24/7 clinical access, dedicated virtual-first mental wellbeing support, and executive health tracking to reduce corporate absenteeism.[cite: 4]
-              </p>
-            </div>
-            <a href="#solutions-corporates" class="text-xs font-bold text-brand-accent hover:text-brand-300 font-mono flex items-center gap-1">
-              -&gt; [Protect Your Workforce][cite: 4]
-            </a>
-          </div>
-
-          <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
-            <div>
-              <h4 class="text-base font-bold text-white mb-2">&bull; For Patients & Direct Consumers:[cite: 4]</h4>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                Complete continuous care. Book telemedicine consults, track metrics, manage prescriptions, and localize neighborhood smart clinics in one unified application.[cite: 4]
-              </p>
-            </div>
-            <a href="#app-download-hub" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 font-mono flex items-center gap-1">
-              -&gt; [Download the Super App][cite: 4]
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Section 5: Clinical Governance & Trust & Section 6: Leadership -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-8">
-        <div class="clean-panel p-6 rounded-xl">
-          <h4 class="text-base font-bold text-white mb-2">Section 5: Clinical Governance & Trust (Regulatory Framework)[cite: 4]</h4>
-          <p class="text-xs text-slate-300 mb-3">Healthcare requires ironclad trust. TruDoc combines top-tier clinical governance with strict regulatory alignment:[cite: 4]</p>
-          <ul class="text-xs text-slate-400 space-y-2">
-            <li><strong class="text-slate-200">&bull; Institutional Standards:</strong> Fully accredited under DHA, DOH, and MOH. Every clinical workflow is backed by standardized, evidence-based global protocols.[cite: 4]</li>
-            <li><strong class="text-slate-200">&bull; Rigorous Physician Vetting:</strong> 100% of our physicians are full-time, strictly vetted, and continuously trained under international medical guidelines.[cite: 4]</li>
-          </ul>
-        </div>
-
-        <div class="clean-panel p-6 rounded-xl">
-          <h4 class="text-base font-bold text-white mb-2">Section 6: Leadership & Corporate Expansion[cite: 4]</h4>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Backing our clinical vision with institutional muscle. TruDoc is scaling rapidly across GCC territories and Africa, supported by leading healthcare and digital transformation investors. Our strategic M&A moves and recent geographical expansions demonstrate our scalability and defensive enterprise value as we head into our Series B funding cycle.[cite: 4]
-          </p>
-        </div>
-      </div>
-
-      <!-- Section 7: Final Enterprise Call to Action -->
-      <div class="clean-panel p-8 rounded-xl text-center mt-6">
-        <h3 class="text-xl font-bold text-white mb-4">Section 7: Final Enterprise Call to Action[cite: 4]</h3>
-        <p class="text-lg font-semibold text-slate-200 mb-6">Ready to Transform Healthcare Delivery With Us?[cite: 4]</p>
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="#solutions-corporates" class="px-6 py-3 rounded-lg bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all">
-            [Schedule a Commercial Briefing][cite: 4]
-          </a>
-          <a href="#about-investors" class="px-6 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs uppercase tracking-wider transition-all border border-slate-700">
-            [Download Investor One-Pager][cite: 4]
-          </a>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= SECTION 4: SOLUTIONS B2B GATEWAY ================= -->
+  <!-- ================= SCALE, TRACTION & CREDIBILITY BANNER ================= -->
+  <section class="py-10 bg-[#070b14] border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        
+        <div class="clean-panel p-5 rounded-xl">
+          <div class="text-base font-bold text-white mb-1">Millions of Covered Lives[cite: 3]</div>
+          <p class="text-xs text-slate-400">B2B enterprise members scaled across international markets[cite: 3]</p>
+        </div>
+
+        <div class="clean-panel p-5 rounded-xl">
+          <div class="text-base font-bold text-white mb-1">24/7 Physician Access[cite: 3]</div>
+          <p class="text-xs text-slate-400">On-demand multilingual medical support instantly in the palm of your hand[cite: 3]</p>
+        </div>
+
+        <div class="clean-panel p-5 rounded-xl">
+          <div class="text-base font-bold text-white mb-1">Multi-Country Footprint[cite: 3]</div>
+          <p class="text-xs text-slate-400">Active care delivery across the GCC, Middle East, and expanding African markets[cite: 3]</p>
+        </div>
+
+        <div class="clean-panel p-5 rounded-xl">
+          <div class="text-base font-bold text-white mb-1">Regional Pharmacy Grid[cite: 3]</div>
+          <p class="text-xs text-slate-400">Rebranded pharmacies and localized smart clinics providing physical care proximity[cite: 3]</p>
+        </div>
+
+        <div class="clean-panel p-5 rounded-xl">
+          <div class="text-base font-bold text-brand-400 mb-1">90%+ Payer Claim Resolution[cite: 3]</div>
+          <p class="text-xs text-slate-400">Verified clinical resolution at triage, preventing unnecessary secondary claims[cite: 3]</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE 3-PILLAR OPERATIONAL MOAT ================= -->
+  <section class="py-20 max-w-7xl mx-auto px-6 border-b border-white/5">
+    <div class="max-w-3xl mb-12">
+      <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Operational Architecture[cite: 3]</span>
+      <h2 class="text-3xl font-bold text-white mt-1 uppercase tracking-tight">The 3-Pillar Operational Moat[cite: 3]</h2>
+      <p class="text-slate-400 text-xs sm:text-sm mt-2">This integrated ecosystem builds unmatched competitive defensibility and long-term care continuity:[cite: 3]</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <!-- Pillar 01 -->
+      <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-mono font-bold text-brand-400 uppercase">Pillar 01[cite: 3]</span>
+          <h3 class="text-lg font-bold text-white mt-1 mb-2">Virtual-First Care[cite: 3]</h3>
+          <p class="text-xs text-slate-300 mb-4">The digital entry point. We triage, consult, and coordinate patient journeys instantly through the Super Health App.[cite: 3]</p>
+          <div class="text-xs text-slate-400 space-y-2 mb-4">
+            <div><strong class="text-slate-200">&bull; Features:</strong> 24/7 Tele-triage, Virtual Consults, Integrated EHR, instant digital prescription generation.[cite: 3]</div>
+            <div><strong class="text-slate-200">&bull; Value:</strong> Reduces claim volume before patients consume expensive in-person assets.[cite: 3]</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 02 -->
+      <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-mono font-bold text-brand-accent uppercase">Pillar 02[cite: 3]</span>
+          <h3 class="text-lg font-bold text-white mt-1 mb-2">Physical Network[cite: 3]</h3>
+          <p class="text-xs text-slate-300 mb-4">The localized infrastructure. Branded, high-tech physical touchpoints providing essential diagnostic and fulfillment support.[cite: 3]</p>
+          <div class="text-xs text-slate-400 space-y-2 mb-4">
+            <div><strong class="text-slate-200">&bull; Features:</strong> Branded Smart Clinics, Rebranded Pharmacy Outlets, Last-Mile Medicine Delivery.[cite: 3]</div>
+            <div><strong class="text-slate-200">&bull; Value:</strong> Establishes strong local brand authority and validates real-world patient safety.[cite: 3]</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 03 -->
+      <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-mono font-bold text-emerald-400 uppercase">Pillar 03[cite: 3]</span>
+          <h3 class="text-lg font-bold text-white mt-1 mb-2">Value-Based Payer Gateway[cite: 3]</h3>
+          <p class="text-xs text-slate-300 mb-4">The economic alignment engine. We actively lower overall system cost-to-serve through proactive intervention.[cite: 3]</p>
+          <div class="text-xs text-slate-400 space-y-2 mb-4">
+            <div><strong class="text-slate-200">&bull; Features:</strong> Remote Patient Monitoring (RPM), Hospital-at-Home programs, Chronic Disease Management.[cite: 3]</div>
+            <div><strong class="text-slate-200">&bull; Value:</strong> Eliminates up to 60% of avoidable Emergency Room visits, optimizing payer risk portfolios.[cite: 3]</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= COMMERCIAL AUDIENCE GATEWAYS ================= -->
+  <section class="py-20 max-w-7xl mx-auto px-6 border-b border-white/5">
+    <div class="max-w-3xl mb-12">
+      <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Target Gateways[cite: 3]</span>
+      <h2 class="text-3xl font-bold text-white mt-1 uppercase tracking-tight">Commercial Audience Gateways[cite: 3]</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <h3 class="text-base font-bold text-white mb-2">For Payers & Insurers[cite: 3]</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+            Eliminate leakage. Implement high-accuracy clinical tele-triage to resolve up to 90% of member queries virtually and divert up to 60% of unnecessary ER visits.[cite: 3]
+          </p>
+        </div>
+        <a href="#solutions-payers" class="text-xs font-bold text-brand-400 hover:text-brand-300 font-mono flex items-center gap-1">
+          -&gt; Optimise Your Claims[cite: 3]
+        </a>
+      </div>
+
+      <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <h3 class="text-base font-bold text-white mb-2">For Corporate Workforces[cite: 3]</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+            Boost productivity. Provide 24/7 clinical access, dedicated virtual-first mental wellbeing support, and executive health tracking to reduce corporate absenteeism.[cite: 3]
+          </p>
+        </div>
+        <a href="#solutions-corporates" class="text-xs font-bold text-brand-accent hover:text-brand-300 font-mono flex items-center gap-1">
+          -&gt; Protect Your Workforce[cite: 3]
+        </a>
+      </div>
+
+      <div class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <h3 class="text-base font-bold text-white mb-2">For Patients & Direct Consumers[cite: 3]</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+            Complete continuous care. Book telemedicine consults, track metrics, manage prescriptions, and localize neighborhood smart clinics in one unified application.[cite: 3]
+          </p>
+        </div>
+        <a href="#app-download-hub" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 font-mono flex items-center gap-1">
+          -&gt; Download the Super App[cite: 3]
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOLUTIONS B2B GATEWAYS & FORMS ================= -->
   <section id="solutions" class="py-20 bg-[#070b14] border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6">
       
       <div class="mb-12">
-        <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Section 4[cite: 4]</span>
-        <h2 class="text-3xl font-extrabold text-white mt-1 uppercase tracking-tight">Solutions Gateways (Commercial Focus)[cite: 4]</h2>
+        <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Commercial Solutions[cite: 3]</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1 uppercase tracking-tight">Enterprise Solutions Gateways[cite: 3]</h2>
       </div>
 
       <div class="space-y-16">
         
-        <!-- 4.1 Payers & Insurers Gateway -->
+        <!-- Payers & Insurers -->
         <div id="solutions-payers" class="clean-panel p-8 rounded-2xl">
           <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
             <div>
-              <span class="text-xs font-mono text-brand-400 font-bold">4.1 Payers & Insurers Gateway[cite: 4]</span>
-              <div class="text-[11px] font-mono text-slate-500">URL: /solutions/payers-insurers | Core CTA: [Request Enterprise Payer Demo][cite: 4]</div>
+              <h3 class="text-lg font-bold text-white font-mono">Payers & Insurers Gateway[cite: 3]</h3>
+              <p class="text-xs text-slate-400">Aligning Economic Incentives with Clinical Excellence[cite: 3]</p>
             </div>
-            <a href="#lead-form-payer" class="px-4 py-2 rounded-lg bg-brand-500 text-slate-950 font-bold text-xs">[Request Enterprise Payer Demo][cite: 4]</a>
+            <span class="px-3.5 py-1.5 bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-mono font-semibold rounded-lg">
+              90%+ Claim Resolution Rate[cite: 3]
+            </span>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
             <div class="space-y-4 text-xs sm:text-sm text-slate-300">
-              <p><strong>&bull; Section 1: Hero —</strong> Aligning Economic Incentives with Clinical Excellence. Lower your medical claims costs and manage risk portfolios through TruDoc's high-efficiency virtual-first care integration.[cite: 4]</p>
-              <p><strong>&bull; Section 2: Core Value Propositions —</strong> Risk Reduction (monitoring high-risk chronic patients); Claims Optimization (90%+ triage-level resolution rate); Value-Based Outpatient Care (redirecting patients away from costly settings).[cite: 4]</p>
-              <div>
-                <strong class="text-white block mb-1">&bull; Section 3: The Economic Proof-Points —[cite: 4]</strong>
-                <ol class="list-decimal list-inside space-y-1 text-slate-400">
-                  <li>Up to 60% Reduction in avoidable ER visits.[cite: 4]</li>
-                  <li>90%+ Payer Claim Resolution Rate: Administrative claims are routed and pre-cleared, drastically minimizing claims friction and dispute costs.[cite: 4]</li>
-                  <li>Proactive Remote Monitoring: Managing hypertensive, diabetic, and complex patients via continuous telemetry, preventing secondary hospitalization.[cite: 4]</li>
-                </ol>
+              <p>Lower your medical claims costs and manage risk portfolios through TruDoc's high-efficiency virtual-first care integration.[cite: 3]</p>
+              
+              <div class="space-y-2">
+                <strong class="text-white block font-mono text-xs uppercase">Core Value Propositions:[cite: 3]</strong>
+                <p>&bull; <strong>Risk Reduction:</strong> Continuous monitoring of high-risk chronic patients.[cite: 3]</p>
+                <p>&bull; <strong>Claims Optimization:</strong> 90%+ triage-level resolution rate eliminating unnecessary claims.[cite: 3]</p>
+                <p>&bull; <strong>Value-Based Outpatient Care:</strong> Redirecting patients away from costly acute settings.[cite: 3]</p>
+              </div>
+
+              <div class="space-y-2">
+                <strong class="text-white block font-mono text-xs uppercase">The Economic Proof-Points:[cite: 3]</strong>
+                <p>1. Up to 60% Reduction in avoidable ER visits.[cite: 3]</p>
+                <p>2. 90%+ Payer Claim Resolution Rate minimizing disputes and claims friction.[cite: 3]</p>
+                <p>3. Proactive Remote Monitoring preventing secondary hospitalizations.[cite: 3]</p>
               </div>
             </div>
 
-            <!-- Enterprise Lead Form -->
-            <div id="lead-form-payer" class="bg-slate-950 p-6 rounded-xl border border-white/10">
-              <h4 class="text-sm font-bold text-white font-mono mb-4">&bull; Section 4: Enterprise Lead Form — Fields: Full Name, Company/Payer Name, Regional Health License Number, Total Covered Lives, Contact Email, Request Demo Note.[cite: 4]</h4>
-              <form onsubmit="event.preventDefault(); alert('Payer demo form submitted.');" class="space-y-3">
-                <input type="text" required placeholder="Full Name *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Company/Payer Name *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Regional Health License Number *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Total Covered Lives *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="email" required placeholder="Contact Email *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <textarea rows="2" placeholder="Request Demo Note" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white"></textarea>
-                <button type="submit" class="w-full py-2.5 bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs rounded-lg transition-all">Submit Payer Inquiry[cite: 4]</button>
+            <!-- Payer Lead Form -->
+            <div class="bg-slate-950 p-6 rounded-xl border border-white/10">
+              <h4 class="text-sm font-bold text-white font-mono mb-4">Request Enterprise Payer Demo[cite: 3]</h4>
+              <form onsubmit="event.preventDefault(); alert('Payer demo inquiry submitted.');" class="space-y-3">
+                <input type="text" required placeholder="Full Name *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="text" required placeholder="Company / Payer Name *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="text" required placeholder="Regional Health License Number *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="text" required placeholder="Total Covered Lives *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="email" required placeholder="Corporate Email Domain *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <textarea rows="2" placeholder="Request Demo Note" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white"></textarea>
+                <button type="submit" class="w-full py-3 bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs rounded-lg transition-all shadow-lg">
+                  Submit Payer Inquiry[cite: 3]
+                </button>
               </form>
             </div>
           </div>
         </div>
 
-        <!-- 4.2 Corporates & Employers Gateway -->
+        <!-- Corporates & Employers -->
         <div id="solutions-corporates" class="clean-panel p-8 rounded-2xl">
           <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
             <div>
-              <span class="text-xs font-mono text-brand-accent font-bold">4.2 Corporates & Employers Gateway[cite: 4]</span>
-              <div class="text-[11px] font-mono text-slate-500">URL: /solutions/corporates-employers | Core CTA: [Schedule Corporate Wellness Briefing][cite: 4]</div>
+              <h3 class="text-lg font-bold text-white font-mono">Corporates & Employers Gateway[cite: 3]</h3>
+              <p class="text-xs text-slate-400">A Healthier Workforce, A Productive Business[cite: 3]</p>
             </div>
-            <a href="#lead-form-corporate" class="px-4 py-2 rounded-lg bg-brand-accent text-slate-950 font-bold text-xs">[Schedule Corporate Wellness Briefing][cite: 4]</a>
+            <span class="px-3.5 py-1.5 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-xs font-mono font-semibold rounded-lg">
+              20-30% Renewal Savings[cite: 1]
+            </span>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
             <div class="space-y-4 text-xs sm:text-sm text-slate-300">
-              <p><strong>&bull; Section 1: Hero —</strong> A Healthier Workforce, A Productive Business. Deploy customized, 24/7 corporate healthcare solutions that minimize sick leaves, enhance engagement, and provide premium medical support for your workforce.[cite: 4]</p>
-              <div>
-                <strong class="text-white block mb-1">&bull; Section 2: Program Modules —[cite: 4]</strong>
-                <ul class="list-disc list-inside space-y-1 text-slate-400">
-                  <li><strong>24/7 Instant Telehealth:</strong> Direct clinical consultations for staff anytime, eliminating long absences for minor medical issues.[cite: 4]</li>
-                  <li><strong>Corporate Wellness Programs:</strong> Mental health counselling, preventative care, and nutrition sessions.[cite: 4]</li>
-                  <li><strong>Dedicated On-site Executive Clinics:</strong> High-end medical checkups and vitals monitoring managed directly at corporate HQs.[cite: 4]</li>
-                </ul>
+              <p>Deploy customized, 24/7 corporate healthcare solutions that minimize sick leaves, enhance engagement, and provide premium medical support for your workforce.[cite: 3]</p>
+              
+              <div class="space-y-2">
+                <strong class="text-white block font-mono text-xs uppercase">Program Modules:[cite: 3]</strong>
+                <p>&bull; <strong>24/7 Instant Telehealth:</strong> Direct clinical consultations for staff anytime, eliminating long absences for minor issues.[cite: 3]</p>
+                <p>&bull; <strong>Corporate Wellness Programs:</strong> Mental health counselling, preventative care, and nutrition sessions.[cite: 3]</p>
+                <p>&bull; <strong>Dedicated On-site Executive Clinics:</strong> High-end medical checkups and vitals monitoring managed directly at corporate HQs.[cite: 3]</p>
               </div>
+
+              <blockquote class="text-xs text-slate-400 italic bg-black/30 p-4 rounded-lg border border-white/5">
+                &ldquo;The corporate workforce demands frictionless, instant medical care. TruDoc delivers just that, resulting in a healthier, more productive staff and dramatically reduced healthcare premium renewals for enterprise businesses.&rdquo;[cite: 1]
+              </blockquote>
             </div>
 
-            <!-- Corporate Lead Capture Form -->
-            <div id="lead-form-corporate" class="bg-slate-950 p-6 rounded-xl border border-white/10">
-              <h4 class="text-sm font-bold text-white font-mono mb-4">&bull; Section 3: Lead Capture Form — Fields: Full Name, Company Name, Total Employees, Country/GCC Region, Corporate Email, Contact Phone, Corporate Wellness Interest Area.[cite: 4]</h4>
-              <form onsubmit="event.preventDefault(); alert('Corporate briefing scheduled.');" class="space-y-3">
-                <input type="text" required placeholder="Full Name *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Company Name *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Total Employees *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Country/GCC Region *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="email" required placeholder="Corporate Email *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="tel" required placeholder="Contact Phone *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" placeholder="Corporate Wellness Interest Area" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <button type="submit" class="w-full py-2.5 bg-brand-accent hover:bg-sky-400 text-slate-950 font-bold text-xs rounded-lg transition-all">Schedule Corporate Wellness Briefing[cite: 4]</button>
+            <!-- Corporate Form -->
+            <div class="bg-slate-950 p-6 rounded-xl border border-white/10">
+              <h4 class="text-sm font-bold text-white font-mono mb-4">Schedule Corporate Wellness Briefing[cite: 3]</h4>
+              <form onsubmit="event.preventDefault(); alert('Corporate briefing requested.');" class="space-y-3">
+                <input type="text" required placeholder="Full Name *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="text" required placeholder="Company Name *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="text" required placeholder="Total Employees *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="text" required placeholder="Country / GCC Region *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="email" required placeholder="Corporate Email *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="tel" required placeholder="Contact Phone *" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <input type="text" placeholder="Corporate Wellness Interest Area" class="w-full px-3 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+                <button type="submit" class="w-full py-3 bg-brand-accent hover:bg-sky-400 text-slate-950 font-bold text-xs rounded-lg transition-all shadow-lg">
+                  Schedule Commercial Briefing[cite: 3]
+                </button>
               </form>
             </div>
           </div>
         </div>
 
-        <!-- 4.3 Government & Public Health Gateway -->
-        <div id="solutions-government" class="clean-panel p-8 rounded-2xl">
-          <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+        <!-- Government & Providers Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div id="solutions-government" class="clean-panel p-6 rounded-xl flex flex-col justify-between">
             <div>
-              <span class="text-xs font-mono text-emerald-400 font-bold">4.3 Government & Public Health Gateway[cite: 4]</span>
-              <div class="text-[11px] font-mono text-slate-500">URL: /solutions/government-public-health | Core CTA: [Contact Government Solutions Team][cite: 4]</div>
-            </div>
-            <button onclick="alert('Government Solutions Team contacted.');" class="px-4 py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs">[Contact Government Solutions Team][cite: 4]</button>
-          </div>
-
-          <div class="space-y-4 text-xs sm:text-sm text-slate-300 mt-4">
-            <p><strong>&bull; Section 1: Hero —</strong> Scaling Population Health Management Across Nations. Partnering with global health ministries and municipal bodies to deliver decentralized clinical programs, robust digital triage, and rapid rural care delivery.[cite: 4]</p>
-            <div>
-              <strong class="text-white block mb-1">&bull; Section 2: Key Capabilities —[cite: 4]</strong>
-              <ul class="list-disc list-inside space-y-1 text-slate-400">
-                <li><strong>Population Health Analytics:</strong> Regional care trends tracking and epidemiology analytics.[cite: 4]</li>
-                <li><strong>Regional Scale & Deployment:</strong> Implementing localized smart clinics and medicine distribution grids in underserved regions.[cite: 4]</li>
-                <li><strong>Strict DHA, DOH & MOH Compliance:</strong> Meeting national security, health data privacy, and clinical guidelines seamlessly.[cite: 4]</li>
+              <span class="text-xs font-mono text-emerald-400 font-bold uppercase">Public Sector[cite: 3]</span>
+              <h3 class="text-base font-bold text-white mt-1 mb-2">Government & Public Health Gateway[cite: 3]</h3>
+              <p class="text-xs text-slate-300 mb-4">Scaling Population Health Management Across Nations through decentralized clinical programs, robust digital triage, and rapid rural care delivery.[cite: 3]</p>
+              <ul class="text-xs text-slate-400 space-y-1 mb-6">
+                <li>&bull; Population Health Analytics & Epidemiology Trends[cite: 3]</li>
+                <li>&bull; Regional Deployment & Smart Clinic Distribution Grids[cite: 3]</li>
+                <li>&bull; Strict Compliance with DHA, DOH & MOH Guidelines[cite: 3]</li>
               </ul>
             </div>
-            <p><strong>&bull; Section 3: CTA Section —</strong> Connect with our Public Sector Directors for detailed case studies and regional health deployment strategies.[cite: 4]</p>
+            <button onclick="alert('Government Solutions Team contacted.');" class="w-full py-2.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-lg">
+              Contact Government Solutions Team[cite: 3]
+            </button>
           </div>
-        </div>
 
-        <!-- 4.4 Providers & TPAs Gateway -->
-        <div id="solutions-providers" class="clean-panel p-8 rounded-2xl">
-          <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+          <div id="solutions-providers" class="clean-panel p-6 rounded-xl flex flex-col justify-between">
             <div>
-              <span class="text-xs font-mono text-white font-bold">4.4 Providers & TPAs Gateway[cite: 4]</span>
-              <div class="text-[11px] font-mono text-slate-500">URL: /solutions/providers-tpas | Core CTA: [Inquire for Partner Integration][cite: 4]</div>
+              <span class="text-xs font-mono text-white font-bold uppercase">Partnerships[cite: 3]</span>
+              <h3 class="text-base font-bold text-white mt-1 mb-2">Providers & TPAs Gateway[cite: 3]</h3>
+              <p class="text-xs text-slate-300 mb-4">Coordinated Care, Simplified Referrals. Partner with TruDoc to establish automated digital referral paths and streamline TPA pre-authorizations.[cite: 3]</p>
+              <ul class="text-xs text-slate-400 space-y-1 mb-6">
+                <li>&bull; Integrated Specialist Referral Network[cite: 3]</li>
+                <li>&bull; Instant Digital Pre-Auth & Records Sharing[cite: 3]</li>
+                <li>&bull; Post-Discharge Remote Care Continuity (RPM)[cite: 3]</li>
+              </ul>
             </div>
+            <button onclick="alert('Partner Integration Form Opened.');" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg border border-white/10">
+              Inquire for Partner Integration[cite: 3]
+            </button>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
-            <div class="space-y-4 text-xs sm:text-sm text-slate-300">
-              <p><strong>&bull; Section 1: Hero —</strong> Coordinated Care, Simplified Referrals. Partner with TruDoc to establish automated digital referral paths, ensure continuous care, and streamline TPA claims pre-authorizations.[cite: 4]</p>
-              <div>
-                <strong class="text-white block mb-1">&bull; Section 2: Core Offerings —[cite: 4]</strong>
-                <ul class="list-disc list-inside space-y-1 text-slate-400">
-                  <li><strong>Integrated Referral Network:</strong> Direct digital handoff from virtual triage to physical specialist partners.[cite: 4]</li>
-                  <li><strong>Streamlined Pre-Auth & Billing:</strong> Integrated system sharing clinical records instantly with TPAs to secure immediate approval.[cite: 4]</li>
-                  <li><strong>Care Continuity:</strong> Making sure patients are monitored post-discharge via Remote Patient Monitoring (RPM).[cite: 4]</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Partner Lead Form -->
-            <div class="bg-slate-950 p-6 rounded-xl border border-white/10">
-              <h4 class="text-sm font-bold text-white font-mono mb-4">&bull; Section 3: Partner Lead Form — Fields: Clinic/TPA Name, Contact Person, Professional Role, Region, Inquiry Type, Message.[cite: 4]</h4>
-              <form onsubmit="event.preventDefault(); alert('Partner integration inquiry received.');" class="space-y-3">
-                <input type="text" required placeholder="Clinic/TPA Name *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Contact Person *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Professional Role *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Region *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <input type="text" required placeholder="Inquiry Type *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <textarea rows="2" placeholder="Message" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white"></textarea>
-                <button type="submit" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg transition-all">[Inquire for Partner Integration][cite: 4]</button>
-              </form>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -598,239 +466,184 @@
     </div>
   </section>
 
-  <!-- ================= SECTION 5: PLATFORM & INFRASTRUCTURE MOAT ================= -->
+  <!-- ================= THE PLATFORM & INFRASTRUCTURE MOAT ================= -->
   <section id="platform" class="py-20 max-w-7xl mx-auto px-6 border-b border-white/5">
-    <div class="mb-12">
-      <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Section 5[cite: 4]</span>
-      <h2 class="text-3xl font-extrabold text-white mt-1 uppercase tracking-tight">The Platform & Infrastructure Moat[cite: 4]</h2>
-      <p class="text-slate-300 text-sm mt-2 leading-relaxed">
-        The technological and physical backbone of TruDoc. This multi-layered infrastructure builds our solid competitive moat that isolated digital competitors cannot match.[cite: 4]
-      </p>
+    <div class="max-w-3xl mb-12">
+      <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Technology & Infrastructure[cite: 3]</span>
+      <h2 class="text-3xl font-extrabold text-white mt-1 uppercase tracking-tight">The Platform Deep-Dive[cite: 1]</h2>
+      <p class="text-slate-300 text-xs sm:text-sm mt-2">The technological and physical backbone of TruDoc delivering complete clinical care:[cite: 3]</p>
     </div>
 
-    <div class="space-y-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       
-      <!-- 5.1 Super Health App Gateway -->
-      <div id="platform-app" class="clean-panel p-8 rounded-2xl">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-          <div>
-            <h3 class="text-lg font-bold text-white font-mono">5.1 Super Health App Gateway[cite: 4]</h3>
-            <div class="text-[11px] font-mono text-slate-500">URL: /platform/super-health-app | Core CTA: [Get the App on iOS & Android][cite: 4]</div>
+      <div id="platform-app" class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center font-bold mb-4">
+            <i data-lucide="smartphone" class="w-5 h-5"></i>
           </div>
-          <a href="#app-download-hub" class="px-4 py-2 rounded-lg bg-brand-500 text-slate-950 font-bold text-xs">[Get the App on iOS & Android][cite: 4]</a>
+          <h3 class="text-base font-bold text-white mb-2">Super Health App[cite: 3]</h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            Virtual front door to complete care. Instant multilingual consultations with certified doctors in under 60 seconds, automated biometric telemetry, and digital EHR.[cite: 3]
+          </p>
         </div>
-        <p class="text-xs sm:text-sm text-slate-300 mb-4"><strong>&bull; Section 1: Hero —</strong> The Virtual Front Door to Complete Care. Consult, manage records, and request medication delivery in under 60 seconds with TruDoc's AI-enabled Super Health App.[cite: 4]</p>
-        <div class="text-xs sm:text-sm text-slate-400 space-y-2 mb-4">
-          <strong class="text-white block">&bull; Section 2: Feature Breakdown —[cite: 4]</strong>
-          <ul class="list-disc list-inside space-y-1">
-            <li><strong>Instant Multilingual Consultation:</strong> Voice, video, and text consultations with full-time, vetted board-certified physicians.[cite: 4]</li>
-            <li><strong>Biometric Tracking & Telemetry:</strong> Link wearbles to automatically log blood pressure, glucose, and oxygen saturation directly into your medical record.[cite: 4]</li>
-            <li><strong>Electronic Health Records (EHR):</strong> Keep your absolute medical history safe, secure, and accessible in compliance with HIPAA and national privacy frameworks.[cite: 4]</li>
-            <li><strong>Instant Prescription & Delivery:</strong> Receive prescription slips instantly on screen, routed directly to nearest pharmacy for ultra-rapid delivery.[cite: 4]</li>
-          </ul>
-        </div>
-        <p class="text-xs text-slate-500"><strong>&bull; Section 3: Visual —</strong> Mockups of app screens highlighting biometric dashboard, patient-doctor consulting portal, and digital prescription checkout flow.[cite: 4]</p>
+        <a href="#app-download-hub" class="text-xs font-mono text-brand-400 font-semibold hover:underline">Explore App Features &rarr;</a>
       </div>
 
-      <!-- 5.2 Physical Network (Smart Clinics & Pharmacies) -->
-      <div id="platform-physical" class="clean-panel p-8 rounded-2xl">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-          <div>
-            <h3 class="text-lg font-bold text-white font-mono">5.2 Physical Network (Smart Clinics & Pharmacies)[cite: 4]</h3>
-            <div class="text-[11px] font-mono text-slate-500">URL: /platform/physical-network | Core CTA: [Locate a Smart Clinic or Pharmacy][cite: 4]</div>
+      <div id="platform-physical" class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-brand-accent/10 text-brand-accent flex items-center justify-center font-bold mb-4">
+            <i data-lucide="building-2" class="w-5 h-5"></i>
           </div>
-          <a href="#store-locator" class="px-4 py-2 rounded-lg bg-brand-accent text-slate-950 font-bold text-xs">[Locate a Smart Clinic or Pharmacy][cite: 4]</a>
+          <h3 class="text-base font-bold text-white mb-2">Physical Network[cite: 3]</h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            Modular Smart Clinics and rebranded neighborhood pharmacies providing diagnostics, self-service vitals testing, and rapid prescription collections.[cite: 3]
+          </p>
         </div>
-        <p class="text-xs sm:text-sm text-slate-300 mb-4"><strong>&bull; Section 1: Hero —</strong> Unifying Digital Accessibility with Real-World Infrastructure. Our physical grid of high-tech Smart Clinics and rebranded neighborhood Pharmacies guarantees care proximity and medication availability.[cite: 4]</p>
-        <div class="text-xs sm:text-sm text-slate-400 space-y-2 mb-4">
-          <strong class="text-white block">&bull; Section 2: Physical Network Elements —[cite: 4]</strong>
-          <ul class="list-disc list-inside space-y-1">
-            <li><strong>Branded Smart Clinics:</strong> Modular, tech-enabled clinical hubs placed inside corporate offices, residential communities, and rural towns, featuring self-service vitals diagnostics and teleconsultation interfaces.[cite: 4]</li>
-            <li><strong>Rebranded Pharmacy Footprint:</strong> Fully integrated pharmacies that process digital prescriptions on-the-spot and coordinate last-mile home delivery.[cite: 4]</li>
-            <li><strong>Localized Distribution & Last-Mile Delivery:</strong> Dedicated delivery infrastructure bringing medicine directly to patients' doors, ensuring immediate care adherence.[cite: 4]</li>
-          </ul>
-        </div>
-        <p class="text-xs text-slate-400"><strong>&bull; Section 3: Value-add —</strong> Establishing clinical defensibility. Our physical assets prevent easy competitors from cloning our models, anchoring TruDoc securely in the real world.[cite: 4]</p>
+        <a href="#store-locator" class="text-xs font-mono text-brand-accent font-semibold hover:underline">Find Locations &rarr;</a>
       </div>
 
-      <!-- 5.3 Hospital-at-Home & Remote Patient Monitoring (RPM) -->
-      <div id="platform-rpm" class="clean-panel p-8 rounded-2xl">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-          <div>
-            <h3 class="text-lg font-bold text-white font-mono">5.3 Hospital-at-Home & Remote Patient Monitoring (RPM)[cite: 4]</h3>
-            <div class="text-[11px] font-mono text-slate-500">URL: /platform/hospital-at-home | Core CTA: [Request Remote Care Briefing][cite: 4]</div>
+      <div id="platform-rpm" class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold mb-4">
+            <i data-lucide="activity" class="w-5 h-5"></i>
           </div>
-          <button onclick="alert('Remote Care Briefing requested.');" class="px-4 py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs">[Request Remote Care Briefing][cite: 4]</button>
+          <h3 class="text-base font-bold text-white mb-2">Hospital-at-Home & RPM[cite: 3]</h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            Cellular-connected continuous diagnostic telemetry, in-home nursing visits, and personalized chronic care paths for Hypertension and Diabetes.[cite: 3]
+          </p>
         </div>
-        <p class="text-xs sm:text-sm text-slate-300 mb-4"><strong>&bull; Section 1: Hero —</strong> Advanced Clinical Care, Delivered in the Comfort of Your Home. Continuous monitoring, specialized clinical visits, and remote vitals tracking for chronic patients.[cite: 4]</p>
-        <div class="text-xs sm:text-sm text-slate-400 space-y-2 mb-4">
-          <strong class="text-white block">&bull; Section 2: Service Components —[cite: 4]</strong>
-          <ul class="list-disc list-inside space-y-1">
-            <li><strong>Remote Patient Monitoring (RPM):</strong> Cellular-connected diagnostic devices tracking metrics automatically and alerting doctors in real-time on any spikes or anomalies.[cite: 4]</li>
-            <li><strong>Dedicated Hospital-at-Home:</strong> Bringing physical nursing, diagnostic lab tests, and hospital-level clinical oversight right to the home for acute, non-critical patients.[cite: 4]</li>
-            <li><strong>Chronic Care Programs:</strong> Personalized therapeutic paths for Diabetes, Hypertension, and COPD patients, reducing acute flare-ups.[cite: 4]</li>
-          </ul>
-        </div>
-        <p class="text-xs text-brand-400 font-semibold"><strong>&bull; Section 3: Outcome Proof-Point —</strong> Proven 60% reduction in avoidable emergency room visits and hospital readmissions through active remote chronic management.[cite: 4]</p>
+        <span class="text-xs font-mono text-emerald-400 font-semibold">60% ER Diversion[cite: 3]</span>
       </div>
 
-      <!-- 5.4 Clinical Excellence, Governance & AI Triage -->
-      <div id="platform-ai" class="clean-panel p-8 rounded-2xl">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-          <div>
-            <h3 class="text-lg font-bold text-white font-mono">5.4 Clinical Excellence, Governance & AI Triage[cite: 4]</h3>
-            <div class="text-[11px] font-mono text-slate-500">URL: /platform/clinical-excellence-ai | Core CTA: [Review Clinical Standards][cite: 4]</div>
+      <div id="platform-ai" class="clean-panel p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold mb-4">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
           </div>
-          <button onclick="alert('Clinical Standards opened.');" class="px-4 py-2 rounded-lg bg-slate-800 text-white font-bold text-xs border border-white/10">[Review Clinical Standards][cite: 4]</button>
+          <h3 class="text-base font-bold text-white mb-2">Clinical AI & Governance[cite: 3]</h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            Intelligent triage mapping paired with international evidence-based medicine protocols. Fully certified under DHA, DOH, and MOH frameworks.[cite: 3]
+          </p>
         </div>
-        <p class="text-xs sm:text-sm text-slate-300 mb-4"><strong>&bull; Section 1: Hero —</strong> Where Artificial Intelligence Meets Board-Certified Care. Advanced clinical AI triage paired with strict evidence-based medicine protocols for safe and consistent care.[cite: 4]</p>
-        <div class="text-xs sm:text-sm text-slate-400 space-y-2 mb-4">
-          <strong class="text-white block">&bull; Section 2: Integrity Components —[cite: 4]</strong>
-          <ul class="list-disc list-inside space-y-1">
-            <li><strong>AI-Driven Tele-triage:</strong> Intelligent pre-consultation mapping that routes patients immediately to the correct specialist, eliminating error and reducing queue wait times.[cite: 4]</li>
-            <li><strong>Global Evidence-Based Protocols:</strong> Strict physician clinical protocols that ensure diagnostic consistency and avoid over-prescribing.[cite: 4]</li>
-            <li><strong>National Regulatory Standards:</strong> Fully compliant with DHA, DOH, and MOH. Zero-trust data policies and complete HIPAA compliance to guarantee absolute privacy.[cite: 4]</li>
-          </ul>
-        </div>
-        <p class="text-xs text-emerald-400 font-semibold"><strong>&bull; Section 3: Quality Stat —</strong> Our systems maintain an elite 90%+ payer claim resolution rate with zero medical negligence cases across all territories.[cite: 4]</p>
+        <span class="text-xs font-mono text-purple-400 font-semibold">MOH / DHA Certified[cite: 3]</span>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= SECTION 6: PHARMACY & CARE CONSUMER HUB ================= -->
+  <!-- ================= PHARMACY & CARE CONSUMER HUB ================= -->
   <section id="pharmacy-care" class="py-20 bg-[#070b14] border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6">
       
       <div class="mb-12">
-        <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Section 6[cite: 4]</span>
-        <h2 class="text-3xl font-extrabold text-white mt-1 uppercase tracking-tight">Pharmacy & Care Consumer Hub[cite: 4]</h2>
-        <p class="text-slate-300 text-sm mt-2 leading-relaxed">
-          A streamlined direct-to-consumer (D2C) portal allowing patients to access immediate local care, manage prescriptions, and obtain the digital application.[cite: 4]
-        </p>
+        <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Direct Patient Gateway[cite: 3]</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1 uppercase tracking-tight">Pharmacy & Care Consumer Hub[cite: 3]</h2>
       </div>
 
       <div class="space-y-12">
         
-        <!-- 6.1 Store & Clinic Locator -->
+        <!-- Store Locator -->
         <div id="store-locator" class="clean-panel p-8 rounded-2xl">
-          <span class="text-xs font-mono text-brand-400 font-bold block mb-1">6.1 Store & Clinic Locator Page Copy[cite: 4]</span>
-          <div class="text-[11px] font-mono text-slate-500 mb-4">URL: /pharmacy-care/locator | Core UI: Interactive Regional Map Integration[cite: 4]</div>
-          
-          <h3 class="text-xl font-bold text-white mb-2">Headline: Find TruDoc Smart Clinics & Pharmacies Near You[cite: 4]</h3>
-          <p class="text-xs sm:text-sm text-slate-300 mb-6"><strong>Sub-headline:</strong> Explore our localized, high-tech pharmacy and smart clinic network to receive on-site physical care, diagnostics, and prescription collections.[cite: 4]</p>
-
-          <!-- Search & Filters -->
-          <div class="bg-slate-950 p-4 rounded-xl border border-white/10 mb-6 flex flex-col md:flex-row gap-4">
-            <input type="text" placeholder="Quick Search: 'Enter City, Region or ZIP Code'" class="flex-1 px-4 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />[cite: 4]
-            <div class="flex flex-wrap gap-2">
-              <button class="px-3 py-2 bg-slate-800 text-xs text-slate-300 rounded-lg border border-white/10 hover:border-brand-400">Filter by: 'Smart Clinic'</button>[cite: 4]
-              <button class="px-3 py-2 bg-slate-800 text-xs text-slate-300 rounded-lg border border-white/10 hover:border-brand-400">Filter by: 'Pharmacy'</button>[cite: 4]
-              <button class="px-3 py-2 bg-slate-800 text-xs text-slate-300 rounded-lg border border-white/10 hover:border-brand-400">Filter by: '24/7 Tele-triage Kiosk'</button>[cite: 4]
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">Find TruDoc Smart Clinics & Pharmacies Near You[cite: 3]</h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-1">Explore our localized network for on-site physical care, diagnostics, and medication collections.[cite: 3]</p>
             </div>
           </div>
 
-          <!-- Store Cards Sample -->
+          <div class="bg-slate-950 p-4 rounded-xl border border-white/10 mb-6 flex flex-col md:flex-row gap-4">
+            <input type="text" placeholder="Enter City, Region or Area..." class="flex-1 px-4 py-2.5 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
+            <div class="flex flex-wrap gap-2">
+              <button class="px-3 py-2 bg-slate-800 text-xs text-slate-300 rounded-lg border border-white/10">Smart Clinics[cite: 3]</button>
+              <button class="px-3 py-2 bg-slate-800 text-xs text-slate-300 rounded-lg border border-white/10">Pharmacies[cite: 3]</button>
+              <button class="px-3 py-2 bg-slate-800 text-xs text-slate-300 rounded-lg border border-white/10">24/7 Tele-triage Kiosks[cite: 3]</button>
+            </div>
+          </div>
+
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-slate-950 p-5 rounded-xl border border-white/10 flex justify-between items-center">
               <div>
-                <h4 class="text-sm font-bold text-white">Card 1: TruDoc Smart Clinic - Dubai Marina[cite: 4]</h4>
-                <div class="text-xs text-brand-400 font-mono mt-0.5">Status: Open | Vitals Diagnostics Available[cite: 4]</div>
+                <h4 class="text-sm font-bold text-white">TruDoc Smart Clinic - Dubai Marina[cite: 3]</h4>
+                <div class="text-xs text-brand-400 font-mono mt-0.5">Status: Open &bull; Vitals Diagnostics Available[cite: 3]</div>
               </div>
-              <button class="px-3 py-1.5 bg-brand-500 text-slate-950 text-xs font-bold rounded-lg">[Get Directions][cite: 4]</button>
+              <button class="px-3 py-1.5 bg-brand-500 text-slate-950 text-xs font-bold rounded-lg">Get Directions[cite: 3]</button>
             </div>
 
             <div class="bg-slate-950 p-5 rounded-xl border border-white/10 flex justify-between items-center">
               <div>
-                <h4 class="text-sm font-bold text-white">Card 2: TruDoc Pharmacy - Riyadh Central[cite: 4]</h4>
-                <div class="text-xs text-brand-accent font-mono mt-0.5">Status: Open 24/7 | Prescription Refills & Delivery Hub[cite: 4]</div>
+                <h4 class="text-sm font-bold text-white">TruDoc Pharmacy - Riyadh Central[cite: 3]</h4>
+                <div class="text-xs text-brand-accent font-mono mt-0.5">Status: Open 24/7 &bull; Prescription Refills & Delivery[cite: 3]</div>
               </div>
-              <button class="px-3 py-1.5 bg-brand-accent text-slate-950 text-xs font-bold rounded-lg">[Call Pharmacy][cite: 4]</button>
+              <button class="px-3 py-1.5 bg-brand-accent text-slate-950 text-xs font-bold rounded-lg">Call Pharmacy[cite: 3]</button>
             </div>
           </div>
         </div>
 
-        <!-- 6.2 Prescription Refill & Delivery -->
+        <!-- Prescription Refill & Delivery Flow -->
         <div id="prescription-refills" class="clean-panel p-8 rounded-2xl">
-          <span class="text-xs font-mono text-brand-accent font-bold block mb-1">6.2 Prescription Refill & Delivery Page Copy[cite: 4]</span>
-          <div class="text-[11px] font-mono text-slate-500 mb-4">URL: /pharmacy-care/refills | Core CTA: [Upload Digital Prescription][cite: 4]</div>
-          
-          <h3 class="text-xl font-bold text-white mb-2">&bull; Section 1: Hero — Rapid Medicine Delivery, Directly to Your Door.[cite: 4]</h3>
-          <p class="text-xs sm:text-sm text-slate-300 mb-6">No long pharmacy queues. Upload your digital prescription slip and our localized fulfillment network will deliver your meds in under an hour.[cite: 4]</p>
+          <div class="mb-6">
+            <h3 class="text-xl font-bold text-white">Rapid Medicine Delivery, Directly to Your Door[cite: 3]</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">Upload your digital prescription slip and receive your medications in under an hour.[cite: 3]</p>
+          </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div>
-              <strong class="text-white block font-mono text-xs uppercase mb-3">&bull; Section 2: Simplified 3-Step Flow —[cite: 4]</strong>
-              <div class="space-y-4">
-                <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
-                  <div class="text-brand-400 font-bold text-xs mb-1">1. Upload Rx[cite: 4]</div>
-                  <p class="text-xs text-slate-400">Snap a photo or upload your TruDoc digital Rx slip directly.[cite: 4]</p>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
-                  <div class="text-brand-accent font-bold text-xs mb-1">2. Insurance Pre-Auth[cite: 4]</div>
-                  <p class="text-xs text-slate-400">Our dedicated billing desk handles insurance approvals with your TPA in the background.[cite: 4]</p>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
-                  <div class="text-emerald-400 font-bold text-xs mb-1">3. Swift Delivery[cite: 4]</div>
-                  <p class="text-xs text-slate-400">A certified courier delivers your medicine to your physical location under temperature-controlled guidelines.[cite: 4]</p>
-                </div>
+            <div class="space-y-4">
+              <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
+                <div class="text-brand-400 font-bold text-xs mb-1">1. Upload Rx[cite: 3]</div>
+                <p class="text-xs text-slate-400">Snap a photo or upload your TruDoc digital Rx slip directly.[cite: 3]</p>
+              </div>
+              <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
+                <div class="text-brand-accent font-bold text-xs mb-1">2. Insurance Pre-Auth[cite: 3]</div>
+                <p class="text-xs text-slate-400">Our dedicated billing desk coordinates insurance approvals directly with your TPA.[cite: 3]</p>
+              </div>
+              <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
+                <div class="text-emerald-400 font-bold text-xs mb-1">3. Swift Delivery[cite: 3]</div>
+                <p class="text-xs text-slate-400">Certified temperature-controlled delivery directly to your physical address.[cite: 3]</p>
               </div>
             </div>
 
-            <!-- Patient Refill Form -->
+            <!-- Patient Upload Form -->
             <div class="bg-slate-950 p-6 rounded-xl border border-white/10">
-              <strong class="text-white block font-mono text-xs uppercase mb-4">&bull; Section 3: Patient Form Fields — Full Name, Phone Number, Patient ID (from app), Upload File Area (PDF or Image), Delivery Location Address, Select Insurance Provider, Consent Checkbox.[cite: 4]</strong>
+              <h4 class="text-sm font-bold text-white font-mono mb-4">Upload Digital Prescription[cite: 3]</h4>
               <form onsubmit="event.preventDefault(); alert('Prescription uploaded successfully.');" class="space-y-3">
                 <input type="text" required placeholder="Full Name *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
                 <input type="tel" required placeholder="Phone Number *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
                 <input type="text" required placeholder="Patient ID (from app) *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <div class="border border-dashed border-white/20 p-4 text-center rounded-lg">
-                  <span class="text-xs text-slate-400">Upload File Area (PDF or Image)[cite: 4]</span>
+                <div class="border border-dashed border-white/20 p-4 text-center rounded-lg cursor-pointer hover:border-brand-400">
+                  <span class="text-xs text-slate-400">Upload Rx Slip (PDF or Image)[cite: 3]</span>
                 </div>
                 <input type="text" required placeholder="Delivery Location Address *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-                <select required class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white">
-                  <option value="" disabled selected>Select Insurance Provider</option>
-                  <option value="daman">Daman</option>
-                  <option value="axacura">AXA / GIG</option>
-                  <option value="metlife">MetLife</option>
-                  <option value="other">Other TPA / Self-Pay</option>
-                </select>
-                <div class="flex items-center gap-2">
-                  <input type="checkbox" required id="consent-check" class="rounded bg-slate-900 border-white/10" />
-                  <label for="consent-check" class="text-xs text-slate-400">Consent Checkbox[cite: 4]</label>
-                </div>
-                <button type="submit" class="w-full py-2.5 bg-brand-accent hover:bg-sky-400 text-slate-950 font-bold text-xs rounded-lg transition-all">[Upload Digital Prescription][cite: 4]</button>
+                <button type="submit" class="w-full py-2.5 bg-brand-accent hover:bg-sky-400 text-slate-950 font-bold text-xs rounded-lg transition-all">
+                  Submit Prescription Order[cite: 3]
+                </button>
               </form>
             </div>
           </div>
         </div>
 
-        <!-- 6.3 App Download Hub -->
+        <!-- App Download Hub -->
         <div id="app-download-hub" class="clean-panel p-8 rounded-2xl">
-          <span class="text-xs font-mono text-emerald-400 font-bold block mb-1">6.3 App Download Hub Copy[cite: 4]</span>
-          <div class="text-[11px] font-mono text-slate-500 mb-4">URL: /pharmacy-care/download | Core Action: Instant QR Code Scan & App Store Redirects[cite: 4]</div>
-
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 class="text-2xl font-bold text-white mb-2">Main Headline: Download TruDoc — Your Complete Health Partner, Always in Your Pocket[cite: 4]</h3>
+              <h3 class="text-2xl font-bold text-white mb-2">Download TruDoc — Your Complete Health Partner[cite: 3]</h3>
               <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
-                <strong>Sub-headline:</strong> Take complete control of your health. Gain instant access to 24/7 clinical consultations, automated biometric logging, and localized prescription delivery.[cite: 4]
+                Gain instant access to 24/7 clinical consultations, automated biometric telemetry logging, and localized prescription fulfillment.[cite: 3]
               </p>
               <div class="flex flex-wrap gap-3">
                 <button class="px-4 py-2.5 bg-slate-900 border border-white/10 hover:border-brand-400 text-xs font-bold text-white rounded-lg flex items-center gap-2">
-                  <i data-lucide="apple" class="w-4 h-4"></i> [Download on the Apple App Store][cite: 4]
+                  <i data-lucide="apple" class="w-4 h-4"></i> Download on App Store[cite: 3]
                 </button>
                 <button class="px-4 py-2.5 bg-slate-900 border border-white/10 hover:border-brand-400 text-xs font-bold text-white rounded-lg flex items-center gap-2">
-                  <i data-lucide="play" class="w-4 h-4"></i> [Get it on Google Play][cite: 4]
+                  <i data-lucide="play" class="w-4 h-4"></i> Get it on Google Play[cite: 3]
                 </button>
               </div>
             </div>
 
             <div class="bg-slate-950 p-6 rounded-xl border border-white/10 text-center">
-              <div class="w-28 h-28 bg-white mx-auto rounded-lg flex items-center justify-center text-slate-950 font-mono text-xs font-bold mb-3">
+              <div class="w-24 h-24 bg-white mx-auto rounded-lg flex items-center justify-center text-slate-950 font-mono text-xs font-bold mb-2">
                 [QR CODE]
               </div>
-              <p class="text-xs text-slate-400 font-mono">UI Graphic: Clean high-resolution smartphone mockup displaying the Super Health App interface alongside a high-fidelity QR Code.[cite: 4]</p>
+              <p class="text-xs text-slate-400 font-mono">Scan with camera to install the Super Health App instantly[cite: 3]</p>
             </div>
           </div>
         </div>
@@ -840,166 +653,91 @@
     </div>
   </section>
 
-  <!-- ================= SECTION 7: ABOUT & INVESTORS CORPORATE ANCHOR ================= -->
+  <!-- ================= ABOUT & LEADERSHIP ================= -->
   <section id="about" class="py-20 max-w-7xl mx-auto px-6">
     <div class="mb-12">
-      <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Section 7[cite: 4]</span>
-      <h2 class="text-3xl font-extrabold text-white mt-1 uppercase tracking-tight">About & Investors Corporate Anchor[cite: 4]</h2>
+      <span class="text-brand-400 text-xs font-mono font-bold tracking-widest uppercase">Institutional Foundation[cite: 3]</span>
+      <h2 class="text-3xl font-extrabold text-white mt-1 uppercase tracking-tight">About TruDoc[cite: 3]</h2>
       <p class="text-slate-300 text-sm mt-2 leading-relaxed">
-        This section builds deep institutional credibility, detailing our historic growth trajectory, elite corporate leadership, and expanding enterprise scalability.[cite: 4]
+        A 15+ year legacy of pioneering clinical excellence and value-based care delivery across emerging markets.[cite: 3]
       </p>
     </div>
 
     <div class="space-y-12">
       
-      <!-- 7.1 About TruDoc (Legacy & Scale) -->
-      <div id="about-legacy" class="clean-panel p-8 rounded-2xl">
-        <span class="text-xs font-mono text-brand-400 font-bold block mb-1">7.1 About TruDoc (Legacy & Scale)[cite: 4]</span>
-        <div class="text-[11px] font-mono text-slate-500 mb-4">URL: /about | Core Message: Uniting clinical legacy with regional growth scalability[cite: 4]</div>
-        
-        <h3 class="text-xl font-bold text-white mb-2">&bull; Section 1: Hero — A 15+ Year Legacy of Pioneering Clinical Excellence across Emerging Markets.[cite: 4]</h3>
-        <p class="text-xs text-slate-400 mb-6">From virtual telemedicine pioneers to full-stack, integrated healthcare platform leaders.[cite: 4]</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <div class="bg-slate-950 p-5 rounded-xl border border-white/10">
-            <h4 class="text-xs font-mono font-bold text-brand-400 uppercase mb-2">&bull; Origin & Legacy[cite: 4]</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">Established over 15 years ago, TruDoc began as a localized digital clinic to resolve primary patient triage demands and coordinate regional consultations.[cite: 4]</p>
-          </div>
-
-          <div class="bg-slate-950 p-5 rounded-xl border border-white/10">
-            <h4 class="text-xs font-mono font-bold text-brand-accent uppercase mb-2">&bull; Infrastructure Scale[cite: 4]</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">Building on our massive digital user base, we expanded into physical networks—opening branded Smart Clinics and rebranding physical pharmacies to deliver true continuous care.[cite: 4]</p>
-          </div>
-
-          <div class="bg-slate-950 p-5 rounded-xl border border-white/10">
-            <h4 class="text-xs font-mono font-bold text-emerald-400 uppercase mb-2">&bull; Territorial Scaling[cite: 4]</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">Rapidly expanding throughout UAE, Saudi Arabia, the wider GCC, and strategic emerging African territories to capture significant underutilized market demand.[cite: 4]</p>
-          </div>
+      <!-- Timeline Narrative -->
+      <div id="about-legacy" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="clean-panel p-6 rounded-xl">
+          <span class="text-xs font-mono text-brand-400 font-bold uppercase">Origin & Legacy[cite: 3]</span>
+          <p class="text-xs text-slate-300 leading-relaxed mt-2">
+            Established over 15 years ago, TruDoc began as a localized digital clinic to resolve primary patient triage demands and coordinate regional consultations.[cite: 3]
+          </p>
         </div>
 
-        <div class="bg-slate-950 p-5 rounded-xl border-l-2 border-l-brand-400">
-          <strong class="text-xs font-mono text-white block mb-1">&bull; Section 3: Vision Statement[cite: 4]</strong>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
-            To make value-based healthcare delivery frictionless, instantly accessible, and economically optimized for patients, employers, and insurance payers across every emerging market.[cite: 4]
+        <div class="clean-panel p-6 rounded-xl">
+          <span class="text-xs font-mono text-brand-accent font-bold uppercase">Infrastructure Scale[cite: 3]</span>
+          <p class="text-xs text-slate-300 leading-relaxed mt-2">
+            Building on our massive digital user base, we expanded into physical networks—opening branded Smart Clinics and physical pharmacies to deliver true continuous care.[cite: 3]
+          </p>
+        </div>
+
+        <div class="clean-panel p-6 rounded-xl">
+          <span class="text-xs font-mono text-emerald-400 font-bold uppercase">Territorial Growth[cite: 3]</span>
+          <p class="text-xs text-slate-300 leading-relaxed mt-2">
+            Rapidly expanding throughout UAE, Saudi Arabia, the wider GCC, and strategic emerging African territories to capture significant underutilized market demand.[cite: 3]
           </p>
         </div>
       </div>
 
-      <!-- 7.2 Leadership & Governance Copy -->
+      <!-- Leadership & Governance -->
       <div id="about-leadership" class="clean-panel p-8 rounded-2xl">
-        <span class="text-xs font-mono text-brand-accent font-bold block mb-1">7.2 Leadership & Governance Copy[cite: 4]</span>
-        <div class="text-[11px] font-mono text-slate-500 mb-4">URL: /about/leadership-governance | Key Focus: Executive credibility, board-level trust, and clinical compliance[cite: 4]</div>
-
-        <h3 class="text-xl font-bold text-white mb-2">Headline: Led by Healthcare Visionaries, Anchored in Clinical Governance[cite: 4]</h3>
+        <h3 class="text-xl font-bold text-white mb-2">Led by Healthcare Visionaries, Anchored in Clinical Governance[cite: 3]</h3>
         <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
-          <strong>Intro Paragraph:</strong> Our leadership team brings together seasoned healthtech pioneers, institutional digital transformation veterans, and distinguished medical directors. Backed by an expert Clinical Advisory Board, TruDoc enforces strict diagnostic standards and absolute compliance with DHA, DOH, and MOH regulatory guidelines.[cite: 4]
+          Our leadership team brings together seasoned healthtech pioneers, institutional digital transformation veterans, and distinguished medical directors. Backed by an expert Clinical Advisory Board, TruDoc enforces strict diagnostic standards and absolute compliance with DHA, DOH, and MOH regulatory guidelines.[cite: 3]
         </p>
 
-        <div>
-          <strong class="text-white block font-mono text-xs uppercase mb-3">Leadership Grid Structure (3 Columns):[cite: 4]</strong>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-slate-950 p-5 rounded-xl border border-white/10">
-              <h4 class="text-xs font-mono font-bold text-brand-400 uppercase mb-2">&bull; Executive Team[cite: 4]</h4>
-              <p class="text-xs text-slate-300">Managing Director & CEO, President, Chief Technology Officer.[cite: 4]</p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-slate-950 p-5 rounded-xl border border-white/10">
+            <h4 class="text-xs font-mono font-bold text-brand-400 uppercase mb-2">Executive Team[cite: 3]</h4>
+            <p class="text-xs text-slate-300">Managing Director & CEO, President, Chief Technology Officer.[cite: 3]</p>
+          </div>
 
-            <div class="bg-slate-950 p-5 rounded-xl border border-white/10">
-              <h4 class="text-xs font-mono font-bold text-brand-accent uppercase mb-2">&bull; Medical Directors[cite: 4]</h4>
-              <p class="text-xs text-slate-300">Chief Medical Officer, Regional Clinical Operations Directors.[cite: 4]</p>
-            </div>
+          <div class="bg-slate-950 p-5 rounded-xl border border-white/10">
+            <h4 class="text-xs font-mono font-bold text-brand-accent uppercase mb-2">Medical Directors[cite: 3]</h4>
+            <p class="text-xs text-slate-300">Chief Medical Officer, Regional Clinical Operations Directors.[cite: 3]</p>
+          </div>
 
-            <div class="bg-slate-950 p-5 rounded-xl border border-white/10">
-              <h4 class="text-xs font-mono font-bold text-emerald-400 uppercase mb-2">&bull; Board of Directors[cite: 4]</h4>
-              <p class="text-xs text-slate-300">Institutional Healthtech Investors, Regulatory Advisors.[cite: 4]</p>
-            </div>
+          <div class="bg-slate-950 p-5 rounded-xl border border-white/10">
+            <h4 class="text-xs font-mono font-bold text-emerald-400 uppercase mb-2">Board & Advisory[cite: 3]</h4>
+            <p class="text-xs text-slate-300">Institutional Healthcare Leaders, Regulatory & Clinical Advisors.[cite: 3]</p>
           </div>
         </div>
       </div>
 
-      <!-- 7.3 Investor Relations & Newsroom (Series B Focus) -->
-      <div id="about-investors" class="clean-panel p-8 rounded-2xl">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-          <div>
-            <span class="text-xs font-mono text-brand-400 font-bold">7.3 Investor Relations & Newsroom (Series B Focus)[cite: 4]</span>
-            <div class="text-[11px] font-mono text-slate-500">URL: /about/investors | Key CTAs: [Contact Investor Relations] | [Download Investor One-Pager][cite: 4]</div>
-          </div>
-          <div class="flex gap-2">
-            <button onclick="alert('Investor Relations contacted.');" class="px-3 py-1.5 bg-brand-500 text-slate-950 font-bold text-xs rounded-lg">[Contact Investor Relations][cite: 4]</button>
-            <button onclick="alert('Downloading Investor One-Pager.');" class="px-3 py-1.5 bg-slate-900 border border-white/10 text-white font-bold text-xs rounded-lg">[Download Investor One-Pager][cite: 4]</button>
-          </div>
-        </div>
-
-        <h3 class="text-xl font-bold text-white mb-2">&bull; Section 1: Hero — TruDoc Web 3.0: Commanding High-Growth Healthtech Valuations.[cite: 4]</h3>
-        <p class="text-xs sm:text-sm text-slate-300 mb-6">Capitalizing on B2B enterprise scalability, high-margin corporate wellness contracts, and proven clinical ROI.[cite: 4]</p>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div class="space-y-4 text-xs sm:text-sm text-slate-300">
-            <div>
-              <strong class="text-white block mb-1">&bull; Section 2: Macro Investment Highlights —[cite: 4]</strong>
-              <ul class="list-disc list-inside space-y-1 text-slate-400">
-                <li><strong>Defensible 3-Pillar Moat:</strong> The perfect alignment of the Super App, physical pharmacies, and remote chronic management provides true market protection.[cite: 4]</li>
-                <li><strong>Proven Payer Alignment:</strong> Unlocking immense B2B2C contracts by slashing unnecessary ER claims costs by 60% and maintaining a 90%+ resolution rate.[cite: 4]</li>
-                <li><strong>GCC Territorial Scale:</strong> Clear geographic growth blueprint and active M&A expansion vectors across Middle East & Africa.[cite: 4]</li>
-              </ul>
-            </div>
-
-            <div>
-              <strong class="text-white block mb-1">&bull; Section 3: Media Kit & Funding News —[cite: 4]</strong>
-              <ul class="space-y-1 text-slate-400">
-                <li><strong>Announcement 1:</strong> TruDoc Secures Series B Backing to Scale Regional Smart Clinic & Pharmacy Network in GCC.[cite: 4]</li>
-                <li><strong>Announcement 2:</strong> How TruDoc's AI Tele-triage is Shifting Outpatient Economics and Optimizing Claims Management.[cite: 4]</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Investor Portal Inquiry Form -->
-          <div class="bg-slate-950 p-6 rounded-xl border border-white/10">
-            <h4 class="text-sm font-bold text-white font-mono mb-4">&bull; Section 4: Investor Portal Inquiry Form — Fields: Full Name, Institutional Fund Name, Contact Title, Investor Email, GCC Regional Target, Message.[cite: 4]</h4>
-            <form onsubmit="event.preventDefault(); alert('Investor inquiry sent.');" class="space-y-3">
-              <input type="text" required placeholder="Full Name *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-              <input type="text" required placeholder="Institutional Fund Name *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-              <input type="text" required placeholder="Contact Title *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-              <input type="email" required placeholder="Investor Email *" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-              <input type="text" placeholder="GCC Regional Target" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white" />
-              <textarea rows="2" placeholder="Message" class="w-full px-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-xs text-white"></textarea>
-              <button type="submit" class="w-full py-2.5 bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs rounded-lg transition-all">Submit Investor Request[cite: 4]</button>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7.4 Careers Page Copy -->
+      <!-- Careers & Opportunities -->
       <div id="about-careers" class="clean-panel p-8 rounded-2xl">
         <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
           <div>
-            <span class="text-xs font-mono text-slate-400 font-bold">7.4 Careers Page Copy[cite: 4]</span>
-            <div class="text-[11px] font-mono text-slate-500">URL: /about/careers | Core CTA: [Explore Open Positions][cite: 4]</div>
+            <h3 class="text-lg font-bold text-white">Join the Future of Integrated Healthcare[cite: 3]</h3>
+            <p class="text-xs text-slate-400 mt-1">Build advanced, value-based healthcare technologies across emerging markets.[cite: 3]</p>
           </div>
-          <button onclick="alert('Viewing all open positions.');" class="px-4 py-2 rounded-lg bg-slate-800 text-white font-bold text-xs border border-white/10">[Explore Open Positions][cite: 4]</button>
+          <button onclick="alert('Viewing open opportunities.');" class="px-4 py-2 rounded-lg bg-slate-800 text-white font-bold text-xs border border-white/10">
+            Explore Open Positions[cite: 3]
+          </button>
         </div>
 
-        <h3 class="text-lg font-bold text-white mb-2">&bull; Section 1: Hero — Join the Future of Integrated Healthcare.[cite: 4]</h3>
-        <p class="text-xs sm:text-sm text-slate-300 mb-4">Build advanced, value-based healthcare technologies and deliver clinical excellence across emerging markets.[cite: 4]</p>
-
-        <p class="text-xs text-slate-400 mb-4">
-          <strong class="text-white">&bull; Section 2: Core Values —</strong> Clinical Quality Above All; Tech-Driven Accessibility; Absolute Transparency & Collaboration; Commitment to Patient Safety.[cite: 4]
-        </p>
-
-        <div>
-          <strong class="text-white block font-mono text-xs uppercase mb-2">&bull; Section 3: Sample Open Opportunities:[cite: 4]</strong>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
-              <span class="text-[10px] font-mono font-bold text-brand-400 block mb-1">Technology Team:[cite: 4]</span>
-              <p class="text-xs text-slate-300">Senior Full-Stack Mobile Engineer (Super App), Lead AI Triage Engineer, Senior Product Manager.[cite: 4]</p>
-            </div>
-            <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
-              <span class="text-[10px] font-mono font-bold text-brand-accent block mb-1">Clinical Operations Team:[cite: 4]</span>
-              <p class="text-xs text-slate-300">Bilingual Primary Care Physicians, Tele-triage Registered Nurses, Remote Patient Monitoring Specialist.[cite: 4]</p>
-            </div>
-            <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
-              <span class="text-[10px] font-mono font-bold text-emerald-400 block mb-1">Corporate Team:[cite: 4]</span>
-              <p class="text-xs text-slate-300">B2B Enterprise Account Manager (Payer Gateway), Sales Director GCC & Africa.[cite: 4]</p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
+            <span class="text-[10px] font-mono font-bold text-brand-400 block mb-1">Technology Team[cite: 3]</span>
+            <p class="text-xs text-slate-300">Senior Full-Stack Mobile Engineer (Super App), Lead AI Triage Engineer, Senior Product Manager.[cite: 3]</p>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
+            <span class="text-[10px] font-mono font-bold text-brand-accent block mb-1">Clinical Operations[cite: 3]</span>
+            <p class="text-xs text-slate-300">Bilingual Primary Care Physicians, Tele-triage Registered Nurses, Remote Patient Monitoring Specialist.[cite: 3]</p>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-xl border border-white/10">
+            <span class="text-[10px] font-mono font-bold text-emerald-400 block mb-1">Corporate & Growth[cite: 3]</span>
+            <p class="text-xs text-slate-300">B2B Enterprise Account Manager (Payer Gateway), Regional Sales Director.[cite: 3]</p>
           </div>
         </div>
       </div>
@@ -1007,81 +745,78 @@
     </div>
   </section>
 
-  <!-- ================= GLOBAL FOOTER COPY DECK ================= -->
+  <!-- ================= GLOBAL FOOTER ================= -->
   <footer class="bg-[#02050c] border-t border-white/10 pt-16 pb-12 text-slate-400 text-xs">
     <div class="max-w-7xl mx-auto px-6">
       
-      <!-- 4 Columns from Section 2 -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
         <div>
-          <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider mb-3">Column 1: Solutions[cite: 4]</h4>
+          <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider mb-3">Solutions[cite: 3]</h4>
           <ul class="space-y-2 text-slate-300">
-            <li><a href="#solutions-payers" class="hover:text-brand-400">&bull; Payers & Insurers[cite: 4]</a></li>
-            <li><a href="#solutions-corporates" class="hover:text-brand-400">&bull; Corporates & Employers[cite: 4]</a></li>
-            <li><a href="#solutions-government" class="hover:text-brand-400">&bull; Government & Public Health[cite: 4]</a></li>
-            <li><a href="#solutions-providers" class="hover:text-brand-400">&bull; Providers & TPAs[cite: 4]</a></li>
+            <li><a href="#solutions-payers" class="hover:text-brand-400">&bull; Payers & Insurers[cite: 3]</a></li>
+            <li><a href="#solutions-corporates" class="hover:text-brand-400">&bull; Corporates & Employers[cite: 3]</a></li>
+            <li><a href="#solutions-government" class="hover:text-brand-400">&bull; Government & Public Health[cite: 3]</a></li>
+            <li><a href="#solutions-providers" class="hover:text-brand-400">&bull; Providers & TPAs[cite: 3]</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider mb-3">Column 2: Platform[cite: 4]</h4>
+          <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider mb-3">The Platform[cite: 3]</h4>
           <ul class="space-y-2 text-slate-300">
-            <li><a href="#platform-app" class="hover:text-brand-400">&bull; Super Health App[cite: 4]</a></li>
-            <li><a href="#platform-physical" class="hover:text-brand-400">&bull; Physical Network[cite: 4]</a></li>
-            <li><a href="#platform-rpm" class="hover:text-brand-400">&bull; Hospital-at-Home & RPM[cite: 4]</a></li>
-            <li><a href="#platform-ai" class="hover:text-brand-400">&bull; Clinical Excellence & AI[cite: 4]</a></li>
+            <li><a href="#platform-app" class="hover:text-brand-400">&bull; Super Health App[cite: 3]</a></li>
+            <li><a href="#platform-physical" class="hover:text-brand-400">&bull; Physical Network[cite: 3]</a></li>
+            <li><a href="#platform-rpm" class="hover:text-brand-400">&bull; Hospital-at-Home & RPM[cite: 3]</a></li>
+            <li><a href="#platform-ai" class="hover:text-brand-400">&bull; Clinical Excellence & AI[cite: 3]</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider mb-3">Column 3: Consumer Gateway[cite: 4]</h4>
+          <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider mb-3">Consumer Gateway[cite: 3]</h4>
           <ul class="space-y-2 text-slate-300">
-            <li><a href="#store-locator" class="hover:text-brand-400">&bull; Store & Clinic Locator[cite: 4]</a></li>
-            <li><a href="#prescription-refills" class="hover:text-brand-400">&bull; Prescription Refills[cite: 4]</a></li>
-            <li><a href="#app-download-hub" class="hover:text-brand-400">&bull; App Download Hub[cite: 4]</a></li>
+            <li><a href="#store-locator" class="hover:text-brand-400">&bull; Store & Clinic Locator[cite: 3]</a></li>
+            <li><a href="#prescription-refills" class="hover:text-brand-400">&bull; Prescription Refills[cite: 3]</a></li>
+            <li><a href="#app-download-hub" class="hover:text-brand-400">&bull; App Download Hub[cite: 3]</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider mb-3">Column 4: Corporate[cite: 4]</h4>
+          <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider mb-3">Corporate[cite: 3]</h4>
           <ul class="space-y-2 text-slate-300">
-            <li><a href="#about-legacy" class="hover:text-brand-400">&bull; About TruDoc[cite: 4]</a></li>
-            <li><a href="#about-leadership" class="hover:text-brand-400">&bull; Leadership & Governance[cite: 4]</a></li>
-            <li><a href="#about-investors" class="hover:text-brand-400">&bull; Investor Relations[cite: 4]</a></li>
-            <li><a href="#about-careers" class="hover:text-brand-400">&bull; Careers & Press Kits[cite: 4]</a></li>
+            <li><a href="#about-legacy" class="hover:text-brand-400">&bull; About TruDoc[cite: 3]</a></li>
+            <li><a href="#about-leadership" class="hover:text-brand-400">&bull; Leadership & Governance[cite: 3]</a></li>
+            <li><a href="#about-careers" class="hover:text-brand-400">&bull; Careers & Newsroom[cite: 3]</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- Regulatory & Legal Footers -->
       <div class="border-t border-white/5 pt-8 space-y-3 text-[11px] text-slate-500 leading-relaxed">
         <p>
-          <strong class="text-slate-400">&bull; Regulatory Footer Text:</strong> TruDoc operates in complete compliance with regional and global health regulatory guidelines. Accredited and certified by the Dubai Health Authority (DHA), Department of Health - Abu Dhabi (DOH), and Ministry of Health (MOH). Clinical services are provided by registered, fully-vetted healthcare practitioners using evidence-based clinical protocols.[cite: 4]
+          TruDoc operates in complete compliance with regional and global health regulatory guidelines. Accredited and certified by the Dubai Health Authority (DHA), Department of Health - Abu Dhabi (DOH), and Ministry of Health (MOH). Clinical services are provided by registered, fully-vetted healthcare practitioners using evidence-based clinical protocols.[cite: 3]
         </p>
         <p>
-          <strong class="text-slate-400">&bull; Legal:</strong> © 2026 TruDoc. All Rights Reserved. | Privacy Policy | Terms of Service | Security & HIPAA Compliance Guidelines.[cite: 4]
+          © 2026 TruDoc. All Rights Reserved. | Privacy Policy | Terms of Service | Security & HIPAA Compliance Guidelines.[cite: 3]
         </p>
       </div>
 
     </div>
   </footer>
 
-  <!-- ================= PERSISTENT STICKY CTAs ================= -->
+  <!-- ================= PERSISTENT STICKY UTILITY BAR ================= -->
   <aside class="fixed bottom-0 left-0 right-0 z-50 bg-[#030712]/95 backdrop-blur-md border-t border-white/10 py-3.5 px-6">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
         <span class="text-xs font-mono text-slate-300">
-          <strong>Persistent Secondary & Primary CTAs:</strong> [Get the Super App] (Triggers popup modal) | [Partner With Us] (Launches B2B Lead Form)[cite: 4]
+          <strong>24/7 Clinical Gateway:</strong> Value-Based Healthcare Across Emerging Markets[cite: 3]
         </span>
       </div>
 
       <div class="flex items-center gap-3 w-full sm:w-auto">
         <a href="#app-download-hub" class="flex-1 sm:flex-none text-center px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold border border-slate-700">
-          [Get the Super App][cite: 4]
+          Get the Super App[cite: 3]
         </a>
         <a href="#solutions-payers" class="flex-1 sm:flex-none text-center px-4 py-2 rounded-lg bg-brand-500 hover:bg-brand-400 text-slate-950 text-xs font-bold transition-all shadow-lg">
-          [Partner With Us][cite: 4]
+          Partner With Us[cite: 3]
         </a>
       </div>
     </div>
