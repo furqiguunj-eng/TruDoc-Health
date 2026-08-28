@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TruDoc Web 3.0 | Multi-Portal Ecosystem Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0F67FE;
+      --primary-dark: #0048C7;
+      --secondary: #00D2B4;
+      --dark-navy: #060B14;
+      --card-bg: #0D1526;
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 15%, #0B1936 0%, #060B14 75%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 30px 20px 60px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Header Presentation Area */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-title span {
+      color: var(--primary);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(0, 210, 180, 0.1);
+      border: 1px solid rgba(0, 210, 180, 0.3);
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 8px var(--secondary);
+    }
+
+    .hero-intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-intro h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .hero-intro p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* 3D Fan / Overlapping Portal Stack */
+    .viewport-stage {
+      perspective: 1600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0 50px;
+      overflow-x: auto;
+    }
+
+    .stack-container {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      position: relative;
+      transform-style: preserve-3d;
+      padding: 10px 40px;
+    }
+
+    /* Individual Website Cards (Mockup Portals) */
+    .portal-card {
+      width: 255px;
+      min-width: 255px;
+      height: 520px;
+      background: #FFFFFF;
+      color: #0F172A;
+      border-radius: 14px;
+      box-shadow: -15px 10px 35px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.12);
+      transform: rotateY(-18deg) rotateX(4deg) translateZ(0px);
+      margin-left: -50px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .portal-card:first-child {
+      margin-left: 0;
+    }
+
+    .portal-card:hover {
+      transform: rotateY(-4deg) rotateX(0deg) translateZ(50px) translateY(-24px);
+      margin-right: 25px;
+      margin-left: -15px;
+      z-index: 50;
+      box-shadow: -20px 25px 50px rgba(15, 103, 254, 0.35), 0 0 0 2px var(--primary);
+    }
+
+    /* Top Browser Chrome Simulation */
+    .card-top-bar {
+      padding: 8px 12px;
+      background: #F8FAFC;
+      border-bottom: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #CBD5E1;
+    }
+
+    .url-chip {
+      margin-left: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      background: #EEF2F6;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Inside Card Sections */
+    .card-hero-banner {
+      padding: 20px 16px;
+      position: relative;
+    }
+
+    .tag-category {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .card-headline {
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .card-subtext {
+      font-size: 0.72rem;
+      line-height: 1.4;
+      color: #64748B;
+    }
+
+    .card-content-body {
+      padding: 14px 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #FAFBFD;
+    }
+
+    .mini-feature-box {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    }
+
+    .mini-feature-box strong {
+      font-size: 0.75rem;
+      display: block;
+      color: #0F172A;
+      margin-bottom: 2px;
+    }
+
+    .mini-feature-box p {
+      font-size: 0.68rem;
+      color: #64748B;
+      line-height: 1.35;
+    }
+
+    .metric-callout {
+      background: #F1F5F9;
+      border-radius: 6px;
+      padding: 8px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .metric-val {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .metric-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      color: #64748B;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .card-cta-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+      margin-top: 8px;
+      border: none;
+    }
+
+    /* Individual Custom Brand Color Theming */
+    /* Portal 1: Master Ecosystem */
+    .theme-master .card-hero-banner { background: #0A1120; color: #fff; }
+    .theme-master .tag-category { color: var(--secondary); }
+    .theme-master .card-subtext { color: #94A3B8; }
+    .theme-master .card-cta-btn { background: var(--primary); }
+
+    /* Portal 2: Insurers & Payers */
+    .theme-payer .card-hero-banner { background: linear-gradient(135deg, #0F67FE 0%, #0048C7 100%); color: #fff; }
+    .theme-payer .tag-category { color: #BAE6FD; }
+    .theme-payer .card-subtext { color: #E0F2FE; }
+    .theme-payer .card-cta-btn { background: #0F172A; }
+
+    /* Portal 3: Corporate Workforce */
+    .theme-corporate .card-hero-banner { background: #F8FAFC; color: #0F172A; border-bottom: 1px solid #E2E8F0; }
+    .theme-corporate .tag-category { color: var(--primary); }
+    .theme-corporate .card-cta-btn { background: var(--primary); }
+
+    /* Portal 4: Virtual Super App */
+    .theme-app .card-hero-banner { background: linear-gradient(135deg, #00D2B4 0%, #029E87 100%); color: #06231E; }
+    .theme-app .tag-category { color: #044E43; }
+    .theme-app .card-subtext { color: #08332C; }
+    .theme-app .card-cta-btn { background: #06231E; }
+
+    /* Portal 5: Physical Pharmacy & Clinics */
+    .theme-pharmacy .card-hero-banner { background: #0F172A; color: #fff; }
+    .theme-pharmacy .tag-category { color: var(--secondary); }
+    .theme-pharmacy .card-subtext { color: #94A3B8; }
+    .theme-pharmacy .card-cta-btn { background: var(--primary); }
+
+    /* Bottom Info Legend */
+    .legend-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .legend-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+
+    .legend-card h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .legend-card p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1024px) {
+      .stack-container {
+        flex-wrap: wrap;
+        gap: 20px;
+        transform: none;
+      }
+      .portal-card {
+        transform: none !important;
+        margin-left: 0 !important;
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Presentation Header -->
+    <div class="header-bar">
+      <div class="brand-title">TruDoc<span>.</span> Web 3.0 Portal Ecosystem</div>
+      <div class="status-badge">
+        <span class="status-dot"></span> Series B Multi-Stakeholder Stack
+      </div>
+    </div>
+
+    <!-- Intro Text -->
+    <div class="hero-intro">
+      <h1>One Unified Brand. Five Dedicated Gateways.</h1>
+      <p>
+        Segmenting TruDoc’s full-stack infrastructure into targeted conversion journeys without diluting our core enterprise valuation.
+      </p>
+    </div>
+
+    <!-- 3D Fan Presentation Mockups -->
+    <div class="viewport-stage">
+      <div class="stack-container">
+
+        <!-- 1. Master Ecosystem / Investors -->
+        <div class="portal-card theme-master">
+          <div class="card-top-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url-chip">trudoc.com</span>
+          </div>
+          <div class="card-hero-banner">
+            <span class="tag-category">Series B / Master</span>
+            <h3 class="card-headline">Redefining Care in Emerging Markets</h3>
+            <p class="card-subtext">Virtual-first triage, smart clinics, and pharmacy logistics.</p>
+          </div>
+          <div class="card-content-body">
+            <div class="mini-feature-box">
+              <strong>Full-Stack Care Grid</strong>
+              <p>Unifying digital telehealth, RPM, and brick-and-mortar storefronts.</p>
+            </div>
+            <div class="metric-callout">
+              <div class="metric-val">Millions</div>
+              <div class="metric-label">Covered Lives Across GCC</div>
+            </div>
+            <button class="card-cta-btn">[ Investor Deck / IR ]</button>
+          </div>
+        </div>
+
+        <!-- 2. Payers & Insurers -->
+        <div class="portal-card theme-payer">
+          <div class="card-top-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url-chip">/payers-insurers</span>
+          </div>
+          <div class="card-hero-banner">
+            <span class="tag-category">Insurers & TPAs</span>
+            <h3 class="card-headline">Cut Claims & Unnecessary ER Visits</h3>
+            <p class="card-subtext">Value-based outpatient care and remote vitals monitoring.</p>
+          </div>
+          <div class="card-content-body">
+            <div class="mini-feature-box">
+              <strong>Clinical ROI Proof</strong>
+              <p>Guaranteed reduction in high-cost emergency room utilization.</p>
+            </div>
+            <div class="metric-callout">
+              <div class="metric-val">Up to 60%</div>
+              <div class="metric-label">Reduction in ER Visits</div>
+            </div>
+            <button class="card-cta-btn">[ Request Payer Demo ]</button>
+          </div>
+        </div>
+
+        <!-- 3. Corporate Workforces -->
+        <div class="portal-card theme-corporate">
+          <div class="card-top-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url-chip">/corporates</span>
+          </div>
+          <div class="card-hero-banner">
+            <span class="tag-category">Corporate Health</span>
+            <h3 class="card-headline">Elevate Workforce Wellbeing</h3>
+            <p class="card-subtext">24/7 dedicated virtual doctor access and on-site executive wellness.</p>
+          </div>
+          <div class="card-content-body">
+            <div class="mini-feature-box">
+              <strong>Zero-Wait Care</strong>
+              <p>Instant tele-triage to keep employees productive and healthy.</p>
+            </div>
+            <div class="metric-callout">
+              <div class="metric-val">90%+</div>
+              <div class="metric-label">First-Call Resolution</div>
+            </div>
+            <button class="card-cta-btn">[ Corporate Briefing ]</button>
+          </div>
+        </div>
+
+        <!-- 4. Virtual Care & Super App -->
+        <div class="portal-card theme-app">
+          <div class="card-top-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url-chip">/super-app</span>
+          </div>
+          <div class="card-hero-banner">
+            <span class="tag-category">Patient Front Door</span>
+            <h3 class="card-headline">Your Doctor, Always in Your Pocket</h3>
+            <p class="card-subtext">Instant consultations, chronic care vitals, and digital health records.</p>
+          </div>
+          <div class="card-content-body">
+            <div class="mini-feature-box">
+              <strong>Biometrics & RPM</strong>
+              <p>Continuous vitals tracking and automated physician alerts.</p>
+            </div>
+            <div class="metric-callout">
+              <div class="metric-val">24/7</div>
+              <div class="metric-label">Direct Doctor Access</div>
+            </div>
+            <button class="card-cta-btn">[ Download iOS / Android ]</button>
+          </div>
+        </div>
+
+        <!-- 5. Physical Pharmacies & Clinics -->
+        <div class="portal-card theme-pharmacy">
+          <div class="card-top-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="url-chip">/pharmacy-clinics</span>
+          </div>
+          <div class="card-hero-banner">
+            <span class="tag-category">Physical Infrastructure</span>
+            <h3 class="card-headline">Smart Clinics & Prescription Delivery</h3>
+            <p class="card-subtext">Modern pharmacy storefronts paired with localized rapid fulfillment.</p>
+          </div>
+          <div class="card-content-body">
+            <div class="mini-feature-box">
+              <strong>Connected Rx Grid</strong>
+              <p>Prescriptions seamlessly sent from tele-doctors to your doorstep.</p>
+            </div>
+            <div class="metric-callout">
+              <div class="metric-val">Regional</div>
+              <div class="metric-label">Pharmacy & Clinic Grid</div>
+            </div>
+            <button class="card-cta-btn">[ Store Locator & Refill ]</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Audience Alignment Legend Bar -->
+    <div class="legend-bar">
+      <div class="legend-card">
+        <h4><span style="color: var(--primary);">●</span> Investor Pitch</h4>
+        <p>Proves ecosystem defensibility and multi-tier revenue streams for Series B mandate.</p>
+      </div>
+      <div class="legend-card">
+        <h4><span style="color: #0048C7;">●</span> Enterprise Payers</h4>
+        <p>Direct B2B funnel with verified claims reduction data for insurers and brokers.</p>
+      </div>
+      <div class="legend-card">
+        <h4><span style="color: var(--secondary);">●</span> Direct Patients</h4>
+        <p>Frictionless app installation and pharmacy fulfillment without corporate noise.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
