@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TruDoc Global // Symbolic Healthcare Operating Infrastructure</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            med: {
+              white: '#FFFFFF',
+              canvas: '#F8FAFC',
+              surface: '#F1F5F9',
+              border: '#E2E8F0',
+              borderDark: '#CBD5E1',
+              navy: '#071426',
+              cobalt: '#0052FF',
+              blue: '#1952A2',
+              cyan: '#00BA9D',
+              teal: '#0794CE',
+              slate: '#64748B',
+              slateDark: '#334155',
+              slateLight: '#94A3B8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FFFFFF;
+      color: #071426;
+    }
+    .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    .symbolic-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 82, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 82, 255, 0.04) 1px, transparent 1px);
+    }
+    .glyph-badge {
+      font-feature-settings: "tnum";
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="selection:bg-med-blue selection:text-white antialiased symbolic-grid pb-32">
+
+  <!-- ==================== TOP SYMBOLIC TELEMETRY STRIP ==================== -->
+  <div class="w-full bg-med-navy text-white text-[11px] font-mono py-2.5 px-6 border-b border-med-navy">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-med-cyan animate-pulse"></span>
+          SYS // CLINICAL COMMAND CENTER: 24/7/365 OPERATIONAL
+        </span>
+        <span class="hidden md:inline text-med-slateLight">|</span>
+        <span class="hidden md:inline">TRIAGE: <strong class="text-med-cyan">&lt; 40s DOOR-TO-DOCTOR</strong></span>
+        <span class="hidden md:inline text-med-slateLight">|</span>
+        <span class="hidden md:inline">FACULTY: <strong class="text-med-cyan">100% SALARIED MDs</strong></span>
+      </div>
+      <div class="flex items-center gap-4 text-med-slateLight">
+        <span class="hidden sm:inline">DHA · MOH · DOH ACCREDITED</span>
+        <span class="text-white font-semibold">SOVEREIGN NODE: GCC-01</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== NAVIGATION HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-med-border">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Symbolic Mark -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-2xl bg-med-blue flex items-center justify-center text-white font-display font-black text-lg shadow-md group-hover:bg-med-navy transition-colors">
+          ☩
+        </div>
+        <div>
+          <span class="font-display font-extrabold text-lg tracking-tight leading-none text-med-navy block">TRUDOC</span>
+          <span class="text-[9px] font-mono font-bold text-med-teal tracking-widest uppercase">SOVEREIGN HEALTH OS</span>
+        </div>
+      </a>
+
+      <!-- Center Symbolic Map Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-med-slate">
+        <a href="#master-architecture" class="hover:text-med-blue transition-colors flex items-center gap-1.5">
+          <span class="text-[10px] font-mono text-med-teal">§01</span> Master Narrative
+        </a>
+        <a href="#commercial-gateways" class="hover:text-med-blue transition-colors flex items-center gap-1.5">
+          <span class="text-[10px] font-mono text-med-teal">§02</span> Solutions B2B
+        </a>
+        <a href="#platform-moat" class="hover:text-med-blue transition-colors flex items-center gap-1.5">
+          <span class="text-[10px] font-mono text-med-teal">§03</span> The Platform
+        </a>
+        <a href="#care-logistics" class="hover:text-med-blue transition-colors flex items-center gap-1.5">
+          <span class="text-[10px] font-mono text-med-teal">§04</span> Care &amp; Pharmacy
+        </a>
+        <a href="#institutional-core" class="hover:text-med-blue transition-colors flex items-center gap-1.5">
+          <span class="text-[10px] font-mono text-med-teal">§05</span> Corporate
+        </a>
+      </nav>
+
+      <!-- Persistent Header CTAs -->
+      <div class="flex items-center gap-3">
+        <button onclick="openModal('appModal')" class="px-4 py-2.5 rounded-xl border border-med-border text-xs font-semibold text-med-navy bg-white hover:bg-med-canvas transition-colors shadow-sm flex items-center gap-2">
+          <i data-lucide="smartphone" class="w-4 h-4 text-med-blue"></i>
+          <span class="hidden sm:inline">Patient App</span>
+        </button>
+        <button onclick="openModal('b2bModal')" class="px-5 py-2.5 rounded-xl text-xs font-mono font-bold text-white bg-med-navy hover:bg-med-blue transition-colors shadow-sm">
+          Partner With Us
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== §01. MASTER NARRATIVE & SYMBOLIC HERO ==================== -->
+  <main class="max-w-7xl mx-auto px-6 pt-12 pb-20">
+    
+    <!-- Hero Header with Monospace System Tag -->
+    <div class="max-w-4xl mb-14" id="master-architecture">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-med-canvas border border-med-border text-xs font-mono font-bold text-med-blue mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-med-cyan"></span>
+        TRUDOC OS // THE UNIFIED CLINICAL CONTINUUM
+      </div>
+      <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold text-med-navy tracking-tight leading-[1.05]">
+        The End of Fragmented Care. <br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-med-blue via-med-teal to-med-cyan">Continuous Medicine.</span>
+      </h1>
+      <p class="text-base sm:text-xl text-med-slate mt-6 font-normal leading-relaxed max-w-2xl">
+        We replaced disconnected clinics, delayed appointments, and inflated insurance claims with a synchronized healthcare infrastructure. A full-time clinical faculty connected to patients in seconds and backed by an on-ground physical delivery grid.
+      </p>
+    </div>
+
+    <!-- Symbolic Split Matrix Console -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- LEFT: Live Telemetry Console with Relatable Lifestyle Imagery (5 Cols) -->
+      <div class="lg:col-span-5 sticky top-28 space-y-6">
+        
+        <div class="bg-med-navy rounded-3xl p-6 sm:p-8 text-white border border-med-navy shadow-xl relative overflow-hidden">
+          
+          <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-med-cyan">SYSTEM TELEMETRY CONSOLE</span>
+            <span class="text-xs font-mono text-white/50">NODE: DXB-CENTRAL</span>
+          </div>
+
+          <!-- Relatable Patient Lifestyle Photo -->
+          <div class="relative h-48 rounded-2xl overflow-hidden mb-6 border border-white/15">
+            <img 
+              src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" 
+              alt="Patient consulting doctor from home" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-med-navy via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono">
+              <span class="bg-med-navy/80 backdrop-blur-md px-2.5 py-1 rounded-md text-white font-semibold">Home Teleconsultation Active</span>
+              <span class="text-med-cyan font-bold">● &lt; 40s Wait</span>
+            </div>
+          </div>
+
+          <!-- Telemetry Data Grid -->
+          <div class="space-y-3 font-mono text-xs">
+            <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+              <span class="text-white/60">Door-to-Doctor</span>
+              <strong class="text-med-cyan text-sm font-bold">&lt; 40 Seconds</strong>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+              <span class="text-white/60">Clinical Faculty</span>
+              <strong class="text-white text-sm font-bold">100% Salaried In-House</strong>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+              <span class="text-white/60">Acute Cost Reduction</span>
+              <strong class="text-med-teal text-sm font-bold">28% Average</strong>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+              <span class="text-white/60">Protocol Rigor</span>
+              <strong class="text-med-cyan text-sm font-bold">99.4% Adherence</strong>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-white/40">
+            <span>ALIGNMENT: DHA · MOH · DOH</span>
+            <span class="text-med-cyan font-bold">SOVEREIGN CLOUD LOCK</span>
+          </div>
+        </div>
+
+        <!-- Symbolic CTA Card -->
+        <div class="bg-med-canvas p-6 rounded-3xl border border-med-border shadow-sm">
+          <div class="flex items-center gap-2 text-xs font-mono font-bold text-med-blue uppercase">
+            <span>✦</span> Deployment Blueprint
+          </div>
+          <p class="text-xs text-med-slate mt-2 leading-relaxed">
+            Access our actuarial claims containment model and sovereign population health scoping framework.
+          </p>
+          <button onclick="openModal('b2bModal')" class="mt-4 w-full py-3 bg-white hover:bg-med-navy hover:text-white border border-med-border text-med-navy text-xs font-mono font-bold rounded-xl transition-all shadow-sm">
+            INITIATE ENTERPRISE PORTAL &rarr;
+          </button>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: §03. THE PLATFORM // Full-Stack Infrastructure & Moat (7 Cols) -->
+      <div class="lg:col-span-7 space-y-8" id="platform-moat">
+        
+        <!-- Pillar 01: Digital Front Door -->
+        <div class="bg-white p-8 rounded-3xl border border-med-border shadow-sm">
+          <div class="relative h-52 rounded-2xl overflow-hidden mb-6 border border-med-border">
+            <img 
+              src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80" 
+              alt="Person using smartphone for health checkup" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-med-navy/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+              <span class="px-2.5 py-1 rounded bg-med-blue text-white text-[10px] font-mono font-bold tracking-wider uppercase">01 / DIGITAL FRONT DOOR</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-mono font-bold text-med-blue uppercase tracking-widest">PATIENT MOBILE ACCESS</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-med-navy">TruDoc Super Health App</h3>
+          <p class="text-sm text-med-slate mt-2 leading-relaxed">
+            Teleconsultations under 40 seconds, encrypted health lockers, live IoT biometric syncing, and electronic prescription refills straight from your home or desk.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs text-med-slateDark">
+            <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border">iOS &amp; Android Ready</span>
+            <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border">Zero Gatekeepers</span>
+            <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border">Biometric Encryption</span>
+          </div>
+        </div>
+
+        <!-- Pillar 02: Hybrid Physical Grid -->
+        <div class="bg-white p-8 rounded-3xl border border-med-border shadow-sm">
+          <div class="relative h-52 rounded-2xl overflow-hidden mb-6 border border-med-border">
+            <img 
+              src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1000&q=80" 
+              alt="Modern clinic reception and pharmacy" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-med-navy/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+              <span class="px-2.5 py-1 rounded bg-med-blue text-white text-[10px] font-mono font-bold tracking-wider uppercase">02 / HYBRID PHYSICAL GRID</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-mono font-bold text-med-blue uppercase tracking-widest">BRICK-AND-MORTAR CARE</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-med-navy">Smart Clinics &amp; Pharmacies</h3>
+          <p class="text-sm text-med-slate mt-2 leading-relaxed">
+            Connected physical walk-in clinics, automated medicine dispensers, and point-of-care rapid testing hubs bridging virtual triage with on-ground execution.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs text-med-slateDark">
+            <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border">GCC Storefront Network</span>
+            <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border">90-Min Cold-Chain Dispatch</span>
+          </div>
+        </div>
+
+        <!-- Pillar 03: Decentralized Care -->
+        <div class="bg-white p-8 rounded-3xl border border-med-border shadow-sm">
+          <div class="relative h-52 rounded-2xl overflow-hidden mb-6 border border-med-border">
+            <img 
+              src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80" 
+              alt="Senior patient checking vitals at home" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-med-navy/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+              <span class="px-2.5 py-1 rounded bg-med-teal text-white text-[10px] font-mono font-bold tracking-wider uppercase">03 / IN-HOME RECOVERY</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-mono font-bold text-med-teal uppercase tracking-widest">DECENTRALIZED CARE</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-med-navy">Hospital-at-Home &amp; RPM</h3>
+          <p class="text-sm text-med-slate mt-2 leading-relaxed">
+            Cellular-connected medical hardware (BP, Glucometers, SpO2) supported by mobile nursing squads at the patient's bedside to manage chronic cohorts.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs text-med-slateDark">
+            <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border">-40% Readmission Rate</span>
+            <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border">Continuous Vitals Stream</span>
+          </div>
+        </div>
+
+        <!-- Pillar 04: Governance Engine -->
+        <div class="bg-white p-8 rounded-3xl border border-med-border shadow-sm">
+          <div class="relative h-52 rounded-2xl overflow-hidden mb-6 border border-med-border">
+            <img 
+              src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1000&q=80" 
+              alt="Medical team reviewing clinical protocols" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-med-navy/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+              <span class="px-2.5 py-1 rounded bg-med-cyan text-med-navy text-[10px] font-mono font-bold tracking-wider uppercase">04 / GOVERNANCE ENGINE</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-mono font-bold text-med-cyan uppercase tracking-widest">CLINICAL GOVERNANCE</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-med-navy">Clinical AI &amp; In-House Faculty</h3>
+          <p class="text-sm text-med-slate mt-2 leading-relaxed">
+            100% employed medical staff guided by algorithmic triage pathways, ensuring 99.4% adherence to DHA, MOH, and DOH health authority standards.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs text-med-slateDark">
+            <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border">Salaried Medical Staff</span>
+            <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border">DHA / MOH Audited</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ==================== §02. COMMERCIAL & PAYER GATEWAYS (B2B FOCUS) ==================== -->
+    <section id="commercial-gateways" class="mt-24 pt-16 border-t border-med-border">
+      <div class="mb-12">
+        <span class="text-xs font-mono font-bold text-med-blue uppercase tracking-widest">§02 // Commercial Solutions</span>
+        <h2 class="font-display text-3xl font-extrabold text-med-navy mt-1">Enterprise Sector Gateways</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Payers & Insurers -->
+        <div class="p-6 rounded-3xl bg-med-canvas border border-med-border flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-white text-med-blue flex items-center justify-center font-bold mb-4 shadow-sm">
+              <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-display font-bold text-base text-med-navy">Payers &amp; Insurers</h4>
+            <p class="text-xs text-med-slate mt-2 leading-relaxed">
+              Shift spend from reactive ER visits to managed primary intervention. 28% acute cost containment, automated formulary pre-auth, and predictive chronic risk stratification.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-med-border/60 text-xs font-mono font-bold text-med-blue">
+            28% Acute Reduction
+          </div>
+        </div>
+
+        <!-- Corporates & Employers -->
+        <div class="p-6 rounded-3xl bg-med-canvas border border-med-border flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-white text-med-blue flex items-center justify-center font-bold mb-4 shadow-sm">
+              <i data-lucide="building-2" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-display font-bold text-base text-med-navy">Corporates &amp; Groups</h4>
+            <p class="text-xs text-med-slate mt-2 leading-relaxed">
+              Eliminate workplace absenteeism by putting board-certified doctors in staff pockets. Instant return-to-work access, diagnostic camps, and HR vitality dashboards.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-med-border/60 text-xs font-mono font-bold text-med-blue">
+            Zero Lost Workdays
+          </div>
+        </div>
+
+        <!-- Government & Public Health -->
+        <div class="p-6 rounded-3xl bg-med-canvas border border-med-border flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-white text-med-teal flex items-center justify-center font-bold mb-4 shadow-sm">
+              <i data-lucide="landmark" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-display font-bold text-base text-med-navy">Government &amp; MOH</h4>
+            <p class="text-xs text-med-slate mt-2 leading-relaxed">
+              Expand universal primary care to remote populations without capital-intensive hospital builds. Asset-light national coverage and epidemiological risk surveillance.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-med-border/60 text-xs font-mono font-bold text-med-teal">
+            Sovereign Data Lock
+          </div>
+        </div>
+
+        <!-- Providers & TPAs -->
+        <div class="p-6 rounded-3xl bg-med-canvas border border-med-border flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-white text-med-cyan flex items-center justify-center font-bold mb-4 shadow-sm">
+              <i data-lucide="git-merge" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-display font-bold text-base text-med-navy">Providers &amp; TPAs</h4>
+            <p class="text-xs text-med-slate mt-2 leading-relaxed">
+              Bridge acute hospital discharge and recovery at home. Step-down RPM oversight prevents 30-day readmissions alongside bi-directional pathways for tertiary surgical care.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-med-border/60 text-xs font-mono font-bold text-med-cyan">
+            Step-Down Continuity
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== §04. PHARMACY & CARE (CONSUMER / PATIENT DIRECT GATEWAY) ==================== -->
+    <section id="care-logistics" class="mt-24 pt-16 border-t border-med-border">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-5 space-y-4">
+          <span class="text-xs font-mono font-bold text-med-blue uppercase tracking-widest">§04 // Consumer Gateway</span>
+          <h2 class="font-display text-3xl font-extrabold text-med-navy">Pharmacy Logistics &amp; Clinic Locator</h2>
+          <p class="text-sm text-med-slate leading-relaxed">
+            Search physical Smart Clinics or upload electronic prescriptions for verified cold-chain doorstep delivery within 90 minutes.
+          </p>
+          <div class="flex items-center gap-4 text-xs font-mono text-med-slateDark pt-2">
+            <span>• Active Across UAE</span>
+            <span>• Saudi Arabia</span>
+            <span>• Pan-Africa</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Tool 1: Locator -->
+          <div class="p-6 rounded-3xl bg-white border border-med-border shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-med-canvas text-med-blue flex items-center justify-center mb-4">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-display font-bold text-base text-med-navy">Clinic Directory</h4>
+              <p class="text-xs text-med-slate mt-1">Locate active Smart Clinics, pharmacy hubs, and lab partners.</p>
+              <input type="text" placeholder="Enter neighborhood or city..." class="w-full mt-4 bg-med-canvas border border-med-border rounded-xl px-3.5 py-2.5 text-xs text-med-navy placeholder-med-slate font-mono focus:outline-none focus:border-med-blue" />
+            </div>
+            <button class="mt-6 w-full py-2.5 bg-med-canvas hover:bg-med-border text-xs font-mono font-bold text-med-navy rounded-xl transition-colors">
+              SEARCH DIRECTORY &rarr;
+            </button>
+          </div>
+
+          <!-- Tool 2: Rx Upload -->
+          <div class="p-6 rounded-3xl bg-white border border-med-border shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-med-cyan/10 text-med-cyan flex items-center justify-center mb-4">
+                <i data-lucide="upload-cloud" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-display font-bold text-base text-med-navy">Express Rx Refill</h4>
+              <p class="text-xs text-med-slate mt-1">Upload prescriptions for cold-chain home delivery.</p>
+              <div class="mt-4 border-2 border-dashed border-med-border rounded-xl p-4 text-center cursor-pointer hover:border-med-blue transition-colors bg-med-canvas">
+                <span class="text-xs font-mono text-med-blue">Drop Rx Image or PDF</span>
+              </div>
+            </div>
+            <button class="mt-6 w-full py-2.5 bg-med-blue text-white text-xs font-mono font-bold rounded-xl transition-all hover:bg-med-navy">
+              DISPATCH ORDER &rarr;
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== §05. ABOUT & INVESTORS (SERIES B & CORPORATE ANCHOR) ==================== -->
+    <section id="institutional-core" class="mt-24 pt-16 border-t border-med-border">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-5 space-y-4">
+          <span class="text-xs font-mono font-bold text-med-blue uppercase tracking-widest">§05 // Corporate Anchor</span>
+          <h2 class="font-display text-3xl font-extrabold text-med-navy">15+ Years of Clinical Authority</h2>
+          <p class="text-sm text-med-slate leading-relaxed">
+            Operating dedicated round-the-clock doctor command centers long before virtual care became an industry standard. Accelerated by institutional Series B expansion funding across the GCC and Africa.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono">
+          <div class="p-6 bg-med-canvas rounded-2xl border border-med-border">
+            <div class="text-3xl font-extrabold text-med-blue">100%</div>
+            <div class="text-xs text-med-navy font-bold mt-2">Salaried Clinicians</div>
+            <div class="text-[11px] text-med-slate mt-1">Zero gig-economy staff.</div>
+          </div>
+          <div class="p-6 bg-med-canvas rounded-2xl border border-med-border">
+            <div class="text-3xl font-extrabold text-med-navy">Series B</div>
+            <div class="text-xs text-med-navy font-bold mt-2">Expansion Capital</div>
+            <div class="text-[11px] text-med-slate mt-1">GCC &amp; Africa scaling.</div>
+          </div>
+          <div class="p-6 bg-med-canvas rounded-2xl border border-med-border">
+            <div class="text-3xl font-extrabold text-med-cyan">Sovereign</div>
+            <div class="text-xs text-med-navy font-bold mt-2">Cloud Lock</div>
+            <div class="text-[11px] text-med-slate mt-1">Local data residency.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER SITEMAP (GLOBAL HIERARCHY) ==================== -->
+  <footer class="bg-med-navy text-white py-12 px-6 border-t border-med-navy">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-mono text-white/60">
+      <div class="flex items-center gap-2 text-white font-bold">
+        <div class="w-6 h-6 rounded bg-med-blue text-white flex items-center justify-center text-xs">☩</div>
+        <span>TRUDOC HEALTHCARE ECOSYSTEM // 2026</span>
+      </div>
+      <div class="flex flex-wrap gap-6 text-white/60">
+        <a href="#master-architecture" class="hover:text-white">Master Narrative</a>
+        <a href="#commercial-gateways" class="hover:text-white">B2B Solutions</a>
+        <a href="#platform-moat" class="hover:text-white">The Platform</a>
+        <a href="#care-logistics" class="hover:text-white">Care &amp; Pharmacy</a>
+        <a href="#institutional-core" class="hover:text-white">About &amp; Capital</a>
+      </div>
+      <div>DHA · MOH · DOH ACCREDITED</div>
+    </div>
+  </footer>
+
+  <!-- ==================== §06. PRIMARY MODALS ==================== -->
+
+  <!-- Modal 1: Enterprise Lead Form -->
+  <div id="b2bModal" class="fixed inset-0 z-50 hidden bg-med-navy/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-lg rounded-3xl border border-med-border p-8 relative shadow-2xl">
+      <button onclick="closeModal('b2bModal')" class="absolute top-6 right-6 text-med-slate hover:text-med-navy p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <span class="text-xs font-mono font-bold text-med-blue tracking-wider uppercase">06 // B2B ENTERPRISE GATEWAY</span>
+      <h3 class="font-display text-2xl font-bold text-med-navy mt-1">Partner With TruDoc</h3>
+      <p class="text-xs text-med-slate mt-1">Connect directly with our institutional solutions desk.</p>
+
+      <form onsubmit="handleForm(event)" class="mt-6 space-y-4">
+        <div>
+          <label class="block text-xs font-mono font-semibold text-med-slate mb-1">ORGANIZATION VERTICAL</label>
+          <select class="w-full bg-med-canvas border border-med-border rounded-xl px-4 py-3 text-sm text-med-navy focus:outline-none focus:border-med-blue font-sans">
+            <option>Payers &amp; Insurers (Risk Arbitrage)</option>
+            <option>Corporates &amp; Employers (Workforce Health)</option>
+            <option>Government &amp; Public Health (Population Scale)</option>
+            <option>Providers &amp; TPAs (Care Continuity)</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-mono font-semibold text-med-slate mb-1">NAME</label>
+            <input type="text" required placeholder="Executive Name" class="w-full bg-med-canvas border border-med-border rounded-xl px-4 py-3 text-sm text-med-navy focus:outline-none focus:border-med-blue" />
+          </div>
+          <div>
+            <label class="block text-xs font-mono font-semibold text-med-slate mb-1">CORPORATE EMAIL</label>
+            <input type="email" required placeholder="name@company.com" class="w-full bg-med-canvas border border-med-border rounded-xl px-4 py-3 text-sm text-med-navy focus:outline-none focus:border-med-blue" />
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 text-xs font-mono font-bold tracking-wider text-white bg-med-blue hover:bg-med-navy rounded-xl shadow-lg transition-all mt-4">
+          SUBMIT INTEGRATION REQUEST &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Patient App Download -->
+  <div id="appModal" class="fixed inset-0 z-50 hidden bg-med-navy/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl border border-med-border p-8 relative shadow-2xl text-center">
+      <button onclick="closeModal('appModal')" class="absolute top-6 right-6 text-med-slate hover:text-med-navy p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <span class="text-xs font-mono font-bold text-med-blue tracking-wider uppercase">06 // PATIENT DIGITAL CLINIC</span>
+      <h3 class="font-display text-2xl font-bold text-med-navy mt-1">Get TruDoc Super App</h3>
+      <p class="text-xs text-med-slate mt-1 max-w-xs mx-auto">Scan with your camera to access 24/7 doctor triage under 40 seconds.</p>
+
+      <div class="my-6 p-4 bg-med-canvas rounded-2xl w-44 h-44 mx-auto flex flex-col items-center justify-center border border-med-border shadow-inner">
+        <i data-lucide="qr-code" class="w-24 h-24 text-med-navy"></i>
+        <span class="text-[10px] font-mono text-med-slate mt-1 uppercase tracking-wider font-bold">SCAN WITH PHONE</span>
+      </div>
+
+      <div class="flex items-center justify-center gap-3 font-mono text-xs">
+        <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border text-med-navy font-semibold"> iOS App</span>
+        <span class="px-3 py-1.5 rounded-lg bg-med-canvas border border-med-border text-med-navy font-semibold">▶ Android</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    lucide.createIcons();
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function handleForm(e) {
+      e.preventDefault();
+      alert('Integration brief received. A TruDoc Enterprise Director will reach out within 24 hours.');
+      closeModal('b2bModal');
+    }
+  </script>
+</body>
+</html>
