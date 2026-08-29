@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruDoc — The Healthcare Moat</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --blue:#1952A2;--teal:#0794CE;--green:#00BA9D;
+  --ink:#0A0F1A;--white:#FAFCFF;--cream:#F0F4F8;
+  --muted:#7A8499;--border:rgba(10,15,26,0.08);
+}
+body{font-family:'Figtree',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;cursor:none;}
+
+.cursor{position:fixed;width:10px;height:10px;background:var(--teal);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,background .2s;mix-blend-mode:difference;}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(7,148,206,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .15s ease,width .2s,height .2s;}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tickUp{0%{opacity:0;transform:translateY(6px)}10%{opacity:1;transform:translateY(0)}90%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-6px)}}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:24px 56px;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.logo-word{font-family:'DM Serif Display',serif;font-size:22px;color:white;letter-spacing:-0.5px;}
+.logo-word span{color:var(--green);font-style:italic;}
+.nav-right{display:flex;align-items:center;gap:28px;}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;letter-spacing:.5px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:white;}
+.nav-dl{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);text-decoration:none;letter-spacing:.3px;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;}
+.nav-btn{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--ink);background:white;padding:10px 20px;border-radius:4px;text-decoration:none;white-space:nowrap;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 55% 45% at 18% 15%,rgba(7,148,206,0.22) 0%,transparent 60%),
+  radial-gradient(ellipse 50% 40% at 85% 30%,rgba(0,186,157,0.16) 0%,transparent 60%),
+  radial-gradient(ellipse 70% 60% at 50% 100%,rgba(25,82,162,0.35) 0%,transparent 70%);
+}
+.hero-grid{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(to bottom,transparent,black 30%,black 70%,transparent);
+}
+.hero-grain{position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");opacity:0.4;pointer-events:none;}
+
+.hero-content{position:relative;z-index:5;text-align:center;padding:0 40px 76px;width:100%;max-width:1180px;margin:0 auto;animation:fadeUp 1s ease both;}
+.hero-kicker{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:26px;display:flex;align-items:center;justify-content:center;gap:12px;}
+.hero-kicker-line{width:32px;height:1px;background:var(--green);}
+.hero-h1{font-family:'DM Serif Display',serif;font-size:clamp(38px,7vw,92px);line-height:1.02;letter-spacing:-2.5px;color:white;margin-bottom:28px;}
+.hero-h1 .teal{color:var(--teal);}
+.hero-h1 .thin{display:block;font-size:.42em;font-style:italic;color:rgba(255,255,255,0.4);letter-spacing:-0.5px;margin-top:14px;line-height:1.3;}
+.hero-sub{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.5);max-width:640px;margin:0 auto 40px;}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:56px;flex-wrap:wrap;}
+.btn-hero{background:var(--teal);color:white;padding:15px 30px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.3px;text-decoration:none;}
+.btn-hero-ghost{border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.65);padding:15px 26px;border-radius:4px;font-size:13px;font-weight:500;text-decoration:none;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);width:100%;border-top:1px solid rgba(255,255,255,0.06);}
+.hstat{padding:22px 8px;text-align:center;border-right:1px solid rgba(255,255,255,0.06);}
+.hstat:last-child{border-right:none;}
+.hstat-n{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.6vw,30px);color:white;letter-spacing:-1px;}
+.hstat-l{font-size:10.5px;color:rgba(255,255,255,0.28);margin-top:3px;letter-spacing:.4px;text-transform:uppercase;font-weight:600;}
+
+.hero-live{position:absolute;top:100px;right:56px;z-index:10;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+
+/* ── MARQUEE ── */
+.marquee{background:var(--blue);padding:14px 0;overflow:hidden;}
+.marquee-track{display:flex;width:max-content;animation:marquee 30s linear infinite;}
+.marquee-item{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.85);padding:0 40px;white-space:nowrap;display:flex;align-items:center;gap:10px;}
+.marquee-item b{color:white;}
+.marquee-item span{font-weight:500;color:rgba(255,255,255,0.45);text-transform:none;letter-spacing:0;}
+.marquee-item::after{content:"◆";font-size:6px;color:var(--green);margin-left:30px;}
+
+/* ── SECTION HEADERS (shared) ── */
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px;}
+.sec-header{padding:0 72px 56px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.sec-header h2{font-family:'DM Serif Display',serif;font-size:clamp(32px,4.6vw,58px);letter-spacing:-2px;line-height:1.04;color:var(--ink);}
+.sec-header h2 i{font-style:italic;color:var(--blue);}
+.sh-right{font-size:14px;color:var(--muted);max-width:340px;line-height:1.65;padding-bottom:8px;}
+
+/* ── PILLARS ── */
+.pillars{padding:130px 0 120px;background:var(--white);}
+.pillar-grid{padding:0 72px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.pillar-card{background:white;padding:48px 38px;transition:background .25s;position:relative;}
+.pillar-card:hover{background:var(--ink);}
+.pillar-card:hover .pl-title,.pillar-card:hover .pl-desc{color:white;}
+.pillar-card:hover .pl-desc{color:rgba(255,255,255,0.5);}
+.pillar-card:hover .pl-num{color:var(--green);-webkit-text-fill-color:var(--green);}
+.pl-num{font-family:'DM Serif Display',serif;font-size:15px;letter-spacing:2px;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:22px;display:block;transition:color .25s;}
+.pl-title{font-family:'DM Serif Display',serif;font-size:25px;letter-spacing:-.5px;color:var(--ink);margin-bottom:14px;line-height:1.15;transition:color .25s;}
+.pl-desc{font-size:14px;color:var(--muted);line-height:1.7;transition:color .25s;}
+
+/* ── B2B SOLUTIONS ── */
+.solutions{padding:0 72px 140px;background:var(--white);}
+.sol-block{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center;padding:64px 0;border-top:1px solid var(--border);}
+.sol-block:first-of-type{border-top:none;}
+.sol-block.rev{grid-template-columns:.9fr 1.1fr;}
+.sol-block.rev .sol-copy{order:2;}
+.sol-block.rev .sol-visual{order:1;}
+.sol-tag{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:18px;}
+.sol-copy h3{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.2vw,38px);letter-spacing:-1.2px;line-height:1.12;color:var(--ink);margin-bottom:20px;}
+.sol-copy p{font-size:15px;line-height:1.75;color:var(--muted);max-width:480px;margin-bottom:26px;}
+.sol-stats{display:flex;gap:32px;margin-top:6px;}
+.sol-stat b{display:block;font-family:'DM Serif Display',serif;font-size:26px;color:var(--blue);letter-spacing:-1px;}
+.sol-stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;}
+
+/* mock lead form card */
+.form-card{background:var(--ink);border-radius:16px;padding:36px;position:relative;overflow:hidden;}
+.form-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 0%,rgba(7,148,206,0.18) 0%,transparent 70%);}
+.form-card-head{position:relative;display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;}
+.form-card-head span{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.form-card-head .fc-dot{display:flex;gap:5px;}
+.form-card-head .fc-dot i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);display:block;}
+.form-title{position:relative;font-family:'DM Serif Display',serif;font-size:22px;color:white;margin-bottom:24px;letter-spacing:-.5px;}
+.f-field{position:relative;margin-bottom:14px;}
+.f-label{font-size:10.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:7px;}
+.f-input{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:12px 14px;font-size:13px;color:rgba(255,255,255,0.55);}
+.f-btn{position:relative;margin-top:20px;background:var(--green);color:white;text-align:center;padding:13px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:.3px;}
+
+/* pull quote */
+.pull-quote{background:var(--cream);border-radius:14px;padding:40px 40px 34px;position:relative;}
+.pull-quote::before{content:"“";position:absolute;top:8px;left:24px;font-family:'DM Serif Display',serif;font-size:64px;color:var(--border);line-height:1;}
+.pull-quote p{position:relative;font-family:'DM Serif Display',serif;font-style:italic;font-size:19px;line-height:1.5;color:var(--ink);letter-spacing:-.3px;}
+.pull-quote .pq-tag{margin-top:18px;font-size:12px;color:var(--muted);font-weight:600;}
+
+/* ── CORPORATE / DARK QUOTE BAND ── */
+.quote-band{background:var(--ink);padding:150px 72px;text-align:center;position:relative;overflow:hidden;}
+.quote-band::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 30%,rgba(0,186,157,0.1) 0%,transparent 70%);}
+.qb-eyebrow{position:relative;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:32px;display:block;}
+.quote-band h2{position:relative;font-family:'DM Serif Display',serif;font-size:clamp(30px,4.4vw,54px);letter-spacing:-1.6px;line-height:1.12;color:white;max-width:920px;margin:0 auto 40px;}
+.quote-band .qb-sub{position:relative;font-size:15px;color:rgba(255,255,255,0.4);max-width:640px;margin:0 auto 48px;line-height:1.75;}
+.quote-band blockquote{position:relative;font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(18px,2.2vw,24px);line-height:1.55;color:rgba(255,255,255,0.85);max-width:760px;margin:0 auto;}
+.quote-band .qb-chips{position:relative;display:flex;justify-content:center;gap:14px;margin-top:44px;flex-wrap:wrap;}
+.qb-chip{border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:9px 18px;font-size:12px;color:rgba(255,255,255,0.6);font-weight:600;}
+.qb-chip b{color:var(--green);}
+
+/* ── PLATFORM DEEP DIVE ── */
+.platform{padding:140px 72px;background:var(--white);}
+.pf-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;}
+.pf-col{padding:0 32px;border-left:1px solid var(--border);}
+.pf-col:first-child{border-left:none;padding-left:0;}
+.pf-col:last-child{padding-right:0;}
+.pf-tag{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:16px;}
+.pf-col h4{font-family:'DM Serif Display',serif;font-size:23px;letter-spacing:-.5px;color:var(--ink);margin-bottom:14px;line-height:1.2;}
+.pf-col p{font-size:14px;color:var(--muted);line-height:1.75;}
+.pf-badges{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;}
+.pf-badge{font-size:10.5px;font-weight:700;letter-spacing:.4px;color:var(--blue);background:rgba(25,82,162,0.07);border-radius:4px;padding:5px 9px;}
+
+/* ── INVESTOR GATEWAY ── */
+.investor{background:var(--ink);padding:160px 72px;text-align:center;position:relative;overflow:hidden;}
+.investor::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(7,148,206,0.1) 0%,transparent 70%);}
+.investor h2{position:relative;font-family:'DM Serif Display',serif;font-size:clamp(34px,6.4vw,84px);letter-spacing:-3px;line-height:.99;color:white;margin-bottom:36px;}
+.investor h2 .green{color:var(--green);}
+.investor .inv-sub{position:relative;font-size:15px;color:rgba(255,255,255,0.42);max-width:680px;margin:0 auto 56px;line-height:1.75;}
+.investor .pull-quote{position:relative;background:rgba(255,255,255,0.04);max-width:760px;margin:0 auto;}
+.investor .pull-quote p{color:rgba(255,255,255,0.85);}
+.investor .pull-quote .pq-tag{color:rgba(255,255,255,0.35);}
+.investor .pull-quote::before{color:rgba(255,255,255,0.08);}
+.investor .btn-hero{position:relative;display:inline-block;margin-top:44px;}
+
+/* ── FINAL CTA ── */
+.cta{background:var(--ink);padding:150px 72px 130px;text-align:center;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.05);}
+.cta h2{font-family:'DM Serif Display',serif;font-size:clamp(38px,7vw,96px);letter-spacing:-3px;line-height:.98;color:white;position:relative;z-index:2;margin-bottom:44px;}
+.cta h2 .green{color:var(--green);}
+.cta-actions{display:flex;align-items:center;justify-content:center;gap:16px;position:relative;z-index:2;margin-bottom:40px;flex-wrap:wrap;}
+.btn-cta-main{background:white;color:var(--ink);padding:16px 36px;border-radius:4px;font-size:14px;font-weight:700;letter-spacing:.3px;text-decoration:none;}
+.btn-cta-ghost{border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);padding:16px 28px;border-radius:4px;font-size:14px;font-weight:500;text-decoration:none;}
+.cta-note{font-size:12px;color:rgba(255,255,255,0.2);position:relative;z-index:2;}
+
+/* ── FOOTER ── */
+footer{background:#04080F;color:white;padding:72px 72px 96px;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:56px;}
+.fb-logo{font-family:'DM Serif Display',serif;font-size:22px;color:white;text-decoration:none;display:block;margin-bottom:16px;}
+.fb-logo span{color:var(--green);font-style:italic;}
+.fb p{font-size:13px;color:rgba(255,255,255,0.28);line-height:1.7;max-width:250px;}
+.fc h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:18px;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.fc a{font-size:13px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color .2s;}
+.fc a:hover{color:white;}
+.fbot{padding-top:28px;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.fbot p,.fbot span{font-size:11px;color:rgba(255,255,255,0.14);}
+
+/* ── STICKY D2C BAR ── */
+.sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:150;background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding:14px 56px;display:flex;align-items:center;justify-content:space-between;transform:translateY(0);transition:transform .3s ease;}
+.sticky-bar.hide{transform:translateY(100%);}
+.sb-left{display:flex;align-items:center;gap:12px;}
+.sb-left b{font-family:'DM Serif Display',serif;font-size:15px;color:white;}
+.sb-left span{font-size:12px;color:rgba(255,255,255,0.4);}
+.sb-btn{background:var(--green);color:white;padding:10px 22px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:.3px;text-decoration:none;white-space:nowrap;}
+.sb-close{background:none;border:none;color:rgba(255,255,255,0.3);font-size:18px;cursor:pointer;margin-left:16px;line-height:1;}
+
+@media(max-width:900px){
+  nav{padding:20px 24px;}
+  .nav-links,.nav-dl{display:none;}
+  .hero-content{padding:0 22px 60px;}
+  .hero-live{right:24px;top:88px;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+  .hstat:nth-child(2){border-right:none;}
+  .sec-header{padding:0 24px 40px;}
+  .pillar-grid{padding:0 24px;grid-template-columns:1fr;}
+  .solutions{padding:0 24px 100px;}
+  .sol-block,.sol-block.rev{grid-template-columns:1fr;gap:36px;}
+  .sol-block.rev .sol-copy,.sol-block.rev .sol-visual{order:initial;}
+  .quote-band,.investor,.cta{padding-left:24px;padding-right:24px;}
+  .platform{padding:100px 24px;}
+  .pf-row{grid-template-columns:1fr;gap:40px;}
+  .pf-col{border-left:none;padding:0;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .sticky-bar{padding:12px 20px;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="#" class="logo"><span class="logo-word">Tru<span>Doc</span></span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#platform">The Platform</a></li>
+      <li><a href="#pharmacy">Pharmacy &amp; Care</a></li>
+      <li><a href="#investors">About / Investors</a></li>
+    </ul>
+    <a href="#" class="nav-dl">Download Super App</a>
+    <a href="#" class="nav-btn">Request Payer Demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-grain"></div>
+
+  <div class="hero-live"><div class="live-dot"></div>Claims Resolved Today: 12,406</div>
+
+  <div class="hero-content">
+    <div class="hero-kicker"><span class="hero-kicker-line"></span>Series B · Global Healthtech Expansion<span class="hero-kicker-line"></span></div>
+    <h1 class="hero-h1">The Healthcare Moat.<span class="thin">Redefining <span class="teal">value-based care</span> on a global scale.</span></h1>
+    <p class="hero-sub">TruDoc unites state-of-the-art tele-triage, a physical smart clinic grid, and fully owned community pharmacies into a single closed-loop ecosystem — resolving 90%+ of primary payer claims on first contact and eliminating up to 60% of unnecessary ER expense.</p>
+    <div class="hero-actions">
+      <a href="#solutions" class="btn-hero">Secure Your Savings Model → Request CFO Demo</a>
+      <a href="#pharmacy" class="btn-hero-ghost">Access Immediate Care → Download Super App</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">90%+</div><div class="hstat-l">Payer Claim Resolution</div></div>
+      <div class="hstat"><div class="hstat-n">60%</div><div class="hstat-l">ER Visit Diversion</div></div>
+      <div class="hstat"><div class="hstat-n">24/7</div><div class="hstat-l">Tele-Triage Infrastructure</div></div>
+      <div class="hstat"><div class="hstat-n">DHA·DOH·MOH</div><div class="hstat-l">Licensed &amp; Compliant</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE: TRUST & TRACTION -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item"><b>90%+ Payer Claim Resolution Rate</b><span>First-contact resolution that eliminates administrative friction</span></div>
+    <div class="marquee-item"><b>Up to 60% ER Visit Diversion</b><span>Non-emergent traffic moved into lower-cost clinical settings</span></div>
+    <div class="marquee-item"><b>24/7 Tele-Triage Infrastructure</b><span>Fully licensed clinicians across emerging markets</span></div>
+    <div class="marquee-item"><b>Institutional Grade Compliance</b><span>Operating under DHA, DOH &amp; MOH regulatory standards</span></div>
+    <div class="marquee-item"><b>90%+ Payer Claim Resolution Rate</b><span>First-contact resolution that eliminates administrative friction</span></div>
+    <div class="marquee-item"><b>Up to 60% ER Visit Diversion</b><span>Non-emergent traffic moved into lower-cost clinical settings</span></div>
+    <div class="marquee-item"><b>24/7 Tele-Triage Infrastructure</b><span>Fully licensed clinicians across emerging markets</span></div>
+    <div class="marquee-item"><b>Institutional Grade Compliance</b><span>Operating under DHA, DOH &amp; MOH regulatory standards</span></div>
+  </div>
+</div>
+
+<!-- 3-PILLAR OPERATIONAL MOAT -->
+<section class="pillars" id="platform">
+  <div class="sec-header">
+    <div>
+      <div class="sec-eyebrow">The Operational Moat</div>
+      <h2>Three pillars.<br><i>One closed loop.</i></h2>
+    </div>
+    <div class="sh-right">Unlike pure-play digital apps that suffer from high churn, TruDoc coordinates care through three interconnected, mutually reinforcing pillars.</div>
+  </div>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <span class="pl-num">PILLAR ONE</span>
+      <div class="pl-title">The Super Health App<br>— the digital front door</div>
+      <div class="pl-desc">Immediate, 24/7 tele-triage that bypasses the broken physical waiting room. Fully integrated diagnostic logging, live clinician chat, and instant pharmacy routing within one unified portal.</div>
+    </div>
+    <div class="pillar-card">
+      <span class="pl-num">PILLAR TWO</span>
+      <div class="pl-title">High-Tech Physical Network<br>— smart clinics &amp; pharmacies</div>
+      <div class="pl-desc">When hands-on care is mandatory, patients seamlessly transition to our high-tech Smart Clinics or partner community pharmacies for instant testing, vitals logging, and medication dispensing.</div>
+    </div>
+    <div class="pillar-card">
+      <span class="pl-num">PILLAR THREE</span>
+      <div class="pl-title">Value-Based Payer Solutions<br>— continuous claims optimization</div>
+      <div class="pl-desc">Our operational moat actively works for the payer. Automated triage reporting, integrated digital prescription tracking, and cost-containment dashboards ensure every dollar is clinically justified.</div>
+    </div>
+  </div>
+</section>
+
+<!-- B2B COMMERCIAL SOLUTIONS -->
+<section class="solutions" id="solutions">
+  <div class="sec-header" style="padding-left:0;padding-right:0;">
+    <div>
+      <div class="sec-eyebrow">B2B Commercial Solutions</div>
+      <h2>Built for CFOs.<br><i>Built for HR.</i></h2>
+    </div>
+    <div class="sh-right">Two gateways, one operational moat — mapping quantifiable ROI for payers and measurable outcomes for employers.</div>
+  </div>
+
+  <div class="sol-block">
+    <div class="sol-copy">
+      <div class="sol-tag">Payers &amp; Insurers</div>
+      <h3>Shifting from telehealth convenience to absolute claim containment.</h3>
+      <p>Standalone telehealth apps increase claims volume without proving financial impact. TruDoc manages risk by acting as an integrated clinical gateway that filters, treats, and routes patients pre-claim — saving up to 60% in ER spend and boosting premium retention via an audited 90%+ resolution rate.</p>
+      <div class="sol-stats">
+        <div class="sol-stat"><b>60%</b><span>ER Cost Containment</span></div>
+        <div class="sol-stat"><b>90%+</b><span>Audited Resolution Rate</span></div>
+      </div>
+    </div>
+    <div class="sol-visual">
+      <div class="form-card">
+        <div class="form-card-head"><span>Payer CFO Demo Request</span><div class="fc-dot"><i></i><i></i><i></i></div></div>
+        <div class="form-title">Request Your Savings Model</div>
+        <div class="f-field"><div class="f-label">Corporate Email Domain</div><div class="f-input">Required — filters general consumer inquiries</div></div>
+        <div class="f-field"><div class="f-label">Payer License / Country of Operation</div><div class="f-input">UAE · KSA · Emerging Markets</div></div>
+        <div class="f-field"><div class="f-label">Total Covered Lives Segment</div><div class="f-input">Under 50K · 50K–150K · 150K+</div></div>
+        <div class="f-field"><div class="f-label">Primary Pain Point</div><div class="f-input">ER Claims Cost Containment ▾</div></div>
+        <div class="f-btn">Secure Your Savings Model →</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sol-block rev">
+    <div class="sol-copy">
+      <div class="sol-tag">Corporates &amp; Employers</div>
+      <h3>Guarantee healthier workforces and lower recurring premium costs.</h3>
+      <p>TruDoc reduces employee absenteeism by delivering instant, 24/7 care directly to their phones. Resolving clinical needs early — and utilizing our Smart Clinics — prevents mild symptoms from turning into expensive, time-consuming specialist claims, allowing HR leaders to negotiate materially lower corporate premium renewals.</p>
+      <div class="sol-stats">
+        <div class="sol-stat"><b>20–30%</b><span>Lower Premium Renewals</span></div>
+        <div class="sol-stat"><b>&lt;5 min</b><span>To Connect With a Doctor</span></div>
+      </div>
+    </div>
+    <div class="sol-visual">
+      <div class="pull-quote">
+        <p>The corporate workforce demands frictionless, instant medical care. TruDoc delivers just that — a healthier, more productive staff and dramatically reduced healthcare premium renewals for enterprise businesses.</p>
+        <div class="pq-tag">TruDoc Corporate Solutions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORPORATE QUOTE BAND -->
+<section class="quote-band">
+  <span class="qb-eyebrow">Clinical Grade Compliance</span>
+  <h2>High-speed virtual care, <i>perfectly aligned</i> with rigorous clinical excellence.</h2>
+  <p class="qb-sub">Our care delivery protocols are fully licensed and strictly compliant with regional ministries of health — proving that speed and safety are not a trade-off.</p>
+  <div class="qb-chips">
+    <div class="qb-chip"><b>DHA</b> · Dubai Health Authority</div>
+    <div class="qb-chip"><b>DOH</b> · Department of Health, Abu Dhabi</div>
+    <div class="qb-chip"><b>MOH</b> · Ministries of Health, Emerging Markets</div>
+  </div>
+</section>
+
+<!-- THE PLATFORM DEEP-DIVE -->
+<section class="platform" id="pharmacy">
+  <div class="sec-header" style="padding-left:0;padding-right:0;">
+    <div>
+      <div class="sec-eyebrow">The Technical Moat</div>
+      <h2>Clinical intelligence,<br><i>engineered end to end.</i></h2>
+    </div>
+    <div class="sh-right">From the patient's pocket to the pharmacy counter — every layer of the stack is built to defend against digital copycats.</div>
+  </div>
+  <div class="pf-row">
+    <div class="pf-col">
+      <div class="pf-tag">The Super Health App</div>
+      <h4>Clinical intelligence in a patient's pocket</h4>
+      <p>Not a simple directory — a highly engineered clinical triage portal using structured symptom logging, vitals tracking, and HD video consults. In under 2 minutes, patients are triaged and connected to the exact tier of care they require.</p>
+      <div class="pf-badges"><span class="pf-badge">&lt; 2 MIN TRIAGE</span></div>
+    </div>
+    <div class="pf-col">
+      <div class="pf-tag">Physical Network Integration</div>
+      <h4>Extending care beyond the screen</h4>
+      <p>To stay physically defensible, TruDoc backs its app with a robust network of Smart Clinics and rebranded community pharmacies — ordering lab tests, dispensing medication, and monitoring vitals under a single clinical banner.</p>
+      <div class="pf-badges"><span class="pf-badge">SMART CLINICS</span><span class="pf-badge">PHARMACY NETWORK</span></div>
+    </div>
+    <div class="pf-col">
+      <div class="pf-tag">Clinical Excellence &amp; Regulatory</div>
+      <h4>Tele-triage held to the highest standard</h4>
+      <p>Every protocol used by our 24/7 tele-triage clinicians is backed by international medical guidelines and fully licensed by regional ministries of health — guaranteeing virtual care that is safe, audited, and enterprise-grade.</p>
+      <div class="pf-badges"><span class="pf-badge">AUDITED</span><span class="pf-badge">ENTERPRISE-GRADE</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERIES B INVESTOR RELATIONS GATEWAY -->
+<section class="investor" id="investors">
+  <span class="qb-eyebrow">Series B Investor Relations</span>
+  <h2>Multiple elevation through<br><span class="green">systemic</span> healthcare defense.</h2>
+  <p class="inv-sub">Standalone digital health solutions are highly vulnerable to CAC and churn. TruDoc's 3-Pillar Operational Moat captures recurring B2B PEPM and claims-optimization contracts — blending digital accessibility with capital-efficient physical infrastructure across emerging markets to command defensive, high-margin, enterprise-grade healthtech multiples.</p>
+  <div class="pull-quote">
+    <p>Our multi-channel B2B model secures long-term corporate contracts, enabling predictable recurring revenues and high margin profiles. We prove commercial scalability by delivering physical care quality with digital software efficiencies.</p>
+    <div class="pq-tag">Series B Investor Note</div>
+  </div>
+  <a href="#" class="btn-hero">Request the Investor Deck →</a>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta">
+  <h2>Your growth.<br><span class="green">Our moat.</span></h2>
+  <div class="cta-actions">
+    <a href="#" class="btn-cta-main">Secure Your Savings Model</a>
+    <a href="#" class="btn-cta-ghost">Download the Super App</a>
+  </div>
+  <p class="cta-note">800 TRUDOC (800 878362) · Trudochealth.com · Licensed across the UAE &amp; GCC</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="fb">
+      <a href="#" class="fb-logo">Tru<span>Doc</span></a>
+      <p>The virtual-first healthcare platform building the closed-loop operational moat for the UAE, GCC, and emerging markets.</p>
+    </div>
+    <div class="fc"><h4>Solutions</h4><ul><li><a href="#">Payers &amp; Insurers</a></li><li><a href="#">Corporates &amp; Employers</a></li><li><a href="#">Government &amp; Public Sector</a></li></ul></div>
+    <div class="fc"><h4>Platform</h4><ul><li><a href="#">Super Health App</a></li><li><a href="#">Smart Clinics</a></li><li><a href="#">Pharmacy Network</a></li></ul></div>
+    <div class="fc"><h4>Company</h4><ul><li><a href="#">About TruDoc</a></li><li><a href="#">Series B Investors</a></li><li><a href="#">Press &amp; Media</a></li><li><a href="#">Careers</a></li></ul></div>
+    <div class="fc"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Regulatory Compliance</a></li></ul></div>
+  </div>
+  <div class="fbot"><p>© 2026 TruDoc Healthcare. All rights reserved.</p><span>Trudochealth.com</span></div>
+</footer>
+
+<!-- STICKY D2C BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sb-left"><b>Always With You</b><span>Download the TruDoc Super App</span></div>
+  <div style="display:flex;align-items:center;">
+    <a href="#" class="sb-btn">Download Super App</a>
+    <button class="sb-close" id="sbClose" aria-label="Dismiss">×</button>
+  </div>
+</div>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 80);
+});
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.width = '56px'; ring.style.height = '56px'; });
+  el.addEventListener('mouseleave', () => { ring.style.width = '36px'; ring.style.height = '36px'; });
+});
+
+const sb = document.getElementById('stickyBar');
+document.getElementById('sbClose').addEventListener('click', () => sb.classList.add('hide'));
+</script>
+</body>
+</html>
