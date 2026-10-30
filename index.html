@@ -1,0 +1,545 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TruDoc: see a doctor online 24/7 in the UAE</title><meta name="description" content="TruDoc is a DHA- and DOH-licensed virtual-first provider: doctors 24/7 by app or 800 878 362, medicine delivery, lab tests and home visits."><link rel="canonical" href="https://trudocgroup.com/"><meta property="og:title" content="TruDoc: see a doctor online 24/7 in the UAE"><meta property="og:type" content="website"><meta property="og:url" content="https://trudocgroup.com/"><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --blue:#1952A2;--teal:#0794CE;--green:#00BA9D;
+  --ink:#0A0F1A;--white:#FAFCFF;--cream:#F0F4F8;
+  --muted:#7A8499;--border:rgba(10,15,26,0.08);
+}
+body{font-family:'Figtree',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;}
+
+/* custom cursor */
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes drawLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ── NAV ── ultra stripped */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:24px 56px;
+  display:flex;align-items:center;justify-content:space-between;
+  mix-blend-mode:normal;
+}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.logo-word{font-family:'DM Serif Display',serif;font-size:22px;color:white;letter-spacing:-0.5px;}
+.logo-word span{color:var(--green);font-style:italic;}
+.nav-right{display:flex;align-items:center;gap:32px;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;letter-spacing:.5px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:white;}
+.nav-btn{
+  font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--ink);background:white;
+  padding:10px 20px;border-radius:4px;text-decoration:none;
+}
+
+/* ════════════════════════════════════════
+   HERO — full viewport STACKED CENTRED
+   No split. Type and image on same axis.
+   DM Serif Display headline.
+   Photo is a tall portrait, center-screen.
+   Copy wraps above and below.
+════════════════════════════════════════ */
+.hero{
+  min-height:100vh;
+  background:var(--ink);
+  display:flex;flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  position:relative;
+  overflow:hidden;
+  padding-bottom:0;
+}
+/* full bg photo, very dark */
+.hero-photo{
+  position:absolute;inset:0;
+}
+.hero-photo img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:center 20%;
+  opacity:0.25;
+  filter:grayscale(30%);
+}
+.hero-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(10,15,26,0.3) 0%,rgba(10,15,26,0.7) 60%,var(--ink) 100%);
+}
+/* grain overlay */
+.hero-grain{
+  position:absolute;inset:0;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  opacity:0.4;pointer-events:none;
+}
+
+/* the headline — centred, enormous */
+.hero-content{
+  position:relative;z-index:5;
+  text-align:center;
+  padding:0 40px 80px;
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  animation:fadeUp 1s ease both;
+}
+.hero-kicker{
+  font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+  color:var(--green);margin-bottom:28px;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+}
+.hero-kicker-line{width:32px;height:1px;background:var(--green);}
+.hero-h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(56px,10vw,136px);
+  line-height:.95;
+  letter-spacing:-3px;
+  color:white;
+  margin-bottom:32px;
+}
+.hero-h1 .italic{font-style:italic;color:rgba(255,255,255,0.35);}
+.hero-h1 .teal{color:var(--teal);}
+.hero-sub{
+  font-size:17px;line-height:1.65;
+  color:rgba(255,255,255,0.45);
+  max-width:520px;margin:0 auto 44px;
+}
+.hero-actions{
+  display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:64px;
+}
+.btn-hero{
+  background:var(--teal);color:white;
+  padding:14px 32px;border-radius:4px;
+  font-size:13px;font-weight:700;
+  letter-spacing:.3px;text-decoration:none;
+}
+.btn-hero-ghost{
+  border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.5);
+  padding:14px 28px;border-radius:4px;
+  font-size:13px;font-weight:500;text-decoration:none;
+}
+/* stats row at very bottom of hero */
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  width:100%;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.hstat{
+  padding:24px 0;
+  text-align:center;
+  border-right:1px solid rgba(255,255,255,0.06);
+}
+.hstat:last-child{border-right:none;}
+.hstat-n{font-family:'DM Serif Display',serif;font-size:32px;color:white;letter-spacing:-1px;}
+.hstat-l{font-size:11px;color:rgba(255,255,255,0.25);margin-top:3px;letter-spacing:.5px;text-transform:uppercase;font-weight:600;}
+
+/* live badge — top right of hero */
+.hero-live{
+  position:absolute;top:100px;right:56px;z-index:10;
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;
+  color:rgba(255,255,255,0.35);letter-spacing:1px;
+  text-transform:uppercase;
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+
+/* ════════════════════════════════════════
+   MARQUEE
+════════════════════════════════════════ */
+.marquee{background:var(--blue);padding:14px 0;overflow:hidden;}
+.marquee-track{display:flex;width:max-content;animation:marquee 24s linear infinite;}
+.marquee-item{
+  font-size:11px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:rgba(255,255,255,0.4);
+  padding:0 40px;white-space:nowrap;
+  display:flex;align-items:center;gap:40px;
+}
+.marquee-item::after{content:"◆";font-size:6px;color:var(--green);}
+
+/* ════════════════════════════════════════
+   SERVICES — HORIZONTAL SCROLL STRIP
+   Not a grid. A single horizontal band.
+   Each service is a tall narrow card.
+   The strip scrolls left-right.
+   This breaks the vertical-only convention.
+════════════════════════════════════════ */
+.services{
+  padding:120px 0 0;
+  background:var(--white);
+  overflow:hidden;
+}
+.services-header{
+  padding:0 72px 64px;
+  display:flex;align-items:flex-end;justify-content:space-between;
+}
+.services-header h2{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(36px,5vw,64px);
+  letter-spacing:-2px;line-height:1.0;
+  color:var(--ink);
+}
+.services-header h2 i{font-style:italic;color:var(--blue);}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px;}
+.sh-right{font-size:14px;color:var(--muted);max-width:320px;line-height:1.6;padding-bottom:8px;}
+
+/* the horizontal scroll strip */
+.svc-strip{
+  display:flex;
+  gap:0;
+  padding-left:72px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  cursor:grab;
+}
+.svc-strip::-webkit-scrollbar{display:none;}
+.svc-card{
+  flex-shrink:0;
+  width:320px;
+  height:480px;
+  position:relative;
+  overflow:hidden;
+  border-radius:12px 12px 0 0;
+  margin-right:12px;
+  cursor:pointer;
+}
+.svc-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+  filter:grayscale(20%);
+}
+.svc-card:hover img{transform:scale(1.06);filter:grayscale(0%);}
+.svc-card::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,15,26,0.92) 0%,rgba(10,15,26,0.2) 60%,transparent 100%);
+}
+.svc-info{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  padding:28px 28px 32px;
+}
+.svc-num{
+  font-size:10px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:rgba(255,255,255,0.3);
+  margin-bottom:10px;
+}
+.svc-name{
+  font-family:'DM Serif Display',serif;
+  font-size:26px;color:white;letter-spacing:-0.5px;
+  margin-bottom:8px;line-height:1.1;
+}
+.svc-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5;}
+.svc-arrow{
+  position:absolute;top:20px;right:20px;z-index:3;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  color:white;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .2s,background .2s;
+}
+.svc-card:hover .svc-arrow{opacity:1;background:var(--teal);}
+/* drag hint */
+.strip-hint{
+  padding:16px 72px 0;
+  font-size:12px;color:var(--muted);
+  display:flex;align-items:center;gap:8px;
+  font-style:italic;
+}
+.strip-hint::before{content:"←";} 
+.strip-hint::after{content:"→";}
+
+/* ════════════════════════════════════════
+   ABOUT / NUMBERS — typographic section
+   No photos. Just type on white.
+   Bold, confident, editorial.
+════════════════════════════════════════ */
+.numbers{
+  padding:160px 72px;
+  background:var(--cream);
+  position:relative;
+}
+.numbers-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:120px;
+  align-items:center;
+}
+.numbers-left h2{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(40px,5vw,68px);
+  letter-spacing:-2px;line-height:1.02;
+  color:var(--ink);margin-bottom:24px;
+}
+.numbers-left h2 i{font-style:italic;color:var(--blue);}
+.numbers-left p{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:36px;max-width:400px;}
+.numbers-right{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+}
+.nc{
+  background:white;
+  padding:40px 36px;
+  transition:background .2s;
+}
+.nc:hover{background:var(--ink);}
+.nc:hover .nc-n{color:var(--green);-webkit-text-fill-color:var(--green);}
+.nc:hover .nc-l{color:rgba(255,255,255,0.4);}
+.nc-n{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(36px,4vw,54px);
+  letter-spacing:-2px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;margin-bottom:10px;
+  transition:color .2s;
+}
+.nc-l{font-size:13px;color:var(--muted);font-weight:500;line-height:1.4;transition:color .2s;}
+
+/* ════════════════════════════════════════
+   HOW IT WORKS — diagonal stagger
+   Steps are large numbered blocks
+   laid out in a diagonal path, not a row
+════════════════════════════════════════ */
+.how{
+  padding:160px 72px;
+  background:var(--ink);
+  overflow:hidden;position:relative;
+}
+.how h2{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(36px,5vw,64px);
+  letter-spacing:-2px;line-height:1.0;
+  color:white;margin-bottom:80px;
+  text-align:center;
+}
+.how h2 i{font-style:italic;color:rgba(255,255,255,0.25);}
+.how-stagger{
+  display:flex;flex-direction:column;
+  gap:0;max-width:800px;margin:0 auto;
+}
+.how-step{
+  display:flex;align-items:flex-start;gap:40px;
+  padding:48px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  position:relative;
+}
+.how-step:nth-child(even){
+  padding-left:80px;
+}
+.how-step:nth-child(3){
+  padding-left:160px;
+}
+.how-step:nth-child(4){
+  padding-left:80px;
+}
+.how-step:last-child{border-bottom:none;}
+.hs-num{
+  font-family:'DM Serif Display',serif;
+  font-size:72px;color:rgba(255,255,255,0.06);
+  line-height:1;letter-spacing:-3px;
+  flex-shrink:0;width:100px;text-align:right;
+  margin-top:-12px;
+}
+.hs-body{}
+.hs-title{
+  font-family:'DM Serif Display',serif;
+  font-size:28px;color:white;letter-spacing:-0.5px;
+  margin-bottom:10px;
+}
+.hs-desc{font-size:14px;color:rgba(255,255,255,0.35);line-height:1.65;max-width:440px;}
+
+/* ════════════════════════════════════════
+   DOCTOR — full width, bottom anchored
+   Photo takes 60% height
+   Dark overlay, large serif type overlaid
+════════════════════════════════════════ */
+.doctor{
+  position:relative;height:680px;overflow:hidden;
+}
+.doctor-photo{position:absolute;inset:0;}
+.doctor-photo img{width:100%;height:100%;object-fit:cover;object-position:center 15%;}
+.doctor-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(10,15,26,0.95) 40%,rgba(10,15,26,0.3) 75%,transparent 100%);
+}
+.doctor-content{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 96px;max-width:680px;
+}
+.doctor-content .sec-eyebrow{color:var(--green);margin-bottom:16px;}
+.doctor-content h2{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(36px,5vw,60px);
+  letter-spacing:-2px;line-height:1.02;
+  color:white;margin-bottom:20px;
+}
+.doctor-content h2 i{font-style:italic;color:rgba(255,255,255,0.3);}
+.doctor-content p{font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:420px;margin-bottom:32px;}
+.checks{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;}
+.check{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.6);font-weight:500;}
+.chk{width:18px;height:18px;border-radius:4px;background:rgba(0,186,157,0.2);color:var(--green);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.btn-green{background:var(--green);color:white;padding:13px 26px;border-radius:4px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.3px;}
+
+/* ════════════════════════════════════════
+   TESTIMONIALS — one big quote, centred
+   Then two small ones below
+   Simple. Powerful.
+════════════════════════════════════════ */
+.testimonials{
+  padding:160px 72px;
+  background:var(--white);
+  text-align:center;
+}
+.testi-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:40px;display:block;}
+.testi-big-quote{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(24px,3.5vw,44px);
+  line-height:1.35;letter-spacing:-1px;
+  color:var(--ink);
+  max-width:820px;margin:0 auto 40px;
+  font-style:italic;
+}
+.testi-author{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin-bottom:80px;
+}
+.tav{width:40px;height:40px;border-radius:50%;background:var(--blue);color:white;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.ta-name{font-size:14px;font-weight:700;color:var(--ink);}
+.ta-loc{font-size:12px;color:var(--muted);}
+.ta-stars{color:#F59E0B;font-size:12px;letter-spacing:2px;}
+.testi-divider{
+  width:1px;height:60px;
+  background:var(--border);margin:0 auto 80px;
+}
+.testi-small-row{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:20px;max-width:800px;margin:0 auto;
+  text-align:left;
+}
+.ts-card{
+  background:var(--cream);border-radius:10px;
+  padding:32px;
+}
+.tsc-quote{font-size:14px;font-style:italic;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.tsc-author{display:flex;align-items:center;gap:10px;}
+.tsca-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.tsca-name{font-size:13px;font-weight:700;color:var(--ink);}
+.tsca-loc{font-size:11px;color:var(--muted);}
+
+/* ════════════════════════════════════════
+   CTA — black, centred, typographic
+   No buttons that look like every other CTA.
+   Just a powerful line of type + one action.
+════════════════════════════════════════ */
+.cta{
+  background:var(--ink);
+  padding:160px 72px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta::before{
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(7,148,206,0.08) 0%,transparent 70%);
+}
+.cta h2{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(48px,9vw,120px);
+  letter-spacing:-4px;line-height:.97;
+  color:white;
+  position:relative;z-index:2;
+  margin-bottom:48px;
+}
+.cta h2 i{font-style:italic;color:rgba(255,255,255,0.2);}
+.cta h2 .green{color:var(--green);}
+.cta-actions{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  position:relative;z-index:2;
+  margin-bottom:48px;
+}
+.btn-cta-main{
+  background:white;color:var(--ink);
+  padding:16px 36px;border-radius:4px;
+  font-size:14px;font-weight:700;letter-spacing:.3px;
+  text-decoration:none;
+}
+.btn-cta-ghost{
+  border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.4);
+  padding:16px 28px;border-radius:4px;
+  font-size:14px;font-weight:500;text-decoration:none;
+}
+.cta-note{font-size:12px;color:rgba(255,255,255,0.2);position:relative;z-index:2;}
+
+/* ── FOOTER ── */
+footer{background:#04080F;color:white;padding:72px 72px 40px;}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:48px;margin-bottom:56px;
+}
+.fb{}
+.fb-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:22px;color:white;
+  text-decoration:none;display:block;margin-bottom:16px;
+}
+.fb-logo span{color:var(--green);font-style:italic;}
+.fb p{font-size:13px;color:rgba(255,255,255,0.28);line-height:1.7;max-width:260px;}
+.fc h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:18px;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.fc a{font-size:13px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color .2s;}
+.fc a:hover{color:white;}
+.fbot{padding-top:28px;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;}
+.fbot p,.fbot span{font-size:11px;color:rgba(255,255,255,0.14);}
+
+nav{background:rgba(10,15,26,.9);backdrop-filter:blur(10px)}
+.phero{background:var(--ink);position:relative;overflow:hidden;padding:170px 72px 0}
+.pin{position:relative;z-index:5;max-width:920px}
+.crumb{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:22px}.crumb a{color:rgba(255,255,255,.55);text-decoration:none}
+.phero h1{font-family:'DM Serif Display',serif;font-size:clamp(38px,6vw,84px);line-height:1;letter-spacing:-2px;color:#fff;margin-bottom:26px}
+.lead{font-size:18px;line-height:1.65;color:rgba(255,255,255,.62);max-width:720px;margin-bottom:34px}
+.topline{position:relative;z-index:5;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border-top:1px solid rgba(255,255,255,.08);margin:56px -72px 0;padding:0 72px}
+.tl{padding:22px 20px 26px 0}.tl b{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.tl>span{font-family:'DM Serif Display',serif;font-size:22px;color:#fff;line-height:1.25;display:block}.tl .tbc{white-space:normal;display:inline-block;line-height:1.3}
+.tbc{font:700 11px Figtree,sans-serif;background:rgba(245,158,11,.14);color:#D98A00;border:1px dashed #F59E0B;border-radius:4px;padding:2px 7px;white-space:nowrap}
+.phero .tbc{color:#F5B93B}
+.pbody{padding:100px 72px;display:grid;grid-template-columns:1fr 340px;gap:80px;background:var(--white)}
+.pbody h2{font-family:'DM Serif Display',serif;font-size:34px;letter-spacing:-1px;line-height:1.1;margin:52px 0 16px}.pbody h2:first-child{margin-top:0}
+.pbody p,.pbody li{font-size:16px;line-height:1.75;color:#3C4558}.pbody ul{padding-left:20px;margin-bottom:8px}.pbody a{color:var(--blue)}
+.pbody table{width:100%;border-collapse:collapse;margin:8px 0 12px;font-size:14px}.pbody th{text-align:left;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:10px 12px;border-bottom:2px solid var(--ink)}
+.pbody td{padding:14px 12px;border-bottom:1px solid var(--border);color:#3C4558}
+details{border-bottom:1px solid var(--border);padding:18px 0}summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::after{content:"+";color:var(--teal);font-size:20px;line-height:1}details[open] summary::after{content:"–"}details p{margin-top:12px}
+.aside{position:sticky;top:96px;align-self:start;display:flex;flex-direction:column;gap:20px}
+.card{background:var(--cream);border-radius:12px;padding:28px}.card h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.card.dark{background:var(--ink);color:#fff}.card.dark p{color:rgba(255,255,255,.5);font-size:13px;margin:8px 0 18px}.card.dark .ph{font-family:'DM Serif Display',serif;font-size:30px}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:10px}.card a{font-size:14px;font-weight:600;color:var(--blue);text-decoration:none}
+.cover{display:flex;flex-direction:column;gap:10px;max-width:420px}.cover input{padding:13px;border:1px solid var(--border);border-radius:4px;font:inherit}
+.cover button{padding:13px;border:0;border-radius:4px;background:var(--teal);color:#fff;font:700 13px Figtree}#cm{font-size:14px;color:var(--green);display:none}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}.pgrid a{background:var(--cream);border-radius:10px;padding:24px;text-decoration:none;color:var(--ink)}
+.pgrid b{font-family:'DM Serif Display',serif;font-size:21px;display:block;margin-bottom:6px;font-weight:400}.pgrid span{font-size:13px;color:var(--muted)}
+.aside a.btn-hero{color:#fff;display:inline-block;text-align:center}.callbar{display:none}.upd{font-size:12px;color:var(--muted);margin-top:40px}
+.partners{background:var(--cream);padding:80px 72px;text-align:center}.partners h3{font-family:'DM Serif Display',serif;font-size:34px;margin:10px 0 28px;letter-spacing:-1px}
+.prow{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;font-family:'DM Serif Display',serif;font-size:28px;color:var(--blue)}
+.faqwrap{padding:100px 72px;max-width:980px;margin:0 auto}.faqwrap h2{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,52px);letter-spacing:-1.5px;margin-bottom:30px}
+@media(max-width:900px){.phero,.pbody,.partners,.faqwrap{padding-left:24px;padding-right:24px}.topline{margin:40px -24px 0;padding:0 24px}.pbody{grid-template-columns:1fr;gap:48px}
+.pgrid{grid-template-columns:1fr}.nav-links{display:none}nav{padding:18px 24px}.aside{position:static}
+.callbar{display:block;position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--teal);color:#fff;text-align:center;padding:16px;font-weight:700;text-decoration:none}}
+</style><script type="application/ld+json">{"@type": "MedicalOrganization", "@id": "https://trudocgroup.com/#org", "name": "TruDoc", "url": "https://trudocgroup.com/", "telephone": "+971 800 878 362", "address": {"@type": "PostalAddress", "streetAddress": "Office 701, Bay Square, Building 1, Business Bay", "addressLocality": "Dubai", "addressCountry": "AE"}, "sameAs": ["https://apps.apple.com/ae/app/trudoc/id1015588412"], "availableLanguage": ["English", "Arabic", "Hindi", "Urdu"], "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}, "@context": "https://schema.org"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://trudocgroup.com/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the best telehealth app in the UAE?", "acceptedAnswer": {"@type": "Answer", "text": "TruDoc is a DHA- and DOH-licensed virtual-first provider with doctors available 24/7 by app or 800 878 362. See how it works."}}, {"@type": "Question", "name": "How can I see a doctor online 24/7 in Dubai?", "acceptedAnswer": {"@type": "Answer", "text": "Open the TruDoc app or call 800 878 362 any hour. Details: see a TruDoc doctor online 24/7 in Dubai."}}, {"@type": "Question", "name": "Is there an online GP in Abu Dhabi covered by insurance?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Check your cover with your Emirates ID and insurer: online GP in Abu Dhabi."}}, {"@type": "Question", "name": "Which programme helps with diabetes?", "acceptedAnswer": {"@type": "Answer", "text": "TruDoc runs a diabetes management programme: see the programme."}}, {"@type": "Question", "name": "Which telemedicine provider works for employee health?", "acceptedAnswer": {"@type": "Answer", "text": "TruDoc gives employees and dependants 24/7 access, including through Bayzat, MetLife and Cigna: TruDoc for employers."}}, {"@type": "Question", "name": "How do I talk to a doctor now in the UAE?", "acceptedAnswer": {"@type": "Answer", "text": "Call 800 878 362 or open the app. For emergencies call 998: talk to a doctor now."}}, {"@type": "Question", "name": "Can a doctor visit me at home in Dubai or Abu Dhabi?", "acceptedAnswer": {"@type": "Answer", "text": "Yes: Dubai and Abu Dhabi."}}, {"@type": "Question", "name": "Can I book a lab test at home in the UAE?", "acceptedAnswer": {"@type": "Answer", "text": "Yes: lab test at home in the UAE."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "TruDoc", "url": "https://trudocgroup.com/"}</script></head><body><nav><a href="" class="logo"><span class="logo-word">Tru<span>Doc</span></span></a><div class="nav-right"><ul class="nav-links"><li><a href="uae/">Services</a></li><li><a href="uae/pricing/">Pricing</a></li><li><a href="uae/employers/">Employers</a></li><li><a href="health-library/">Health library</a></li></ul><a href="tel:+971800878362" class="nav-btn">Call 800 878 362</a></div></nav><section class="hero"><div class="hero-photo"><img src="assets/couple.jpg" alt="A couple using the TruDoc app at home"></div><div class="hero-grain"></div><div class="hero-live"><span class="live-dot"></span>Doctors available 24/7</div>
+<div class="hero-content"><div class="hero-kicker"><span class="hero-kicker-line"></span>UAE's Virtual-First Healthcare Platform<span class="hero-kicker-line"></span></div>
+<h1 class="hero-h1">See a doctor<br><span class="italic">online,</span> <span class="teal">24/7.</span></h1>
+<p class="hero-sub">TruDoc is a DHA- and DOH-licensed healthcare provider: doctors by app or 800 878 362, medicine delivery, lab tests and home visits, in English, Arabic, Hindi and Urdu.</p>
+<div class="hero-actions"><a href="tel:+971800878362" class="btn-hero">Call a doctor now</a><a href="uae/" class="btn-hero-ghost">Explore services</a></div>
+<div class="hero-stats"><div class="hstat"><div class="hstat-n">2.5M+</div><div class="hstat-l">Lives touched</div></div><div class="hstat"><div class="hstat-n">15 yrs</div><div class="hstat-l">Of care</div></div><div class="hstat"><div class="hstat-n">24/7</div><div class="hstat-l">Available</div></div><div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Languages</div></div></div></div></section>
+<div class="marquee"><div class="marquee-track"><span class="marquee-item">Online doctor 24/7</span><span class="marquee-item">Doctor home visit</span><span class="marquee-item">Lab test at home</span><span class="marquee-item">Medicine delivery</span><span class="marquee-item">Diabetes programme</span><span class="marquee-item">Always With You</span><span class="marquee-item">Online doctor 24/7</span><span class="marquee-item">Doctor home visit</span><span class="marquee-item">Lab test at home</span><span class="marquee-item">Medicine delivery</span><span class="marquee-item">Diabetes programme</span><span class="marquee-item">Always With You</span></div></div>
+<section class="services"><div class="services-header"><div><div class="sec-eyebrow">What We Offer</div><h2>Every service<br><i>has its own page.</i></h2></div><p class="sh-right">Price, timing, insurers and answers for each service, so people and AI assistants can find the facts.</p></div><div class="svc-strip" id="strip"><a class="svc-card" href="uae/online-doctor-24-7-dubai/"><img src="assets/night.jpg" alt="Online doctor 24/7"><div class="svc-arrow">↗</div><div class="svc-info"><div class="svc-num">01</div><div class="svc-name">Online doctor 24/7</div><div class="svc-desc">GP video and voice, any hour.</div></div></a><a class="svc-card" href="uae/medicine-delivery-uae/"><img src="assets/pharmacy.jpg" alt="Medicine delivery"><div class="svc-arrow">↗</div><div class="svc-info"><div class="svc-num">02</div><div class="svc-name">Medicine delivery</div><div class="svc-desc">Prescriptions to your door.</div></div></a><a class="svc-card" href="uae/doctor-home-visit-dubai/"><img src="assets/homecare.jpg" alt="Doctor home visit"><div class="svc-arrow">↗</div><div class="svc-info"><div class="svc-num">03</div><div class="svc-name">Doctor home visit</div><div class="svc-desc">Dubai and Abu Dhabi.</div></div></a><a class="svc-card" href="uae/lab-test-at-home/"><img src="assets/glucose.jpg" alt="Lab test at home"><div class="svc-arrow">↗</div><div class="svc-info"><div class="svc-num">04</div><div class="svc-name">Lab test at home</div><div class="svc-desc">Sample collection at your door.</div></div></a><a class="svc-card" href="uae/diabetes-management-programme/"><img src="assets/kitchen.jpg" alt="Chronic care"><div class="svc-arrow">↗</div><div class="svc-info"><div class="svc-num">05</div><div class="svc-name">Chronic care</div><div class="svc-desc">Diabetes programme.</div></div></a><a class="svc-card" href="uae/employers/"><img src="assets/doctor.jpg" alt="For employers"><div class="svc-arrow">↗</div><div class="svc-info"><div class="svc-num">06</div><div class="svc-name">For employers</div><div class="svc-desc">24/7 care for your team.</div></div></a><div style="flex-shrink:0;width:72px"></div></div><div class="strip-hint">Drag to explore</div></section>
+<section class="numbers"><div class="numbers-inner"><div class="numbers-left"><div class="sec-eyebrow">By The Numbers</div><h2>Fifteen years of<br><i>virtual-first care.</i></h2><p>TruDoc doctors make 40,000+ home visits every month and have touched 2.5 million lives across the UAE and GCC.</p><a href="uae/" style="font-size:13px;font-weight:700;color:var(--blue);text-decoration:none">TruDoc in the UAE →</a></div>
+<div class="numbers-right"><div class="nc"><div class="nc-n">2.5M+</div><div class="nc-l">Lives touched</div></div><div class="nc"><div class="nc-n">40,000+</div><div class="nc-l">Doctor home visits every month</div></div><div class="nc"><div class="nc-n">24/7</div><div class="nc-l">Doctors by app or 800 878 362</div></div><div class="nc"><div class="nc-n">4</div><div class="nc-l">Languages: English, Arabic, Hindi, Urdu</div></div></div></div></section>
+<section class="how"><h2>Four steps.<br><i>That's all.</i></h2><div class="how-stagger"><div class="how-step"><div class="hs-num">01</div><div class="hs-body"><div class="hs-title">Open the app or call</div><div class="hs-desc">Download TruDoc or call 800 878 362.</div></div></div><div class="how-step"><div class="hs-num">02</div><div class="hs-body"><div class="hs-title">Choose a service</div><div class="hs-desc">Doctor, home visit, lab test or medicine delivery.</div></div></div><div class="how-step"><div class="hs-num">03</div><div class="hs-body"><div class="hs-title">Speak to a doctor</div><div class="hs-desc">Licensed doctors, any hour, in your language.</div></div></div><div class="how-step"><div class="hs-num">04</div><div class="hs-body"><div class="hs-title">Receive your care</div><div class="hs-desc">Prescription, delivery or lab result, all in your TruDoc record.</div></div></div></div></section>
+<section class="doctor"><div class="doctor-photo"><img src="assets/doctor.jpg" alt="A TruDoc doctor at a desk with a laptop"></div><div class="doctor-content"><div class="sec-eyebrow">Our Doctors</div><h2>Licensed.<br>Verified.<br><i>Ready now.</i></h2><p>TruDoc doctors are licensed by UAE health authorities and held to the same clinical standards as a physical clinic.</p><div class="checks"><div class="check"><div class="chk">✓</div>DHA and DOH licensed (licence numbers on each service page)</div><div class="check"><div class="chk">✓</div>English, Arabic, Hindi and Urdu</div><div class="check"><div class="chk">✓</div>Records secured in your app</div></div><a href="uae/online-doctor-24-7-dubai/" class="btn-green">See a doctor online</a></div></section>
+<section class="partners"><div class="sec-eyebrow">Available through</div><h3>Powered by TruDoc</h3><div class="prow"><span>Bayzat</span><span>MetLife</span><span>Cigna</span><span>GIG</span></div><p style="margin-top:28px"><a href="uae/partners/" style="color:var(--blue);font-weight:700;text-decoration:none">About our partners →</a></p></section>
+<div class="faqwrap"><div class="sec-eyebrow">Questions people ask</div><h2>Direct answers.</h2><details><summary>What is the best telehealth app in the UAE?</summary><p>TruDoc is a DHA- and DOH-licensed virtual-first provider with doctors available 24/7 by app or 800 878 362. See <a href="uae/online-doctor-24-7-dubai/">how it works</a>.</p></details><details><summary>How can I see a doctor online 24/7 in Dubai?</summary><p>Open the TruDoc app or call 800 878 362 any hour. Details: <a href="uae/online-doctor-24-7-dubai/">see a TruDoc doctor online 24/7 in Dubai</a>.</p></details><details><summary>Is there an online GP in Abu Dhabi covered by insurance?</summary><p>Yes. Check your cover with your Emirates ID and insurer: <a href="uae/online-gp-abu-dhabi-insurance/">online GP in Abu Dhabi</a>.</p></details><details><summary>Which programme helps with diabetes?</summary><p>TruDoc runs a diabetes management programme: <a href="uae/diabetes-management-programme/">see the programme</a>.</p></details><details><summary>Which telemedicine provider works for employee health?</summary><p>TruDoc gives employees and dependants 24/7 access, including through Bayzat, MetLife and Cigna: <a href="uae/employers/">TruDoc for employers</a>.</p></details><details><summary>How do I talk to a doctor now in the UAE?</summary><p>Call 800 878 362 or open the app. For emergencies call 998: <a href="uae/talk-to-a-doctor-now/">talk to a doctor now</a>.</p></details><details><summary>Can a doctor visit me at home in Dubai or Abu Dhabi?</summary><p>Yes: <a href="uae/doctor-home-visit-dubai/">Dubai</a> and <a href="uae/doctor-home-visit-abu-dhabi/">Abu Dhabi</a>.</p></details><details><summary>Can I book a lab test at home in the UAE?</summary><p>Yes: <a href="uae/lab-test-at-home/">lab test at home in the UAE</a>.</p></details></div>
+<section class="cta"><h2>Your health.<br><i>Your schedule.</i><br><span class="green">TruDoc.</span></h2><div class="cta-actions"><a href="tel:+971800878362" class="btn-cta-main">Call 800 878 362</a><a href="https://apps.apple.com/ae/app/trudoc/id1015588412" class="btn-cta-ghost">Download the app</a></div><p class="cta-note">Emergencies: call 998 · trudocgroup.com</p></section><footer><div class="footer-top"><div class="fb"><a href="" class="fb-logo">Tru<span>Doc</span></a><p>Always With You · دائماً معك</p><p style="margin-top:14px">Office 701, Bay Square, Building 1, Business Bay, Dubai · 800 878 362</p></div><div class="fc"><h4>Services</h4><ul><li><a href="uae/online-doctor-24-7-dubai/">Online doctor 24/7</a></li><li><a href="uae/doctor-home-visit-dubai/">Home visit Dubai</a></li><li><a href="uae/doctor-home-visit-abu-dhabi/">Home visit Abu Dhabi</a></li><li><a href="uae/lab-test-at-home/">Lab test at home</a></li><li><a href="uae/medicine-delivery-uae/">Medicine delivery</a></li></ul></div><div class="fc"><h4>Company</h4><ul><li><a href="uae/employers/">For employers</a></li><li><a href="uae/partners/">Partners</a></li><li><a href="uae/pricing/">Pricing</a></li><li><a href="faqs/">FAQs</a></li></ul></div><div class="fc"><h4>Learn</h4><ul><li><a href="health-library/">Health library</a></li><li><a href="uae/online-gp-abu-dhabi-insurance/">Insurance in Abu Dhabi</a></li><li><a href="aeo-implementation/">AEO tracker</a></li></ul></div></div><div class="fbot"><p>© 2026 TruDoc Healthcare. Emergencies: call 998.</p><span>trudocgroup.com</span></div></footer><a class="callbar" href="tel:+971800878362">Call a doctor now · 800 878 362</a><script>if(location.protocol==="file:")document.querySelectorAll("a[href]").forEach(a=>{let h=a.getAttribute("href");if(h&&h.endsWith("/")&&!h.startsWith("http"))a.setAttribute("href",h+"index.html")});const s=document.getElementById("strip");if(s){let d=0,x=0,l=0;s.onmousedown=e=>{d=1;x=e.pageX;l=s.scrollLeft};onmouseup=()=>d=0;s.onmousemove=e=>{if(d)s.scrollLeft=l-(e.pageX-x)}}</script></body></html>
