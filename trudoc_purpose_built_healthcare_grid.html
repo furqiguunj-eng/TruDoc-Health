@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TruDoc Healthcare | Web 3.0 Integrated Care Infrastructure</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Structured JSON-LD Schema for Answer Engine Optimisation (AEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalOrganization",
+        "@id": "https://trudocgroup.com/#organization",
+        "name": "TruDoc Healthcare",
+        "url": "https://trudocgroup.com",
+        "logo": "https://trudocgroup.com/logo.png",
+        "description": "24/7 Virtual clinic, Hospital-at-Home, smart pharmacy delivery, mobile doctor home visits, and home diagnostics across Dubai, Abu Dhabi, and the UAE.",
+        "telephone": "+971-800-878-362",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Office 701, Bay Square Building 1, Business Bay",
+          "addressLocality": "Dubai",
+          "addressCountry": "AE"
+        },
+        "medicalSpecialty": ["GeneralPractice", "Pediatrics", "Obstetrics", "ChronicDiseaseManagement"],
+        "availableService": [
+          {
+            "@type": "MedicalTherapy",
+            "name": "24/7 Online Doctor Teleconsultation",
+            "offers": { "@type": "Offer", "price": "75", "priceCurrency": "AED" }
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Doctor Home Visit Dubai and Abu Dhabi",
+            "offers": { "@type": "Offer", "price": "350", "priceCurrency": "AED" }
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "At-Home Lab Blood Test Collection",
+            "offers": { "@type": "Offer", "price": "99", "priceCurrency": "AED" }
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://trudocgroup.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How can I see a doctor online 24/7 in Dubai or Abu Dhabi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Connect with a licensed UAE doctor in under 60 seconds via the TruDoc app or toll-free 800 878 362. Available 24/7 in English, Arabic, Hindi, and Urdu with 0 AED co-pay on major insurance plans or self-pay from 75 AED per month."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which UAE insurance networks cover TruDoc?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TruDoc is covered across major UAE insurers including Daman (Thiqa and Enhanced), NextCare, NAS Neuron, MetLife, Cigna, GIG Gulf, ADNIC, and Sukoon."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does a doctor home visit cost in Dubai or Abu Dhabi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TruDoc doctor home visits start from 350 AED with an average arrival time of 30 to 45 minutes across Dubai and Abu Dhabi."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I book a blood test at home in the UAE?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. TruDoc dispatches licensed phlebotomists to your home or office within 120 minutes. Routine blood and diagnostic panels start from 99 AED with same-day digital results in the TruDoc app."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            td: {
+              blue: '#0F67FE',
+              'blue-dark': '#0048C7',
+              'blue-light': '#EEF4FF',
+              teal: '#00D2B4',
+              'teal-dark': '#009E87',
+              'teal-light': '#E6FAF7',
+              navy: '#0F172A',
+              slate: '#334155',
+              muted: '#64748B',
+              border: '#E2E8F0',
+              bg: '#FAFCFF',
+              surface: '#FFFFFF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FAFCFF;
+      color: #334155;
+    }
+
+    .clean-glass-nav {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .hero-light-gradient {
+      background: radial-gradient(circle at 50% 0%, rgba(15, 103, 254, 0.07) 0%, rgba(250, 252, 255, 0) 70%),
+                  linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
+    }
+
+    .card-clean {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-clean:hover {
+      border-color: #0F67FE;
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px -15px rgba(15, 103, 254, 0.12);
+    }
+
+    .modal-backdrop-light {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased text-td-slate bg-td-bg pb-24">
+
+  <!-- ================= 1. LIVE TELEMETRY BAR ================= -->
+  <div class="border-b border-td-border bg-white py-2 text-xs font-mono text-td-muted shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-td-teal animate-pulse"></span>
+        <span class="text-td-navy font-semibold">24/7 Care Control Tower Active: Virtual, Home & Physical Grid</span>
+      </div>
+      <div class="flex items-center gap-4 text-td-blue font-semibold">
+        <span>Licensed DHA &bull; DOH &bull; MOH</span>
+        <span class="hidden md:inline text-slate-300">|</span>
+        <span class="hidden md:inline text-td-slate">Johns Hopkins Aramco Healthcare (JHAH) Partner</span>
+        <span class="hidden md:inline text-slate-300">|</span>
+        <span class="text-td-navy font-mono font-bold">Call 24/7: 800 878 362</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 2. GLOBAL NAVIGATION ================= -->
+  <header class="sticky top-0 z-50 clean-glass-nav shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <a href="#home" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-td-blue to-td-teal text-white flex items-center justify-center font-extrabold text-xl font-display shadow-md shadow-td-blue/20 group-hover:scale-105 transition-transform">
+          T
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl font-extrabold tracking-tight text-td-navy font-display leading-none">Tru<span class="text-td-blue">Doc</span></span>
+          <span class="text-[9px] font-mono tracking-widest text-td-muted uppercase mt-0.5 font-bold">Purpose-Built Care Infrastructure</span>
+        </div>
+      </a>
+
+      <nav class="hidden xl:flex items-center gap-8 text-xs font-bold tracking-wider text-td-slate font-mono uppercase">
+        <a href="#pricing" class="text-td-blue hover:text-td-blue-dark transition-colors font-bold">Pricing & Plans</a>
+        <a href="#architecture" class="hover:text-td-blue transition-colors">Care Topology</a>
+        <a href="#outpatient" class="hover:text-td-blue transition-colors">Omnichannel Out-Patient</a>
+        <a href="#inpatient" class="hover:text-td-blue transition-colors">Asset-Light In-Patient</a>
+        <a href="#clinics" class="hover:text-td-blue transition-colors">Innova & Cooper Clinics</a>
+        <a href="#insurers" class="hover:text-td-blue transition-colors">Insurers</a>
+        <a href="#company" class="hover:text-td-blue transition-colors">15Y Legacy</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="openModal('appModal')" class="hidden sm:inline-flex px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-td-navy text-xs font-mono font-semibold border border-td-border transition-all">
+          Super App
+        </button>
+        <button onclick="openModal('partnerModal')" class="px-5 py-2.5 rounded-xl bg-td-blue hover:bg-td-blue-dark text-white font-mono text-xs font-bold transition-all shadow-md shadow-td-blue/20 flex items-center gap-1.5">
+          <span>Enterprise Access</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 3. HERO SECTION ================= -->
+  <section id="home" class="pt-16 pb-16 md:pt-24 md:pb-20 border-b border-td-border hero-light-gradient">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="text-center max-w-4xl mx-auto mb-12 space-y-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-td-blue-light border border-td-blue/20 text-td-blue text-xs font-mono font-bold uppercase tracking-wider shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-td-teal"></span>
+          Decentralized Health Grid &bull; Care Comes to the Patient
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-td-navy font-display tracking-tight leading-[1.12]">
+          Reimagining Healthcare Delivery Through Purpose-Built Infrastructure
+        </h1>
+
+        <p class="text-base sm:text-lg text-td-muted max-w-3xl mx-auto leading-relaxed">
+          TruDoc eliminates the divide between software and physical medicine. Connect with licensed UAE doctors in under 60 seconds, dispatch mobile physicians to your door in 30-45 minutes, or step down from hospital stays with 24/7 Hospital-at-Home telemetry.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <button onclick="openModal('partnerModal')" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-td-blue hover:bg-td-blue-dark text-white font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-td-blue/20 flex items-center justify-center gap-2">
+            <span>Request Payer / Enterprise Demo</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+          <a href="#pricing" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-td-navy font-mono font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 border border-td-border shadow-sm">
+            <span>View Pricing & Coverage</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Core Visual Diagram Recreated From Strategy Slide -->
+      <div id="architecture" class="bg-white border border-td-border rounded-3xl p-6 md:p-10 shadow-xl max-w-6xl mx-auto">
+        <div class="text-center mb-8">
+          <span class="text-xs font-mono text-td-blue font-bold uppercase tracking-wider">The TruDoc Approach</span>
+          <h3 class="text-2xl font-bold text-td-navy font-display mt-1">Unified Multi-Setting Clinical Grid</h3>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          
+          <!-- Left: Asset Light In-Patient -->
+          <div class="lg:col-span-4 space-y-4">
+            <div class="p-3 bg-td-blue-light border border-td-blue/20 rounded-xl text-center">
+              <span class="text-xs font-mono font-bold text-td-blue uppercase">Asset-Light In-Patient</span>
+            </div>
+
+            <div class="card-clean p-5 rounded-2xl flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                <i data-lucide="home" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-td-navy font-display">Hospital-Level Care at Home</h4>
+                <p class="text-xs text-td-muted mt-1">Lower cost &bull; Recover at home &bull; Avoid hospital stay & ICU step-downs with cellular telemetry.</p>
+              </div>
+            </div>
+
+            <div class="card-clean p-5 rounded-2xl flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-blue-50 text-td-blue flex items-center justify-center shrink-0">
+                <i data-lucide="plane" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-td-navy font-display">Offshore Case Management</h4>
+                <p class="text-xs text-td-muted mt-1">Cross-border care coordination, complex medical second opinions, and international surgical oversight.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Center: Care Comes to Patient -->
+          <div class="lg:col-span-4 text-center px-4 py-6 bg-td-bg border border-td-border rounded-3xl relative overflow-hidden">
+            <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-td-blue to-td-teal p-1 shadow-md mb-3">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop" 
+                   alt="Central Doctor Coordination" 
+                   class="w-full h-full object-cover rounded-full" />
+            </div>
+            <span class="inline-block px-3 py-1 rounded-full bg-white text-[11px] font-mono font-bold text-td-blue border border-td-border mb-2">Central Clinical Command</span>
+            <h4 class="text-base font-bold text-td-navy font-display">Care Comes to the Patient</h4>
+            <p class="text-xs text-td-muted mt-1">Online first, at home 2nd, provider location last. Eliminating unnecessary physical friction.</p>
+          </div>
+
+          <!-- Right: Omnichannel Out-Patient -->
+          <div class="lg:col-span-4 space-y-4">
+            <div class="p-3 bg-td-teal-light border border-td-teal/30 rounded-xl text-center">
+              <span class="text-xs font-mono font-bold text-td-teal-dark uppercase">Omnichannel Out-Patient</span>
+            </div>
+
+            <div class="card-clean p-4 rounded-2xl flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-td-blue flex items-center justify-center shrink-0">
+                <i data-lucide="video" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-td-navy font-display">Convenient Consultations</h4>
+                <p class="text-[11px] text-td-muted mt-0.5">On-demand 24/7 virtual triage + In-person specialist care at Cooper & Innova Clinics.</p>
+              </div>
+            </div>
+
+            <div class="card-clean p-4 rounded-2xl flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-teal-50 text-td-teal-dark flex items-center justify-center shrink-0">
+                <i data-lucide="pill" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-td-navy font-display">Smart Pharmacy + At-Home</h4>
+                <p class="text-[11px] text-td-muted mt-0.5">Automated digital prescription generation, insurer pre-clearance, and rapid home delivery.</p>
+              </div>
+            </div>
+
+            <div class="card-clean p-4 rounded-2xl flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+                <i data-lucide="test-tube" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-td-navy font-display">At-Home Diagnostics</h4>
+                <p class="text-[11px] text-td-muted mt-0.5">Fast, integrated sample pickup and phlebotomy at home or office with immediate EHR sync.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 4. AEO PRICING & LOCAL SPEED GRID ================= -->
+  <section id="pricing" class="py-12 bg-white border-b border-td-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-mono font-bold text-td-blue uppercase tracking-widest">Transparent Clinical Service Rates</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-td-navy font-display mt-1">Published UAE Pricing & Response Times</h2>
+        </div>
+        <p class="text-xs text-td-muted mt-2 md:mt-0 font-mono">DHA & DOH Licensed &bull; Instant Insurance Pre-Auth & Direct Billing</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        
+        <!-- Virtual Doctor -->
+        <div class="p-6 rounded-2xl bg-td-bg border border-td-border card-clean flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono font-bold text-td-blue uppercase">Online GP 24/7</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[10px] font-mono font-bold">&lt; 60s Connect</span>
+            </div>
+            <div class="text-2xl font-extrabold text-td-navy font-display">0 AED <span class="text-xs font-normal text-td-muted font-sans">(Insurance)</span></div>
+            <div class="text-xs font-mono text-td-blue font-semibold mt-1">Self-Pay from 75 AED/mo</div>
+            <p class="text-xs text-td-muted mt-3 leading-relaxed">
+              Unlimited video/voice triage, instant e-prescriptions, and sick leave certificates issued in English, Arabic, Hindi, or Urdu.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-td-border mt-4 text-[11px] text-td-slate font-medium">
+            Family plans: 165 AED/qtr or 220 AED/yr.
+          </div>
+        </div>
+
+        <!-- Doctor Home Visit -->
+        <div class="p-6 rounded-2xl bg-td-bg border border-td-border card-clean flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono font-bold text-td-teal-dark uppercase">Doctor Home Visit</span>
+              <span class="px-2 py-0.5 rounded bg-teal-50 text-td-teal-dark text-[10px] font-mono font-bold">30–45 Mins</span>
+            </div>
+            <div class="text-2xl font-extrabold text-td-navy font-display">From 350 AED</div>
+            <div class="text-xs font-mono text-td-slate font-semibold mt-1">Dubai & Abu Dhabi Coverage</div>
+            <p class="text-xs text-td-muted mt-3 leading-relaxed">
+              DHA & DOH licensed doctors arrive at your home, hotel, or office with diagnostic kits and immediate prescription dispensing.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-td-border mt-4 text-[11px] text-td-slate font-medium">
+            Over 40,000 home visits delivered monthly across UAE.
+          </div>
+        </div>
+
+        <!-- Lab Test at Home -->
+        <div class="p-6 rounded-2xl bg-td-bg border border-td-border card-clean flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono font-bold text-purple-600 uppercase">Home Lab Tests</span>
+              <span class="px-2 py-0.5 rounded bg-purple-50 text-purple-700 text-[10px] font-mono font-bold">Within 120 Mins</span>
+            </div>
+            <div class="text-2xl font-extrabold text-td-navy font-display">From 99 AED</div>
+            <div class="text-xs font-mono text-td-slate font-semibold mt-1">Same-Day Results via App</div>
+            <p class="text-xs text-td-muted mt-3 leading-relaxed">
+              Certified phlebotomists collect blood, urine, or swab samples at your doorstep. Full panels synced directly into your TruDoc EHR.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-td-border mt-4 text-[11px] text-td-slate font-medium">
+            Routine health checks, lipid, glucose, and hormone panels.
+          </div>
+        </div>
+
+        <!-- Smart Pharmacy -->
+        <div class="p-6 rounded-2xl bg-td-bg border border-td-border card-clean flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono font-bold text-indigo-600 uppercase">Doorstep Rx Delivery</span>
+              <span class="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 text-[10px] font-mono font-bold">&lt; 60 Mins Delivery</span>
+            </div>
+            <div class="text-2xl font-extrabold text-td-navy font-display">Direct Pre-Auth</div>
+            <div class="text-xs font-mono text-td-slate font-semibold mt-1">Zero Pharmacy Queues</div>
+            <p class="text-xs text-td-muted mt-3 leading-relaxed">
+              Immediate digital approval with your TPA or insurer. Temperature-controlled medication dispatched straight to your address.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-td-border mt-4 text-[11px] text-td-slate font-medium">
+            98.2% on-time fulfillment rate across primary metro zones.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. PROVEN OPERATIONAL DASHBOARD ================= -->
+  <section class="py-12 border-b border-td-border bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
+        
+        <div class="border-l-2 border-td-blue pl-4">
+          <div class="text-2xl sm:text-3xl font-extrabold text-td-navy font-display">2.5M+</div>
+          <div class="text-xs font-bold text-td-slate mt-0.5">Lives Touched</div>
+          <p class="text-[11px] text-td-muted">Active members across UAE, KSA, GCC & Africa</p>
+        </div>
+
+        <div class="border-l-2 border-td-teal pl-4">
+          <div class="text-2xl sm:text-3xl font-extrabold text-td-navy font-display">8,000+</div>
+          <div class="text-xs font-bold text-td-slate mt-0.5">Bed Days Saved/Yr</div>
+          <p class="text-[11px] text-td-muted">Under exclusive JHAH Aramco Virtual Ward</p>
+        </div>
+
+        <div class="border-l-2 border-emerald-500 pl-4">
+          <div class="text-2xl sm:text-3xl font-extrabold text-td-navy font-display">119%</div>
+          <div class="text-xs font-bold text-td-slate mt-0.5">Net Payer ROI</div>
+          <p class="text-[11px] text-td-muted">3rd-party actuarial model for DHA program</p>
+        </div>
+
+        <div class="border-l-2 border-indigo-500 pl-4">
+          <div class="text-2xl sm:text-3xl font-extrabold text-td-navy font-display">40,000+</div>
+          <div class="text-xs font-bold text-td-slate mt-0.5">Home Visits / Mo</div>
+          <p class="text-[11px] text-td-muted">Mobile doctors, nurses & physical therapists</p>
+        </div>
+
+        <div class="border-l-2 border-sky-500 pl-4">
+          <div class="text-2xl sm:text-3xl font-extrabold text-td-navy font-display">98.2%</div>
+          <div class="text-xs font-bold text-td-slate mt-0.5">Rx Fulfillment</div>
+          <p class="text-[11px] text-slate-400">&lt; 60m doorstep medicine delivery rate</p>
+        </div>
+
+        <div class="border-l-2 border-purple-500 pl-4">
+          <div class="text-2xl sm:text-3xl font-extrabold text-td-navy font-display">0</div>
+          <div class="text-xs font-bold text-td-slate mt-0.5">Malpractice Record</div>
+          <p class="text-[11px] text-td-muted">15+ years strict NHS-level evidence protocol</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. ACCEPTED INSURERS STRIP ================= -->
+  <section id="insurers" class="py-10 bg-td-bg border-b border-td-border">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <span class="text-xs font-mono font-bold text-td-muted uppercase tracking-widest block mb-4">
+        Direct Billing & Payer Integration Across Major UAE & Regional Networks
+      </span>
+      <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 text-td-slate text-xs font-mono font-bold">
+        <span class="px-4 py-2 rounded-xl bg-white border border-td-border shadow-sm">DAMAN (THIQA & ENHANCED)</span>
+        <span class="px-4 py-2 rounded-xl bg-white border border-td-border shadow-sm">NEXTCARE</span>
+        <span class="px-4 py-2 rounded-xl bg-white border border-td-border shadow-sm">NAS NEURON</span>
+        <span class="px-4 py-2 rounded-xl bg-white border border-td-border shadow-sm">METLIFE</span>
+        <span class="px-4 py-2 rounded-xl bg-white border border-td-border shadow-sm">CIGNA HEALTH</span>
+        <span class="px-4 py-2 rounded-xl bg-white border border-td-border shadow-sm">GIG GULF</span>
+        <span class="px-4 py-2 rounded-xl bg-white border border-td-border shadow-sm">ADNIC</span>
+        <span class="px-4 py-2 rounded-xl bg-white border border-td-border shadow-sm">SUKOON</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. OMNICHANNEL OUT-PATIENT ENGINE ================= -->
+  <section id="outpatient" class="py-20 max-w-7xl mx-auto px-6 border-b border-td-border bg-white">
+    <div class="mb-12">
+      <span class="text-td-blue text-xs font-mono font-bold tracking-widest uppercase">Primary Care Continuum</span>
+      <h2 class="text-3xl font-extrabold text-td-navy font-display mt-1">Omnichannel Out-Patient Infrastructure</h2>
+      <p class="text-sm text-td-muted mt-2">Connecting routine primary care, diagnostics, and pharmaceutical fulfillment into an automated continuum.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Virtual + On-Site Consultations -->
+      <div class="bg-td-bg border border-td-border rounded-3xl p-7 flex flex-col justify-between card-clean">
+        <div>
+          <div class="h-48 rounded-2xl overflow-hidden mb-5 relative">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" 
+                 alt="Telehealth & Clinic Integration" 
+                 class="w-full h-full object-cover" />
+            <span class="absolute top-3 left-3 bg-td-blue text-white text-[10px] font-mono font-bold px-2.5 py-1 rounded-md">24/7 Connected</span>
+          </div>
+          <h3 class="text-lg font-bold text-td-navy font-display mb-2">Convenient Consultations</h3>
+          <p class="text-xs text-td-slate leading-relaxed mb-4">
+            On-demand primary care through voice, video, or chat. Full-time in-house physicians, psychologists, and dietitians provide immediate triage and seamlessly refer patients to Innova or Cooper specialist centers when physical assessment is required.
+          </p>
+        </div>
+        <div class="text-xs font-mono text-td-blue font-bold flex items-center gap-1.5">
+          <span>Incentivized primary care access model</span>
+        </div>
+      </div>
+
+      <!-- Smart Pharmacy & At-Home Delivery -->
+      <div class="bg-td-bg border border-td-border rounded-3xl p-7 flex flex-col justify-between card-clean">
+        <div>
+          <div class="h-48 rounded-2xl overflow-hidden mb-5 relative">
+            <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?q=80&w=800&auto=format&fit=crop" 
+                 alt="Pharmacy Logistics" 
+                 class="w-full h-full object-cover" />
+            <span class="absolute top-3 left-3 bg-td-teal text-td-navy text-[10px] font-mono font-bold px-2.5 py-1 rounded-md">60-Min Cold Chain</span>
+          </div>
+          <h3 class="text-lg font-bold text-td-navy font-display mb-2">Smart Pharmacy & At-Home Fulfillment</h3>
+          <p class="text-xs text-td-slate leading-relaxed mb-4">
+            Digital prescription slips are instantly routed to nearest fulfillment nodes. Dedicated billing desks handle insurance pre-approvals in the background, dispatching cold-chain medications with automated refill reminders for chronic cohorts.
+          </p>
+        </div>
+        <div class="text-xs font-mono text-td-teal-dark font-bold flex items-center gap-1.5">
+          <span>98%+ Fulfillment & Medication Adherence</span>
+        </div>
+      </div>
+
+      <!-- Home Diagnostics & Phlebotomy -->
+      <div class="bg-td-bg border border-td-border rounded-3xl p-7 flex flex-col justify-between card-clean">
+        <div>
+          <div class="h-48 rounded-2xl overflow-hidden mb-5 relative">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop" 
+                 alt="Home Diagnostic Blood Draw" 
+                 class="w-full h-full object-cover" />
+            <span class="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-mono font-bold px-2.5 py-1 rounded-md">At-Home Phlebotomy</span>
+          </div>
+          <h3 class="text-lg font-bold text-td-navy font-display mb-2">At-Home Diagnostics</h3>
+          <p class="text-xs text-td-slate leading-relaxed mb-4">
+            Licensed nurses collect blood and diagnostic samples directly at the member's residence or workplace. Results flow straight into the TruDoc EMR, triggering physician review and automated therapy adjustments without clinic queues.
+          </p>
+        </div>
+        <div class="text-xs font-mono text-purple-600 font-bold flex items-center gap-1.5">
+          <span>Sample collection in 120 mins &bull; DHA accredited</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 8. ASSET-LIGHT IN-PATIENT & ARAMCO CASE ================= -->
+  <section id="inpatient" class="py-20 max-w-7xl mx-auto px-6 border-b border-td-border">
+    <div class="mb-12">
+      <span class="text-td-teal-dark text-xs font-mono font-bold tracking-widest uppercase">High-Acuity Decentralization</span>
+      <h2 class="text-3xl font-extrabold text-td-navy font-display mt-1">Asset-Light In-Patient Infrastructure</h2>
+      <p class="text-sm text-td-muted mt-2">Pioneering hospital-level acute care in the home and managing high-complexity overseas cases.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- Hospital at Home Card -->
+      <div class="lg:col-span-7 bg-white border border-td-border rounded-3xl p-8 md:p-10 card-clean shadow-sm space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="px-3 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-mono font-bold">Virtual Ward Concept</span>
+          <span class="text-xs text-td-muted font-mono">DHA & JHAH Aramco Validated</span>
+        </div>
+
+        <h3 class="text-2xl font-bold text-td-navy font-display">Hospital-Level Care at Home (HaH)</h3>
+        <p class="text-xs sm:text-sm text-td-slate leading-relaxed">
+          The only scaled Hospital-at-Home provider in the region. Patients requiring inpatient management for acute, chronic, or ICU step-down conditions receive 24/7 continuous wireless telemetry, daily physician rounds, IV medication therapy, and specialized nurse visits in their own beds.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div class="p-4 rounded-xl bg-td-bg border border-td-border">
+            <span class="text-xl font-bold text-td-navy font-display">8,000+</span>
+            <span class="block text-[11px] text-td-muted mt-0.5">Bed Days Saved / Year (JHAH)</span>
+          </div>
+          <div class="p-4 rounded-xl bg-td-bg border border-td-border">
+            <span class="text-xl font-bold text-td-navy font-display">11.6 Days</span>
+            <span class="block text-[11px] text-td-muted mt-0.5">Average Optimized Stay</span>
+          </div>
+          <div class="p-4 rounded-xl bg-td-bg border border-td-border">
+            <span class="text-xl font-bold text-emerald-600 font-display">92.7%</span>
+            <span class="block text-[11px] text-td-muted mt-0.5">Patient Satisfaction Score</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-td-blue-light/40 border border-td-blue/20 text-xs text-td-slate">
+          <strong>Clinical Safety Benchmark:</strong> 10.1% 30-day readmission rate, comfortably outperforming conventional physical hospital averages.
+        </div>
+      </div>
+
+      <!-- Offshore Case Management Card -->
+      <div class="lg:col-span-5 bg-white border border-td-border rounded-3xl p-8 card-clean shadow-sm space-y-5">
+        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-td-blue flex items-center justify-center">
+          <i data-lucide="globe" class="w-6 h-6"></i>
+        </div>
+
+        <h3 class="text-xl font-bold text-td-navy font-display">Offshore Case Management</h3>
+        <p class="text-xs text-td-slate leading-relaxed">
+          For complex tertiary interventions (advanced oncology, cardiac surgery, and neurosurgery), TruDoc acts as an international medical case manager—coordinating international clinical opinions, hospital admissions abroad, travel logistics, and post-operative home step-down care.
+        </p>
+
+        <ul class="space-y-2.5 text-xs text-td-muted border-t border-td-border pt-4">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-td-blue"></i> Independent multi-specialist second opinions</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-td-blue"></i> End-to-end insurance pre-authorization & billing</li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-td-blue"></i> Repatriation and continuity via Virtual Ward</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 9. INNOVA & COOPER CLINICS PHYSICAL ANCHOR ================= -->
+  <section id="clinics" class="py-20 max-w-7xl mx-auto px-6 border-b border-td-border bg-white">
+    <div class="mb-12">
+      <span class="text-td-blue text-xs font-mono font-bold tracking-widest uppercase">Physical Specialist Footprint</span>
+      <h2 class="text-3xl font-extrabold text-td-navy font-display mt-1">Specialist Centers: Innova & Cooper Health</h2>
+      <p class="text-sm text-td-muted mt-2">TruDoc is anchored by premier brick-and-mortar medical centers, ensuring high-acuity diagnostics and specialized hands-on care.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Cooper Health Clinic -->
+      <div class="bg-td-bg border border-td-border rounded-3xl p-8 card-clean shadow-sm flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-td-blue font-bold uppercase">Specialist Center &bull; Dubai Marina</span>
+            <span class="px-2.5 py-1 rounded bg-white text-[10px] font-mono font-semibold text-td-navy border border-td-border">Physical Hub</span>
+          </div>
+          <h3 class="text-2xl font-bold text-td-navy font-display">Cooper Health Clinics</h3>
+          <p class="text-xs text-td-slate leading-relaxed">
+            Renowned center of excellence focusing on Obstetrics, Gynecology, Pediatrics, and Family Medicine. Cooper Health serves as TruDoc’s dedicated maternal and pediatric hub, integrating routine in-person checks with at-home vitals telemonitoring.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 pt-2 text-xs text-td-slate">
+            <div class="p-3 bg-white rounded-xl border border-td-border">
+              <strong>Maternal-Fetal Care</strong>
+              <p class="text-[11px] text-td-muted mt-0.5">High-risk pregnancy monitoring & postnatal home nursing.</p>
+            </div>
+            <div class="p-3 bg-white rounded-xl border border-td-border">
+              <strong>Pediatric Excellence</strong>
+              <p class="text-[11px] text-td-muted mt-0.5">Vaccination clinics & 24/7 virtual triage escalation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-td-border mt-6 flex items-center justify-between">
+          <span class="text-xs font-mono text-td-muted">Seamless EMR Referral Hub</span>
+          <button onclick="openModal('partnerModal')" class="text-xs font-mono font-bold text-td-blue hover:underline">Book Specialist Consult &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Innova Clinics -->
+      <div class="bg-td-bg border border-td-border rounded-3xl p-8 card-clean shadow-sm flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-td-teal-dark font-bold uppercase">Multi-Specialty &bull; Regional Grid</span>
+            <span class="px-2.5 py-1 rounded bg-white text-[10px] font-mono font-semibold text-td-navy border border-td-border">Physical Hub</span>
+          </div>
+          <h3 class="text-2xl font-bold text-td-navy font-display">Innova Clinics</h3>
+          <p class="text-xs text-td-slate leading-relaxed">
+            Advanced outpatient diagnostic and multi-specialty polyclinics equipped with state-of-the-art imaging, cardiology, internal medicine, and executive wellness facilities. Innova receives pre-screened patients from TruDoc’s 24/7 tele-triage.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 pt-2 text-xs text-td-slate">
+            <div class="p-3 bg-white rounded-xl border border-td-border">
+              <strong>Advanced Imaging</strong>
+              <p class="text-[11px] text-td-muted mt-0.5">Ultrasound, ECG, and rapid turnaround on-site labs.</p>
+            </div>
+            <div class="p-3 bg-white rounded-xl border border-td-border">
+              <strong>Chronic Disease Clinics</strong>
+              <p class="text-[11px] text-td-muted mt-0.5">Hypertension, diabetes & metabolic syndromic pathways.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-td-border mt-6 flex items-center justify-between">
+          <span class="text-xs font-mono text-td-muted">Diagnostic Escalation Node</span>
+          <button onclick="openModal('partnerModal')" class="text-xs font-mono font-bold text-td-teal-dark hover:underline">Referral Protocol Access &rarr;</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 10. 15-YEAR CORPORATE LEGACY ================= -->
+  <section id="company" class="py-20 max-w-7xl mx-auto px-6 border-b border-td-border">
+    <div class="mb-12">
+      <span class="text-td-blue text-xs font-mono font-bold tracking-widest uppercase">Corporate Provenance</span>
+      <h2 class="text-3xl font-extrabold text-td-navy font-display mt-1">15 Years of Clinical Leadership</h2>
+      <p class="text-sm text-td-muted mt-2">A decade and a half of pioneering digital health and decentralized care delivery across the Middle East and Africa.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+      <div class="bg-white p-6 rounded-2xl border border-td-border card-clean">
+        <span class="text-xs font-mono text-td-blue font-bold uppercase block mb-1">2011 - 2012</span>
+        <h4 class="text-sm font-bold text-td-navy">Tele-Monitoring Inception</h4>
+        <p class="text-xs text-td-muted mt-2">First 24/7 doctor call center and on-site corporate wellness clinics launched in UAE.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-td-border card-clean">
+        <span class="text-xs font-mono text-td-teal-dark font-bold uppercase block mb-1">2016 - 2017</span>
+        <h4 class="text-sm font-bold text-td-navy">DHA Partnership Rollout</h4>
+        <p class="text-xs text-td-muted mt-2">DHA Doctor for Every Citizen initiative & regional Hospital-at-Home rollout.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-td-border card-clean">
+        <span class="text-xs font-mono text-indigo-600 font-bold uppercase block mb-1">2021 - 2022</span>
+        <h4 class="text-sm font-bold text-td-navy">KSA & JHAH Expansion</h4>
+        <p class="text-xs text-td-muted mt-2">Strategic deployment with Johns Hopkins Aramco Healthcare serving 140,000+ beneficiaries.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-td-border card-clean">
+        <span class="text-xs font-mono text-purple-600 font-bold uppercase block mb-1">2026 Mandate</span>
+        <h4 class="text-sm font-bold text-td-navy">Web 3.0 Platform Scale</h4>
+        <p class="text-xs text-td-muted mt-2">Unifying virtual triage, physical clinic grids, and pharmacy distribution for Series B growth.</p>
+      </div>
+    </div>
+
+    <div class="bg-td-blue-light/50 border border-td-blue/20 rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h4 class="text-lg font-bold text-td-navy font-display">Aligned on Evidence-Based Medicine, Not Profit-Based Medicine</h4>
+        <p class="text-xs text-td-slate mt-1 max-w-2xl">
+          Backed by 35+ clinical publications and global compliance standards. Zero-malpractice track record with 100% board-certified medical governance.
+        </p>
+      </div>
+      <button onclick="openModal('partnerModal')" class="px-6 py-3 rounded-xl bg-td-blue text-white font-mono text-xs font-bold shrink-0">
+        Review Clinical Accreditations
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= 11. PERSISTENT CONVERSION CTA ================= -->
+  <section class="py-20 text-center bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-td-navy font-display mb-4">
+        Ready to Transform Healthcare Delivery?
+      </h2>
+      <p class="text-sm text-td-muted mb-8 max-w-xl mx-auto">
+        Deploy TruDoc's purpose-built infrastructure across your insured population or enterprise workforce.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <button onclick="openModal('partnerModal')" class="px-8 py-3.5 rounded-xl bg-td-blue hover:bg-td-blue-dark text-white font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-md">
+          Schedule Executive Briefing
+        </button>
+        <button onclick="openModal('partnerModal')" class="px-8 py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-td-navy font-mono font-semibold text-xs uppercase tracking-wider border border-td-border transition-all">
+          Download Payer Savings Model
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 12. GLOBAL FOOTER ================= -->
+  <footer class="bg-white border-t border-td-border pt-16 pb-12 text-td-muted text-xs">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h4 class="font-mono text-xs font-bold text-td-navy uppercase tracking-wider mb-3">Care Settings</h4>
+          <ul class="space-y-2">
+            <li><a href="#outpatient" class="hover:text-td-blue">&bull; Convenient Consultations</a></li>
+            <li><a href="#outpatient" class="hover:text-td-blue">&bull; Smart Pharmacy + At-Home</a></li>
+            <li><a href="#outpatient" class="hover:text-td-blue">&bull; At-Home Diagnostics</a></li>
+            <li><a href="#inpatient" class="hover:text-td-blue">&bull; Hospital at Home (Virtual Ward)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-mono text-xs font-bold text-td-navy uppercase tracking-wider mb-3">Specialist Grid</h4>
+          <ul class="space-y-2">
+            <li><a href="#clinics" class="hover:text-td-blue">&bull; Cooper Health Clinics</a></li>
+            <li><a href="#clinics" class="hover:text-td-blue">&bull; Innova Diagnostic Clinics</a></li>
+            <li><a href="#inpatient" class="hover:text-td-blue">&bull; Offshore Case Management</a></li>
+            <li><a href="#pricing" class="hover:text-td-blue">&bull; Chronic Disease Pathways</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-mono text-xs font-bold text-td-navy uppercase tracking-wider mb-3">Partnerships</h4>
+          <ul class="space-y-2">
+            <li><a href="#company" class="hover:text-td-blue">&bull; Johns Hopkins Aramco (JHAH)</a></li>
+            <li><a href="#company" class="hover:text-td-blue">&bull; Dubai Health Authority (DHA)</a></li>
+            <li><a href="#insurers" class="hover:text-td-blue">&bull; Payer Risk Stratification</a></li>
+            <li><button onclick="openModal('partnerModal')" class="hover:text-td-blue">&bull; Corporate Wellness Portal</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-mono text-xs font-bold text-td-navy uppercase tracking-wider mb-3">Headquarters</h4>
+          <p class="text-xs text-td-slate leading-relaxed">
+            TruDoc Healthcare LLC<br>
+            Office 701, Bay Square Building 1, Business Bay, Dubai<br>
+            UAE Toll-Free: 800 878 362 (800-TRUDOC)
+          </p>
+        </div>
+      </div>
+
+      <div class="border-t border-td-border pt-6 space-y-2 text-[11px] text-td-muted leading-relaxed">
+        <p>
+          <strong class="text-td-slate">&bull; Regulatory Compliance:</strong> Operating in strict accordance with DHA, DOH, and MOH standards. Clinical triage follows international NHS evidence-based protocols. Services delivered exclusively by licensed healthcare professionals.
+        </p>
+        <p>
+          <strong class="text-td-slate">&bull; Legal:</strong> &copy; 2026 TruDoc Healthcare. All Rights Reserved. | Privacy Policy | Terms of Service | HIPAA & Data Sovereignty Compliance.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= 13. PERSISTENT DOCK ================= -->
+  <aside class="fixed bottom-0 left-0 right-0 z-50 clean-glass-nav py-3.5 px-6 shadow-xl">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-td-teal"></span>
+        <span class="text-xs font-mono text-td-navy font-semibold">
+          <strong>24/7 Clinical Gateway Active:</strong> Virtual &bull; In-Home &bull; Physical Clinics
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3 w-full sm:w-auto">
+        <button onclick="openModal('appModal')" class="flex-1 sm:flex-none text-center px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-td-navy text-xs font-mono font-semibold border border-td-border transition-all">
+          Get the App
+        </button>
+        <button onclick="openModal('partnerModal')" class="flex-1 sm:flex-none text-center px-5 py-2 rounded-xl bg-td-blue hover:bg-td-blue-dark text-white text-xs font-mono font-bold transition-all shadow-md shadow-td-blue/20">
+          Partner With Us
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= 14. INTERACTIVE MODALS ================= -->
+
+  <!-- App Download Modal -->
+  <div id="appModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop-light">
+    <div class="bg-white rounded-3xl max-w-md w-full p-8 border border-td-border shadow-2xl relative">
+      <button onclick="closeModal('appModal')" class="absolute top-6 right-6 text-slate-400 hover:text-td-navy">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-td-blue-light text-td-blue flex items-center justify-center font-bold mx-auto mb-3">
+          <i data-lucide="smartphone" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-xl font-bold text-td-navy font-display">TruDoc Super Health App</h3>
+        <p class="text-xs text-td-muted mt-1">Direct 24/7 access to doctors, lab bookings & prescription delivery.</p>
+      </div>
+
+      <div class="bg-td-bg p-6 rounded-2xl border border-td-border text-center mb-6">
+        <div class="w-32 h-32 bg-white p-2 border border-td-border rounded-xl mx-auto flex items-center justify-center font-mono text-xs font-bold text-td-navy shadow-sm mb-2">
+          TRUDOC QR
+        </div>
+        <p class="text-[11px] font-mono text-td-muted">Scan with phone camera to install</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <button onclick="alert('Redirecting to Apple App Store...');" class="py-2.5 bg-td-navy hover:bg-slate-800 text-white rounded-xl font-mono text-xs font-bold flex items-center justify-center gap-1.5">
+          <i data-lucide="apple" class="w-4 h-4"></i> App Store
+        </button>
+        <button onclick="alert('Redirecting to Google Play Store...');" class="py-2.5 bg-td-blue hover:bg-td-blue-dark text-white rounded-xl font-mono text-xs font-bold flex items-center justify-center gap-1.5">
+          <i data-lucide="play" class="w-4 h-4"></i> Google Play
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Partner With Us Modal -->
+  <div id="partnerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop-light">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-8 border border-td-border shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal('partnerModal')" class="absolute top-6 right-6 text-slate-400 hover:text-td-navy">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-xs font-mono text-td-blue font-bold uppercase">Enterprise Engagement</span>
+        <h3 class="text-2xl font-bold text-td-navy font-display mt-0.5">Partner With TruDoc</h3>
+        <p class="text-xs text-td-muted mt-1">Unlock custom actuarial claims reduction models and enterprise care integration.</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); alert('Inquiry submitted successfully.'); closeModal('partnerModal');" class="space-y-3.5">
+        <div>
+          <label class="block text-[11px] font-mono text-td-slate mb-1">Full Name *</label>
+          <input type="text" required placeholder="Full Name" class="w-full px-3.5 py-2.5 bg-td-bg border border-td-border rounded-xl text-xs text-td-navy focus:border-td-blue focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono text-td-slate mb-1">Company / Organization *</label>
+          <input type="text" required placeholder="Insurer, Corporate or Healthcare Provider" class="w-full px-3.5 py-2.5 bg-td-bg border border-td-border rounded-xl text-xs text-td-navy focus:border-td-blue focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono text-td-slate mb-1">Corporate Email *</label>
+          <input type="email" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 bg-td-bg border border-td-border rounded-xl text-xs text-td-navy focus:border-td-blue focus:outline-none" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-mono text-td-slate mb-1">Sector *</label>
+            <select required class="w-full px-3.5 py-2.5 bg-td-bg border border-td-border rounded-xl text-xs text-td-navy focus:border-td-blue focus:outline-none">
+              <option value="payer">Payers & Insurers</option>
+              <option value="employer">Corporates & Employers</option>
+              <option value="gov">Government & Public Health</option>
+              <option value="provider">Hospital / Physical Clinic</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono text-td-slate mb-1">Target Covered Lives *</label>
+            <input type="text" required placeholder="e.g. 25,000+" class="w-full px-3.5 py-2.5 bg-td-bg border border-td-border rounded-xl text-xs text-td-navy focus:border-td-blue focus:outline-none" />
+          </div>
+        </div>
+        <button type="submit" class="w-full py-3 bg-td-blue hover:bg-td-blue-dark text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md mt-2">
+          Request Commercial Consultation
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    lucide.createIcons();
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
